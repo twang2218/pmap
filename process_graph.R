@@ -21,8 +21,6 @@ generate_graph_data <- function(event_logs, is_target = "is_target", timestamp =
   previous <- NA
 
   apply(event_logs, 1, function(current) {
-    # current[[event_id]] <- current[[event_id]]
-    # current[[customer_id]] <- current[[customer_id]]
     # Add event to nodes list if it's not exist
 
     if (!any(is.na(previous))) {
@@ -36,10 +34,8 @@ generate_graph_data <- function(event_logs, is_target = "is_target", timestamp =
       }
 
       event_row <- list(
-        # source_id = graph_data$nodes[graph_data$nodes$event_original_id == previous[[event_id]],]$event_id,
         source_id = previous[[event_id]],
         source_name = previous[[event_name]],
-        # target_id = graph_data$nodes[graph_data$nodes$event_original_id == current[[event_id]],]$event_id,
         target_id = current[[event_id]],
         target_name = current[[event_name]],
         customer_id = current[[customer_id]],
@@ -50,17 +46,9 @@ generate_graph_data <- function(event_logs, is_target = "is_target", timestamp =
     }
 
     # post-process
-    # print("current: ")
-    # print(str(current))
-    # print(current)
-    # print(is_target)
-    # print(current[[is_target]])
     if (current[[is_target]] != FALSE) {
       # put sales_links to final links set
-      # print("Appending sales_links:")
-      # print(sales_links)
       links <<- c(links, sales_links)
-      # graph_data$links <- rbind(graph_data$links, sales_links)
       # target events should not be the starting point
       previous <<- NA
       # clear sales_links
@@ -84,15 +72,27 @@ generate_graph_data <- function(event_logs, is_target = "is_target", timestamp =
 # nodes (name, is_target)
 # links (from, to, value)
 create_process_graph <- function(nodes, links, node_label_col = NULL, edge_label_col = NULL) {
-  ###### DiagrammeR ########
-
   print("Converting factor to character [nodes]...")
-  nodes <- nodes %>% mutate_if(is.factor, as.character)
-  # print(nodes)
+  nodes <- nodes %>%
+    mutate_if(is.factor, as.character) %>%
+    mutate(
+      index = 1:nrow(nodes),
+      label = apply(
+        sapply(
+          colnames(nodes),
+          function(colname) {
+            paste0(colname, ": ", nodes[[colname]])
+          }
+        ),
+        1,
+        function(row) {
+          paste(row, collapse = "\n")
+        }
+      )
+    )
 
   print("Converting factor to character [links]...")
   links <- links %>% mutate_if(is.factor, as.character)
-  # print(links)
 
   print("create_graph()")
   p <- create_graph()
@@ -112,46 +112,49 @@ create_process_graph <- function(nodes, links, node_label_col = NULL, edge_label
       ndf_mapping = event_name)
 
   print("add_*_attr()")
-  weights <- links$count
   p <- p %>% 
+    # graph [ layout = "dot" ]
     add_global_graph_attrs(attr_type = "graph", attr = "layout", value = "dot") %>%
+    # node [...]
     add_global_graph_attrs(attr_type = "node", attr = "fixedsize", value = "false") %>%
     add_global_graph_attrs(attr_type = "node", attr = "shape", value = "box") %>%
-    add_global_graph_attrs(attr_type = "node", attr = "style", value = "filled") %>%
-    # add_global_graph_attrs(attr_type = "node", attr = "color", value = "#b2aea3") %>%
-    # add_global_graph_attrs(attr_type = "node", attr = "fillcolor", value = "#edeceb") %>%
-    # set_node_attrs(node_attr = shape, value = "box") %>%
-    # set_node_attrs(node_attr = style, value = "filled") %>%
-    # set_node_attrs(node_attr = fontname, value = "Helvetica") %>%
-    # set_node_attrs(node_attr = fontsize, value = "10") %>%
-    # set_node_attrs(node_attr = fixedsize, value = "false") %>%
-    set_node_attrs(node_attr = color, value = "#b2aea3") %>%
-    set_node_attrs(node_attr = fillcolor, value = "#edeceb") %>%
-    set_node_attrs(node_attr = fontsize, value = "13")
-
-# if (!is.null(target_nodes)) {
-#   nodes$index <- rownames(nodes)
-#   target_ids <- nodes[nodes$event_name %in% target_nodes, "index"]
-#   p <- p %>%
-#     set_node_attrs(node_attr = color, value = "#b21d00", nodes = target_ids) %>%
-#     set_node_attrs(node_attr = fillcolor, value = "#edd9d5", nodes = target_ids) %>%
-#     set_node_attrs(node_attr = fontsize, value = "15", nodes = target_ids)
-# }
-
-  # color="#b2aea3" fillcolor="#edeceb"
-  # N23 -> N49 [label=" 0.38s" weight=21 penwidth=2 color="#b24200" tooltip="net.(*conn).Write /usr/local/go/src/net/net.go ... internal/poll.(*FD).Write /usr/local/go/src/internal/poll/fd_unix.go (0.38s)" labeltooltip="net.(*conn).Write /usr/local/go/src/net/net.go ... internal/poll.(*FD).Write /usr/local/go/src/internal/poll/fd_unix.go (0.38s)" style="dotted"]
+    add_global_graph_attrs(attr_type = "node", attr = "style", value = "filled,rounded") %>%
+    add_global_graph_attrs(attr_type = "node", attr = "gradientangle", value = "90") %>%
+    # edge [...]
+    ## grey900(#212121)
+    add_global_graph_attrs(attr_type = "edge", attr = "color", value = "#21212180") %>%
+    ## grey900(#212121)
+    add_global_graph_attrs(attr_type = "edge", attr = "fontcolor", value = "#212121") %>%
+    # node attributes
+    ## grey900(#212121)
+    set_node_attrs(node_attr = fontcolor, values = "#212121") %>%
+    ## lightBlue900(#01579B)
+    set_node_attrs(node_attr = color, values = "#01579B") %>%
+    ## lightBlue100(#B3E5FC) => lightBlue50(#E1F5FE)
+    set_node_attrs(node_attr = fillcolor, values = "#B3E5FC:#E1F5FE") %>%
+    set_node_attrs(node_attr = fontsize, values = "15") %>%
+    set_node_attrs(node_attr = label, values = nodes$event_name) %>%
+    set_node_attrs(node_attr = tooltip, values = nodes$label)
+    
+  # Set target node special style
+  target_ids <- nodes[nodes$is_target, "index"]
   p <- p %>%
-    set_edge_attrs(edge_attr = color, values = "#b29d81") %>%
-    # set_edge_attrs(edge_attr = weight, values = weights * 10, from = links$source_name, to = links$target_name) %>%
-    set_edge_attrs(edge_attr = penwidth, values = log2(weights), from = links$source_name, to = links$target_name) %>%
-    set_edge_attrs(edge_attr = label, values = weights, from = links$source_name, to = links$target_name) %>%
-    set_edge_attrs(edge_attr = tooltip, values = weights, from = links$source_name, to = links$target_name) %>%
-    set_edge_attrs(edge_attr = labeltooltip, values = weights, from = links$source_name, to = links$target_name)
+    ## deepOrange900(#BF360C)
+    set_node_attrs(node_attr = color, value = "#BF360C", nodes = target_ids) %>%
+    ## deepOrange100(#FFCCBC):deepOrange50(#FBE9E7)
+    set_node_attrs(node_attr = fillcolor, value = "#FFCCBC:#FBE9E7", nodes = target_ids) %>%
+    set_node_attrs(node_attr = fontsize, value = "17", nodes = target_ids)
+
+  weights <- links$count
+  p <- p %>%
+    # Edge attributes
+    set_edge_attrs(edge_attr = penwidth, values = log10(weights) + 1) %>%
+    set_edge_attrs(edge_attr = label, values = weights) %>%
+    set_edge_attrs(edge_attr = tooltip, values = weights) %>%
+    set_edge_attrs(edge_attr = labeltooltip, values = weights)
 
   print("render_graph()")
-  # gp <- p %>% render_graph(layout = "tree")
-  # gp <- p %>% render_graph(output = "visNetwork")
-  gp <- p %>% render_graph(output = "graph")
+  p <- p %>% render_graph(output = "graph")
 
-  return(gp)
+  return(p)
 }

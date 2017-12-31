@@ -5,7 +5,7 @@ source("event_log_generator.R")
 print("generate_datasets()")
 data <- generate_datasets(
   customer_size = 10000,
-  campaign_size = 20,
+  campaign_size = 10,
   sales_size = 3
 )
 print(str(data))
@@ -13,8 +13,8 @@ print(str(data))
 print("generate_event_logs()")
 event_logs <- generate_event_logs(
   data = data,
-  number_of_campaigns = 30,
-  number_of_sales = 500
+  number_of_campaigns = 12,
+  number_of_sales = 5000
 )
 print(str(event_logs))
 

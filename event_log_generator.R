@@ -19,16 +19,17 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
   campaigns <- data.table(
     campaign_id = 1:length(campaign_names),
     campaign_name = campaign_names,
+    is_target = F,
     stringsAsFactors = F
   )
   # print(campaigns)
-
 
   # sales group
   sales_names <- paste0("Sales_", LETTERS[1:sales_size])
   sales <- data.table(
     sales_id = 10000 + 1:length(sales_names),
     sales_name = sales_names,
+    is_target = T,
     stringsAsFactors = F
   )
   # print(sales)
