@@ -18,14 +18,12 @@ event_logs <- generate_event_logs(
 )
 print(str(event_logs))
 
-# event_logs <- event_logs %>% arrange(customer_id, timestamp)
-# print(event_logs)
-
-print("generate_graph_data()")
-graph_data <- generate_graph_data(event_logs)
-print(str(graph_data))
+print("generate_links()")
+links <- generate_links(event_logs)
+print(str(links))
 
 print("create_process_graph()")
-p <- create_process_graph(graph_data$nodes, graph_data$links)
+p <- create_process_graph(data$events, links)
 
-print(p)
+print("render_graph()")
+print(render_graph(p))
