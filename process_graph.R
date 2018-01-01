@@ -3,29 +3,45 @@ library(data.table)
 # install.packages("DiagrammeR")
 library(DiagrammeR)
 
-generate_graph_data <- function(event_logs, is_target = "is_target", timestamp = "timestamp", customer_id = "customer_id", event_id = "event_id", event_name = "event_name") {
-
+# event_logs <- (
+#   timestamp,
+#   customer_id,
+#   event_name,
+#   is_target
+# )
+# nodes <- (
+#   event_name,
+#   is_target,
+#   ...
+# )
+generate_graph_data <- function(event_logs, nodes = NULL) {
+  # sort by customer_id and timestamp
   event_logs <- data.table(event_logs) %>% arrange(customer_id, timestamp)
 
   graph_data <- list(
-    nodes = event_logs %>%
-      select(event_id, event_name, is_target) %>%
-      distinct() %>%
-      mutate(event_name = as.character(event_name)) %>%
-      arrange(event_id),
+    nodes = data.table(),
     links = data.table()
   )
 
-  links = list()
+  # Generates nodes if it's not given
+  if (any(is.null(nodes))) {
+    graph_data$nodes <- event_logs %>%
+      select(event_name, is_target) %>%
+      distinct() %>%
+      mutate(event_name = as.character(event_name)) %>%
+      arrange(event_name)
+  }
+
+
+  links <- list()
   sales_links <- list()
   previous <- NA
 
+  # Use `apply()` instead of `for-loop` can speed up to 10x
   apply(event_logs, 1, function(current) {
-    # Add event to nodes list if it's not exist
-
     if (!any(is.na(previous))) {
       # pre-process
-      if (current[[customer_id]] != previous[[customer_id]]) {
+      if (current["customer_id"] != previous["customer_id"]) {
         # it's a new customer, so set it to 'previous' and continue to the next record
         previous <<- current
         # clear sales_links
@@ -34,19 +50,17 @@ generate_graph_data <- function(event_logs, is_target = "is_target", timestamp =
       }
 
       event_row <- list(
-        source_id = previous[[event_id]],
-        source_name = previous[[event_name]],
-        target_id = current[[event_id]],
-        target_name = current[[event_name]],
-        customer_id = current[[customer_id]],
-        duration = as.integer(current[[timestamp]]) - as.integer(previous[[timestamp]])
+        from = previous["event_name"],
+        to = current["event_name"],
+        customer_id = current["customer_id"],
+        duration = as.integer(current["timestamp"]) - as.integer(previous["timestamp"])
       )
       sales_links[[length(sales_links)+1]] <<- event_row
       # sales_links <- rbind(sales_links, event_row)
     }
 
     # post-process
-    if (current[[is_target]] != FALSE) {
+    if (current["is_target"] != FALSE) {
       # put sales_links to final links set
       links <<- c(links, sales_links)
       # target events should not be the starting point
@@ -60,11 +74,11 @@ generate_graph_data <- function(event_logs, is_target = "is_target", timestamp =
 
 
   graph_data$links <- rbindlist(links) %>% 
-    group_by(source_id, source_name, target_id, target_name) %>%
+    group_by(from, to) %>%
     summarize(count = n(), mean_duration = mean(duration)) %>%
     ungroup() %>%
     mutate_if(is.factor, as.character) %>%
-    arrange(source_id, target_id)
+    arrange(from, to)
 
   return(graph_data)
 }
@@ -107,8 +121,8 @@ create_process_graph <- function(nodes, links, node_label_col = NULL, edge_label
   print("add_edges_from_table()")
   p <- p %>% add_edges_from_table(
       table = links,
-      from_col = source_name,
-      to_col = target_name,
+      from_col = from,
+      to_col = to,
       ndf_mapping = event_name)
 
   print("add_*_attr()")
