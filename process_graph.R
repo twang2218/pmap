@@ -3,8 +3,13 @@ library(data.table)
 # install.packages("DiagrammeR")
 library(DiagrammeR)
 
-# Generate nodes from event logs
-generate_nodes <- function(event_logs) {
+# Produce nodes from event logs
+# nodes <- (
+#   event_name,
+#   is_target,
+#   ...
+# )
+get_nodes_from_event_logs <- function(event_logs) {
   nodes <- event_logs %>%
       select(event_name, is_target) %>%
       distinct() %>%
@@ -19,18 +24,13 @@ generate_nodes <- function(event_logs) {
 #   event_name,
 #   is_target
 # )
-# nodes <- (
-#   event_name,
-#   is_target,
-#   ...
-# )
-# Generate links from event logs
-generate_links <- function(event_logs) {
+# Produce edges from event logs
+get_edges_from_event_logs <- function(event_logs) {
   # sort by customer_id and timestamp
   event_logs <- data.table(event_logs) %>% arrange(customer_id, timestamp)
 
-  links <- list()
-  temp_links <- list()
+  edges <- list()
+  temp_edges <- list()
   previous <- NA
 
   # `apply()` is about up to 10x faster than `for-loop`
@@ -40,42 +40,43 @@ generate_links <- function(event_logs) {
       if (current["customer_id"] != previous["customer_id"]) {
         # it's a new customer, so set it to 'previous' and continue to the next record
         previous <<- current
-        # clear temp_links
-        temp_links <<- list()
+        # clear temp_edges
+        temp_edges <<- list()
         return
       }
 
-      event_row <- list(
+      edge <- list(
         from = previous["event_name"],
         to = current["event_name"],
         customer_id = current["customer_id"],
         duration = as.integer(current["timestamp"]) - as.integer(previous["timestamp"])
       )
-      temp_links[[length(temp_links) + 1]] <<- event_row
+      temp_edges[[length(temp_edges) + 1]] <<- edge
     }
 
     # post-process
     if (current["is_target"] != FALSE) {
-      # put temp_links to final links set
-      links <<- c(links, temp_links)
+      # put temp_edges to final edges set
+      edges <<- c(edges, temp_edges)
       # target events should not be the starting point
       previous <<- NA
-      # clear temp_links
-      temp_links <<- list()
+      # clear temp_edges
+      temp_edges <<- list()
     } else {
       previous <<- current
     }
   })
 
 
-  links <- rbindlist(links) %>% 
+  edges <- rbindlist(edges) %>% 
     group_by(from, to) %>%
-    summarize(count = n(), mean_duration = mean(duration)) %>%
+    # Add attributes: `value` => count, `mean_duration` => difference between 2 events.
+    summarize(value = n(), mean_duration = mean(duration)) %>%
     ungroup() %>%
     mutate_if(is.factor, as.character) %>%
     arrange(from, to)
 
-  return(links)
+  return(edges)
 }
 
 # Convert each to to key-value pairs which separated by '\n'
@@ -95,8 +96,8 @@ get_tooltip <- function(df) {
 }
 
 # nodes (name, is_target)
-# links (from, to, value)
-create_process_graph <- function(nodes, links, node_label_col = NULL, edge_label_col = NULL) {
+# edges (from, to, value)
+create_event_graph <- function(nodes, edges, node_label_col = NULL, edge_label_col = NULL) {
   # print("Converting factor to character [nodes]...")
   nodes <- nodes %>%
     mutate_if(is.factor, as.character) %>%
@@ -106,13 +107,13 @@ create_process_graph <- function(nodes, links, node_label_col = NULL, edge_label
     )
   print(str(nodes))
 
-  # print("Converting factor to character [links]...")
-  links <- links %>%
+  # print("Converting factor to character [edges]...")
+  edges <- edges %>%
     mutate_if(is.factor, as.character) %>%
     mutate(
-      tooltips = get_tooltip(links)
+      tooltips = get_tooltip(edges)
     )
-  print(str(links))
+  print(str(edges))
   # print("create_graph()")
   p <- create_graph()
 
@@ -125,7 +126,7 @@ create_process_graph <- function(nodes, links, node_label_col = NULL, edge_label
 
   # print("add_edges_from_table()")
   p <- p %>% add_edges_from_table(
-      table = links,
+      table = edges,
       from_col = from,
       to_col = to,
       ndf_mapping = name)
@@ -165,14 +166,13 @@ create_process_graph <- function(nodes, links, node_label_col = NULL, edge_label
     set_node_attrs(node_attr = fillcolor, value = "#FFCCBC:#FBE9E7", nodes = target_ids) %>%
     set_node_attrs(node_attr = fontsize, value = "17", nodes = target_ids)
 
-  weights <- links$count
   # print("Setting edges attributes...")
   p <- p %>%
     # Edge attributes
-    set_edge_attrs(edge_attr = penwidth, values = log10(weights) + 1) %>%
-    set_edge_attrs(edge_attr = label, values = weights) %>%
-    set_edge_attrs(edge_attr = tooltip, values = links$tooltips) %>%
-    set_edge_attrs(edge_attr = labeltooltip, values = links$tooltips)
+    set_edge_attrs(edge_attr = penwidth, values = log10(edges$value) + 1) %>%
+    set_edge_attrs(edge_attr = label, values = edges$value) %>%
+    set_edge_attrs(edge_attr = tooltip, values = edges$tooltips) %>%
+    set_edge_attrs(edge_attr = labeltooltip, values = edges$tooltips)
 
   # remove node without edges
   p <- p %>% select_nodes_by_degree("deg == 0") %>% delete_nodes_ws()

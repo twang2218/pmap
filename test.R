@@ -18,12 +18,12 @@ event_logs <- generate_event_logs(
 )
 print(str(event_logs))
 
-print("generate_links()")
-links <- generate_links(event_logs)
-print(str(links))
+print("get_edges_from_event_logs()")
+edges <- get_edges_from_event_logs(event_logs)
+print(str(edges))
 
 print("create_process_graph()")
-p <- create_process_graph(data$events, links)
+p <- create_event_graph(data$events, edges)
 
 print("render_graph()")
 print(render_graph(p))
