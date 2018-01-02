@@ -4,28 +4,34 @@ library(data.table)
 library(DiagrammeR)
 
 # Produce nodes from event logs
-# nodes <- (
-#   name,
-#   is_target,
-#   ...
-# )
+#
+# `event_logs` should be a `data.frame` or `data.table`, which contains, at least, following columns:
+#
+#  * `event_name`: event name. (`character`)
+#  * `is_target`: whether it's the final stage. (`logical`)
+#
+# `get_nodes_from_event_logs()` will generate the node list from the given `event_logs` for the graph purpose.
+# However, it is very basic, so, in most cases, you might want to provide your own node list to the
+# `create_event_graph()` function.
 get_nodes_from_event_logs <- function(event_logs) {
   nodes <- event_logs %>%
       select(event_name, is_target) %>%
       distinct() %>%
       rename(name = event_name) %>%
-      mutate(name = as.character(name)) %>%
+      mutate(name = as.character(name), percentage = 0.5) %>%
       arrange(name)
   return(nodes)
 }
 
-# event_logs <- (
-#   timestamp,
-#   customer_id,
-#   event_name,
-#   is_target
-# )
 # Produce edges from event logs
+#
+# `event_logs` should be a `data.frame` or `data.table`, which contains, at least, following columns:
+#
+#  * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
+#  * `customer_id`: cutomer identifier. (`character`)
+#  * `event_name`: event name. (`character`)
+#  * `is_target`: whether it's the final stage. (`logical`)
+#
 get_edges_from_event_logs <- function(event_logs) {
   # sort by customer_id and timestamp
   event_logs <- data.table(event_logs) %>% arrange(customer_id, timestamp)
@@ -99,9 +105,18 @@ get_tooltip <- function(df) {
   )
 }
 
-# nodes (name, is_target)
-# edges (from, to, value)
-create_event_graph <- function(nodes, edges, node_label_col = NULL, edge_label_col = NULL) {
+# Create the event graph by given nodes and edges.
+#
+# `nodes`: Event list, which should be a `data.frame` containing following columns:
+#   * `name`: Nodes name, will be used as label. (`character`)
+#   * `is_target`: Whether it's final stage. (`logical`)
+#   * `percentage`: The percentage of customer affected by the given event. (`numeric`)
+#
+# `edges`: Event transform list, which should be a `data.frame` containing following columns:
+#   * `from`: the begining event of the edge. (`character`)
+#   * `to`: the ending event of the edge (`character`)
+#   * `value`: How many of customer affected by the given event. (`numeric`)
+create_event_graph <- function(nodes, edges) {
   # print("Converting factor to character [nodes]...")
   nodes <- nodes %>%
     mutate_if(is.factor, as.character) %>%
@@ -109,7 +124,7 @@ create_event_graph <- function(nodes, edges, node_label_col = NULL, edge_label_c
       index = 1:nrow(nodes),
       tooltip = get_tooltip(nodes)
     )
-  print(str(nodes))
+  # print(str(nodes))
 
   # print("Converting factor to character [edges]...")
   edges <- edges %>%
@@ -117,7 +132,7 @@ create_event_graph <- function(nodes, edges, node_label_col = NULL, edge_label_c
     mutate(
       tooltips = get_tooltip(edges)
     )
-  print(str(edges))
+  # print(str(edges))
   # print("create_graph()")
   p <- create_graph()
 
