@@ -135,7 +135,7 @@ create_event_graph <- function(nodes, edges, node_label_col = NULL, edge_label_c
       to_col = to,
       ndf_mapping = name)
 
-  # print("add_*_attr()")
+  # print("add_global_graph_attrs()")
   p <- p %>% 
     # graph [ layout = "dot" ]
     add_global_graph_attrs(attr_type = "graph", attr = "layout", value = "dot") %>%
@@ -148,7 +148,10 @@ create_event_graph <- function(nodes, edges, node_label_col = NULL, edge_label_c
     ## grey900(#212121)
     add_global_graph_attrs(attr_type = "edge", attr = "color", value = "#21212180") %>%
     ## grey900(#212121)
-    add_global_graph_attrs(attr_type = "edge", attr = "fontcolor", value = "#212121") %>%
+    add_global_graph_attrs(attr_type = "edge", attr = "fontcolor", value = "#212121")
+
+  # print("set_node_attrs()")
+  p <- p %>%
     # node attributes
     ## grey900(#212121)
     set_node_attrs(node_attr = fontcolor, values = "#212121") %>%
@@ -156,21 +159,20 @@ create_event_graph <- function(nodes, edges, node_label_col = NULL, edge_label_c
     set_node_attrs(node_attr = color, values = "#01579B") %>%
     ## lightBlue100(#B3E5FC) => lightBlue50(#E1F5FE)
     set_node_attrs(node_attr = fillcolor, values = "#B3E5FC:#E1F5FE") %>%
-    set_node_attrs(node_attr = fontsize, values = "15") %>%
+    set_node_attrs(node_attr = fontsize, values = (nodes$percentage * 15 + 5)) %>%
     set_node_attrs(node_attr = label, values = nodes$name) %>%
     set_node_attrs(node_attr = tooltip, values = nodes$tooltip)
     
-  # Set target node special style
-  # print("Set target node special style...")
+  # print("set_edge_attrs() for target nodes")
   target_ids <- nodes[nodes$is_target, "index"]
   p <- p %>%
     ## deepOrange900(#BF360C)
-    set_node_attrs(node_attr = color, value = "#BF360C", nodes = target_ids) %>%
+    set_node_attrs(node_attr = color, values = "#BF360C", nodes = target_ids) %>%
     ## deepOrange100(#FFCCBC):deepOrange50(#FBE9E7)
-    set_node_attrs(node_attr = fillcolor, value = "#FFCCBC:#FBE9E7", nodes = target_ids) %>%
-    set_node_attrs(node_attr = fontsize, value = "17", nodes = target_ids)
+    set_node_attrs(node_attr = fillcolor, values = "#FFCCBC:#FBE9E7", nodes = target_ids) %>%
+    set_node_attrs(node_attr = fontsize, values = (nodes$percentage * 10 + 15), nodes = target_ids)
 
-  # print("Setting edges attributes...")
+  # print("set_edge_attrs()")
   p <- p %>%
     # Edge attributes
     set_edge_attrs(edge_attr = penwidth, values = log10(edges$value) + 1) %>%
@@ -179,12 +181,10 @@ create_event_graph <- function(nodes, edges, node_label_col = NULL, edge_label_c
     set_edge_attrs(edge_attr = labeltooltip, values = edges$tooltips)
 
   # remove node without edges
-  # zero_degree_nodes <- length(p %>% select_nodes_by_degree("deg == 0") %>% get_selection())
-  # print("zero_degree_nodes:")
-  # print(zero_degree_nodes)
-  # if (!is.na(zero_degree_nodes) && length(zero_degree_nodes) > 0) {
-  #   p <- p %>% select_nodes_by_degree("deg == 0") %>% delete_nodes_ws()
-  # }
+  zero_degree_nodes <- p %>% select_nodes_by_degree("deg == 0") %>% get_selection()
+  if (!is.na(zero_degree_nodes) && length(zero_degree_nodes) > 0) {
+    p <- p %>% select_nodes_by_degree("deg == 0") %>% delete_nodes_ws()
+  }
 
   return(p)
 }
