@@ -5,7 +5,7 @@ library(DiagrammeR)
 
 # Produce nodes from event logs
 # nodes <- (
-#   event_name,
+#   name,
 #   is_target,
 #   ...
 # )
@@ -13,8 +13,9 @@ get_nodes_from_event_logs <- function(event_logs) {
   nodes <- event_logs %>%
       select(event_name, is_target) %>%
       distinct() %>%
-      mutate(event_name = as.character(event_name)) %>%
-      arrange(event_name)
+      rename(name = event_name) %>%
+      mutate(name = as.character(name)) %>%
+      arrange(name)
   return(nodes)
 }
 
@@ -48,8 +49,8 @@ get_edges_from_event_logs <- function(event_logs) {
       edge <- list(
         from = previous["event_name"],
         to = current["event_name"],
-        customer_id = current["customer_id"],
-        duration = as.integer(current["timestamp"]) - as.integer(previous["timestamp"])
+        customer_id = current["customer_id"]#,
+        # duration = current["timestamp"] - previous["timestamp"]
       )
       temp_edges[[length(temp_edges) + 1]] <<- edge
     }
@@ -57,7 +58,11 @@ get_edges_from_event_logs <- function(event_logs) {
     # post-process
     if (current["is_target"] != FALSE) {
       # put temp_edges to final edges set
-      edges <<- c(edges, temp_edges)
+      if (length(temp_edges) > 0) {
+        for (i in 1:length(temp_edges)) {
+          edges[[length(edges) + 1]] <<- temp_edges[[i]]
+        }
+      }
       # target events should not be the starting point
       previous <<- NA
       # clear temp_edges
@@ -67,11 +72,10 @@ get_edges_from_event_logs <- function(event_logs) {
     }
   })
 
-
   edges <- rbindlist(edges) %>% 
     group_by(from, to) %>%
-    # Add attributes: `value` => count, `mean_duration` => difference between 2 events.
-    summarize(value = n(), mean_duration = mean(duration)) %>%
+    # Add attributes: `value` => count
+    summarize(value = n()) %>%
     ungroup() %>%
     mutate_if(is.factor, as.character) %>%
     arrange(from, to)
@@ -175,7 +179,12 @@ create_event_graph <- function(nodes, edges, node_label_col = NULL, edge_label_c
     set_edge_attrs(edge_attr = labeltooltip, values = edges$tooltips)
 
   # remove node without edges
-  p <- p %>% select_nodes_by_degree("deg == 0") %>% delete_nodes_ws()
+  # zero_degree_nodes <- length(p %>% select_nodes_by_degree("deg == 0") %>% get_selection())
+  # print("zero_degree_nodes:")
+  # print(zero_degree_nodes)
+  # if (!is.na(zero_degree_nodes) && length(zero_degree_nodes) > 0) {
+  #   p <- p %>% select_nodes_by_degree("deg == 0") %>% delete_nodes_ws()
+  # }
 
   return(p)
 }

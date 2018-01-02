@@ -2,6 +2,20 @@ library(dplyr)
 
 set.seed(101)
 
+# Generate Random Time
+generate_random_datetimes <- function(size, from = "2017-09-01", to = "2017-10-01") {
+  return(
+    as.POSIXct(
+      round(runif(
+        size,
+        min = as.numeric(as.POSIXct(from)),
+        max = as.numeric(as.POSIXct(to))
+      )),
+      origin = "1970-01-01"
+    )
+  )
+}
+
 # Generate Datasets
 generate_datasets <- function(customer_size, campaign_size, sales_size) {
   ### Groups
@@ -16,6 +30,8 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
   campaigns <- data.table(
     name = paste0("Campaign_", 1:campaign_size),
     type = "campaign",
+    timestamp = generate_random_datetimes(campaign_size, "2017-09-01", "2017-10-01"),
+    percentage = runif(campaign_size, min = 0.3, max = 1),
     is_target = F,
     stringsAsFactors = F
   )
@@ -25,6 +41,8 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
   sales <- data.table(
     name = paste0("Sale_", 1:sales_size),
     type = "sale",
+    timestamp = generate_random_datetimes(sales_size, "2017-09-10", "2017-10-01"),
+    percentage = runif(sales_size, min = 0.1, max = 0.7),
     is_target = T,
     stringsAsFactors = F
   )
@@ -39,42 +57,27 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
 }
 
 # Simulate sending campaign
-send_campaign <- function(customers, campaigns) {
-  # send a campaign
-  ## select a campaign
-  campaign <- sample_n(campaigns, 1)
-
-  ## select customer target group
-  percentage_of_customers <- runif(1, min=0.3, max=1)
-  customer_target_group <- sample_frac(customers, percentage_of_customers)
-
-  timestamp <- round(runif(1, min = 100, max=10000))
+send_campaign <- function(customers, campaign) {
   event_logs_for_the_campaign <- data.table(
-    timestamp = timestamp,
-    customer_id = customer_target_group$id,
+    timestamp = campaign$timestamp,
+    customer_id = sample_frac(customers, campaign$percentage)$id,
     event_name = campaign$name,
     event_type = campaign$type,
     is_target = F,
     stringsAsFactors = F
   )
-  # print(str(event_logs_for_the_campaign))
+
   return(event_logs_for_the_campaign)
 }
 
 # Simulate sales
-generate_sales <- function(customers, sales, sales_size) {
-  # Generate random timestamps
-  timestamps <- round(runif(sales_size, min = 5000, max = 10000))
-  # Random pick customers
-  sold_customers <- sample_n(customers, sales_size)
-  # Random Pick sales
-  sold_sales <- sample_n(sales, sales_size, replace = TRUE)
-  
+generate_sales <- function(customers, sale) {
+  sold_customers <- sample_frac(customers, sale$percentage)
   event_logs_for_the_sale <- data.table(
-    timestamp = timestamps,
+    timestamp = generate_random_datetimes(nrow(sold_customers), sale$timestamp, "2017-10-01"),
     customer_id = sold_customers$id,
-    event_name = sold_sales$name,
-    event_type = sold_sales$type,
+    event_name = sale$name,
+    event_type = sale$type,
     is_target = T,
     stringsAsFactors = F
   )
@@ -90,16 +93,17 @@ generate_event_logs <- function(data, number_of_campaigns, number_of_sales) {
   event_logs <- list()
 
   # Send multiple campaigns
-  campaigns <- data$events[data$events$type == "campaign",]
-  for (i in 0:number_of_campaigns) {
+  campaigns <- data$events[data$events$type == "campaign", ]
+  for (i in 1:nrow(campaigns)) {
     # put everything into a list is more efficient than `rbind()`
-    event_logs[[length(event_logs) + 1]] <- send_campaign(data$customers, campaigns)
+    event_logs[[length(event_logs) + 1]] <- send_campaign(data$customers, campaigns[i, ])
   }
 
   # Generate multiple sales
   sales <- data$events[data$events$type == "sale",]
-
-  event_logs[[length(event_logs) + 1]] <- generate_sales(data$customers, sales, number_of_sales)
+  for (i in 1:nrow(sales)) {
+    event_logs[[length(event_logs) + 1]] <- generate_sales(data$customers, sales[i, ])
+  }
 
   # merge all event_logs
   event_logs <- rbindlist(event_logs) %>% arrange(timestamp)
