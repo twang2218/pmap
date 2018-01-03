@@ -10,12 +10,13 @@ get_nodes_from_event_logs(event_logs)
 \item{event_logs}{Event logs}
 }
 \description{
-`event_logs` should be a `data.frame` or `data.table`, which contains, at least, following columns:
+\code{event_logs} should be a \code{data.frame} or \code{data.table}, which contains, at least, following columns:
+\itemize{
+\item \code{event_name}: event name. (\code{character})
+\item \code{is_target}: whether it's the final stage. (\code{logical})
+}
 
- * `event_name`: event name. (`character`)
- * `is_target`: whether it's the final stage. (`logical`)
-
-`get_nodes_from_event_logs()` will generate the node list from the given `event_logs` for the graph purpose.
+\code{get_nodes_from_event_logs()} will generate the node list from the given \code{event_logs} for the graph purpose.
 However, it is very basic, so, in most cases, you might want to provide your own node list to the
-`create_event_graph()` function.
+\code{create_event_graph()} function.
 }

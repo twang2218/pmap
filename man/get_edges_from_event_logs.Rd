@@ -10,10 +10,11 @@ get_edges_from_event_logs(event_logs)
 \item{event_logs}{Event logs}
 }
 \description{
-`event_logs` should be a `data.frame` or `data.table`, which contains, at least, following columns:
-
- * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
- * `customer_id`: cutomer identifier. (`character`)
- * `event_name`: event name. (`character`)
- * `is_target`: whether it's the final stage. (`logical`)
+\code{event_logs} should be a \code{data.frame} or \code{data.table}, which contains, at least, following columns:
+\itemize{
+\item \code{timestamp}: timestamp column which indicates when event happened. (\code{POSIXct})
+\item \code{customer_id}: cutomer identifier. (\code{character})
+\item \code{event_name}: event name. (\code{character})
+\item \code{is_target}: whether it's the final stage. (\code{logical})
+}
 }

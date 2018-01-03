@@ -7,13 +7,17 @@
 create_event_graph(nodes, edges)
 }
 \arguments{
-\item{nodes}{Event list, which should be a `data.frame` containing following columns:
-* `name`: Nodes name, will be used as label. (`character`)
-* `is_target`: Whether it's final stage. (`logical`)
-* `percentage`: The percentage of customer affected by the given event. (`numeric`)}
+\item{nodes}{Event list, which should be a \code{data.frame} containing following columns:
+\itemize{
+\item \code{name}: Nodes name, will be used as label. (\code{character})
+\item \code{is_target}: Whether it's final stage. (\code{logical})
+\item \code{percentage}: The percentage of customer affected by the given event. (\code{numeric})
+}}
 
-\item{edges}{Event transform list, which should be a `data.frame` containing following columns:
-* `from`: the begining event of the edge. (`character`)
-* `to`: the ending event of the edge (`character`)
-* `value`: How many of customer affected by the given event. (`numeric`)}
+\item{edges}{Event transform list, which should be a \code{data.frame} containing following columns:
+\itemize{
+\item \code{from}: the begining event of the edge. (\code{character})
+\item \code{to}: the ending event of the edge (\code{character})
+\item \code{value}: How many of customer affected by the given event. (\code{numeric})
+}}
 }
