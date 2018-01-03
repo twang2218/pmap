@@ -2,7 +2,7 @@
 % Please edit documentation in R/process_graph.R
 \name{get_tooltip}
 \alias{get_tooltip}
-\title{Convert each to to key-value pairs which separated by "\n"}
+\title{Convert each to to key-value pairs which separated by \code{\n}}
 \usage{
 get_tooltip(df)
 }

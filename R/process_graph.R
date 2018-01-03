@@ -90,7 +90,7 @@ get_edges_from_event_logs <- function(event_logs) {
   return(edges)
 }
 
-#' @title Convert each to to key-value pairs which separated by "\n"
+#' @title Convert each to to key-value pairs which separated by `\n`
 get_tooltip <- function(df) {
   apply(
     sapply(
