@@ -2,6 +2,8 @@ library(pmv)
 
 context("General Test")
 
+source("event_log_generator.R")
+
 test_that("Create a full graph", {
   # print("generate_datasets()")
 
