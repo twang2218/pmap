@@ -1,5 +1,5 @@
 Package: pmv
-Title: Process Model Visualizer in R
+Title: Process Map Visualizer in R
 Version: 0.0.1.9000
 Authors@R: person("Tao", "Wang", email = "twang2218@gmail.com", role = c("aut", "cre"))
 Description: Provides tools for generate process map from event Logs.
