@@ -48,3 +48,22 @@ test_that("get_attrs_desc() should handle 'matrix'", {
   expect_equal(get_attrs_desc(matrix), "")
 })
 
+test_that("get_attrs_desc() should handle inherit type", {
+  expect_equal(
+    get_attrs_desc(
+      data.table(
+        id = c(1, 2, 3, 4),
+        name = c("Jane", "John", "Eric", "Selena"),
+        is_manager = c(F, F, F, T)
+      )
+    ),
+    c(
+      "id: 1\nname: Jane\nis_manager: FALSE",
+      "id: 2\nname: John\nis_manager: FALSE",
+      "id: 3\nname: Eric\nis_manager: FALSE",
+      "id: 4\nname: Selena\nis_manager: TRUE"
+    )
+  )
+
+  expect_equal(get_attrs_desc(data.table()), "")
+})

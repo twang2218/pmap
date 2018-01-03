@@ -90,22 +90,6 @@ get_edges_from_event_logs <- function(event_logs) {
   return(edges)
 }
 
-#' @title Convert each to to key-value pairs which separated by `\n`
-get_tooltip <- function(df) {
-  apply(
-    sapply(
-      colnames(df),
-      function(colname) {
-        paste0(colname, ": ", df[[colname]])
-      }
-    ),
-    1,
-    function(row) {
-      paste(row, collapse = "\n")
-    }
-  )
-}
-
 #' @title Create the event graph by given nodes and edges.
 #' @param nodes Event list, which should be a `data.frame` containing following columns:
 #'   * `name`: Nodes name, will be used as label. (`character`)
@@ -123,7 +107,7 @@ create_event_graph <- function(nodes, edges) {
     mutate_if(is.factor, as.character) %>%
     mutate(
       index = 1:nrow(nodes),
-      tooltip = get_tooltip(nodes)
+      tooltip = get_attrs_desc(nodes)
     )
   # print(str(nodes))
 
@@ -131,7 +115,7 @@ create_event_graph <- function(nodes, edges) {
   edges <- edges %>%
     mutate_if(is.factor, as.character) %>%
     mutate(
-      tooltips = get_tooltip(edges)
+      tooltips = get_attrs_desc(edges)
     )
   # print(str(edges))
   # print("create_graph()")

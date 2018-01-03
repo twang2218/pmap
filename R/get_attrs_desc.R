@@ -2,6 +2,22 @@
 #' @title Get an attribute key-pair string from an object
 #' @param object Given object, can be `list`, `matrix`, or `data.frame`
 #' @description Get an attribute list string from an object
+#' Example
+#'
+#' ```R
+#' > df
+#'   id   name is_manager
+#' 1  1   Jane      FALSE
+#' 2  2   John      FALSE
+#' 3  3   Eric      FALSE
+#' 4  4 Selena       TRUE
+#' > get_attrs_desc(df)
+#' [1] "id: 1\nname: Jane\nis_manager: FALSE"
+#' [2] "id: 2\nname: John\nis_manager: FALSE"
+#' [3] "id: 3\nname: Eric\nis_manager: FALSE"
+#' [4] "id: 4\nname: Selena\nis_manager: TRUE"
+#' ```
+#'
 #' @usage get_attrs_desc(object)
 #' @export
 get_attrs_desc <- function(object) {
@@ -11,7 +27,7 @@ get_attrs_desc <- function(object) {
   #   `names()` can only support `list` and `data.frame`;
   #   and `colnames()` cannot support `list`.
   attrs.name <- NULL
-  if (cls == "list") {
+  if (inherits(object, "list")) {
     attrs.name <- names(object)
   } else {
     attrs.name <- colnames(object)
@@ -24,7 +40,7 @@ get_attrs_desc <- function(object) {
   # Get attributes key-pair
   #   `matrix` do not support `object[[name]]`, so it has to be treated specially.
   attrs <- NULL
-  if (cls == "matrix") {
+  if (inherits(object, "matrix")) {
     attrs <- sapply(
       attrs.name,
       function(name) {
@@ -43,7 +59,7 @@ get_attrs_desc <- function(object) {
   # Combine attributes key-pairs to a single string contains the list
   #   `paste()` is only works for columns oriented direction, so `apply()`
   #   is used for `matrix` and `data.frame`
-  if (cls == "list") {
+  if (inherits(object, "list")) {
     paste(attrs, collapse = "\n")
   } else {
     apply(attrs, 1, paste, collapse = "\n")

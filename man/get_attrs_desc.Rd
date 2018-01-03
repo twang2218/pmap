@@ -11,4 +11,16 @@ get_attrs_desc(object)
 }
 \description{
 Get an attribute list string from an object
+Example\preformatted{> df
+  id   name is_manager
+1  1   Jane      FALSE
+2  2   John      FALSE
+3  3   Eric      FALSE
+4  4 Selena       TRUE
+> get_attrs_desc(df)
+[1] "id: 1\nname: Jane\nis_manager: FALSE"
+[2] "id: 2\nname: John\nis_manager: FALSE"
+[3] "id: 3\nname: Eric\nis_manager: FALSE"
+[4] "id: 4\nname: Selena\nis_manager: TRUE"
+}
 }
