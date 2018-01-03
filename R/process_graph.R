@@ -1,18 +1,19 @@
 library(dplyr)
 library(data.table)
-# install.packages("DiagrammeR")
 library(DiagrammeR)
 
-# Produce nodes from event logs
-#
-# `event_logs` should be a `data.frame` or `data.table`, which contains, at least, following columns:
-#
-#  * `event_name`: event name. (`character`)
-#  * `is_target`: whether it's the final stage. (`logical`)
-#
-# `get_nodes_from_event_logs()` will generate the node list from the given `event_logs` for the graph purpose.
-# However, it is very basic, so, in most cases, you might want to provide your own node list to the
-# `create_event_graph()` function.
+#' @title Produce nodes from event logs
+#'
+#' @param event_logs Event logs
+#' @description `event_logs` should be a `data.frame` or `data.table`, which contains, at least, following columns:
+#'
+#'  * `event_name`: event name. (`character`)
+#'  * `is_target`: whether it's the final stage. (`logical`)
+#'
+#' `get_nodes_from_event_logs()` will generate the node list from the given `event_logs` for the graph purpose.
+#' However, it is very basic, so, in most cases, you might want to provide your own node list to the
+#' `create_event_graph()` function.
+#' @export
 get_nodes_from_event_logs <- function(event_logs) {
   nodes <- event_logs %>%
       select(event_name, is_target) %>%
@@ -23,15 +24,15 @@ get_nodes_from_event_logs <- function(event_logs) {
   return(nodes)
 }
 
-# Produce edges from event logs
-#
-# `event_logs` should be a `data.frame` or `data.table`, which contains, at least, following columns:
-#
-#  * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
-#  * `customer_id`: cutomer identifier. (`character`)
-#  * `event_name`: event name. (`character`)
-#  * `is_target`: whether it's the final stage. (`logical`)
-#
+#' @title Produce edges from event logs
+#' @param event_logs Event logs
+#' @description `event_logs` should be a `data.frame` or `data.table`, which contains, at least, following columns:
+#'
+#'  * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
+#'  * `customer_id`: cutomer identifier. (`character`)
+#'  * `event_name`: event name. (`character`)
+#'  * `is_target`: whether it's the final stage. (`logical`)
+#' @export
 get_edges_from_event_logs <- function(event_logs) {
   # sort by customer_id and timestamp
   event_logs <- data.table(event_logs) %>% arrange(customer_id, timestamp)
@@ -89,7 +90,7 @@ get_edges_from_event_logs <- function(event_logs) {
   return(edges)
 }
 
-# Convert each to to key-value pairs which separated by '\n'
+#' @title Convert each to to key-value pairs which separated by "\n"
 get_tooltip <- function(df) {
   apply(
     sapply(
@@ -105,17 +106,17 @@ get_tooltip <- function(df) {
   )
 }
 
-# Create the event graph by given nodes and edges.
+#' @title Create the event graph by given nodes and edges.
+#' @param nodes Event list, which should be a `data.frame` containing following columns:
+#'   * `name`: Nodes name, will be used as label. (`character`)
+#'   * `is_target`: Whether it's final stage. (`logical`)
+#'   * `percentage`: The percentage of customer affected by the given event. (`numeric`)
 #
-# `nodes`: Event list, which should be a `data.frame` containing following columns:
-#   * `name`: Nodes name, will be used as label. (`character`)
-#   * `is_target`: Whether it's final stage. (`logical`)
-#   * `percentage`: The percentage of customer affected by the given event. (`numeric`)
-#
-# `edges`: Event transform list, which should be a `data.frame` containing following columns:
-#   * `from`: the begining event of the edge. (`character`)
-#   * `to`: the ending event of the edge (`character`)
-#   * `value`: How many of customer affected by the given event. (`numeric`)
+#' @param edges Event transform list, which should be a `data.frame` containing following columns:
+#'   * `from`: the begining event of the edge. (`character`)
+#'   * `to`: the ending event of the edge (`character`)
+#'   * `value`: How many of customer affected by the given event. (`numeric`)
+#' @export
 create_event_graph <- function(nodes, edges) {
   # print("Converting factor to character [nodes]...")
   nodes <- nodes %>%

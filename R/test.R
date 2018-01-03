@@ -1,5 +1,5 @@
-source("process_graph.R")
-source("event_log_generator.R")
+# source("./process_graph.R")
+# source("./event_log_generator.R")
 
 
 print("generate_datasets()")
