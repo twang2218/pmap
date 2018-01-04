@@ -14,15 +14,7 @@ use_mit_license("Tao Wang <twang2218@gmail.com>")
 
 # use_roxygen_md()
 use_readme_md()
-
-document()
-```
-
-# Generate document
-
-```R
-library(devtools)
-library(roxygen2)
+use_coverage()
 
 document()
 ```

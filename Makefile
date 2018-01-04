@@ -11,3 +11,6 @@ check:
 
 build_win:
 	Rscript -e "devtools::build_win()"
+
+coverage:
+	Rscript -e "covr::codecov()"

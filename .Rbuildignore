@@ -4,3 +4,4 @@
 ^doc$
 ^Makefile$
 ^.travis.yml$
+^codecov\.yml$
