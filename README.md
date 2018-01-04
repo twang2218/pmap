@@ -24,7 +24,8 @@ This is a basic example which shows you how to solve a common problem:
 ## basic example code
 library(pmap)
 
-edges <- get_edges_from_event_logs(event_logs)
-p <- create_event_graph(events, edges)
-print(render_graph(p))
+nodes <- generate_nodes(eventlog)
+edges <- generate_edges(eventlog)
+p <- create_pmap(nodes, edges)
+print(p)
 ```

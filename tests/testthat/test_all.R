@@ -1,9 +1,11 @@
 library(pmap)
 library(DiagrammeR)
+source("helper.R")
 
-context("General Test")
+set.seed(101)
 
-source("event_log_generator.R")
+context("Test All")
+
 
 test_that("Create a full graph", {
   # print("generate_datasets()")
@@ -24,28 +26,28 @@ test_that("Create a full graph", {
 
   # print(str(data))
 
-  # print("generate_event_logs()")
-  event_logs <- generate_event_logs(
+  # print("generate_eventlog()")
+  eventlog <- generate_eventlog(
     data = data,
     number_of_campaigns = 12,
     number_of_sales = 5000
   )
 
-  expect_named(event_logs, c("timestamp", "customer_id", "event_name", "event_type", "is_target"), ignore.order = TRUE, ignore.case = TRUE)
-  expect_gt(nrow(event_logs), 1000)
+  expect_named(eventlog, c("timestamp", "customer_id", "event_name", "event_type", "is_target"), ignore.order = TRUE, ignore.case = TRUE)
+  expect_gt(nrow(eventlog), 1000)
 
-  # print(str(event_logs))
+  # print(str(eventlog))
 
-  # print("get_edges_from_event_logs()")
-  edges <- get_edges_from_event_logs(event_logs)
+  # print("generate_edges()")
+  edges <- generate_edges(eventlog)
 
   expect_named(edges, c("from", "to", "value"))
   expect_gt(nrow(edges), 10)
 
   # print(str(edges))
 
-  # print("create_process_graph()")
-  p <- create_event_graph(data$events, edges)
+  # print("create_pmap()")
+  p <- create_pmap(data$events, edges, render = F)
 
   edges_from_graph <- get_edge_df(p)
   expect_equal(nrow(edges), nrow(edges_from_graph))

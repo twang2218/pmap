@@ -1,7 +1,6 @@
 library(dplyr)
 library(data.table)
 
-set.seed(101)
 
 # Generate Random Time
 generate_random_datetimes <- function(size, from = "2017-09-01", to = "2017-10-01") {
@@ -16,6 +15,8 @@ generate_random_datetimes <- function(size, from = "2017-09-01", to = "2017-10-0
     )
   )
 }
+
+
 
 # Generate Datasets
 generate_datasets <- function(customer_size, campaign_size, sales_size) {
@@ -57,6 +58,8 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
   return(datasets)
 }
 
+
+
 # Simulate sending campaign
 send_campaign <- function(customers, campaign) {
   event_logs_for_the_campaign <- data.table(
@@ -70,6 +73,9 @@ send_campaign <- function(customers, campaign) {
 
   return(event_logs_for_the_campaign)
 }
+
+
+
 
 # Simulate sales
 generate_sales <- function(customers, sale) {
@@ -88,26 +94,26 @@ generate_sales <- function(customers, sale) {
 
 
 # Generate event logs
-generate_event_logs <- function(data, number_of_campaigns, number_of_sales) {
+generate_eventlog <- function(data, number_of_campaigns, number_of_sales) {
   # Generate Logs
 
-  event_logs <- list()
+  eventlog <- list()
 
   # Send multiple campaigns
   campaigns <- data$events[data$events$type == "campaign", ]
   for (i in 1:nrow(campaigns)) {
     # put everything into a list is more efficient than `rbind()`
-    event_logs[[length(event_logs) + 1]] <- send_campaign(data$customers, campaigns[i, ])
+    eventlog[[length(eventlog) + 1]] <- send_campaign(data$customers, campaigns[i, ])
   }
 
   # Generate multiple sales
   sales <- data$events[data$events$type == "sale",]
   for (i in 1:nrow(sales)) {
-    event_logs[[length(event_logs) + 1]] <- generate_sales(data$customers, sales[i, ])
+    eventlog[[length(eventlog) + 1]] <- generate_sales(data$customers, sales[i, ])
   }
 
-  # merge all event_logs
-  event_logs <- rbindlist(event_logs) %>% arrange(timestamp)
+  # merge all eventlog
+  eventlog <- rbindlist(eventlog) %>% arrange(timestamp)
 
-  return(event_logs)
+  return(eventlog)
 }

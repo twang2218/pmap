@@ -1,124 +1,8 @@
-# make 'R CMD check' happy
-utils::globalVariables(c(
-  # get_nodes_from_event_logs()
-  "event_name",
-  "is_target",
-  "name",
-  # get_edges_from_event_logs()
-  "customer_id",
-  "timestamp",
-  "from",
-  "to"
-))
-
-#' @title Produce nodes from event logs
-#'
-#' @param event_logs Event logs
-#' @description `event_logs` should be a `data.frame` or `data.table`, which contains, at least, following columns:
-#'
-#'  * `event_name`: event name. (`character`)
-#'  * `is_target`: whether it's the final stage. (`logical`)
-#'
-#' `get_nodes_from_event_logs()` will generate the node list from the given `event_logs` for the graph purpose.
-#' However, it is very basic, so, in most cases, you might want to provide your own node list to the
-#' `create_event_graph()` function.
-#' @return a `data.frame` of nodes
-#' @importFrom dplyr      %>%
-#' @importFrom dplyr      select
-#' @importFrom dplyr      distinct
-#' @importFrom dplyr      rename
-#' @importFrom dplyr      mutate
-#' @importFrom dplyr      arrange
-#' @export
-get_nodes_from_event_logs <- function(event_logs) {
-  nodes <- event_logs %>%
-      select(event_name, is_target) %>%
-      distinct() %>%
-      rename(name = event_name) %>%
-      mutate(name = as.character(name), percentage = 0.5) %>%
-      arrange(name)
-  return(nodes)
-}
-
-#' @title Produce edges from event logs
-#' @param event_logs Event logs
-#' @description `event_logs` should be a `data.frame` or `data.table`, which contains, at least, following columns:
-#'
-#'  * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
-#'  * `customer_id`: cutomer identifier. (`character`)
-#'  * `event_name`: event name. (`character`)
-#'  * `is_target`: whether it's the final stage. (`logical`)
-#' @return a `data.frame` of edges
-#' @importFrom dplyr        %>%
-#' @importFrom dplyr        arrange
-#' @importFrom dplyr        group_by
-#' @importFrom dplyr        summarize
-#' @importFrom dplyr        ungroup
-#' @importFrom dplyr        mutate_if
-#' @importFrom dplyr        n
-#' @importFrom data.table   data.table
-#' @importFrom data.table   rbindlist
-#' @export
-get_edges_from_event_logs <- function(event_logs) {
-  # sort by customer_id and timestamp
-  event_logs <- data.table(event_logs) %>% arrange(customer_id, timestamp)
-
-  edges <- list()
-  temp_edges <- list()
-  previous <- NA
-
-  # `apply()` is about up to 10x faster than `for-loop`
-  apply(event_logs, 1, function(current) {
-    if (!any(is.na(previous))) {
-      # pre-process
-      if (current["customer_id"] != previous["customer_id"]) {
-        # it's a new customer, so set it to 'previous' and continue to the next record
-        previous <<- current
-        # clear temp_edges
-        temp_edges <<- list()
-        return
-      }
-
-      edge <- list(
-        from = previous["event_name"],
-        to = current["event_name"],
-        customer_id = current["customer_id"]#,
-        # duration = current["timestamp"] - previous["timestamp"]
-      )
-      temp_edges[[length(temp_edges) + 1]] <<- edge
-    }
-
-    # post-process
-    if (current["is_target"] != FALSE) {
-      # put temp_edges to final edges set
-      if (length(temp_edges) > 0) {
-        for (i in 1:length(temp_edges)) {
-          edges[[length(edges) + 1]] <<- temp_edges[[i]]
-        }
-      }
-      # target events should not be the starting point
-      previous <<- NA
-      # clear temp_edges
-      temp_edges <<- list()
-    } else {
-      previous <<- current
-    }
-  })
-
-  edges <- rbindlist(edges) %>% 
-    group_by(from, to) %>%
-    # Add attributes: `value` => count
-    summarize(value = n()) %>%
-    ungroup() %>%
-    mutate_if(is.factor, as.character) %>%
-    arrange(from, to)
-
-  return(edges)
-}
-
 #' @title Create the event graph by given nodes and edges.
+#' @usage create_pmap(nodes, edges, render = T)
 #' @param nodes Event list
 #' @param edges Event transform list
+#' @param render Whether should call `render_graph()` on the final result. Set to `FALSE` if you want further manipulate the result by `DiagrammeR` functions.
 #' @description
 #' `nodes` should be a `data.frame` containing following columns:
 #'   * `name`: Nodes name, will be used as label. (`character`)
@@ -141,8 +25,9 @@ get_edges_from_event_logs <- function(event_logs) {
 #' @importFrom DiagrammeR   select_nodes_by_degree
 #' @importFrom DiagrammeR   get_selection
 #' @importFrom DiagrammeR   delete_nodes_ws
+#' @importFrom DiagrammeR   render_graph
 #' @export
-create_event_graph <- function(nodes, edges) {
+create_pmap <- function(nodes, edges, render = T) {
   # print("Converting factor to character [nodes]...")
   nodes <- nodes %>%
     mutate_if(is.factor, as.character) %>%
@@ -225,6 +110,10 @@ create_event_graph <- function(nodes, edges) {
   zero_degree_nodes <- p %>% select_nodes_by_degree("deg == 0") %>% get_selection()
   if (!is.na(zero_degree_nodes) && length(zero_degree_nodes) > 0) {
     p <- p %>% select_nodes_by_degree("deg == 0") %>% delete_nodes_ws()
+  }
+
+  if (render) {
+    p <- render_graph(p)
   }
 
   return(p)
