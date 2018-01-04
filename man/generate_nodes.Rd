@@ -10,7 +10,7 @@ generate_nodes(eventlog)
 \item{eventlog}{Event logs}
 }
 \value{
-a \code{data.frame} of nodes
+a nodes \code{data.frame} which represents a event list, it contains \code{name}, \code{is_target} and \code{percentage} columns.
 }
 \description{
 \code{eventlog} should be a \code{data.frame}, which contains, at least, following columns:

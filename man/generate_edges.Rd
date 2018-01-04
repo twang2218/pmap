@@ -10,7 +10,7 @@ generate_edges(eventlog)
 \item{eventlog}{Event logs}
 }
 \value{
-a \code{data.frame} of edges
+a \code{data.frame} of edges with \code{from}, \code{to} and \code{value} columns.
 }
 \description{
 \code{eventlog} should be a \code{data.frame} or \code{data.table}, which contains, at least, following columns:
