@@ -9,3 +9,5 @@ test:
 check:
 	Rscript -e "devtools::check()"
 
+build_win:
+	Rscript -e "devtools::build_win()"
