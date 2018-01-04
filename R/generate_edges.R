@@ -17,7 +17,7 @@ utils::globalVariables(c(
 #'  * `customer_id`: cutomer identifier. (`character`)
 #'  * `event_name`: event name. (`character`)
 #'  * `is_target`: whether it's the final stage. (`logical`)
-#' @return a `data.frame` of edges
+#' @return a `data.frame` of edges with `from`, `to` and `value` columns.
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        arrange
 #' @importFrom dplyr        group_by
@@ -31,6 +31,17 @@ utils::globalVariables(c(
 generate_edges <- function(eventlog) {
   # sort by customer_id and timestamp
   eventlog <- data.table(eventlog) %>% arrange(customer_id, timestamp)
+
+  empty_edges <- data.frame(
+    from = character(0),
+    to = character(0),
+    value = numeric(0)
+  )
+
+  # Return empty edges if given eventlog is empty
+  if (nrow(eventlog) == 0) {
+    return(empty_edges)
+  }
 
   edges <- list()
   temp_edges <- list()
@@ -73,6 +84,11 @@ generate_edges <- function(eventlog) {
       previous <<- current
     }
   })
+
+  # Cannot find any edges, so return an empty data frame.
+  if (length(edges) == 0) {
+    return(empty_edges)
+  }
 
   edges <- rbindlist(edges) %>%
     group_by(from, to) %>%
