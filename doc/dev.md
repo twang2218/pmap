@@ -14,6 +14,9 @@ use_mit_license("Tao Wang <twang2218@gmail.com>")
 
 # use_roxygen_md()
 use_readme_md()
+
+use_travis()
+use_appveyor()
 use_coverage()
 
 document()

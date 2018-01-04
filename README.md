@@ -1,4 +1,4 @@
-# Process Map Visualizer [![Build Status]][Travis] [![CRAN Version]][CRAN Link]  [![Coverage status]][Coverage status link] [![Download Stats]][CRAN Link]
+# Process Map [![Build Status]][Travis] [![AppVeyor Build Status]][AppVeyor Link] [![Coverage status]][Coverage status link] [![CRAN Version]][CRAN Link] [![Download Stats]][CRAN Link]
 
 [Build Status]: https://travis-ci.org/twang2218/pmap.svg?branch=master
 [Travis]: https://travis-ci.org/twang2218/pmap
@@ -11,6 +11,8 @@
 
 [Download Stats]: https://cranlogs.r-pkg.org/badges/grand-total/pmap?color=brightgreen
 
+[AppVeyor Build Status]: https://ci.appveyor.com/api/projects/status/github/twang2218/pmap?branch=master&svg=true
+[AppVeyor Link]: https://ci.appveyor.com/project/twang2218/pmap
 
 The goal of `pmap` is to provide functionality of generating process map from given event logs.
 
