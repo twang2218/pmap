@@ -1,4 +1,5 @@
 library(pmap)
+library(DiagrammeR)
 
 context("General Test")
 
@@ -46,10 +47,10 @@ test_that("Create a full graph", {
   # print("create_process_graph()")
   p <- create_event_graph(data$events, edges)
 
-  edges_from_graph <- DiagrammeR::get_edge_df(p)
+  edges_from_graph <- get_edge_df(p)
   expect_equal(nrow(edges), nrow(edges_from_graph))
 
   # print("render_graph()")
-  expect_true(!any(is.null(DiagrammeR::render_graph(p))))
-  # print(DiagrammeR::render_graph(p))
+  expect_true(!any(is.null(render_graph(p))))
+  # print(render_graph(p))
 })
