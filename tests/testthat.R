@@ -1,4 +1,4 @@
 library(testthat)
-library(pmv)
+library(pmap)
 
-test_check("pmv")
+test_check("pmap")

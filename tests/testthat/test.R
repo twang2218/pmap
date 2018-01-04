@@ -1,4 +1,4 @@
-library(pmv)
+library(pmap)
 
 context("General Test")
 

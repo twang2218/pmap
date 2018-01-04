@@ -1,4 +1,4 @@
-Package: pmv
+Package: pmap
 Title: Process Map Visualizer in R
 Version: 0.0.1
 Authors@R: person("Tao", "Wang", email = "twang2218@gmail.com", role = c("aut", "cre"))
@@ -7,7 +7,7 @@ Depends: R (>= 3.2)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/twang2218/pmv
+URL: https://github.com/twang2218/pmap
 Imports:
   dplyr (>= 0.5.0),
   data.table (>= 1.9.9),
