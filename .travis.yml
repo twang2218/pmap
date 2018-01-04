@@ -1,0 +1,13 @@
+language: r
+cache: packages
+sudo: false
+
+os:
+  - linux
+  - osx
+
+r:
+  - 3.2
+  - 3.3
+  - release
+  - devel

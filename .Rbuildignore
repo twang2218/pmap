@@ -3,3 +3,4 @@
 ^LICENSE\.md$
 ^doc$
 ^Makefile$
+^.travis.yml$

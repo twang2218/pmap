@@ -1,4 +1,10 @@
-# Process Map Visualizer
+# Process Map Visualizer [![Build Status]][Travis] [![CRAN Version]][CRAN Link]
+
+[Build Status]: https://travis-ci.org/twang2218/pmv.svg?branch=master
+[Travis]: https://travis-ci.org/twang2218/pmv
+
+[CRAN Version]: http://www.r-pkg.org/badges/version/pmv
+[CRAN Link]: https://cran.r-project.org/web/packages/pmv/index.html
 
 The goal of `pmv` is to provide functionality of generating process map from given event logs.
 
