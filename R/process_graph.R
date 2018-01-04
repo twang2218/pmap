@@ -1,6 +1,15 @@
-library(dplyr)
-library(data.table)
-library(DiagrammeR)
+# make 'R CMD check' happy
+utils::globalVariables(c(
+  # get_nodes_from_event_logs()
+  "event_name",
+  "is_target",
+  "name",
+  # get_edges_from_event_logs()
+  "customer_id",
+  "timestamp",
+  "from",
+  "to"
+))
 
 #' @title Produce nodes from event logs
 #'
@@ -13,6 +22,13 @@ library(DiagrammeR)
 #' `get_nodes_from_event_logs()` will generate the node list from the given `event_logs` for the graph purpose.
 #' However, it is very basic, so, in most cases, you might want to provide your own node list to the
 #' `create_event_graph()` function.
+#' @return a `data.frame` of nodes
+#' @importFrom dplyr      %>%
+#' @importFrom dplyr      select
+#' @importFrom dplyr      distinct
+#' @importFrom dplyr      rename
+#' @importFrom dplyr      mutate
+#' @importFrom dplyr      arrange
 #' @export
 get_nodes_from_event_logs <- function(event_logs) {
   nodes <- event_logs %>%
@@ -32,6 +48,16 @@ get_nodes_from_event_logs <- function(event_logs) {
 #'  * `customer_id`: cutomer identifier. (`character`)
 #'  * `event_name`: event name. (`character`)
 #'  * `is_target`: whether it's the final stage. (`logical`)
+#' @return a `data.frame` of edges
+#' @importFrom dplyr        %>%
+#' @importFrom dplyr        arrange
+#' @importFrom dplyr        group_by
+#' @importFrom dplyr        summarize
+#' @importFrom dplyr        ungroup
+#' @importFrom dplyr        mutate_if
+#' @importFrom dplyr        n
+#' @importFrom data.table   data.table
+#' @importFrom data.table   rbindlist
 #' @export
 get_edges_from_event_logs <- function(event_logs) {
   # sort by customer_id and timestamp
@@ -91,15 +117,30 @@ get_edges_from_event_logs <- function(event_logs) {
 }
 
 #' @title Create the event graph by given nodes and edges.
-#' @param nodes Event list, which should be a `data.frame` containing following columns:
+#' @param nodes Event list
+#' @param edges Event transform list
+#' @description
+#' `nodes` should be a `data.frame` containing following columns:
 #'   * `name`: Nodes name, will be used as label. (`character`)
 #'   * `is_target`: Whether it's final stage. (`logical`)
 #'   * `percentage`: The percentage of customer affected by the given event. (`numeric`)
-#
-#' @param edges Event transform list, which should be a `data.frame` containing following columns:
+#'
+#' `edges` should be a `data.frame` containing following columns:
 #'   * `from`: the begining event of the edge. (`character`)
 #'   * `to`: the ending event of the edge (`character`)
 #'   * `value`: How many of customer affected by the given event. (`numeric`)
+#' @importFrom dplyr        %>%
+#' @importFrom dplyr        mutate
+#' @importFrom dplyr        mutate_if
+#' @importFrom DiagrammeR   create_graph
+#' @importFrom DiagrammeR   add_nodes_from_table
+#' @importFrom DiagrammeR   add_edges_from_table
+#' @importFrom DiagrammeR   add_global_graph_attrs
+#' @importFrom DiagrammeR   set_node_attrs
+#' @importFrom DiagrammeR   set_edge_attrs
+#' @importFrom DiagrammeR   select_nodes_by_degree
+#' @importFrom DiagrammeR   get_selection
+#' @importFrom DiagrammeR   delete_nodes_ws
 #' @export
 create_event_graph <- function(nodes, edges) {
   # print("Converting factor to character [nodes]...")
@@ -125,15 +166,15 @@ create_event_graph <- function(nodes, edges) {
   p <- p %>%
     add_nodes_from_table(
       table = nodes,
-      label_col = name
+      label_col = "name"
     )
 
   # print("add_edges_from_table()")
   p <- p %>% add_edges_from_table(
       table = edges,
-      from_col = from,
-      to_col = to,
-      ndf_mapping = name)
+      from_col = "from",
+      to_col = "to",
+      ndf_mapping = "name")
 
   # print("add_global_graph_attrs()")
   p <- p %>% 
@@ -154,31 +195,31 @@ create_event_graph <- function(nodes, edges) {
   p <- p %>%
     # node attributes
     ## grey900(#212121)
-    set_node_attrs(node_attr = fontcolor, values = "#212121") %>%
+    set_node_attrs(node_attr = "fontcolor", values = "#212121") %>%
     ## lightBlue900(#01579B)
-    set_node_attrs(node_attr = color, values = "#01579B") %>%
+    set_node_attrs(node_attr = "color", values = "#01579B") %>%
     ## lightBlue100(#B3E5FC) => lightBlue50(#E1F5FE)
-    set_node_attrs(node_attr = fillcolor, values = "#B3E5FC:#E1F5FE") %>%
-    set_node_attrs(node_attr = fontsize, values = (nodes$percentage * 15 + 5)) %>%
-    set_node_attrs(node_attr = label, values = nodes$name) %>%
-    set_node_attrs(node_attr = tooltip, values = nodes$tooltip)
+    set_node_attrs(node_attr = "fillcolor", values = "#B3E5FC:#E1F5FE") %>%
+    set_node_attrs(node_attr = "fontsize", values = (nodes$percentage * 15 + 5)) %>%
+    set_node_attrs(node_attr = "label", values = nodes$name) %>%
+    set_node_attrs(node_attr = "tooltip", values = nodes$tooltip)
     
   # print("set_edge_attrs() for target nodes")
   target_ids <- nodes[nodes$is_target, "index"]
   p <- p %>%
     ## deepOrange900(#BF360C)
-    set_node_attrs(node_attr = color, values = "#BF360C", nodes = target_ids) %>%
+    set_node_attrs(node_attr = "color", values = "#BF360C", nodes = target_ids) %>%
     ## deepOrange100(#FFCCBC):deepOrange50(#FBE9E7)
-    set_node_attrs(node_attr = fillcolor, values = "#FFCCBC:#FBE9E7", nodes = target_ids) %>%
-    set_node_attrs(node_attr = fontsize, values = (nodes$percentage * 10 + 15), nodes = target_ids)
+    set_node_attrs(node_attr = "fillcolor", values = "#FFCCBC:#FBE9E7", nodes = target_ids) %>%
+    set_node_attrs(node_attr = "fontsize", values = (nodes$percentage * 10 + 15), nodes = target_ids)
 
   # print("set_edge_attrs()")
   p <- p %>%
     # Edge attributes
-    set_edge_attrs(edge_attr = penwidth, values = log10(edges$value) + 1) %>%
-    set_edge_attrs(edge_attr = label, values = edges$value) %>%
-    set_edge_attrs(edge_attr = tooltip, values = edges$tooltips) %>%
-    set_edge_attrs(edge_attr = labeltooltip, values = edges$tooltips)
+    set_edge_attrs(edge_attr = "penwidth", values = log10(edges$value) + 1) %>%
+    set_edge_attrs(edge_attr = "label", values = edges$value) %>%
+    set_edge_attrs(edge_attr = "tooltip", values = edges$tooltips) %>%
+    set_edge_attrs(edge_attr = "labeltooltip", values = edges$tooltips)
 
   # remove node without edges
   zero_degree_nodes <- p %>% select_nodes_by_degree("deg == 0") %>% get_selection()

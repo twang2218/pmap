@@ -9,6 +9,9 @@ get_nodes_from_event_logs(event_logs)
 \arguments{
 \item{event_logs}{Event logs}
 }
+\value{
+a \code{data.frame} of nodes
+}
 \description{
 \code{event_logs} should be a \code{data.frame} or \code{data.table}, which contains, at least, following columns:
 \itemize{

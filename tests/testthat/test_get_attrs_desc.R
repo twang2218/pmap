@@ -1,4 +1,5 @@
 library(pmv)
+library(data.table)
 
 context("get_attrs_desc()")
 

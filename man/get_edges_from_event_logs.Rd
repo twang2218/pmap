@@ -9,6 +9,9 @@ get_edges_from_event_logs(event_logs)
 \arguments{
 \item{event_logs}{Event logs}
 }
+\value{
+a \code{data.frame} of edges
+}
 \description{
 \code{event_logs} should be a \code{data.frame} or \code{data.table}, which contains, at least, following columns:
 \itemize{
