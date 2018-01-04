@@ -10,26 +10,35 @@ utils::globalVariables(c(
 #'
 #' @param eventlog Event logs
 #' @usage generate_nodes(eventlog)
-#' @description `eventlog` should be a `data.frame` or `data.table`, which contains, at least, following columns:
+#' @description `eventlog` should be a `data.frame`, which contains, at least, following columns:
 #'
 #'  * `event_name`: event name. (`character`)
 #'  * `is_target`: whether it's the final stage. (`logical`)
 #'
 #' `generate_nodes()` will generate the node list from the given `eventlog` for the graph purpose.
 #'
-#' @return a `data.frame` of nodes
+#' @return a nodes `data.frame` which represents a event list, it contains `name`, `is_target` and `percentage` columns.
 #' @importFrom dplyr      %>%
 #' @importFrom dplyr      select
 #' @importFrom dplyr      distinct
 #' @importFrom dplyr      rename
 #' @importFrom dplyr      mutate
 #' @importFrom dplyr      arrange
+#' @importFrom stringr    str_trim
 #' @export
 generate_nodes <- function(eventlog) {
-  eventlog %>%
-    select(event_name, is_target) %>%
-    distinct() %>%
-    rename(name = event_name) %>%
-    mutate(name = as.character(name), percentage = 0.5) %>%
-    arrange(name)
+  if (is.null(eventlog) || is.na(eventlog) || nrow(eventlog) == 0) {
+    data.frame(
+      event_name = character(0),
+      is_target = logical(0)
+    )
+  } else {
+    eventlog %>%
+      select(event_name, is_target) %>%
+      mutate(event_name = str_trim(event_name)) %>%
+      distinct() %>%
+      rename(name = event_name) %>%
+      mutate(name = as.character(name), percentage = 0.5) %>%
+      arrange(name)
+  }
 }

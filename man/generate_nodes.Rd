@@ -13,7 +13,7 @@ generate_nodes(eventlog)
 a \code{data.frame} of nodes
 }
 \description{
-\code{eventlog} should be a \code{data.frame} or \code{data.table}, which contains, at least, following columns:
+\code{eventlog} should be a \code{data.frame}, which contains, at least, following columns:
 \itemize{
 \item \code{event_name}: event name. (\code{character})
 \item \code{is_target}: whether it's the final stage. (\code{logical})
