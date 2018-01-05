@@ -17,7 +17,7 @@ utils::globalVariables(c(
 #'
 #' `generate_nodes()` will generate the node list from the given `eventlog` for the graph purpose.
 #'
-#' @return a nodes `data.frame` which represents a event list, it contains `name`, `is_target` and `percentage` columns.
+#' @return a nodes `data.frame` which represents a event list, it contains `name`, `is_target` columns.
 #' @importFrom dplyr      %>%
 #' @importFrom dplyr      select
 #' @importFrom dplyr      distinct
@@ -38,7 +38,7 @@ generate_nodes <- function(eventlog) {
       mutate(event_name = str_trim(event_name)) %>%
       distinct() %>%
       rename(name = event_name) %>%
-      mutate(name = as.character(name), percentage = 0.5) %>%
+      mutate(name = as.character(name)) %>%
       arrange(name)
   }
 }

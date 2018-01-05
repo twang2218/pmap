@@ -14,7 +14,6 @@ test_that("generate_nodes() should handle minimal eventlog", {
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b"))
   expect_equal(nodes$is_target, c(T, F))
-  expect_equal(nodes$percentage, c(0.5, 0.5))
 })
 
 test_that("generate_nodes() should handle eventlog with duplicated events", {
@@ -29,7 +28,6 @@ test_that("generate_nodes() should handle eventlog with duplicated events", {
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b"))
   expect_equal(nodes$is_target, c(T, F))
-  expect_equal(nodes$percentage, c(0.5, 0.5))
 })
 
 test_that("generate_nodes() should handle eventlog with space at begining or end of the 'event_name'", {
@@ -44,7 +42,6 @@ test_that("generate_nodes() should handle eventlog with space at begining or end
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b b"))
   expect_equal(nodes$is_target, c(T, F))
-  expect_equal(nodes$percentage, c(0.5, 0.5))
 })
 
 test_that("generate_nodes() should handle empty eventlog", {

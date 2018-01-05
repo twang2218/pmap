@@ -7,7 +7,6 @@
 #' `nodes` should be a `data.frame` containing following columns:
 #'   * `name`: Nodes name, will be used as label. (`character`)
 #'   * `is_target`: Whether it's final stage. (`logical`)
-#'   * `percentage`: The percentage of customer affected by the given event. (`numeric`)
 #'
 #' `edges` should be a `data.frame` containing following columns:
 #'   * `from`: the begining event of the edge. (`character`)
@@ -16,6 +15,7 @@
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        mutate
 #' @importFrom dplyr        mutate_if
+#' @importFrom dplyr        left_join
 #' @importFrom DiagrammeR   create_graph
 #' @importFrom DiagrammeR   add_nodes_from_table
 #' @importFrom DiagrammeR   add_edges_from_table
@@ -28,6 +28,22 @@
 #' @importFrom DiagrammeR   render_graph
 #' @export
 create_pmap <- function(nodes, edges, render = T) {
+  # make 'R CMD Check' happy
+  value <- NULL
+
+  # Collect inbound and outbound count
+  nodes_outbound <- edges %>%
+    group_by(name = from) %>%
+    summarize(outbound = sum(value))
+
+  nodes_inbound <- edges %>%
+    group_by(name = to) %>%
+    summarize(inbound = sum(value))
+
+  nodes <- nodes %>%
+    left_join(nodes_inbound, by = "name") %>%
+    left_join(nodes_outbound, by = "name")
+
   # print("Converting factor to character [nodes]...")
   nodes <- nodes %>%
     mutate_if(is.factor, as.character) %>%
@@ -85,7 +101,7 @@ create_pmap <- function(nodes, edges, render = T) {
     set_node_attrs(node_attr = "color", values = "#01579B") %>%
     ## lightBlue100(#B3E5FC) => lightBlue50(#E1F5FE)
     set_node_attrs(node_attr = "fillcolor", values = "#B3E5FC:#E1F5FE") %>%
-    set_node_attrs(node_attr = "fontsize", values = (nodes$percentage * 15 + 5)) %>%
+    set_node_attrs(node_attr = "fontsize", values = (log10(nodes$inbound + nodes$outbound) + 10)) %>%
     set_node_attrs(node_attr = "label", values = nodes$name) %>%
     set_node_attrs(node_attr = "tooltip", values = nodes$tooltip)
     
@@ -95,13 +111,12 @@ create_pmap <- function(nodes, edges, render = T) {
     ## deepOrange900(#BF360C)
     set_node_attrs(node_attr = "color", values = "#BF360C", nodes = target_ids) %>%
     ## deepOrange100(#FFCCBC):deepOrange50(#FBE9E7)
-    set_node_attrs(node_attr = "fillcolor", values = "#FFCCBC:#FBE9E7", nodes = target_ids) %>%
-    set_node_attrs(node_attr = "fontsize", values = (nodes$percentage * 10 + 15), nodes = target_ids)
+    set_node_attrs(node_attr = "fillcolor", values = "#FFCCBC:#FBE9E7", nodes = target_ids)
 
   # print("set_edge_attrs()")
   p <- p %>%
     # Edge attributes
-    set_edge_attrs(edge_attr = "penwidth", values = log10(edges$value) + 1) %>%
+    set_edge_attrs(edge_attr = "penwidth", values = (log10(edges$value) + 1)) %>%
     set_edge_attrs(edge_attr = "label", values = edges$value) %>%
     set_edge_attrs(edge_attr = "tooltip", values = edges$tooltips) %>%
     set_edge_attrs(edge_attr = "labeltooltip", values = edges$tooltips)

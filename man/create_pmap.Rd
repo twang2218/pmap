@@ -18,7 +18,6 @@ create_pmap(nodes, edges, render = T)
 \itemize{
 \item \code{name}: Nodes name, will be used as label. (\code{character})
 \item \code{is_target}: Whether it's final stage. (\code{logical})
-\item \code{percentage}: The percentage of customer affected by the given event. (\code{numeric})
 }
 
 \code{edges} should be a \code{data.frame} containing following columns:

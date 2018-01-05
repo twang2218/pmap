@@ -54,11 +54,12 @@ test_that("create_pmap_from_eventlog() should handle complex graph", {
   expect_gt(nrow(eventlog), 1000)
 
   # print(str(eventlog))
-
   # print("create_pmap()")
   p <- create_pmap_from_eventlog(eventlog, render = F)
 
+  # print(generate_dot(p))
+
   # print("render_graph()")
   expect_true(!any(is.null(render_graph(p))))
-  # print(render_graph(p))
+  print(render_graph(p))
 })
