@@ -4,10 +4,10 @@ source("helper.R")
 
 set.seed(101)
 
-context("Test All")
+context("create_pmap()")
 
 
-test_that("Create a full graph", {
+test_that("create_pmap()", {
   # print("generate_datasets()")
 
   customer_size <- 100000

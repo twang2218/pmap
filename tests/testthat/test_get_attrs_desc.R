@@ -34,6 +34,21 @@ test_that("get_attrs_desc() should handle 'data.frame'", {
   expect_equal(get_attrs_desc(data.frame()), "")
 })
 
+test_that("get_attrs_desc() should handle minimal 'data.frame'", {
+  expect_equal(
+    get_attrs_desc(
+      data.frame(
+        id = c(1),
+        name = c("Jane"),
+        is_manager = c(F)
+      )
+    ),
+    "id: 1\nname: Jane\nis_manager: FALSE"
+  )
+
+  expect_equal(get_attrs_desc(data.frame()), "")
+})
+
 test_that("get_attrs_desc() should handle 'matrix'", {
   expect_equal(
     get_attrs_desc(

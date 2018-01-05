@@ -59,9 +59,9 @@ get_attrs_desc <- function(object) {
   # Combine attributes key-pairs to a single string contains the list
   #   `paste()` is only works for columns oriented direction, so `apply()`
   #   is used for `matrix` and `data.frame`
-  if (inherits(object, "list")) {
-    paste(attrs, collapse = "\n")
-  } else {
+  if (inherits(attrs, c("matrix", "data.frame"))) {
     apply(attrs, 1, paste, collapse = "\n")
+  } else {
+    paste(attrs, collapse = "\n")
   }
 }
