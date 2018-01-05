@@ -44,7 +44,7 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
     name = paste0("Sale_", 1:sales_size),
     type = "sale",
     timestamp = generate_random_datetimes(sales_size, "2017-09-10", "2017-10-01"),
-    percentage = runif(sales_size, min = 0.001, max = 0.03),
+    percentage = runif(sales_size, min = 0.05, max = 0.1),
     is_target = T,
     stringsAsFactors = F
   )
@@ -100,20 +100,29 @@ generate_eventlog <- function(data, number_of_campaigns, number_of_sales) {
   eventlog <- list()
 
   # Send multiple campaigns
+  campaigns_eventlog <- list()
   campaigns <- data$events[data$events$type == "campaign", ]
   for (i in 1:nrow(campaigns)) {
     # put everything into a list is more efficient than `rbind()`
-    eventlog[[length(eventlog) + 1]] <- send_campaign(data$customers, campaigns[i, ])
+    campaigns_eventlog[[length(campaigns_eventlog) + 1]] <- send_campaign(data$customers, campaigns[i, ])
   }
+  campaigns_eventlog <- rbindlist(campaigns_eventlog)
+
+  targeted_customers <- campaigns_eventlog %>%
+    distinct(customer_id) %>%
+    rename(id = customer_id) %>%
+    arrange(id)
 
   # Generate multiple sales
+  sales_eventlog <- list()
   sales <- data$events[data$events$type == "sale",]
   for (i in 1:nrow(sales)) {
-    eventlog[[length(eventlog) + 1]] <- generate_sales(data$customers, sales[i, ])
+    sales_eventlog[[length(sales_eventlog) + 1]] <- generate_sales(targeted_customers, sales[i, ])
   }
+  sales_eventlog <- rbindlist(sales_eventlog)
 
   # merge all eventlog
-  eventlog <- rbindlist(eventlog) %>% arrange(timestamp)
+  eventlog <- rbind(campaigns_eventlog, sales_eventlog) %>% arrange(timestamp)
 
   return(eventlog)
 }
