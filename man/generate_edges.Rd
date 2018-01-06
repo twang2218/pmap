@@ -4,10 +4,12 @@
 \alias{generate_edges}
 \title{Generate edges from event logs}
 \usage{
-generate_edges(eventlog)
+generate_edges(eventlog, distinct_customer = F)
 }
 \arguments{
 \item{eventlog}{Event logs}
+
+\item{distinct_customer}{Whether should only count unique customer}
 }
 \value{
 a \code{data.frame} of edges with \code{from}, \code{to} and \code{value} columns.

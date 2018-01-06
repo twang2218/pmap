@@ -47,3 +47,51 @@ test_that("generate_edges() should handle empty eventlog", {
     0
   )
 })
+
+test_that("generate_edges() should count every paths if 'distinct_customer' is not set", {
+  edges <- generate_edges(
+    data.frame(
+      timestamp = c(
+        as.POSIXct("2017-10-01"),
+        as.POSIXct("2017-10-02"),
+        as.POSIXct("2017-10-03"),
+        as.POSIXct("2017-10-04"),
+        as.POSIXct("2017-10-20")
+      ),
+      customer_id = c("c1", "c1", "c2", "c1", "c1"),
+      event_name = c("a", "b", "a", "a", "b"),
+      is_target = c(F, T, F, F, T),
+      stringsAsFactors = FALSE
+    )
+  )
+
+  expect_equal(nrow(edges), 1)
+  expect_equal(edges$from, "a")
+  expect_equal(edges$to, "b")
+  expect_equal(edges$value, 2)
+})
+
+
+test_that("generate_edges() should count unique 'customer_id' if 'distinct_customer' is set", {
+  edges <- generate_edges(
+    data.frame(
+      timestamp = c(
+        as.POSIXct("2017-10-01"),
+        as.POSIXct("2017-10-02"),
+        as.POSIXct("2017-10-03"),
+        as.POSIXct("2017-10-04"),
+        as.POSIXct("2017-10-20")
+      ),
+      customer_id = c("c1", "c1", "c2", "c1", "c1"),
+      event_name = c("a", "b", "a", "a", "b"),
+      is_target = c(F, T, F, F, T),
+      stringsAsFactors = FALSE
+    ),
+    distinct_customer = T
+  )
+
+  expect_equal(nrow(edges), 1)
+  expect_equal(edges$from, "a")
+  expect_equal(edges$to, "b")
+  expect_equal(edges$value, 1)
+})

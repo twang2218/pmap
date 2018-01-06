@@ -9,8 +9,9 @@ utils::globalVariables(c(
 
 
 #' @title Generate edges from event logs
-#' @usage generate_edges(eventlog)
+#' @usage generate_edges(eventlog, distinct_customer = F)
 #' @param eventlog Event logs
+#' @param distinct_customer Whether should only count unique customer
 #' @description `eventlog` should be a `data.frame` or `data.table`, which contains, at least, following columns:
 #'
 #'  * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
@@ -20,6 +21,7 @@ utils::globalVariables(c(
 #' @return a `data.frame` of edges with `from`, `to` and `value` columns.
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        arrange
+#' @importFrom dplyr        distinct
 #' @importFrom dplyr        group_by
 #' @importFrom dplyr        summarize
 #' @importFrom dplyr        ungroup
@@ -28,7 +30,7 @@ utils::globalVariables(c(
 #' @importFrom data.table   data.table
 #' @importFrom data.table   rbindlist
 #' @export
-generate_edges <- function(eventlog) {
+generate_edges <- function(eventlog, distinct_customer = F) {
   # sort by customer_id and timestamp
   eventlog <- data.table(eventlog) %>% arrange(customer_id, timestamp)
 
@@ -90,7 +92,13 @@ generate_edges <- function(eventlog) {
     return(empty_edges)
   }
 
-  edges <- rbindlist(edges) %>%
+  edges <- rbindlist(edges)
+
+  if (distinct_customer) {
+    edges <- distinct(edges, from, to, customer_id)
+  }
+
+  edges <- edges %>%
     group_by(from, to) %>%
     # Add attributes: `value` => count
     summarize(value = n()) %>%
