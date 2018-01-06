@@ -21,9 +21,6 @@
 #' @importFrom DiagrammeR   add_global_graph_attrs
 #' @importFrom DiagrammeR   set_node_attrs
 #' @importFrom DiagrammeR   set_edge_attrs
-#' @importFrom DiagrammeR   select_nodes_by_degree
-#' @importFrom DiagrammeR   get_selection
-#' @importFrom DiagrammeR   delete_nodes_ws
 #' @export
 create_pmap <- function(nodes, edges) {
   # make 'R CMD Check' happy
@@ -121,12 +118,6 @@ create_pmap <- function(nodes, edges) {
     set_edge_attrs(edge_attr = "label", values = edges$value) %>%
     set_edge_attrs(edge_attr = "tooltip", values = edges$tooltips) %>%
     set_edge_attrs(edge_attr = "labeltooltip", values = edges$tooltips)
-
-  # remove node without edges
-  zero_degree_nodes <- p %>% select_nodes_by_degree("deg == 0") %>% get_selection()
-  if (!is.na(zero_degree_nodes) && length(zero_degree_nodes) > 0) {
-    p <- p %>% select_nodes_by_degree("deg == 0") %>% delete_nodes_ws()
-  }
 
   return(p)
 }
