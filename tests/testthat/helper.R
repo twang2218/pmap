@@ -23,14 +23,14 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
   ### Groups
   # customer group
   customers <- data.table(
-    id = paste0("Customer_", 1:customer_size),
+    id = paste0("Customer ", 1:customer_size),
     stringsAsFactors = F
   )
   # print(customers)
 
   # campaigns
   campaigns <- data.table(
-    name = paste0("Campaign_", 1:campaign_size),
+    name = paste0("Campaign ", 1:campaign_size),
     type = "campaign",
     timestamp = generate_random_datetimes(campaign_size, "2017-09-01", "2017-10-01"),
     percentage = runif(campaign_size, min = 0.001, max = 0.03),
@@ -41,7 +41,7 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
 
   # sales group
   sales <- data.table(
-    name = paste0("Sale_", 1:sales_size),
+    name = paste0("Sale ", 1:sales_size),
     type = "sale",
     timestamp = generate_random_datetimes(sales_size, "2017-09-10", "2017-10-01"),
     percentage = runif(sales_size, min = 0.05, max = 0.1),

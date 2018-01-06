@@ -49,7 +49,8 @@ create_pmap <- function(nodes, edges, render = T) {
     mutate_if(is.factor, as.character) %>%
     mutate(
       index = 1:nrow(nodes),
-      tooltip = get_attrs_desc(nodes)
+      tooltip = get_attrs_desc(nodes),
+      name_without_space = gsub(" ", "_", nodes$name)
     )
   # print(str(nodes))
 
@@ -57,7 +58,9 @@ create_pmap <- function(nodes, edges, render = T) {
   edges <- edges %>%
     mutate_if(is.factor, as.character) %>%
     mutate(
-      tooltips = get_attrs_desc(edges)
+      tooltips = get_attrs_desc(edges),
+      from = gsub(" ", "_", edges$from),
+      to = gsub(" ", "_", edges$to)
     )
   # print(str(edges))
   # print("create_graph()")
@@ -75,7 +78,7 @@ create_pmap <- function(nodes, edges, render = T) {
       table = edges,
       from_col = "from",
       to_col = "to",
-      ndf_mapping = "name")
+      ndf_mapping = "name_without_space")
 
   # print("add_global_graph_attrs()")
   p <- p %>% 
