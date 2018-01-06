@@ -4,14 +4,12 @@
 \alias{create_pmap}
 \title{Create the event graph by given nodes and edges.}
 \usage{
-create_pmap(nodes, edges, render = T)
+create_pmap(nodes, edges)
 }
 \arguments{
 \item{nodes}{Event list}
 
 \item{edges}{Event transform list}
-
-\item{render}{Whether should call \code{render_graph()} on the final result. Set to \code{FALSE} if you want further manipulate the result by \code{DiagrammeR} functions.}
 }
 \description{
 \code{nodes} should be a \code{data.frame} containing following columns:

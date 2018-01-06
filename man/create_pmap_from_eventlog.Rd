@@ -4,12 +4,10 @@
 \alias{create_pmap_from_eventlog}
 \title{Create the process map from event log directly}
 \usage{
-create_pmap_from_eventlog(eventlog, render = T)
+create_pmap_from_eventlog(eventlog)
 }
 \arguments{
 \item{eventlog}{Event log}
-
-\item{render}{Whether should call \code{render_graph()} on the final result. Set to \code{FALSE} if you want further manipulate the result by \code{DiagrammeR} functions.}
 }
 \description{
 Create the process map by analysing given \code{eventlog} and extract the nodes by \code{generate_nodes()} and edges by \code{generate_edges()}.

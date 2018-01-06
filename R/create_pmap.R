@@ -1,8 +1,7 @@
 #' @title Create the event graph by given nodes and edges.
-#' @usage create_pmap(nodes, edges, render = T)
+#' @usage create_pmap(nodes, edges)
 #' @param nodes Event list
 #' @param edges Event transform list
-#' @param render Whether should call `render_graph()` on the final result. Set to `FALSE` if you want further manipulate the result by `DiagrammeR` functions.
 #' @description
 #' `nodes` should be a `data.frame` containing following columns:
 #'   * `name`: Nodes name, will be used as label. (`character`)
@@ -25,9 +24,8 @@
 #' @importFrom DiagrammeR   select_nodes_by_degree
 #' @importFrom DiagrammeR   get_selection
 #' @importFrom DiagrammeR   delete_nodes_ws
-#' @importFrom DiagrammeR   render_graph
 #' @export
-create_pmap <- function(nodes, edges, render = T) {
+create_pmap <- function(nodes, edges) {
   # make 'R CMD Check' happy
   value <- NULL
 
@@ -128,10 +126,6 @@ create_pmap <- function(nodes, edges, render = T) {
   zero_degree_nodes <- p %>% select_nodes_by_degree("deg == 0") %>% get_selection()
   if (!is.na(zero_degree_nodes) && length(zero_degree_nodes) > 0) {
     p <- p %>% select_nodes_by_degree("deg == 0") %>% delete_nodes_ws()
-  }
-
-  if (render) {
-    p <- render_graph(p)
   }
 
   return(p)

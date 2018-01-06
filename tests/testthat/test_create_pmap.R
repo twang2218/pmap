@@ -47,12 +47,12 @@ test_that("create_pmap()", {
   # print(str(edges))
 
   # print("create_pmap()")
-  p <- create_pmap(data$events, edges, render = F)
+  p <- create_pmap(data$events, edges)
 
   edges_from_graph <- get_edge_df(p)
   expect_equal(nrow(edges), nrow(edges_from_graph))
 
   # print("render_graph()")
-  expect_true(!any(is.null(render_graph(p))))
+  expect_true(!any(is.null(render_pmap(p))))
   # print(render_graph(p))
 })

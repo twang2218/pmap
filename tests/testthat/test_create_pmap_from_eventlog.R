@@ -15,7 +15,7 @@ test_that("create_pmap_from_eventlog() should handle simple graph", {
      stringsAsFactors = FALSE
   )
 
-  p <- create_pmap_from_eventlog(eventlog, render = F)
+  p <- create_pmap_from_eventlog(eventlog)
 
   ndf <- get_node_df(p)
   expect_equal(nrow(ndf), 2)
@@ -55,11 +55,11 @@ test_that("create_pmap_from_eventlog() should handle complex graph", {
 
   # print(str(eventlog))
   # print("create_pmap()")
-  p <- create_pmap_from_eventlog(eventlog, render = F)
+  p <- create_pmap_from_eventlog(eventlog)
 
   # print(generate_dot(p))
 
   # print("render_graph()")
-  expect_true(!any(is.null(render_graph(p))))
-  print(render_graph(p))
+  expect_true(!any(is.null(render_pmap(p))))
+  print(render_pmap(p))
 })
