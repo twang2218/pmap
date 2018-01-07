@@ -25,7 +25,7 @@
 #' @export
 create_pmap <- function(nodes, edges) {
   # make 'R CMD Check' happy
-  amount <- NULL
+  amount <- from <- to <- NULL
 
   # Collect inbound and outbound count
   nodes_outbound <- edges %>%
