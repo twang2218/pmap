@@ -6,12 +6,12 @@
 #' @description `eventlog` should be a `data.frame`, which contains, at least, following columns:
 #'
 #'  * `event_name`: event name. (`character`)
-#'  * `is_target`: whether it's the final stage. (`logical`)
+#'  * `event_type`: event type. (`character`)
 #'  * `amount`: how many time this event happened in the eventlog
 #'
 #' `generate_nodes()` will generate the node list from the given `eventlog` for the graph purpose.
 #'
-#' @return a nodes `data.frame` which represents a event list, it contains `name`, `is_target` and `amount` columns.
+#' @return a nodes `data.frame` which represents a event list, it contains `name`, `type` and `amount` columns.
 #' @importFrom dplyr      %>%
 #' @importFrom dplyr      select
 #' @importFrom dplyr      distinct
@@ -24,24 +24,27 @@
 #' @export
 generate_nodes <- function(eventlog, distinct_customer = F) {
   # make 'R CMD check' happy
-  event_name <- is_target <- name <- customer_id <- NULL
+  event_name <- event_type <- type <- name <- customer_id <- NULL
 
   if (is.null(eventlog) || is.na(eventlog) || nrow(eventlog) == 0) {
     data.frame(
-      event_name = character(0),
-      is_target = logical(0),
+      name = character(0),
+      type = character(0),
       amount = numeric(0)
     )
   } else {
     nodes <- eventlog %>%
-      mutate(name = as.character(str_trim(event_name)))
+      mutate(
+        name = as.character(str_trim(event_name)),
+        type = as.character(str_trim(event_type))
+      )
 
     if (distinct_customer) {
-      nodes <- nodes %>% distinct(name, is_target, customer_id)
+      nodes <- nodes %>% distinct(name, type, customer_id)
     }
 
     nodes <- nodes %>%
-      group_by(name, is_target) %>%
+      group_by(name, type) %>%
       summarize(amount = n()) %>%
       ungroup() %>%
       arrange(name)

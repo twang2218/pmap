@@ -1,13 +1,14 @@
 #' @title Generate edges from event logs
-#' @usage generate_edges(eventlog, distinct_customer = F)
+#' @usage generate_edges(eventlog, distinct_customer = F, target_types = NULL)
 #' @param eventlog Event logs
 #' @param distinct_customer Whether should only count unique customer
+#' @param target_types A vector contains the target event types
 #' @description `eventlog` should be a `data.frame` or `data.table`, which contains, at least, following columns:
 #'
 #'  * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
 #'  * `customer_id`: cutomer identifier. (`character`)
 #'  * `event_name`: event name. (`character`)
-#'  * `is_target`: whether it's the final stage. (`logical`)
+#'  * `event_type`: event type. (`character`)
 #' @return a `data.frame` of edges with `from`, `to` and `amount` columns.
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        arrange
@@ -20,7 +21,7 @@
 #' @importFrom data.table   data.table
 #' @importFrom data.table   rbindlist
 #' @export
-generate_edges <- function(eventlog, distinct_customer = F) {
+generate_edges <- function(eventlog, distinct_customer = F, target_types = NULL) {
   # make 'R CMD check' happy
   customer_id <- timestamp <- from <- to <- NULL
 
@@ -64,7 +65,7 @@ generate_edges <- function(eventlog, distinct_customer = F) {
     }
 
     # post-process
-    if (current["is_target"] != FALSE) {
+    if (current["event_type"] %in% target_types) {
       # put temp_edges to final edges set
       if (length(temp_edges) > 0) {
         for (i in 1:length(temp_edges)) {

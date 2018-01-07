@@ -4,12 +4,14 @@
 \alias{create_pmap_from_eventlog}
 \title{Create the process map from event log directly}
 \usage{
-create_pmap_from_eventlog(eventlog, distinct_customer = F)
+create_pmap_from_eventlog(eventlog, distinct_customer = F, target_types = NULL)
 }
 \arguments{
 \item{eventlog}{Event log}
 
 \item{distinct_customer}{Whether should count distinct customer only. Default is \code{FALSE}.}
+
+\item{target_types}{A vector contains the target event types}
 }
 \description{
 Create the process map by analysing given \code{eventlog} and extract the nodes by \code{generate_nodes()} and edges by \code{generate_edges()}.

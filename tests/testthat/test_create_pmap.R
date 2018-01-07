@@ -33,13 +33,13 @@ test_that("create_pmap()", {
     number_of_sales = 5000
   )
 
-  expect_named(eventlog, c("timestamp", "customer_id", "event_name", "event_type", "is_target"), ignore.order = TRUE, ignore.case = TRUE)
+  expect_named(eventlog, c("timestamp", "customer_id", "event_name", "event_type"), ignore.order = TRUE, ignore.case = TRUE)
   expect_gt(nrow(eventlog), 1000)
 
   # print(str(eventlog))
 
   # print("generate_edges()")
-  edges <- generate_edges(eventlog)
+  edges <- generate_edges(eventlog, target_types = c("sale"))
 
   expect_named(edges, c("from", "to", "amount"))
   expect_gt(nrow(edges), 10)
@@ -47,7 +47,7 @@ test_that("create_pmap()", {
   # print(str(edges))
 
   # print("create_pmap()")
-  p <- create_pmap(data$events, edges)
+  p <- create_pmap(data$events, edges, target_types = c("sale"))
 
   edges_from_graph <- get_edge_df(p)
   expect_equal(nrow(edges), nrow(edges_from_graph))

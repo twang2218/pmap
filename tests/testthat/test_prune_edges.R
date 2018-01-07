@@ -6,7 +6,7 @@ test_that("prune_edges() should be able prune nothing", {
   p <- create_pmap(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      is_target = c(F, F, F, T, T),
+      type = c("campaign", "campaign", "campaign", "sale", "sale"),
       stringsAsFactors = F
     ),
     edges = data.frame(
@@ -14,7 +14,8 @@ test_that("prune_edges() should be able prune nothing", {
       to = c("b", "c", "d", "e"),
       amount = c(10, 20, 30, 40),
       stringsAsFactors = F
-    )
+    ),
+    target_types = c("sale")
   )
 
   edges_count_before_prune <- nrow(get_edge_df(p))
@@ -31,7 +32,7 @@ test_that("prune_edges() should be able prune half of the edges", {
   p <- create_pmap(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      is_target = c(F, F, F, T, T),
+      type = c("campaign", "campaign", "campaign", "sale", "sale"),
       stringsAsFactors = F
     ),
     edges = data.frame(
@@ -39,7 +40,8 @@ test_that("prune_edges() should be able prune half of the edges", {
       to = c("b", "c", "d", "e"),
       amount = c(10, 20, 30, 40),
       stringsAsFactors = F
-    )
+    ),
+    target_types = c("sale")
   )
 
   edges_count_before_prune <- nrow(get_edge_df(p))
@@ -58,7 +60,7 @@ test_that("prune_edges() should be able prune all of the edges", {
   p <- create_pmap(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      is_target = c(F, F, F, T, T),
+      type = c("campaign", "campaign", "campaign", "sale", "sale"),
       stringsAsFactors = F
     ),
     edges = data.frame(
@@ -66,7 +68,8 @@ test_that("prune_edges() should be able prune all of the edges", {
       to = c("b", "c", "d", "e"),
       amount = c(10, 20, 30, 40),
       stringsAsFactors = F
-    )
+    ),
+    target_types = c("sale")
   )
 
   edges_count_before_prune <- nrow(get_edge_df(p))

@@ -1,11 +1,12 @@
 #' @title Create the event graph by given nodes and edges.
-#' @usage create_pmap(nodes, edges)
+#' @usage create_pmap(nodes, edges, target_types = NULL)
 #' @param nodes Event list
 #' @param edges Event transform list
+#' @param target_types A vector contains the target event types
 #' @description
 #' `nodes` should be a `data.frame` containing following columns:
-#'   * `name`: Nodes name, will be used as label. (`character`)
-#'   * `is_target`: Whether it's final stage. (`logical`)
+#'   * `name`: Event name, will be used as label. (`character`)
+#'   * `type`: The event type (`character`)
 #'
 #' `edges` should be a `data.frame` containing following columns:
 #'   * `from`: the begining event of the edge. (`character`)
@@ -22,10 +23,14 @@
 #' @importFrom DiagrammeR   add_global_graph_attrs
 #' @importFrom DiagrammeR   set_node_attrs
 #' @importFrom DiagrammeR   set_edge_attrs
+#' @importFrom DiagrammeR   select_nodes
+#' @importFrom DiagrammeR   set_node_attrs_ws
+#' @importFrom DiagrammeR   get_selection
+#' @importFrom DiagrammeR   clear_selection
 #' @export
-create_pmap <- function(nodes, edges) {
+create_pmap <- function(nodes, edges, target_types = NULL) {
   # make 'R CMD Check' happy
-  amount <- from <- to <- NULL
+  amount <- from <- to <- type <- NULL
 
   # Collect inbound and outbound count
   nodes_outbound <- edges %>%
@@ -51,7 +56,8 @@ create_pmap <- function(nodes, edges) {
       index = 1:nrow(nodes),
       tooltip = get_attrs_desc(nodes),
       name_without_space = gsub(" ", "_", nodes$name)
-    )
+    ) %>%
+    rename(catelog = type)
   # print(str(nodes))
 
   # print("Converting factor to character [edges]...")
@@ -63,23 +69,28 @@ create_pmap <- function(nodes, edges) {
       to = gsub(" ", "_", edges$to)
     )
   # print(str(edges))
+
   # print("create_graph()")
   p <- create_graph()
 
   # print("add_nodes_from_table()")
-  p <- p %>%
-    add_nodes_from_table(
-      table = nodes,
-      label_col = "name"
-    )
+  p <- add_nodes_from_table(
+    p,
+    table = nodes,
+    label_col = "name",
+    type_col = "catelog"
+  )
 
   # print("add_edges_from_table()")
-  p <- p %>%
-    add_edges_from_table(
+  if (nrow(edges) > 0) {
+    p <- add_edges_from_table(
+      p,
       table = edges %>% select(-amount),
       from_col = "from",
       to_col = "to",
-      ndf_mapping = "name_without_space")
+      ndf_mapping = "name_without_space"
+    )
+  }
 
   # print("add_global_graph_attrs()")
   p <- p %>% 
@@ -110,12 +121,15 @@ create_pmap <- function(nodes, edges) {
     set_node_attrs(node_attr = "tooltip", values = nodes$tooltip)
     
   # print("set_edge_attrs() for target nodes")
-  target_ids <- nodes[nodes$is_target, "index"]
-  p <- p %>%
-    ## deepOrange900(#BF360C)
-    set_node_attrs(node_attr = "color", values = "#BF360C", nodes = target_ids) %>%
-    ## deepOrange100(#FFCCBC):deepOrange50(#FBE9E7)
-    set_node_attrs(node_attr = "fillcolor", values = "#FFCCBC:#FBE9E7", nodes = target_ids)
+  p <- select_nodes(p, conditions = type %in% target_types)
+  if (length(get_selection(p)) > 0) {
+    p <- p %>%
+      ## deepOrange900(#BF360C)
+      set_node_attrs_ws(node_attr = "color", value = "#BF360C") %>%
+      ## deepOrange100(#FFCCBC):deepOrange50(#FBE9E7)
+      set_node_attrs_ws(node_attr = "fillcolor", value = "#FFCCBC:#FBE9E7")
+  }
+  p <- clear_selection(p)
 
   # print("set_edge_attrs()")
   p <- p %>%

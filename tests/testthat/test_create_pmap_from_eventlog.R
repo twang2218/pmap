@@ -11,11 +11,11 @@ test_that("create_pmap_from_eventlog() should handle simple graph", {
      timestamp = c(as.POSIXct("2017-10-01"), as.POSIXct("2017-10-20")),
      customer_id = c("c1", "c1"),
      event_name = c("a", "b"),
-     is_target = c(F, T),
+     event_type = c("campaign", "sale"),
      stringsAsFactors = FALSE
   )
 
-  p <- create_pmap_from_eventlog(eventlog)
+  p <- create_pmap_from_eventlog(eventlog, target_types = c("sale"))
 
   ndf <- get_node_df(p)
   expect_equal(nrow(ndf), 2)
@@ -50,12 +50,12 @@ test_that("create_pmap_from_eventlog() should handle complex graph", {
     number_of_sales = 5000
   )
 
-  expect_named(eventlog, c("timestamp", "customer_id", "event_name", "event_type", "is_target"), ignore.order = TRUE, ignore.case = TRUE)
+  expect_named(eventlog, c("timestamp", "customer_id", "event_name", "event_type"), ignore.order = TRUE, ignore.case = TRUE)
   expect_gt(nrow(eventlog), 1000)
 
   # print(str(eventlog))
   # print("create_pmap()")
-  p <- create_pmap_from_eventlog(eventlog)
+  p <- create_pmap_from_eventlog(eventlog, target_types = c("sale"))
 
   # print(generate_dot(p))
 

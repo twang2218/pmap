@@ -4,18 +4,20 @@
 \alias{create_pmap}
 \title{Create the event graph by given nodes and edges.}
 \usage{
-create_pmap(nodes, edges)
+create_pmap(nodes, edges, target_types = NULL)
 }
 \arguments{
 \item{nodes}{Event list}
 
 \item{edges}{Event transform list}
+
+\item{target_types}{A vector contains the target event types}
 }
 \description{
 \code{nodes} should be a \code{data.frame} containing following columns:
 \itemize{
-\item \code{name}: Nodes name, will be used as label. (\code{character})
-\item \code{is_target}: Whether it's final stage. (\code{logical})
+\item \code{name}: Event name, will be used as label. (\code{character})
+\item \code{type}: The event type (\code{character})
 }
 
 \code{edges} should be a \code{data.frame} containing following columns:

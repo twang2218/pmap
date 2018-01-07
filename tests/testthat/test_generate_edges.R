@@ -10,9 +10,10 @@ test_that("generate_edges() should handle minimal eventlog", {
       timestamp = c(as.POSIXct("2017-10-01"), as.POSIXct("2017-10-20")),
       customer_id = c("c1", "c1"),
       event_name = c("a", "b"),
-      is_target = c(F, T),
+      event_type = c("campaign", "sale"),
       stringsAsFactors = FALSE
-    )
+    ),
+    target_types = c("sale")
   )
 
   expect_equal(nrow(edges), 1)
@@ -22,15 +23,16 @@ test_that("generate_edges() should handle minimal eventlog", {
 })
 
 test_that("generate_edges() should handle eventlog without edge", {
-  # There is no customer event ends in `is_target == T`
+  # There is no customer event ends in `event_type == 'sale'`
   edges <- generate_edges(
     data.frame(
       timestamp = c(as.POSIXct("2017-10-20"), as.POSIXct("2017-10-01")),
       customer_id = c("c1", "c1"),
       event_name = c("a", "b"),
-      is_target = c(F, T),
+      event_type = c("compaign", "sale"),
       stringsAsFactors = FALSE
-    )
+    ),
+    target_types = c("sale")
   )
 
   expect_equal(nrow(edges), 0)
@@ -41,7 +43,7 @@ test_that("generate_edges() should handle empty eventlog", {
   expect_equal(
     nrow(
       generate_edges(
-        data.frame()
+        data.frame(), target_types = c("sale")
       )
     ),
     0
@@ -60,9 +62,10 @@ test_that("generate_edges() should count every paths if 'distinct_customer' is n
       ),
       customer_id = c("c1", "c1", "c2", "c1", "c1"),
       event_name = c("a", "b", "a", "a", "b"),
-      is_target = c(F, T, F, F, T),
+      event_type = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
-    )
+    ),
+    target_types = c("sale")
   )
 
   expect_equal(nrow(edges), 1)
@@ -84,10 +87,11 @@ test_that("generate_edges() should count unique 'customer_id' if 'distinct_custo
       ),
       customer_id = c("c1", "c1", "c2", "c1", "c1"),
       event_name = c("a", "b", "a", "a", "b"),
-      is_target = c(F, T, F, F, T),
+      event_type = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
-    distinct_customer = T
+    distinct_customer = T,
+    target_types = c("sale")
   )
 
   expect_equal(nrow(edges), 1)

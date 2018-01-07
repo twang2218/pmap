@@ -4,12 +4,14 @@
 \alias{generate_edges}
 \title{Generate edges from event logs}
 \usage{
-generate_edges(eventlog, distinct_customer = F)
+generate_edges(eventlog, distinct_customer = F, target_types = NULL)
 }
 \arguments{
 \item{eventlog}{Event logs}
 
 \item{distinct_customer}{Whether should only count unique customer}
+
+\item{target_types}{A vector contains the target event types}
 }
 \value{
 a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} columns.
@@ -20,6 +22,6 @@ a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} colum
 \item \code{timestamp}: timestamp column which indicates when event happened. (\code{POSIXct})
 \item \code{customer_id}: cutomer identifier. (\code{character})
 \item \code{event_name}: event name. (\code{character})
-\item \code{is_target}: whether it's the final stage. (\code{logical})
+\item \code{event_type}: event type. (\code{character})
 }
 }

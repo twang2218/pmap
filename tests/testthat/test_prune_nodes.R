@@ -6,7 +6,7 @@ test_that("prune_nodes() should be able prune nothing", {
   p <- create_pmap(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      is_target = c(F, F, F, T, T),
+      type = c("campaign", "campaign", "campaign", "sale", "sale"),
       amount = c(10, 30, 20, 40, 5),
       stringsAsFactors = F
     ),
@@ -15,7 +15,8 @@ test_that("prune_nodes() should be able prune nothing", {
       to = c("b", "c", "d", "e"),
       amount = c(10, 30, 20, 40),
       stringsAsFactors = F
-    )
+    ),
+    target_types = c("sale")
   )
 
   for (rank in c("amount", "in_degree", "out_degree")) {
@@ -34,7 +35,7 @@ test_that("prune_nodes() should be able prune half of the nodes", {
   p <- create_pmap(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      is_target = c(F, F, F, T, T),
+      type = c("campaign", "campaign", "campaign", "sale", "sale"),
       amount = c(10, 30, 20, 40, 5),
       stringsAsFactors = F
     ),
@@ -43,7 +44,8 @@ test_that("prune_nodes() should be able prune half of the nodes", {
       to = c("b", "c", "d", "e"),
       amount = c(10, 30, 20, 40),
       stringsAsFactors = F
-    )
+    ),
+    target_types = c("sale")
   )
 
   for (rank in c("amount", "in_degree", "out_degree")) {
@@ -63,7 +65,7 @@ test_that("prune_nodes() should be able prune all of the nodes", {
   p <- create_pmap(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      is_target = c(F, F, F, T, T),
+      type = c("campaign", "campaign", "campaign", "sale", "sale"),
       amount = c(10, 30, 20, 40, 5),
       stringsAsFactors = F
     ),
@@ -72,7 +74,8 @@ test_that("prune_nodes() should be able prune all of the nodes", {
       to = c("b", "c", "d", "e"),
       amount = c(10, 30, 20, 40),
       stringsAsFactors = F
-    )
+    ),
+    target_types = c("sale")
   )
 
   for (rank in c("amount", "in_degree", "out_degree")) {

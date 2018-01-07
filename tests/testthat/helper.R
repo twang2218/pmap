@@ -34,7 +34,6 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
     type = "campaign",
     timestamp = generate_random_datetimes(campaign_size, "2017-09-01", "2017-10-01"),
     amount = ceiling(runif(campaign_size, min = 0.001, max = 0.03) * customer_size),
-    is_target = F,
     stringsAsFactors = F
   )
   # print(campaigns)
@@ -45,7 +44,6 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
     type = "sale",
     timestamp = generate_random_datetimes(sales_size, "2017-09-10", "2017-10-01"),
     amount = ceiling(runif(sales_size, min = 0.05, max = 0.1) * customer_size),
-    is_target = T,
     stringsAsFactors = F
   )
   # print(sales)
@@ -67,7 +65,6 @@ send_campaign <- function(customers, campaign) {
     customer_id = sample_n(customers, campaign$amount)$id,
     event_name = campaign$name,
     event_type = campaign$type,
-    is_target = F,
     stringsAsFactors = F
   )
 
@@ -84,7 +81,6 @@ generate_sales <- function(customers, sale) {
     customer_id = sample_n(customers, sale$amount)$id,
     event_name = sale$name,
     event_type = sale$type,
-    is_target = T,
     stringsAsFactors = F
   )
 

@@ -11,14 +11,14 @@ test_that("generate_nodes() should handle minimal eventlog", {
       ),
       customer_id = c("c1", "c1"),
       event_name = c("a", "b"),
-      is_target = c(T, F),
+      event_type = c("campaign", "sale"),
       stringsAsFactors = FALSE
     )
   )
 
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b"))
-  expect_equal(nodes$is_target, c(T, F))
+  expect_equal(nodes$type, c("campaign", "sale"))
 })
 
 test_that("generate_nodes() should handle eventlog with duplicated events", {
@@ -33,14 +33,14 @@ test_that("generate_nodes() should handle eventlog with duplicated events", {
       ),
       customer_id = c("c1", "c1", "c2", "c1", "c1"),
       event_name = c("a", "b", "a", "b", "b"),
-      is_target = c(T, F, T, F, F),
+      event_type = c("sale", "campaign", "sale", "campaign", "campaign"),
       stringsAsFactors = FALSE
     )
   )
 
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b"))
-  expect_equal(nodes$is_target, c(T, F))
+  expect_equal(nodes$type, c("sale", "campaign"))
 })
 
 test_that("generate_nodes() should handle eventlog with space at begining or end of the 'event_name'", {
@@ -55,14 +55,14 @@ test_that("generate_nodes() should handle eventlog with space at begining or end
       ),
       customer_id = c("c1", "c1", "c2", "c1", "c1"),
       event_name = c(" a", "b b ", " a ", " b b ", " b b"),
-      is_target = c(T, F, T, F, F),
+      event_type = c("sale", "campaign", "sale", "campaign", "campaign"),
       stringsAsFactors = FALSE
     )
   )
 
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b b"))
-  expect_equal(nodes$is_target, c(T, F))
+  expect_equal(nodes$type, c("sale", "campaign"))
 })
 
 test_that("generate_nodes() should handle empty eventlog", {
@@ -81,7 +81,7 @@ test_that("generate_nodes() should count unique 'customer_id' if 'distinct_custo
       ),
       customer_id = c("c1", "c1", "c2", "c1", "c1"),
       event_name = c("a", "b", "a", "a", "b"),
-      is_target = c(F, T, F, F, T),
+      event_type = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     distinct_customer = T
@@ -90,6 +90,7 @@ test_that("generate_nodes() should count unique 'customer_id' if 'distinct_custo
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b"))
   expect_equal(nodes$amount, c(2, 1))
+  expect_equal(nodes$type, c("campaign", "sale"))
 })
 
 test_that("generate_nodes() should count every path if 'distinct_customer' is not set", {
@@ -104,7 +105,7 @@ test_that("generate_nodes() should count every path if 'distinct_customer' is no
       ),
       customer_id = c("c1", "c1", "c2", "c1", "c1"),
       event_name = c("a", "b", "a", "a", "b"),
-      is_target = c(F, T, F, F, T),
+      event_type = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     distinct_customer = F
@@ -113,4 +114,5 @@ test_that("generate_nodes() should count every path if 'distinct_customer' is no
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b"))
   expect_equal(nodes$amount, c(3, 2))
+  expect_equal(nodes$type, c("campaign", "sale"))
 })

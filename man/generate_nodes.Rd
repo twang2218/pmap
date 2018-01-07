@@ -12,13 +12,13 @@ generate_nodes(eventlog, distinct_customer = F)
 \item{distinct_customer}{Whether should only count unique customer}
 }
 \value{
-a nodes \code{data.frame} which represents a event list, it contains \code{name}, \code{is_target} and \code{amount} columns.
+a nodes \code{data.frame} which represents a event list, it contains \code{name}, \code{type} and \code{amount} columns.
 }
 \description{
 \code{eventlog} should be a \code{data.frame}, which contains, at least, following columns:
 \itemize{
 \item \code{event_name}: event name. (\code{character})
-\item \code{is_target}: whether it's the final stage. (\code{logical})
+\item \code{event_type}: event type. (\code{character})
 \item \code{amount}: how many time this event happened in the eventlog
 }
 
