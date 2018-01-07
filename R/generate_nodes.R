@@ -1,11 +1,3 @@
-# make 'R CMD check' happy
-utils::globalVariables(c(
-  # generate_nodes()
-  "event_name",
-  "is_target",
-  "name"
-))
-
 #' @title Generate nodes from event logs
 #'
 #' @param eventlog Event logs
@@ -31,6 +23,9 @@ utils::globalVariables(c(
 #' @importFrom stringr    str_trim
 #' @export
 generate_nodes <- function(eventlog, distinct_customer = F) {
+  # make 'R CMD check' happy
+  event_name <- is_target <- name <- customer_id <- NULL
+
   if (is.null(eventlog) || is.na(eventlog) || nrow(eventlog) == 0) {
     data.frame(
       event_name = character(0),

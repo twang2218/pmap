@@ -1,13 +1,3 @@
-# make 'R CMD check' happy
-utils::globalVariables(c(
-  # generate_edges()
-  "customer_id",
-  "timestamp",
-  "from",
-  "to"
-))
-
-
 #' @title Generate edges from event logs
 #' @usage generate_edges(eventlog, distinct_customer = F)
 #' @param eventlog Event logs
@@ -31,6 +21,9 @@ utils::globalVariables(c(
 #' @importFrom data.table   rbindlist
 #' @export
 generate_edges <- function(eventlog, distinct_customer = F) {
+  # make 'R CMD check' happy
+  customer_id <- timestamp <- from <- to <- NULL
+
   # sort by customer_id and timestamp
   eventlog <- data.table(eventlog) %>% arrange(customer_id, timestamp)
 

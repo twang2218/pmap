@@ -1,4 +1,3 @@
-
 #' @title Get an attribute key-pair string from an object
 #' @param object Given object, can be `list`, `matrix`, or `data.frame`
 #' @description Get an attribute list string from an object
