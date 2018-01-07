@@ -4,13 +4,15 @@
 \alias{generate_nodes}
 \title{Generate nodes from event logs}
 \usage{
-generate_nodes(eventlog)
+generate_nodes(eventlog, distinct_customer = F)
 }
 \arguments{
 \item{eventlog}{Event logs}
+
+\item{distinct_customer}{Whether should only count unique customer}
 }
 \value{
-a nodes \code{data.frame} which represents a event list, it contains \code{name}, \code{is_target} columns.
+a nodes \code{data.frame} which represents a event list, it contains \code{name}, \code{is_target} and \code{amount} columns.
 }
 \description{
 \code{eventlog} should be a \code{data.frame}, which contains, at least, following columns:
