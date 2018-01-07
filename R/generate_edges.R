@@ -2,7 +2,7 @@
 #' @usage generate_edges(eventlog, distinct_customer = F, target_types = NULL)
 #' @param eventlog Event logs
 #' @param distinct_customer Whether should only count unique customer
-#' @param target_types A vector contains the target event types
+#' @param target_types A vector contains the target event types. By default, it's `NULL`, which means every paths count. If it's contains the target event type, then only paths reaches the target event count.
 #' @description `eventlog` should be a `data.frame` or `data.table`, which contains, at least, following columns:
 #'
 #'  * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
@@ -43,11 +43,30 @@ generate_edges <- function(eventlog, distinct_customer = F, target_types = NULL)
   temp_edges <- list()
   previous <- NA
 
+  # function to append edges
+  append_edges <- function(edges, new_edges) {
+    if (is.null(edges)) {
+      edges <- list()
+    }
+    if (length(new_edges) > 0) {
+      for (i in 1:length(new_edges)) {
+        edges[[length(edges) + 1]] <- new_edges[[i]]
+      }
+    }
+    return(edges)
+  }
+
   # `apply()` is about up to 10x faster than `for-loop`
   apply(eventlog, 1, function(current) {
     if (!any(is.na(previous))) {
       # pre-process
+      # Reached another customer
       if (current["customer_id"] != previous["customer_id"]) {
+        if (is.null(target_types) || length(target_types) == 0) {
+          # Not have target_types, so every path count.
+          edges <<- append_edges(edges, temp_edges)
+        }
+
         # it's a new customer, so set it to 'previous' and continue to the next record
         previous <<- current
         # clear temp_edges
@@ -66,11 +85,10 @@ generate_edges <- function(eventlog, distinct_customer = F, target_types = NULL)
 
     # post-process
     if (current["event_type"] %in% target_types) {
-      # put temp_edges to final edges set
+      # Has target_types, so, only paths reaches the 'target_types' count.
+      # put temp_edges to final edges set as it reached the 'target_types'
       if (length(temp_edges) > 0) {
-        for (i in 1:length(temp_edges)) {
-          edges[[length(edges) + 1]] <<- temp_edges[[i]]
-        }
+        edges <<- append_edges(edges, temp_edges)
       }
       # target events should not be the starting point
       previous <<- NA
@@ -80,6 +98,11 @@ generate_edges <- function(eventlog, distinct_customer = F, target_types = NULL)
       previous <<- current
     }
   })
+
+  if (length(temp_edges) > 0 && (is.null(target_types) || length(target_types) == 0)) {
+    # Some edges remains in the 'temp_edges' and we don't care about the 'target_types', so every path count.
+    edges <- append_edges(edges, temp_edges)
+  }
 
   # Cannot find any edges, so return an empty data frame.
   if (length(edges) == 0) {

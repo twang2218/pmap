@@ -22,7 +22,21 @@ test_that("generate_edges() should handle minimal eventlog", {
   expect_equal(edges$amount, 1)
 })
 
-test_that("generate_edges() should handle eventlog without edge", {
+test_that("generate_edges() should handle eventlog without specifies 'target_types'", {
+  edges <- generate_edges(
+    data.frame(
+      timestamp = c(as.POSIXct("2017-10-20"), as.POSIXct("2017-10-01")),
+      customer_id = c("c1", "c1"),
+      event_name = c("a", "b"),
+      event_type = c("compaign", "sale"),
+      stringsAsFactors = FALSE
+    )
+  )
+
+  expect_equal(nrow(edges), 1)
+})
+
+test_that("generate_edges() should handle eventlog without edge reaches 'target_types'", {
   # There is no customer event ends in `event_type == 'sale'`
   edges <- generate_edges(
     data.frame(
