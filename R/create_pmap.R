@@ -39,6 +39,10 @@ create_pmap <- function(nodes, edges) {
     left_join(nodes_inbound, by = "name") %>%
     left_join(nodes_outbound, by = "name")
 
+  # Set all 'NA' to zero
+  nodes$inbound[is.na(nodes$inbound)] <- 0
+  nodes$outbound[is.na(nodes$outbound)] <- 0
+
   # print("Converting factor to character [nodes]...")
   nodes <- nodes %>%
     mutate_if(is.factor, as.character) %>%
