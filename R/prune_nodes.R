@@ -2,10 +2,10 @@
 #' @param p process map object created by `create_pmap()` function
 #' @param percentage how many percentage of the nodes should be pruned.
 #' @param rank how to rank the nodes.
-#'  `count` means ranking the nodes by `count` column (default);
+#'  `amount` means ranking the nodes by `amount` column (default);
 #'  `in_degree` means ranking the nodes by `in_degree`;
 #'  `out_degree` means ranking the nodes by `out_degree`;
-#' @usage prune_nodes(p, percentage = 0.2, rank = "count")
+#' @usage prune_nodes(p, percentage = 0.2, rank = "amount")
 #' @description Prune nodes based on given percentage
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        arrange
@@ -14,13 +14,13 @@
 #' @importFrom DiagrammeR   delete_nodes_ws
 #' @importFrom utils        head
 #' @export
-prune_nodes <- function(p, percentage = 0.2, rank = "count") {
+prune_nodes <- function(p, percentage = 0.2, rank = "amount") {
   # make 'R CMD Check' happy
-  value <- count <- inbound <- outbound <- NULL
+  amount <- inbound <- outbound <- NULL
 
   # Ranking the nodes
   ranked_nodes <- switch(rank,
-    count = get_node_df(p) %>% arrange(count),
+    amount = get_node_df(p) %>% arrange(amount),
     in_degree = get_node_df(p) %>% arrange(inbound),
     out_degree = get_node_df(p) %>% arrange(outbound)
   )

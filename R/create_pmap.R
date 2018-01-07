@@ -10,11 +10,12 @@
 #' `edges` should be a `data.frame` containing following columns:
 #'   * `from`: the begining event of the edge. (`character`)
 #'   * `to`: the ending event of the edge (`character`)
-#'   * `value`: How many of customer affected by the given event. (`numeric`)
+#'   * `amount`: How many of customer affected by the given event. (`numeric`)
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        mutate
 #' @importFrom dplyr        mutate_if
 #' @importFrom dplyr        left_join
+#' @importFrom dplyr        summarize
 #' @importFrom DiagrammeR   create_graph
 #' @importFrom DiagrammeR   add_nodes_from_table
 #' @importFrom DiagrammeR   add_edges_from_table
@@ -24,16 +25,16 @@
 #' @export
 create_pmap <- function(nodes, edges) {
   # make 'R CMD Check' happy
-  value <- NULL
+  amount <- NULL
 
   # Collect inbound and outbound count
   nodes_outbound <- edges %>%
     group_by(name = from) %>%
-    summarize(outbound = sum(value))
+    summarize(outbound = sum(amount))
 
   nodes_inbound <- edges %>%
     group_by(name = to) %>%
-    summarize(inbound = sum(value))
+    summarize(inbound = sum(amount))
 
   nodes <- nodes %>%
     left_join(nodes_inbound, by = "name") %>%
@@ -73,8 +74,9 @@ create_pmap <- function(nodes, edges) {
     )
 
   # print("add_edges_from_table()")
-  p <- p %>% add_edges_from_table(
-      table = edges,
+  p <- p %>%
+    add_edges_from_table(
+      table = edges %>% select(-amount),
       from_col = "from",
       to_col = "to",
       ndf_mapping = "name_without_space")
@@ -117,9 +119,11 @@ create_pmap <- function(nodes, edges) {
 
   # print("set_edge_attrs()")
   p <- p %>%
+    # Add amount attribute
+    set_edge_attrs(edge_attr = "amount", values = edges$amount) %>%
     # Edge attributes
-    set_edge_attrs(edge_attr = "penwidth", values = (log10(edges$value) + 1)) %>%
-    set_edge_attrs(edge_attr = "label", values = edges$value) %>%
+    set_edge_attrs(edge_attr = "penwidth", values = (log10(edges$amount) + 1)) %>%
+    set_edge_attrs(edge_attr = "label", values = edges$amount) %>%
     set_edge_attrs(edge_attr = "tooltip", values = edges$tooltips) %>%
     set_edge_attrs(edge_attr = "labeltooltip", values = edges$tooltips)
 

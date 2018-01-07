@@ -41,7 +41,7 @@ test_that("create_pmap()", {
   # print("generate_edges()")
   edges <- generate_edges(eventlog)
 
-  expect_named(edges, c("from", "to", "value"))
+  expect_named(edges, c("from", "to", "amount"))
   expect_gt(nrow(edges), 10)
 
   # print(str(edges))

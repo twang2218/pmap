@@ -18,7 +18,7 @@ utils::globalVariables(c(
 #'  * `customer_id`: cutomer identifier. (`character`)
 #'  * `event_name`: event name. (`character`)
 #'  * `is_target`: whether it's the final stage. (`logical`)
-#' @return a `data.frame` of edges with `from`, `to` and `value` columns.
+#' @return a `data.frame` of edges with `from`, `to` and `amount` columns.
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        arrange
 #' @importFrom dplyr        distinct
@@ -37,7 +37,7 @@ generate_edges <- function(eventlog, distinct_customer = F) {
   empty_edges <- data.frame(
     from = character(0),
     to = character(0),
-    value = numeric(0)
+    amount = numeric(0)
   )
 
   # Return empty edges if given eventlog is empty
@@ -100,8 +100,8 @@ generate_edges <- function(eventlog, distinct_customer = F) {
 
   edges <- edges %>%
     group_by(from, to) %>%
-    # Add attributes: `value` => count
-    summarize(value = n()) %>%
+    # Add attributes: `amount` => count
+    summarize(amount = n()) %>%
     ungroup() %>%
     mutate_if(is.factor, as.character) %>%
     arrange(from, to)

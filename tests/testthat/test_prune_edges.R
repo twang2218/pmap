@@ -12,7 +12,7 @@ test_that("prune_edges() should be able prune nothing", {
     edges = data.frame(
       from = c("a", "b", "b", "a"),
       to = c("b", "c", "d", "e"),
-      value = c(10, 20, 30, 40),
+      amount = c(10, 20, 30, 40),
       stringsAsFactors = F
     )
   )
@@ -37,7 +37,7 @@ test_that("prune_edges() should be able prune half of the edges", {
     edges = data.frame(
       from = c("a", "b", "b", "a"),
       to = c("b", "c", "d", "e"),
-      value = c(10, 20, 30, 40),
+      amount = c(10, 20, 30, 40),
       stringsAsFactors = F
     )
   )
@@ -45,7 +45,7 @@ test_that("prune_edges() should be able prune half of the edges", {
   edges_count_before_prune <- nrow(get_edge_df(p))
 
   # 0.5 * 4 = 2, so `prune_edges()` should prune 2 edges,
-  # which should be "a => b", "b => c" according to the `value`
+  # which should be "a => b", "b => c" according to the `amount`
   p <- prune_edges(p, percentage = 0.5)
 
   edges_count_after_prune <- nrow(get_edge_df(p))
@@ -64,7 +64,7 @@ test_that("prune_edges() should be able prune all of the edges", {
     edges = data.frame(
       from = c("a", "b", "b", "a"),
       to = c("b", "c", "d", "e"),
-      value = c(10, 20, 30, 40),
+      amount = c(10, 20, 30, 40),
       stringsAsFactors = F
     )
   )

@@ -4,7 +4,7 @@
 \alias{prune_nodes}
 \title{Prune nodes based on given percentage}
 \usage{
-prune_nodes(p, percentage = 0.2, rank = "count")
+prune_nodes(p, percentage = 0.2, rank = "amount")
 }
 \arguments{
 \item{p}{process map object created by \code{create_pmap()} function}
@@ -12,7 +12,7 @@ prune_nodes(p, percentage = 0.2, rank = "count")
 \item{percentage}{how many percentage of the nodes should be pruned.}
 
 \item{rank}{how to rank the nodes.
-\code{count} means ranking the nodes by \code{count} column (default);
+\code{amount} means ranking the nodes by \code{amount} column (default);
 \code{in_degree} means ranking the nodes by \code{in_degree};
 \code{out_degree} means ranking the nodes by \code{out_degree};}
 }

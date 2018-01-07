@@ -7,18 +7,18 @@ test_that("prune_nodes() should be able prune nothing", {
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
       is_target = c(F, F, F, T, T),
-      count = c(10, 30, 20, 40, 5),
+      amount = c(10, 30, 20, 40, 5),
       stringsAsFactors = F
     ),
     edges = data.frame(
       from = c("a", "b", "b", "a"),
       to = c("b", "c", "d", "e"),
-      value = c(10, 30, 20, 40),
+      amount = c(10, 30, 20, 40),
       stringsAsFactors = F
     )
   )
 
-  for (rank in c("count", "in_degree", "out_degree")) {
+  for (rank in c("amount", "in_degree", "out_degree")) {
     nodes_count_before_prune <- nrow(get_node_df(p))
 
     # 0.1 * 4 = 0.4 ~= 0, so `prune_nodes()` should prune nothing
@@ -35,22 +35,22 @@ test_that("prune_nodes() should be able prune half of the nodes", {
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
       is_target = c(F, F, F, T, T),
-      count = c(10, 30, 20, 40, 5),
+      amount = c(10, 30, 20, 40, 5),
       stringsAsFactors = F
     ),
     edges = data.frame(
       from = c("a", "b", "b", "a"),
       to = c("b", "c", "d", "e"),
-      value = c(10, 30, 20, 40),
+      amount = c(10, 30, 20, 40),
       stringsAsFactors = F
     )
   )
 
-  for (rank in c("count", "in_degree", "out_degree")) {
+  for (rank in c("amount", "in_degree", "out_degree")) {
     nodes_count_before_prune <- nrow(get_node_df(p))
 
     # 0.5 * 4 = 2, so `prune_nodes()` should prune 2 nodes,
-    # which should be "a => b", "b => c" according to the `value`
+    # which should be "a => b", "b => c" according to the `amount`
     p <- prune_nodes(p, percentage = 0.5, rank = rank)
 
     nodes_count_after_prune <- nrow(get_node_df(p))
@@ -64,18 +64,18 @@ test_that("prune_nodes() should be able prune all of the nodes", {
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
       is_target = c(F, F, F, T, T),
-      count = c(10, 30, 20, 40, 5),
+      amount = c(10, 30, 20, 40, 5),
       stringsAsFactors = F
     ),
     edges = data.frame(
       from = c("a", "b", "b", "a"),
       to = c("b", "c", "d", "e"),
-      value = c(10, 30, 20, 40),
+      amount = c(10, 30, 20, 40),
       stringsAsFactors = F
     )
   )
 
-  for (rank in c("count", "in_degree", "out_degree")) {
+  for (rank in c("amount", "in_degree", "out_degree")) {
     nodes_count_before_prune <- nrow(get_node_df(p))
 
     # 1 * 4 = 4, so `prune_nodes()` should prune all 4 nodes

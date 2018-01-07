@@ -12,7 +12,7 @@ generate_edges(eventlog, distinct_customer = F)
 \item{distinct_customer}{Whether should only count unique customer}
 }
 \value{
-a \code{data.frame} of edges with \code{from}, \code{to} and \code{value} columns.
+a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} columns.
 }
 \description{
 \code{eventlog} should be a \code{data.frame} or \code{data.table}, which contains, at least, following columns:

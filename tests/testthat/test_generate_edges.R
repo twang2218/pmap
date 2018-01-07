@@ -18,7 +18,7 @@ test_that("generate_edges() should handle minimal eventlog", {
   expect_equal(nrow(edges), 1)
   expect_equal(edges$from, "a")
   expect_equal(edges$to, "b")
-  expect_equal(edges$value, 1)
+  expect_equal(edges$amount, 1)
 })
 
 test_that("generate_edges() should handle eventlog without edge", {
@@ -68,7 +68,7 @@ test_that("generate_edges() should count every paths if 'distinct_customer' is n
   expect_equal(nrow(edges), 1)
   expect_equal(edges$from, "a")
   expect_equal(edges$to, "b")
-  expect_equal(edges$value, 2)
+  expect_equal(edges$amount, 2)
 })
 
 
@@ -93,5 +93,5 @@ test_that("generate_edges() should count unique 'customer_id' if 'distinct_custo
   expect_equal(nrow(edges), 1)
   expect_equal(edges$from, "a")
   expect_equal(edges$to, "b")
-  expect_equal(edges$value, 1)
+  expect_equal(edges$amount, 1)
 })

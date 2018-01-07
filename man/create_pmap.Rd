@@ -22,6 +22,6 @@ create_pmap(nodes, edges)
 \itemize{
 \item \code{from}: the begining event of the edge. (\code{character})
 \item \code{to}: the ending event of the edge (\code{character})
-\item \code{value}: How many of customer affected by the given event. (\code{numeric})
+\item \code{amount}: How many of customer affected by the given event. (\code{numeric})
 }
 }

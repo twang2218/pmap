@@ -33,7 +33,7 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
     name = paste0("Campaign ", 1:campaign_size),
     type = "campaign",
     timestamp = generate_random_datetimes(campaign_size, "2017-09-01", "2017-10-01"),
-    percentage = runif(campaign_size, min = 0.001, max = 0.03),
+    amount = ceiling(runif(campaign_size, min = 0.001, max = 0.03) * customer_size),
     is_target = F,
     stringsAsFactors = F
   )
@@ -44,7 +44,7 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
     name = paste0("Sale ", 1:sales_size),
     type = "sale",
     timestamp = generate_random_datetimes(sales_size, "2017-09-10", "2017-10-01"),
-    percentage = runif(sales_size, min = 0.05, max = 0.1),
+    amount = ceiling(runif(sales_size, min = 0.05, max = 0.1) * customer_size),
     is_target = T,
     stringsAsFactors = F
   )
@@ -64,7 +64,7 @@ generate_datasets <- function(customer_size, campaign_size, sales_size) {
 send_campaign <- function(customers, campaign) {
   event_logs_for_the_campaign <- data.table(
     timestamp = campaign$timestamp,
-    customer_id = sample_frac(customers, campaign$percentage)$id,
+    customer_id = sample_n(customers, campaign$amount)$id,
     event_name = campaign$name,
     event_type = campaign$type,
     is_target = F,
@@ -79,10 +79,9 @@ send_campaign <- function(customers, campaign) {
 
 # Simulate sales
 generate_sales <- function(customers, sale) {
-  sold_customers <- sample_frac(customers, sale$percentage)
   event_logs_for_the_sale <- data.table(
-    timestamp = generate_random_datetimes(nrow(sold_customers), sale$timestamp, "2017-10-01"),
-    customer_id = sold_customers$id,
+    timestamp = generate_random_datetimes(sale$amount, sale$timestamp, "2017-10-01"),
+    customer_id = sample_n(customers, sale$amount)$id,
     event_name = sale$name,
     event_type = sale$type,
     is_target = T,
