@@ -113,3 +113,29 @@ test_that("generate_edges() should count unique 'customer_id' if 'distinct_custo
   expect_equal(edges$to, "b")
   expect_equal(edges$amount, 1)
 })
+
+test_that("generate_edges() should not count paths from 'target_types'", {
+  # browser()
+  edges <- generate_edges(
+    data.frame(
+      timestamp = c(
+        as.POSIXct("2017-10-01"),
+        as.POSIXct("2017-10-02"),
+        as.POSIXct("2017-10-03"),
+        as.POSIXct("2017-10-04"),
+        as.POSIXct("2017-10-05"),
+        as.POSIXct("2017-10-06"),
+        as.POSIXct("2017-10-20")
+      ),
+      customer_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
+      event_name = c("a", "b", "a", "b", "b", "a", "b"),
+      event_type = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
+      stringsAsFactors = FALSE
+    ),
+    target_types = c("sale")
+  )
+  expect_equal(nrow(edges), 1)
+  expect_equal(edges$from, "a")
+  expect_equal(edges$to, "b")
+  expect_equal(edges$amount, 2)
+})

@@ -11,7 +11,7 @@ generate_edges(eventlog, distinct_customer = F, target_types = NULL)
 
 \item{distinct_customer}{Whether should only count unique customer}
 
-\item{target_types}{A vector contains the target event types}
+\item{target_types}{A vector contains the target event types. By default, it's \code{NULL}, which means every paths count. If it's contains the target event type, then only paths reaches the target event count.}
 }
 \value{
 a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} columns.
