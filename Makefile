@@ -9,6 +9,9 @@ test:
 build:
 	Rscript -e "devtools::build()"
 
+release: check
+	Rscript -e "devtools::release(check = FALSE, spelling = NULL)"
+
 check:
 	Rscript -e "devtools::check()"
 
