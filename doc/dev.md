@@ -19,5 +19,7 @@ use_travis()
 use_appveyor()
 use_coverage()
 
+usethis::use_cran_comments()
+
 document()
 ```
