@@ -1,6 +1,6 @@
 Package: pmap
 Title: Process Map in R
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person("Tao", "Wang", email = "twang2218@gmail.com", role = c("aut", "cre"))
 Description: Provides tools for generate process map from event Logs.
 Depends: R (>= 3.2)
