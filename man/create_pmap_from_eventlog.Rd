@@ -51,5 +51,30 @@ Create the process map by analysing given \code{eventlog} and extract the nodes 
 > render_pmap(p)
 }
 
-\if{html}{\figure{example_create_pmap_from_eventlog.png}{options: alt="Figure: example_create_pmap_from_eventlog.png"}}
+\if{html}{\figure{example.create_pmap_from_eventlog.simple.png}{options: alt="Figure: example.create_pmap_from_eventlog.simple.png"}}
+
+Or for more complex event log:\preformatted{> eventlog <- generate_random_eventlog(
+  size_of_eventlog = 10000, 
+  number_of_customers = 2000, 
+  event_catalogs = c("campaign", "sale"), 
+  event_catalogs_size = c(8, 2))
+> head(eventlog)
+            timestamp   customer_id         event_name event_type
+1 2017-01-01 02:40:20 Customer 1204 Event 7 (campaign)   campaign
+2 2017-01-01 03:10:31 Customer 1554 Event 5 (campaign)   campaign
+3 2017-01-01 04:01:51  Customer 546 Event 4 (campaign)   campaign
+4 2017-01-01 05:04:09 Customer 1119     Event 9 (sale)       sale
+5 2017-01-01 06:43:11 Customer 1368 Event 2 (campaign)   campaign
+6 2017-01-01 07:43:06  Customer 986 Event 8 (campaign)   campaign
+> str(eventlog)
+'data.frame':   10000 obs. of  4 variables:
+ $ timestamp  : POSIXct, format: "2017-01-01 02:40:20" "2017-01-01 03:10:31" ...
+ $ customer_id: chr  "Customer 1204" "Customer 1554" "Customer 546" "Customer 1119" ...
+ $ event_name : chr  "Event 7 (campaign)" "Event 5 (campaign)" "Event 4 (campaign)" "Event 9 (sale)" ...
+ $ event_type : chr  "campaign" "campaign" "campaign" "sale" ...
+> p <- create_pmap_from_eventlog(eventlog, target_types = c("sale"))
+> render_pmap(p)
+}
+
+\if{html}{\figure{example.create_pmap_from_eventlog.complex.png}{options: width="100\%" alt="Figure: example.create_pmap_from_eventlog.complex.png"}}
 }
