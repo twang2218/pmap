@@ -3,7 +3,7 @@
 #' @param eventlog Event log
 #' @param distinct_customer Whether should count distinct customer only. Default is `FALSE`.
 #' @param target_types A vector contains the target event types
-#' @description Create the process map by analysing given `eventlog` and extract the nodes by `generate_nodes()` and edges by `generate_edges()`.
+#' @description Create the process map by analyzing the given `eventlog` and extract the nodes by `generate_nodes()` and edges by `generate_edges()`.
 #' @details
 #' ```R
 #' > eventlog <- data.frame(

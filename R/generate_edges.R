@@ -6,7 +6,7 @@
 #' @description `eventlog` should be a `data.frame` or `data.table`, which contains, at least, following columns:
 #'
 #'  * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
-#'  * `customer_id`: cutomer identifier. (`character`)
+#'  * `customer_id`: customer identifier. (`character`)
 #'  * `event_name`: event name. (`character`)
 #'  * `event_type`: event type. (`character`)
 #' @return a `data.frame` of edges with `from`, `to` and `amount` columns.

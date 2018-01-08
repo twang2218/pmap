@@ -22,7 +22,7 @@ create_pmap(nodes, edges, target_types = NULL)
 
 \code{edges} should be a \code{data.frame} containing following columns:
 \itemize{
-\item \code{from}: the begining event of the edge. (\code{character})
+\item \code{from}: the beginning event of the edge. (\code{character})
 \item \code{to}: the ending event of the edge (\code{character})
 \item \code{amount}: How many of customer affected by the given event. (\code{numeric})
 }

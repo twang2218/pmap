@@ -19,7 +19,7 @@ a nodes \code{data.frame} which represents a event list, it contains \code{name}
 \itemize{
 \item \code{event_name}: event name. (\code{character})
 \item \code{event_type}: event type. (\code{character})
-\item \code{amount}: how many time this event happened in the eventlog
+\item \code{amount}: how many time this event happened in the \code{eventlog}
 }
 
 \code{generate_nodes()} will generate the node list from the given \code{eventlog} for the graph purpose.

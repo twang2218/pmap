@@ -43,7 +43,7 @@ test_that("generate_nodes() should handle eventlog with duplicated events", {
   expect_equal(nodes$type, c("sale", "campaign"))
 })
 
-test_that("generate_nodes() should handle eventlog with space at begining or end of the 'event_name'", {
+test_that("generate_nodes() should handle eventlog with space at beginning or end of the 'event_name'", {
   nodes <- generate_nodes(
     data.frame(
       timestamp = c(

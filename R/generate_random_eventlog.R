@@ -1,14 +1,14 @@
-#' @title Generate Random Eventlog
+#' @title Generate random event log
 #' @param size_of_eventlog The size of generated event log
 #' @param number_of_customers How many customers in the simulation
-#' @param event_catalogs A data frame contains the event catelog
+#' @param event_catalogs A data frame contains the event catalog
 #' @param event_catalogs_size How many event types in each event catalog
 #' @usage generate_random_eventlog(
 #'      size_of_eventlog = 1000, 
 #'      number_of_customers = 20, 
 #'      event_catalogs = c("normal", "target"), 
 #'      event_catalogs_size = c(8, 2))
-#' @description This function provides the ability to randomly generate the eventlog data frame based on given parameters.
+#' @description This function provides the ability to randomly generate the `eventlog` data frame based on given parameters.
 #' @details
 #' Example
 #' ```R

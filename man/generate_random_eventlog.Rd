@@ -2,7 +2,7 @@
 % Please edit documentation in R/generate_random_eventlog.R
 \name{generate_random_eventlog}
 \alias{generate_random_eventlog}
-\title{Generate Random Eventlog}
+\title{Generate random event log}
 \usage{
 generate_random_eventlog(
      size_of_eventlog = 1000, 
@@ -15,12 +15,12 @@ generate_random_eventlog(
 
 \item{number_of_customers}{How many customers in the simulation}
 
-\item{event_catalogs}{A data frame contains the event catelog}
+\item{event_catalogs}{A data frame contains the event catalog}
 
 \item{event_catalogs_size}{How many event types in each event catalog}
 }
 \description{
-This function provides the ability to randomly generate the eventlog data frame based on given parameters.
+This function provides the ability to randomly generate the \code{eventlog} data frame based on given parameters.
 }
 \details{
 Example\preformatted{> eventlog <- generate_random_eventlog(500, 20)

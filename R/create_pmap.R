@@ -9,7 +9,7 @@
 #'   * `type`: The event type (`character`)
 #'
 #' `edges` should be a `data.frame` containing following columns:
-#'   * `from`: the begining event of the edge. (`character`)
+#'   * `from`: the beginning event of the edge. (`character`)
 #'   * `to`: the ending event of the edge (`character`)
 #'   * `amount`: How many of customer affected by the given event. (`numeric`)
 #' @seealso [create_pmap_from_eventlog]
@@ -58,7 +58,7 @@ create_pmap <- function(nodes, edges, target_types = NULL) {
       tooltip = get_attrs_desc(nodes),
       name_without_space = gsub(" ", "_", nodes$name)
     ) %>%
-    rename(catelog = type)
+    rename(catalog = type)
   # print(str(nodes))
 
   # print("Converting factor to character [edges]...")
@@ -79,7 +79,7 @@ create_pmap <- function(nodes, edges, target_types = NULL) {
     p,
     table = nodes,
     label_col = "name",
-    type_col = "catelog"
+    type_col = "catalog"
   )
 
   # print("add_edges_from_table()")

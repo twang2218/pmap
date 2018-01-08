@@ -7,7 +7,7 @@
 #'
 #'  * `event_name`: event name. (`character`)
 #'  * `event_type`: event type. (`character`)
-#'  * `amount`: how many time this event happened in the eventlog
+#'  * `amount`: how many time this event happened in the `eventlog`
 #'
 #' `generate_nodes()` will generate the node list from the given `eventlog` for the graph purpose.
 #'
