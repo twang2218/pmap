@@ -19,3 +19,6 @@ prune_nodes(p, percentage = 0.2, rank = "amount")
 \description{
 Prune nodes based on given percentage
 }
+\seealso{
+\link{prune_edges}
+}

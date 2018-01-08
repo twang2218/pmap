@@ -14,3 +14,6 @@ render_pmap(p, title = NULL)
 \description{
 Basically, this function just called \code{DiagrammeR::render_graph()}
 }
+\seealso{
+\link{create_pmap_from_eventlog}
+}

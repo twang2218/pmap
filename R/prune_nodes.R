@@ -7,6 +7,7 @@
 #'  `out_degree` means ranking the nodes by `out_degree`;
 #' @usage prune_nodes(p, percentage = 0.2, rank = "amount")
 #' @description Prune nodes based on given percentage
+#' @seealso [prune_edges]
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        arrange
 #' @importFrom DiagrammeR   get_node_df

@@ -27,3 +27,6 @@ create_pmap(nodes, edges, target_types = NULL)
 \item \code{amount}: How many of customer affected by the given event. (\code{numeric})
 }
 }
+\seealso{
+\link{create_pmap_from_eventlog}
+}

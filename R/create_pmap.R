@@ -12,6 +12,7 @@
 #'   * `from`: the begining event of the edge. (`character`)
 #'   * `to`: the ending event of the edge (`character`)
 #'   * `amount`: How many of customer affected by the given event. (`numeric`)
+#' @seealso [create_pmap_from_eventlog]
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        mutate
 #' @importFrom dplyr        mutate_if

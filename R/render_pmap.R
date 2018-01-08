@@ -3,6 +3,7 @@
 #' @param p the process map object created by `create_pmap()` function
 #' @param title The title of rendered graph
 #' @description Basically, this function just called `DiagrammeR::render_graph()`
+#' @seealso [create_pmap_from_eventlog]
 #' @importFrom DiagrammeR   %>%
 #' @importFrom DiagrammeR   render_graph
 #' @importFrom DiagrammeR   select_nodes_by_degree
