@@ -93,7 +93,7 @@ create_pmap <- function(nodes, edges, target_types = NULL) {
   }
 
   # print("add_global_graph_attrs()")
-  p <- p %>% 
+  p <- p %>%
     # graph [ layout = "dot" ]
     add_global_graph_attrs(attr_type = "graph", attr = "layout", value = "dot") %>%
     # node [...]
@@ -119,10 +119,10 @@ create_pmap <- function(nodes, edges, target_types = NULL) {
     set_node_attrs(node_attr = "fontsize", values = (log10(nodes$inbound + nodes$outbound) + 10)) %>%
     set_node_attrs(node_attr = "label", values = nodes$name) %>%
     set_node_attrs(node_attr = "tooltip", values = nodes$tooltip)
-    
+
   # print("set_edge_attrs() for target nodes")
   p <- select_nodes(p, conditions = type %in% target_types)
-  if (length(get_selection(p)) > 0) {
+  if (!any(is.na(get_selection(p)))) {
     p <- p %>%
       ## deepOrange900(#BF360C)
       set_node_attrs_ws(node_attr = "color", value = "#BF360C") %>%
