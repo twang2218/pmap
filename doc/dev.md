@@ -20,6 +20,7 @@ use_appveyor()
 use_coverage()
 
 usethis::use_cran_comments()
+usethis::use_news_md()
 
 document()
 ```
@@ -42,5 +43,8 @@ install.packages("rsvg")
 Export
 
 ```R
-DiagrammeR::export_graph(p, file_name = "mygraph.svg", file_type = "svg")
+library(dplyr)
+library(DiagrammeR)
+
+p %>% render_pmap() %>% export_graph(file_name = "mygraph.svg", file_type = "svg")
 ```
