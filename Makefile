@@ -10,7 +10,7 @@ build:
 	Rscript -e "devtools::build()"
 
 release: check
-	Rscript -e "devtools::release(check = FALSE, spelling = NULL)"
+	Rscript -e "options(repos = c(CRAN = 'https://cran.rstudio.com/')); devtools::release(check = FALSE, spelling = NULL)"
 
 check:
 	Rscript -e "devtools::check()"
