@@ -1,5 +1,5 @@
 #' @title Create the process map from event log directly
-#' @usage create_pmap_from_eventlog(eventlog, distinct_customer = FALSE, target_types = NULL)
+#' @usage create_pmap(eventlog, distinct_customer = FALSE, target_types = NULL)
 #' @param eventlog Event log
 #' @param distinct_customer Whether should count distinct customer only. Default is `FALSE`.
 #' @param target_types A vector contains the target event types
@@ -36,10 +36,10 @@
 #' 8  2017-10-08          c1          c       sale
 #' 9  2017-10-09          c1          a   campaign
 #' 10 2017-10-10          c1          d       sale
-#' > p <- create_pmap_from_eventlog(eventlog, target_types = c("sale"))
+#' > p <- create_pmap(eventlog, target_types = c("sale"))
 #' > render_pmap(p)
 #' ```
-#' \if{html}{\figure{example.create_pmap_from_eventlog.simple.png}{options: alt="Figure: example.create_pmap_from_eventlog.simple.png"}}
+#' \if{html}{\figure{example.create_pmap.simple.png}{options: alt="Figure: example.create_pmap.simple.png"}}
 #'
 #' Or for more complex event log:
 #'
@@ -63,13 +63,13 @@
 #'  $ customer_id: chr  "Customer 1204" "Customer 1554" "Customer 546" "Customer 1119" ...
 #'  $ event_name : chr  "Event 7 (campaign)" "Event 5 (campaign)" "Event 4 (campaign)" "Event 9 (sale)" ...
 #'  $ event_type : chr  "campaign" "campaign" "campaign" "sale" ...
-#' > p <- create_pmap_from_eventlog(eventlog, target_types = c("sale"))
+#' > p <- create_pmap(eventlog, target_types = c("sale"))
 #' > render_pmap(p)
 #' ```
-#' \if{html}{\figure{example.create_pmap_from_eventlog.complex.png}{options: width="100\%" alt="Figure: example.create_pmap_from_eventlog.complex.png"}}
+#' \if{html}{\figure{example.create_pmap.complex.png}{options: width="100\%" alt="Figure: example.create_pmap.complex.png"}}
 #'
 #' @export
-create_pmap_from_eventlog <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
+create_pmap <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
   nodes <- generate_nodes(eventlog, distinct_customer)
   edges <- generate_edges(eventlog, distinct_customer, target_types)
   p <- create_pmap_graph(nodes, edges, target_types)

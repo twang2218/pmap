@@ -53,5 +53,5 @@ p <- create_pmap_graph(nodes, edges, target_types = c("target"))
 render_pmap(p)
 }
 \seealso{
-\link{create_pmap_from_eventlog}
+\link{create_pmap}
 }

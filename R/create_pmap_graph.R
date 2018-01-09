@@ -35,7 +35,7 @@
 #' #  6 Event 1 (normal) Event 5 (normal)      10
 #' p <- create_pmap_graph(nodes, edges, target_types = c("target"))
 #' render_pmap(p)
-#' @seealso [create_pmap_from_eventlog]
+#' @seealso [create_pmap]
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        mutate
 #' @importFrom dplyr        mutate_if

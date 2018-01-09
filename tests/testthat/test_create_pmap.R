@@ -1,8 +1,8 @@
 set.seed(101)
 
-context("create_pmap_from_eventlog()")
+context("create_pmap()")
 
-test_that("create_pmap_from_eventlog() should handle simple graph", {
+test_that("create_pmap() should handle simple graph", {
   eventlog <- data.frame(
      timestamp = c(as.POSIXct("2017-10-01"), as.POSIXct("2017-10-20")),
      customer_id = c("c1", "c1"),
@@ -11,7 +11,7 @@ test_that("create_pmap_from_eventlog() should handle simple graph", {
      stringsAsFactors = FALSE
   )
 
-  p <- create_pmap_from_eventlog(eventlog, target_types = c("sale"))
+  p <- create_pmap(eventlog, target_types = c("sale"))
 
   ndf <- DiagrammeR::get_node_df(p)
   expect_equal(nrow(ndf), 2)
@@ -20,7 +20,7 @@ test_that("create_pmap_from_eventlog() should handle simple graph", {
   expect_equal(nrow(edf), 1)
 })
 
-test_that("create_pmap_from_eventlog() should handle complex graph", {
+test_that("create_pmap() should handle complex graph", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
     number_of_customers = 1000,
@@ -37,7 +37,7 @@ test_that("create_pmap_from_eventlog() should handle complex graph", {
 
   # print(str(eventlog))
   # print("create_pmap_graph()")
-  p <- create_pmap_from_eventlog(eventlog, target_types = c("sale"))
+  p <- create_pmap(eventlog, target_types = c("sale"))
 
   # print(generate_dot(p))
 

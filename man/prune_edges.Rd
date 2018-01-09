@@ -38,7 +38,7 @@ Create an event log\preformatted{> library(dplyr)
  $ event_type : chr  "campaign" "campaign" "sale" "campaign" ...
 }
 
-Create a process map from the event log and render it directly.\preformatted{> p <- create_pmap_from_eventlog(eventlog, target_types = c("sale"))
+Create a process map from the event log and render it directly.\preformatted{> p <- create_pmap(eventlog, target_types = c("sale"))
 > render_pmap(p)
 }
 

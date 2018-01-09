@@ -31,7 +31,7 @@
 #' Create a process map from the event log and render it directly.
 #'
 #' ```R
-#' > p <- create_pmap_from_eventlog(eventlog, target_types = c("sale"))
+#' > p <- create_pmap(eventlog, target_types = c("sale"))
 #' > render_pmap(p)
 #' ```
 #'

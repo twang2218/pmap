@@ -5,9 +5,9 @@
 #' @param title The title of rendered graph
 #' @examples
 #' library(dplyr)
-#' p <- generate_eventlog() %>% create_pmap_from_eventlog(target_types = c("target"))
+#' p <- generate_eventlog() %>% create_pmap(target_types = c("target"))
 #' render_pmap
-#' @seealso [create_pmap_from_eventlog]
+#' @seealso [create_pmap]
 #' @importFrom DiagrammeR   %>%
 #' @importFrom DiagrammeR   render_graph
 #' @importFrom DiagrammeR   select_nodes_by_degree

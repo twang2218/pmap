@@ -16,9 +16,9 @@ Basically, this function just called \code{DiagrammeR::render_graph()}
 }
 \examples{
 library(dplyr)
-p <- generate_eventlog() \%>\% create_pmap_from_eventlog(target_types = c("target"))
+p <- generate_eventlog() \%>\% create_pmap(target_types = c("target"))
 render_pmap
 }
 \seealso{
-\link{create_pmap_from_eventlog}
+\link{create_pmap}
 }

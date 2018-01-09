@@ -9,7 +9,7 @@
 #' @description Prune nodes based on given percentage
 #' @examples
 #' library(dplyr)
-#' p <- generate_eventlog() %>% create_pmap_from_eventlog(target_types = c("target")) 
+#' p <- generate_eventlog() %>% create_pmap(target_types = c("target")) 
 #' DiagrammeR::node_count(p)
 #' # [1] 10
 #' p <- prune_nodes(p, percentage = 0.5)
