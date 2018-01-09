@@ -11,6 +11,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/twang2218/pmap
+BugReports: https://github.com/twang2218/pmap/issues
 Imports:
   dplyr (>= 0.5.0),
   data.table (>= 1.9.8),
@@ -18,4 +19,7 @@ Imports:
   stringr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
-Suggests: testthat, covr
+Suggests:
+  covr,
+  roxygen2,
+  testthat
