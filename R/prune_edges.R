@@ -35,7 +35,7 @@
 #' > render_pmap(p)
 #' ```
 #'
-#' \if{html}{\figure{example.prune_edges.none.png}{options: width="100\%" alt="Figure: example.prune_edges.none.png"}}
+#' \if{html}{\figure{example.prune_edges.none.svg}{options: width="100\%" alt="Figure: example.prune_edges.none.svg"}}
 #'
 #' As you can see the event map is very messy. Let's apply the `prune_edges()` to remove 50 percent edges.
 #'
@@ -43,7 +43,7 @@
 #'  > p \%>\% prune_edges(0.5) \%>\% render_pmap()
 #' }
 #'
-#' \if{html}{\figure{example.prune_edges.edges.png}{options: width="100\%" alt="Figure: example.prune_edges.edges.png"}}
+#' \if{html}{\figure{example.prune_edges.edges.svg}{options: width="100\%" alt="Figure: example.prune_edges.edges.svg"}}
 #'
 #' It's cleaner, we can clean it further by remove 30 percent nodes with `prune_nodes()` function.
 #'
@@ -51,7 +51,7 @@
 #'  > p \%>\% prune_edges(0.5) \%>\% prune_nodes(0.3) \%>\% render_pmap()
 #' }
 #'
-#' \if{html}{\figure{example.prune_edges.both.png}{options: width="100\%" alt="Figure: example.prune_edges.both.png"}}
+#' \if{html}{\figure{example.prune_edges.both.svg}{options: width="100\%" alt="Figure: example.prune_edges.both.svg"}}
 #'
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        arrange

@@ -23,3 +23,24 @@ usethis::use_cran_comments()
 
 document()
 ```
+
+## Export SVG
+
+Prerequest
+
+```bash
+brew install v8@3.15 librsvg
+
+```
+
+```R
+install.packages("DiagrammeRsvg")
+install.packages("rsvg")
+
+```
+
+Export
+
+```R
+DiagrammeR::export_graph(p, file_name = "mygraph.svg", file_type = "svg")
+```

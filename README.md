@@ -56,7 +56,7 @@ library(dplyr)
 
 The result will be a bit messy.
 
-![process map without prune](man/figures/example.prune_edges.none.png)
+![process map without prune](man/figures/example.prune_edges.none.svg)
 
 Let's prune the process map.
 
@@ -67,4 +67,4 @@ Let's prune the process map.
 > print(render_pmap(p))
 ```
 
-![cleaner process map](man/figures/example.prune_edges.both.png)
+![cleaner process map](man/figures/example.prune_edges.both.svg)

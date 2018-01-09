@@ -39,7 +39,7 @@
 #' > p <- create_pmap(eventlog, target_types = c("sale"))
 #' > render_pmap(p)
 #' ```
-#' \if{html}{\figure{example.create_pmap.simple.png}{options: alt="Figure: example.create_pmap.simple.png"}}
+#' \if{html}{\figure{example.create_pmap.simple.svg}{options: alt="Figure: example.create_pmap.simple.svg"}}
 #'
 #' Or for more complex event log:
 #'
@@ -66,8 +66,9 @@
 #' > p <- create_pmap(eventlog, target_types = c("sale"))
 #' > render_pmap(p)
 #' ```
-#' \if{html}{\figure{example.create_pmap.complex.png}{options: width="100\%" alt="Figure: example.create_pmap.complex.png"}}
+#' \if{html}{\figure{example.create_pmap.complex.svg}{options: width="100\%" alt="Figure: example.create_pmap.complex.svg"}}
 #'
+#' @seealso [prune_edges]
 #' @export
 create_pmap <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
   nodes <- generate_nodes(eventlog, distinct_customer)

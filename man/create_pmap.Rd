@@ -51,7 +51,7 @@ Create the process map by analyzing the given \code{eventlog} and extract the no
 > render_pmap(p)
 }
 
-\if{html}{\figure{example.create_pmap.simple.png}{options: alt="Figure: example.create_pmap.simple.png"}}
+\if{html}{\figure{example.create_pmap.simple.svg}{options: alt="Figure: example.create_pmap.simple.svg"}}
 
 Or for more complex event log:\preformatted{> eventlog <- generate_eventlog(
   size_of_eventlog = 10000, 
@@ -76,5 +76,8 @@ Or for more complex event log:\preformatted{> eventlog <- generate_eventlog(
 > render_pmap(p)
 }
 
-\if{html}{\figure{example.create_pmap.complex.png}{options: width="100\%" alt="Figure: example.create_pmap.complex.png"}}
+\if{html}{\figure{example.create_pmap.complex.svg}{options: width="100\%" alt="Figure: example.create_pmap.complex.svg"}}
+}
+\seealso{
+\link{prune_edges}
 }
