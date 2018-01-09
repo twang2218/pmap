@@ -62,7 +62,7 @@ Let's prune the process map.
 
 ```R
 # Prune the process map
-> p <- p %>% prune_edges(0.5) %>% prune_nodes(0.5) %>% render_pmap()
+> p <- p %>% prune_edges(0.5) %>% prune_nodes(0.5)
 # Render the pruned process map
 > print(render_pmap(p))
 ```
