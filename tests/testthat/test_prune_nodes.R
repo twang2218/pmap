@@ -1,5 +1,3 @@
-library(pmap)
-
 context("prune_nodes()")
 
 test_that("prune_nodes() should be able prune nothing", {

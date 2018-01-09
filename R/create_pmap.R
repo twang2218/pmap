@@ -10,7 +10,7 @@
 #'   * `amount`: How many of customer affected by the given event. (`numeric`)
 #' @param target_types A vector contains the target event types
 #' @examples
-#' eventlog <- generate_random_eventlog()
+#' eventlog <- generate_eventlog()
 #' nodes <- generate_nodes(eventlog)
 #' head(nodes)
 #' #  # A tibble: 6 x 3

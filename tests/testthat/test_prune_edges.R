@@ -1,5 +1,3 @@
-library(pmap)
-
 context("prune_edges()")
 
 test_that("prune_edges() should be able prune nothing", {

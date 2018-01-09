@@ -26,7 +26,7 @@ library(pmap)
 library(dplyr)
 
 # Generate simulated eventlog
-> eventlog <- generate_random_eventlog(
+> eventlog <- generate_eventlog(
      size_of_eventlog = 10000,
      number_of_customers = 2000,
      event_catalogs = c("campaign", "sale"),

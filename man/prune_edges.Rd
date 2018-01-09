@@ -17,7 +17,7 @@ Prune edges based on given percentage
 \details{
 Create an event log\preformatted{> library(dplyr)
 > library(pmap)
-> eventlog <- generate_random_eventlog(
+> eventlog <- generate_eventlog(
   size_of_eventlog = 10000,
   number_of_customers = 2000,
   event_catalogs = c("campaign", "sale"),

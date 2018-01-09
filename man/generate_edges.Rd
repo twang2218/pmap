@@ -30,7 +30,7 @@ a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} colum
 # Generating edges and count every paths no matter whether
 # it's from the same customer or not.
 # -----------------------------------------------------
-eventlog <- generate_random_eventlog()
+eventlog <- generate_eventlog()
 edges <- generate_edges(eventlog)
 head(edges)
 # # A tibble: 6 x 3

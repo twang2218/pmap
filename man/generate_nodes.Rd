@@ -28,7 +28,7 @@ a nodes \code{data.frame} which represents a event list, it contains \code{name}
 # -----------------------------------------------------
 # Generate nodes from eventlog and count every event
 # -----------------------------------------------------
-eventlog <- generate_random_eventlog(10000, 100)
+eventlog <- generate_eventlog(10000, 100)
 nodes <- generate_nodes(eventlog)
 print(nodes)
 # # A tibble: 10 x 3

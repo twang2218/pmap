@@ -1,7 +1,3 @@
-library(pmap)
-
-source("helper.R")
-
 context("generate_edges()")
 
 test_that("generate_edges() should handle minimal eventlog", {

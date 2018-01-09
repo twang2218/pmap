@@ -1,5 +1,3 @@
-library(pmap)
-
 context("generate_nodes()")
 
 test_that("generate_nodes() should handle minimal eventlog", {

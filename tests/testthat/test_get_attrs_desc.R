@@ -1,4 +1,3 @@
-library(pmap)
 library(data.table)
 
 context("get_attrs_desc()")

@@ -53,7 +53,7 @@ Create the process map by analyzing the given \code{eventlog} and extract the no
 
 \if{html}{\figure{example.create_pmap_from_eventlog.simple.png}{options: alt="Figure: example.create_pmap_from_eventlog.simple.png"}}
 
-Or for more complex event log:\preformatted{> eventlog <- generate_random_eventlog(
+Or for more complex event log:\preformatted{> eventlog <- generate_eventlog(
   size_of_eventlog = 10000, 
   number_of_customers = 2000, 
   event_catalogs = c("campaign", "sale"), 

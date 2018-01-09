@@ -16,7 +16,7 @@ Basically, this function just called \code{DiagrammeR::render_graph()}
 }
 \examples{
 library(dplyr)
-p <- generate_random_eventlog() \%>\% create_pmap_from_eventlog(target_types = c("target"))
+p <- generate_eventlog() \%>\% create_pmap_from_eventlog(target_types = c("target"))
 render_pmap
 }
 \seealso{

@@ -26,7 +26,7 @@ create_pmap(nodes, edges, target_types = NULL)
 Create the process map graph by specify the nodes and edges
 }
 \examples{
-eventlog <- generate_random_eventlog()
+eventlog <- generate_eventlog()
 nodes <- generate_nodes(eventlog)
 head(nodes)
 #  # A tibble: 6 x 3

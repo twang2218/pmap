@@ -3,14 +3,14 @@
 #' @param number_of_customers How many customers in the simulation
 #' @param event_catalogs A data frame contains the event catalog
 #' @param event_catalogs_size How many event types in each event catalog
-#' @usage generate_random_eventlog(
+#' @usage generate_eventlog(
 #'      size_of_eventlog = 1000, 
 #'      number_of_customers = 20, 
 #'      event_catalogs = c("normal", "target"), 
 #'      event_catalogs_size = c(8, 2))
 #' @description This function provides the ability to randomly generate the `eventlog` data frame based on given parameters.
 #' @examples
-#' eventlog <- generate_random_eventlog(
+#' eventlog <- generate_eventlog(
 #'      size_of_eventlog = 10000,
 #'      number_of_customers = 2000,
 #'      event_catalogs = c("campaign", "sale"),
@@ -36,7 +36,7 @@
 #' @importFrom dplyr  arrange
 #' @importFrom stats  runif
 #' @export
-generate_random_eventlog <- function(size_of_eventlog = 1000, number_of_customers = 20, event_catalogs = c("normal", "target"), event_catalogs_size = c(8, 2)) {
+generate_eventlog <- function(size_of_eventlog = 1000, number_of_customers = 20, event_catalogs = c("normal", "target"), event_catalogs_size = c(8, 2)) {
   # make 'R CMD check' happy
   customer_id <- timestamp <- event_name <- NULL
 
