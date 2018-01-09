@@ -14,6 +14,11 @@ render_pmap(p, title = NULL)
 \description{
 Basically, this function just called \code{DiagrammeR::render_graph()}
 }
+\examples{
+library(dplyr)
+p <- generate_random_eventlog() \%>\% create_pmap_from_eventlog(target_types = c("target"))
+render_pmap
+}
 \seealso{
 \link{create_pmap_from_eventlog}
 }

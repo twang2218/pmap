@@ -84,7 +84,7 @@ test_that("generate_nodes() should count unique 'customer_id' if 'distinct_custo
       event_type = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
-    distinct_customer = T
+    distinct_customer = TRUE
   )
 
   expect_equal(nrow(nodes), 2)
@@ -108,7 +108,7 @@ test_that("generate_nodes() should count every path if 'distinct_customer' is no
       event_type = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
-    distinct_customer = F
+    distinct_customer = FALSE
   )
 
   expect_equal(nrow(nodes), 2)

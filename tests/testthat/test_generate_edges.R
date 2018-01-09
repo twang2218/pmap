@@ -104,7 +104,7 @@ test_that("generate_edges() should count unique 'customer_id' if 'distinct_custo
       event_type = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
-    distinct_customer = T,
+    distinct_customer = TRUE,
     target_types = c("sale")
   )
 

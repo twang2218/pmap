@@ -7,25 +7,50 @@
 create_pmap(nodes, edges, target_types = NULL)
 }
 \arguments{
-\item{nodes}{Event list}
-
-\item{edges}{Event transform list}
-
-\item{target_types}{A vector contains the target event types}
-}
-\description{
-\code{nodes} should be a \code{data.frame} containing following columns:
+\item{nodes}{Event list, it should be a \code{data.frame} containing following columns:
 \itemize{
 \item \code{name}: Event name, will be used as label. (\code{character})
 \item \code{type}: The event type (\code{character})
-}
+}}
 
-\code{edges} should be a \code{data.frame} containing following columns:
+\item{edges}{Event transform list, it should be a \code{data.frame} containing following columns:
 \itemize{
 \item \code{from}: the beginning event of the edge. (\code{character})
 \item \code{to}: the ending event of the edge (\code{character})
 \item \code{amount}: How many of customer affected by the given event. (\code{numeric})
+}}
+
+\item{target_types}{A vector contains the target event types}
 }
+\description{
+Create the process map graph by specify the nodes and edges
+}
+\examples{
+eventlog <- generate_random_eventlog()
+nodes <- generate_nodes(eventlog)
+head(nodes)
+#  # A tibble: 6 x 3
+#    name              type   amount
+#    <chr>             <chr>   <int>
+#  1 Event 1 (normal)  normal    105
+#  2 Event 10 (target) target     97
+#  3 Event 2 (normal)  normal     94
+#  4 Event 3 (normal)  normal     94
+#  5 Event 4 (normal)  normal    101
+#  6 Event 5 (normal)  normal     95
+edges <- generate_edges(eventlog)
+head(edges)
+#  # A tibble: 6 x 3
+#    from             to                amount
+#    <chr>            <chr>              <int>
+#  1 Event 1 (normal) Event 1 (normal)       8
+#  2 Event 1 (normal) Event 10 (target)     10
+#  3 Event 1 (normal) Event 2 (normal)      12
+#  4 Event 1 (normal) Event 3 (normal)       9
+#  5 Event 1 (normal) Event 4 (normal)       7
+#  6 Event 1 (normal) Event 5 (normal)      10
+p <- create_pmap(nodes, edges, target_types = c("target"))
+render_pmap(p)
 }
 \seealso{
 \link{create_pmap_from_eventlog}

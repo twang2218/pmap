@@ -7,6 +7,14 @@
 #'  `out_degree` means ranking the nodes by `out_degree`;
 #' @usage prune_nodes(p, percentage = 0.2, rank = "amount")
 #' @description Prune nodes based on given percentage
+#' @examples
+#' library(dplyr)
+#' p <- generate_random_eventlog() %>% create_pmap_from_eventlog(target_types = c("target")) 
+#' DiagrammeR::node_count(p)
+#' # [1] 10
+#' p <- prune_nodes(p, percentage = 0.5)
+#' DiagrammeR::node_count(p)
+#' # [1] 5
 #' @seealso [prune_edges]
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        arrange

@@ -7,13 +7,13 @@ test_that("prune_edges() should be able prune nothing", {
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
       type = c("campaign", "campaign", "campaign", "sale", "sale"),
-      stringsAsFactors = F
+      stringsAsFactors = FALSE
     ),
     edges = data.frame(
       from = c("a", "b", "b", "a"),
       to = c("b", "c", "d", "e"),
       amount = c(10, 20, 30, 40),
-      stringsAsFactors = F
+      stringsAsFactors = FALSE
     ),
     target_types = c("sale")
   )
@@ -33,13 +33,13 @@ test_that("prune_edges() should be able prune half of the edges", {
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
       type = c("campaign", "campaign", "campaign", "sale", "sale"),
-      stringsAsFactors = F
+      stringsAsFactors = FALSE
     ),
     edges = data.frame(
       from = c("a", "b", "b", "a"),
       to = c("b", "c", "d", "e"),
       amount = c(10, 20, 30, 40),
-      stringsAsFactors = F
+      stringsAsFactors = FALSE
     ),
     target_types = c("sale")
   )
@@ -61,13 +61,13 @@ test_that("prune_edges() should be able prune all of the edges", {
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
       type = c("campaign", "campaign", "campaign", "sale", "sale"),
-      stringsAsFactors = F
+      stringsAsFactors = FALSE
     ),
     edges = data.frame(
       from = c("a", "b", "b", "a"),
       to = c("b", "c", "d", "e"),
       amount = c(10, 20, 30, 40),
-      stringsAsFactors = F
+      stringsAsFactors = FALSE
     ),
     target_types = c("sale")
   )

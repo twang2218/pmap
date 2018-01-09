@@ -1,5 +1,5 @@
 #' @title Create the process map from event log directly
-#' @usage create_pmap_from_eventlog(eventlog, distinct_customer = F, target_types = NULL)
+#' @usage create_pmap_from_eventlog(eventlog, distinct_customer = FALSE, target_types = NULL)
 #' @param eventlog Event log
 #' @param distinct_customer Whether should count distinct customer only. Default is `FALSE`.
 #' @param target_types A vector contains the target event types
@@ -69,7 +69,7 @@
 #' \if{html}{\figure{example.create_pmap_from_eventlog.complex.png}{options: width="100\%" alt="Figure: example.create_pmap_from_eventlog.complex.png"}}
 #'
 #' @export
-create_pmap_from_eventlog <- function(eventlog, distinct_customer = F, target_types = NULL) {
+create_pmap_from_eventlog <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
   nodes <- generate_nodes(eventlog, distinct_customer)
   edges <- generate_edges(eventlog, distinct_customer, target_types)
   p <- create_pmap(nodes, edges, target_types)

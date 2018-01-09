@@ -1,17 +1,40 @@
 #' @title Create the event graph by given nodes and edges.
+#' @description Create the process map graph by specify the nodes and edges
 #' @usage create_pmap(nodes, edges, target_types = NULL)
-#' @param nodes Event list
-#' @param edges Event transform list
-#' @param target_types A vector contains the target event types
-#' @description
-#' `nodes` should be a `data.frame` containing following columns:
+#' @param nodes Event list, it should be a `data.frame` containing following columns:
 #'   * `name`: Event name, will be used as label. (`character`)
 #'   * `type`: The event type (`character`)
-#'
-#' `edges` should be a `data.frame` containing following columns:
+#' @param edges Event transform list, it should be a `data.frame` containing following columns:
 #'   * `from`: the beginning event of the edge. (`character`)
 #'   * `to`: the ending event of the edge (`character`)
 #'   * `amount`: How many of customer affected by the given event. (`numeric`)
+#' @param target_types A vector contains the target event types
+#' @examples
+#' eventlog <- generate_random_eventlog()
+#' nodes <- generate_nodes(eventlog)
+#' head(nodes)
+#' #  # A tibble: 6 x 3
+#' #    name              type   amount
+#' #    <chr>             <chr>   <int>
+#' #  1 Event 1 (normal)  normal    105
+#' #  2 Event 10 (target) target     97
+#' #  3 Event 2 (normal)  normal     94
+#' #  4 Event 3 (normal)  normal     94
+#' #  5 Event 4 (normal)  normal    101
+#' #  6 Event 5 (normal)  normal     95
+#' edges <- generate_edges(eventlog)
+#' head(edges)
+#' #  # A tibble: 6 x 3
+#' #    from             to                amount
+#' #    <chr>            <chr>              <int>
+#' #  1 Event 1 (normal) Event 1 (normal)       8
+#' #  2 Event 1 (normal) Event 10 (target)     10
+#' #  3 Event 1 (normal) Event 2 (normal)      12
+#' #  4 Event 1 (normal) Event 3 (normal)       9
+#' #  5 Event 1 (normal) Event 4 (normal)       7
+#' #  6 Event 1 (normal) Event 5 (normal)      10
+#' p <- create_pmap(nodes, edges, target_types = c("target"))
+#' render_pmap(p)
 #' @seealso [create_pmap_from_eventlog]
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        mutate

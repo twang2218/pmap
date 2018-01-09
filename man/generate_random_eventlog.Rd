@@ -22,13 +22,26 @@ generate_random_eventlog(
 \description{
 This function provides the ability to randomly generate the \code{eventlog} data frame based on given parameters.
 }
-\details{
-Example\preformatted{> eventlog <- generate_random_eventlog(500, 20)
-> str(eventlog)
-'data.frame':	500 obs. of  4 variables:
- $ timestamp  : POSIXct, format: "2017-01-01 03:54:47" "2017-01-01 20:31:02" ...
- $ customer_id: chr  "Customer 20" "Customer 20" "Customer 1" "Customer 3" ...
- $ event_name : chr  "Event 10 (target)" "Event 6 (normal)" "Event 8 (normal)" "Event 9 (target)" ...
- $ event_type : chr  "target" "normal" "normal" "target" ...
-}
+\examples{
+eventlog <- generate_random_eventlog(
+     size_of_eventlog = 10000,
+     number_of_customers = 2000,
+     event_catalogs = c("campaign", "sale"),
+     event_catalogs_size = c(10, 4)
+     )
+
+str(eventlog)
+# 'data.frame':	10000 obs. of  4 variables:
+#  $ timestamp  : POSIXct, format: "2017-01-01 02:16:16" ...
+#  $ customer_id: chr  "Customer 107" "Customer 1828" "Customer 587" "Customer 1666" ...
+#  $ event_name : chr  "Event 4 (campaign)" "Event 11 (sale)" "Event 7 (campaign)" ...
+#  $ event_type : chr  "campaign" "sale" "campaign" "sale" ...
+head(eventlog)
+#             timestamp   customer_id         event_name event_type
+# 1 2017-01-01 02:16:16  Customer 107 Event 4 (campaign)   campaign
+# 2 2017-01-01 03:04:22 Customer 1828    Event 11 (sale)       sale
+# 3 2017-01-01 03:36:35  Customer 587 Event 7 (campaign)   campaign
+# 4 2017-01-01 05:00:11 Customer 1666    Event 14 (sale)       sale
+# 5 2017-01-01 05:38:24 Customer 1287    Event 11 (sale)       sale
+# 6 2017-01-01 05:48:22 Customer 1286 Event 7 (campaign)   campaign
 }

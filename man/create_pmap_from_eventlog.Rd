@@ -4,7 +4,7 @@
 \alias{create_pmap_from_eventlog}
 \title{Create the process map from event log directly}
 \usage{
-create_pmap_from_eventlog(eventlog, distinct_customer = F, target_types = NULL)
+create_pmap_from_eventlog(eventlog, distinct_customer = FALSE, target_types = NULL)
 }
 \arguments{
 \item{eventlog}{Event log}

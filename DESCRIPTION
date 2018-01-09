@@ -1,8 +1,11 @@
 Package: pmap
-Title: Process Map in R
+Title: Process Map Visualization
 Version: 0.2.0
 Authors@R: person("Tao", "Wang", email = "twang2218@gmail.com", role = c("aut", "cre"))
-Description: Provides tools for generate process map from event Logs.
+Description:
+  The package provides a set of functions to produce the process map visualization for process analysis.
+  It can generate the process map from a process event logs recorded in the process, with the ability of
+  pruning the nodes and/or edges to reduce the complexity of the result.
 Depends: R (>= 3.2)
 License: MIT + file LICENSE
 Encoding: UTF-8

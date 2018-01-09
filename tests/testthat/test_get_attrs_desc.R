@@ -6,7 +6,7 @@ context("get_attrs_desc()")
 test_that("get_attrs_desc() should handle 'list'", {
   expect_equal(
     get_attrs_desc(
-      list(id = 1, name = "Elena", is_manager = F)
+      list(id = 1, name = "Elena", is_manager = FALSE)
     ),
     "id: 1\nname: Elena\nis_manager: FALSE"
   )
@@ -20,7 +20,7 @@ test_that("get_attrs_desc() should handle 'data.frame'", {
       data.frame(
         id = c(1, 2, 3, 4),
         name = c("Jane", "John", "Eric", "Selena"),
-        is_manager = c(F, F, F, T)
+        is_manager = c(FALSE, FALSE, FALSE, TRUE)
       )
     ),
     c(
@@ -40,7 +40,7 @@ test_that("get_attrs_desc() should handle minimal 'data.frame'", {
       data.frame(
         id = c(1),
         name = c("Jane"),
-        is_manager = c(F)
+        is_manager = c(FALSE)
       )
     ),
     "id: 1\nname: Jane\nis_manager: FALSE"
@@ -70,7 +70,7 @@ test_that("get_attrs_desc() should handle inherit type", {
       data.table(
         id = c(1, 2, 3, 4),
         name = c("Jane", "John", "Eric", "Selena"),
-        is_manager = c(F, F, F, T)
+        is_manager = c(FALSE, FALSE, FALSE, TRUE)
       )
     ),
     c(

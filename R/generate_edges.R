@@ -1,15 +1,49 @@
 #' @title Generate edges from event logs
-#' @usage generate_edges(eventlog, distinct_customer = F, target_types = NULL)
+#' @usage generate_edges(eventlog, distinct_customer = FALSE, target_types = NULL)
 #' @param eventlog Event logs
 #' @param distinct_customer Whether should only count unique customer
 #' @param target_types A vector contains the target event types. By default, it's `NULL`, which means every paths count. If it's contains the target event type, then only paths reaches the target event count.
+#' @return a `data.frame` of edges with `from`, `to` and `amount` columns.
 #' @description `eventlog` should be a `data.frame` or `data.table`, which contains, at least, following columns:
 #'
 #'  * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
 #'  * `customer_id`: customer identifier. (`character`)
 #'  * `event_name`: event name. (`character`)
 #'  * `event_type`: event type. (`character`)
-#' @return a `data.frame` of edges with `from`, `to` and `amount` columns.
+#' @examples
+#' # -----------------------------------------------------
+#' # Generating edges and count every paths no matter whether
+#' # it's from the same customer or not.
+#' # -----------------------------------------------------
+#' eventlog <- generate_random_eventlog()
+#' edges <- generate_edges(eventlog)
+#' head(edges)
+#' # # A tibble: 6 x 3
+#' #   from             to                amount
+#' #   <chr>            <chr>              <int>
+#' # 1 Event 1 (normal) Event 1 (normal)      13
+#' # 2 Event 1 (normal) Event 10 (target)      3
+#' # 3 Event 1 (normal) Event 2 (normal)       7
+#' # 4 Event 1 (normal) Event 3 (normal)       9
+#' # 5 Event 1 (normal) Event 4 (normal)      11
+#' # 6 Event 1 (normal) Event 5 (normal)      14
+#' str(edges)
+#' # Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	100 obs. of  3 variables:
+#' #  $ from  : chr  "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" ...
+#' #  $ to    : chr  "Event 1 (normal)" "Event 10 (target)" "Event 2 (normal)" "Event 3 (normal)" ...
+#' #  $ amount: int  13 3 7 9 11 14 8 12 16 15 ...
+#' #  - attr(*, ".internal.selfref")=<externalptr> 
+#' # -----------------------------------------------------
+#' # Generate edges by specify the target types, and the paths 
+#' # not reaching the target type events will be ignored.
+#' # -----------------------------------------------------
+#' edges <- generate_edges(eventlog, target_types = c("target"))
+#' str(edges)
+#' # Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	80 obs. of  3 variables:
+#' #  $ from  : chr  "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" ...
+#' #  $ to    : chr  "Event 1 (normal)" "Event 10 (target)" "Event 2 (normal)" "Event 3 (normal)" ...
+#' #  $ amount: int  12 3 7 7 11 9 7 8 16 15 ...
+#' #  - attr(*, ".internal.selfref")=<externalptr> 
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        arrange
 #' @importFrom dplyr        distinct
@@ -21,7 +55,7 @@
 #' @importFrom data.table   data.table
 #' @importFrom data.table   rbindlist
 #' @export
-generate_edges <- function(eventlog, distinct_customer = F, target_types = NULL) {
+generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
   # make 'R CMD check' happy
   customer_id <- timestamp <- from <- to <- NULL
 
