@@ -1,6 +1,7 @@
 # pmap 0.3.2
 
 * Added a `NEWS.md` file to track changes.
+* Add bug report url and more test environments in `cran-comments.md`
 
 # pmap 0.3.1
 
