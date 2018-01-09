@@ -1,7 +1,7 @@
 #' @title Render the process map
 #' @description Basically, this function just called `DiagrammeR::render_graph()`
 #' @usage render_pmap(p, title = NULL)
-#' @param p the process map object created by `create_pmap()` function
+#' @param p the process map object created by `create_pmap_graph()` function
 #' @param title The title of rendered graph
 #' @examples
 #' library(dplyr)

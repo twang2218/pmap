@@ -7,7 +7,7 @@
 render_pmap(p, title = NULL)
 }
 \arguments{
-\item{p}{the process map object created by \code{create_pmap()} function}
+\item{p}{the process map object created by \code{create_pmap_graph()} function}
 
 \item{title}{The title of rendered graph}
 }

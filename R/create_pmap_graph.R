@@ -1,6 +1,6 @@
 #' @title Create the event graph by given nodes and edges.
 #' @description Create the process map graph by specify the nodes and edges
-#' @usage create_pmap(nodes, edges, target_types = NULL)
+#' @usage create_pmap_graph(nodes, edges, target_types = NULL)
 #' @param nodes Event list, it should be a `data.frame` containing following columns:
 #'   * `name`: Event name, will be used as label. (`character`)
 #'   * `type`: The event type (`character`)
@@ -33,7 +33,7 @@
 #' #  4 Event 1 (normal) Event 3 (normal)       9
 #' #  5 Event 1 (normal) Event 4 (normal)       7
 #' #  6 Event 1 (normal) Event 5 (normal)      10
-#' p <- create_pmap(nodes, edges, target_types = c("target"))
+#' p <- create_pmap_graph(nodes, edges, target_types = c("target"))
 #' render_pmap(p)
 #' @seealso [create_pmap_from_eventlog]
 #' @importFrom dplyr        %>%
@@ -52,7 +52,7 @@
 #' @importFrom DiagrammeR   get_selection
 #' @importFrom DiagrammeR   clear_selection
 #' @export
-create_pmap <- function(nodes, edges, target_types = NULL) {
+create_pmap_graph <- function(nodes, edges, target_types = NULL) {
   # make 'R CMD Check' happy
   amount <- from <- to <- type <- NULL
 

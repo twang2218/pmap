@@ -1,5 +1,5 @@
 #' @title Prune edges based on given percentage
-#' @param p process map object created by `create_pmap()` function
+#' @param p process map object created by `create_pmap_graph()` function
 #' @param percentage how many percentage of the edges should be pruned.
 #' @description Prune edges based on given percentage
 #' @details

@@ -1,5 +1,5 @@
 #' @title Prune nodes based on given percentage
-#' @param p process map object created by `create_pmap()` function
+#' @param p process map object created by `create_pmap_graph()` function
 #' @param percentage how many percentage of the nodes should be pruned.
 #' @param rank how to rank the nodes.
 #'  `amount` means ranking the nodes by `amount` column (default);

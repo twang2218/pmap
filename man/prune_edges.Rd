@@ -7,7 +7,7 @@
 prune_edges(p, percentage = 0.2)
 }
 \arguments{
-\item{p}{process map object created by \code{create_pmap()} function}
+\item{p}{process map object created by \code{create_pmap_graph()} function}
 
 \item{percentage}{how many percentage of the edges should be pruned.}
 }

@@ -1,6 +1,6 @@
-context("create_pmap()")
+context("create_pmap_graph()")
 
-test_that("create_pmap()", {
+test_that("create_pmap_graph()", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
     number_of_customers = 1000,
@@ -26,8 +26,8 @@ test_that("create_pmap()", {
 
   # print(str(edges))
 
-  # print("create_pmap()")
-  p <- create_pmap(nodes, edges, target_types = c("sale"))
+  # print("create_pmap_graph()")
+  p <- create_pmap_graph(nodes, edges, target_types = c("sale"))
 
   edges_from_graph <- DiagrammeR::get_edge_df(p)
   expect_equal(nrow(edges), nrow(edges_from_graph))

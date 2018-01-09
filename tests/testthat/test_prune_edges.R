@@ -1,7 +1,7 @@
 context("prune_edges()")
 
 test_that("prune_edges() should be able prune nothing", {
-  p <- create_pmap(
+  p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
       type = c("campaign", "campaign", "campaign", "sale", "sale"),
@@ -27,7 +27,7 @@ test_that("prune_edges() should be able prune nothing", {
 })
 
 test_that("prune_edges() should be able prune half of the edges", {
-  p <- create_pmap(
+  p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
       type = c("campaign", "campaign", "campaign", "sale", "sale"),
@@ -55,7 +55,7 @@ test_that("prune_edges() should be able prune half of the edges", {
 
 
 test_that("prune_edges() should be able prune all of the edges", {
-  p <- create_pmap(
+  p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
       type = c("campaign", "campaign", "campaign", "sale", "sale"),

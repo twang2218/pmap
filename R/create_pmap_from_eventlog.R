@@ -72,6 +72,6 @@
 create_pmap_from_eventlog <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
   nodes <- generate_nodes(eventlog, distinct_customer)
   edges <- generate_edges(eventlog, distinct_customer, target_types)
-  p <- create_pmap(nodes, edges, target_types)
+  p <- create_pmap_graph(nodes, edges, target_types)
   return(p)
 }

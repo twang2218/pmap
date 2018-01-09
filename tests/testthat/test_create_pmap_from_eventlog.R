@@ -36,7 +36,7 @@ test_that("create_pmap_from_eventlog() should handle complex graph", {
   expect_equal(nrow(eventlog), 10000)
 
   # print(str(eventlog))
-  # print("create_pmap()")
+  # print("create_pmap_graph()")
   p <- create_pmap_from_eventlog(eventlog, target_types = c("sale"))
 
   # print(generate_dot(p))
