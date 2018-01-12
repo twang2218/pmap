@@ -144,16 +144,7 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
     set_node_attrs(node_attr = "label", values = nodes$name) %>%
     set_node_attrs(node_attr = "tooltip", values = nodes$tooltip)
 
-  # print("set_edge_attrs() for target nodes")
-  p <- select_nodes(p, conditions = type %in% target_types)
-  if (!any(is.na(get_selection(p)))) {
-    p <- p %>%
-      ## deepOrange900(#BF360C)
-      set_node_attrs_ws(node_attr = "color", value = "#BF360C") %>%
-      ## deepOrange100(#FFCCBC):deepOrange50(#FBE9E7)
-      set_node_attrs_ws(node_attr = "fillcolor", value = "#FFCCBC:#FBE9E7")
-  }
-  p <- clear_selection(p)
+  p <- apply_node_color(p)
 
   # print("set_edge_attrs()")
   p <- p %>%

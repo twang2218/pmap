@@ -16,7 +16,8 @@ Imports:
   dplyr (>= 0.5.0),
   data.table (>= 1.9.8),
   DiagrammeR (>= 0.9.0),
-  stringr
+  stringr,
+  ggsci (>= 2.7)
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 Suggests:

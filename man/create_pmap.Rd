@@ -54,10 +54,10 @@ Create the process map by analyzing the given \code{eventlog} and extract the no
 \if{html}{\figure{example.create_pmap.simple.svg}{options: alt="Figure: example.create_pmap.simple.svg"}}
 
 Or for more complex event log:\preformatted{> eventlog <- generate_eventlog(
-  size_of_eventlog = 10000, 
-  number_of_customers = 2000, 
-  event_catalogs = c("campaign", "sale"), 
-  event_catalogs_size = c(8, 2))
+    size_of_eventlog = 10000,
+    number_of_customers = 2000,
+    event_catalogs = c("campaign", "sale"),
+    event_catalogs_size = c(8, 2))
 > head(eventlog)
             timestamp   customer_id         event_name event_type
 1 2017-01-01 02:40:20 Customer 1204 Event 7 (campaign)   campaign

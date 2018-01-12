@@ -45,10 +45,10 @@
 #'
 #' ```R
 #' > eventlog <- generate_eventlog(
-#'   size_of_eventlog = 10000, 
-#'   number_of_customers = 2000, 
-#'   event_catalogs = c("campaign", "sale"), 
-#'   event_catalogs_size = c(8, 2))
+#'     size_of_eventlog = 10000,
+#'     number_of_customers = 2000,
+#'     event_catalogs = c("campaign", "sale"),
+#'     event_catalogs_size = c(8, 2))
 #' > head(eventlog)
 #'             timestamp   customer_id         event_name event_type
 #' 1 2017-01-01 02:40:20 Customer 1204 Event 7 (campaign)   campaign
