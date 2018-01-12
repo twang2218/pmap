@@ -63,12 +63,16 @@ generate_eventlog <- function(size_of_eventlog = 1000, number_of_customers = 20,
     event_types_of_catalog <- data.frame(
       name = paste0("Event ", nrow(event_types) + 1:event_catalogs_size[i], " (", event_catalogs[i], ")"),
       type = event_catalogs[i],
+      weight = runif(event_catalogs_size[i], 0, 1),
       stringsAsFactors = FALSE
     )
     event_types <- rbind(event_types, event_types_of_catalog)
   }
 
-  events <- sample_n(event_types, size_of_eventlog, replace = TRUE)
+  events <- sample_n(event_types, size_of_eventlog, replace = TRUE, weight = event_types$weight)
+
+  # print(events %>% group_by(name, weight) %>% summarize(amount = n()))
+
   eventlog <- data.frame(
     timestamp = generate_random_datetimes(size_of_eventlog),
     customer_id = sample(customers, size_of_eventlog, replace = TRUE)$id,
