@@ -1,8 +1,7 @@
 #' @title Apply node colors based on the node's type
 #' @description Different type of node should be differenciate by different colors, this function applies the material design palette for the node's color.
-#' @usage apply_node_color(p, seed = 1)
+#' @usage apply_node_color(p)
 #' @param p process map generated `by create_pmap()`
-#' @param seed the random seed used for color selection
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        distinct
 #' @importFrom dplyr        arrange
@@ -10,8 +9,14 @@
 #' @importFrom ggsci        pal_material
 #' @importFrom grDevices    col2rgb
 #' @importFrom grDevices    rgb
-apply_node_color <- function(p, seed = 1) {
-  set.seed(seed)
+apply_node_color <- function(p) {
+  # define material design palette base colors
+  material_colors <- c(
+    "blue",         "red",          "green",        "yellow",   "brown",
+    "indigo",       "pink",         "teal",         "amber",    "orange",
+    "purple",       "deep-orange",  "light-green",  "lime",     "grey",
+    "deep-purple",  "cyan",         "blue-grey",    "light-blue"
+  )
 
   # Make `R CMD check` happy
   type <- NULL
@@ -22,35 +27,15 @@ apply_node_color <- function(p, seed = 1) {
 
   types <- types$"type"
 
+  # print(paste(types, ":", material_colors[1:length(types)]))
   pal <- lapply(
-    ## R default palette
-    # sample(
-    #   colors(distinct = TRUE),
-    #   length(types)
-    # ),
-    ## ggsci => igv
-    # pal_igv("default")(length(types)),
-    ## ggsci => material design
     sapply(
       sapply(
-        sample(
-          c(
-            "red", "pink", "purple",
-            "deep-purple", "indigo", "blue",
-            "light-blue", "cyan", "teal",
-            "green", "light-green", "lime",
-            "yellow", "amber", "orange",
-            "deep-orange", "brown", "grey",
-            "blue-grey"
-          ),
-          length(types)
-        ),
+        material_colors[1:length(types)],
         pal_material,
         reverse = TRUE
       ),
-      function(x) {
-        x(1)
-      }
+      function(x) { x(1) }
     ),
     function(name, alpha = 1) {
       color <- col2rgb(name, alpha = TRUE) / 255
@@ -58,6 +43,7 @@ apply_node_color <- function(p, seed = 1) {
       arg$alpha <- alpha
       do.call(rgb, arg)
     },
+    # Get 3 transparency level for the given color
     c(0.3, 0.5, 1)
   )
   names(pal) <- types
@@ -66,6 +52,8 @@ apply_node_color <- function(p, seed = 1) {
     color <- pal[[t]]
     p <- select_nodes(p, conditions = type == t)
     if (!any(is.na(get_selection(p)))) {
+      # print(paste("type:", t))
+      # print(paste("color:", color))
       p <- p %>%
         set_node_attrs_ws(node_attr = "color", value = color[3]) %>%
         set_node_attrs_ws(node_attr = "fillcolor", value = paste0(color[2], ":", color[1]))

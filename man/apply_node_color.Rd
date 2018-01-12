@@ -4,12 +4,10 @@
 \alias{apply_node_color}
 \title{Apply node colors based on the node's type}
 \usage{
-apply_node_color(p, seed = 1)
+apply_node_color(p)
 }
 \arguments{
 \item{p}{process map generated \code{by create_pmap()}}
-
-\item{seed}{the random seed used for color selection}
 }
 \description{
 Different type of node should be differenciate by different colors, this function applies the material design palette for the node's color.
