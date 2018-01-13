@@ -43,5 +43,31 @@ test_that("create_pmap() should handle complex graph", {
 
   # print("render_graph()")
   expect_true(!any(is.null(render_pmap(p))))
+  # print(render_pmap(p))
+})
+
+test_that("create_pmap() should handle more complex graph with multiple types without target", {
+  eventlog <- generate_eventlog(
+    size_of_eventlog = 10000,
+    number_of_customers = 1000,
+    event_catalogs = c("campaign", "visit", "phone", "sale"),
+    event_catalogs_size = c(5, 3, 2, 4)
+  )
+
+  expect_named(
+    eventlog,
+    c("timestamp", "customer_id", "event_name", "event_type"),
+    ignore.order = TRUE,
+    ignore.case = TRUE)
+  expect_equal(nrow(eventlog), 10000)
+
+  # print(str(eventlog))
+  # print("create_pmap_graph()")
+  p <- eventlog %>% create_pmap() %>% prune_nodes(0.3) %>% prune_edges(0.3)
+
+  # print(generate_dot(p))
+
+  # print("render_graph()")
+  expect_true(!any(is.null(render_pmap(p))))
   print(render_pmap(p))
 })
