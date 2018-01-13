@@ -65,7 +65,7 @@ test_that("create_pmap() should handle more complex graph with multiple types wi
   # print("create_pmap_graph()")
   p <- eventlog %>% create_pmap() %>% prune_nodes(0.3) %>% prune_edges(0.3)
 
-  # print(generate_dot(p))
+  # print(DiagrammeR::generate_dot(p))
 
   # print("render_graph()")
   expect_true(!any(is.null(render_pmap(p))))
