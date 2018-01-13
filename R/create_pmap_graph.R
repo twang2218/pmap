@@ -70,8 +70,9 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
     left_join(nodes_outbound, by = "name")
 
   # Set all 'NA' to zero
-  nodes$inbound[is.na(nodes$inbound)] <- 0
-  nodes$outbound[is.na(nodes$outbound)] <- 0
+  nodes$inbound[!is.numeric(nodes$inbound)] <- 0
+  nodes$outbound[!is.numeric(nodes$outbound)] <- 0
+  # nodes$amount[!is.numeric(nodes$amount)] <- 0
 
   # print("Converting factor to character [nodes]...")
   nodes <- nodes %>%
@@ -131,30 +132,19 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
     ## grey900(#212121)
     add_global_graph_attrs(attr_type = "edge", attr = "fontcolor", value = "#212121")
 
-  # print("set_node_attrs()")
+  # node default attributes
   p <- p %>%
-    # node attributes
     ## grey900(#212121)
     set_node_attrs(node_attr = "fontcolor", values = "#212121") %>%
     ## lightBlue900(#01579B)
     set_node_attrs(node_attr = "color", values = "#01579B") %>%
     ## lightBlue100(#B3E5FC) => lightBlue50(#E1F5FE)
     set_node_attrs(node_attr = "fillcolor", values = "#B3E5FC:#E1F5FE") %>%
-    set_node_attrs(node_attr = "label", values = paste0(nodes$name, "\n(", nodes$amount, ")")) %>%
     set_node_attrs(node_attr = "tooltip", values = nodes$tooltip) %>%
-    set_node_attrs(node_attr = "fontsize", values = 16)
+    set_node_attrs(node_attr = "fontsize", values = 16) %>%
+    set_node_attrs(node_attr = "label", values = nodes$name)
 
-  projection <- function(x, min = 0, max = 1) {
-    x_min <- min(x, na.rm = TRUE)
-    x_max <- max(x, na.rm = TRUE)
-    ((x - x_min)/(x_max - x_min)) * (max - min) + min
-  }
-
-  if (!any(is.null(nodes$amount))) {
-    p <- set_node_attrs(p, node_attr = "fontsize", values = projection(nodes$amount, 10, 20))
-  }
-
-  p <- apply_node_color(p)
+  p <- adjust_node_style(p)
 
   # print("set_edge_attrs()")
   p <- p %>%
