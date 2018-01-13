@@ -140,9 +140,19 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
     set_node_attrs(node_attr = "color", values = "#01579B") %>%
     ## lightBlue100(#B3E5FC) => lightBlue50(#E1F5FE)
     set_node_attrs(node_attr = "fillcolor", values = "#B3E5FC:#E1F5FE") %>%
-    set_node_attrs(node_attr = "fontsize", values = (log10(nodes$inbound + nodes$outbound) + 10)) %>%
     set_node_attrs(node_attr = "label", values = paste0(nodes$name, "\n(", nodes$amount, ")")) %>%
-    set_node_attrs(node_attr = "tooltip", values = nodes$tooltip)
+    set_node_attrs(node_attr = "tooltip", values = nodes$tooltip) %>%
+    set_node_attrs(node_attr = "fontsize", values = 16)
+
+  projection <- function(x, min = 0, max = 1) {
+    x_min <- min(x, na.rm = TRUE)
+    x_max <- max(x, na.rm = TRUE)
+    ((x - x_min)/(x_max - x_min)) * (max - min) + min
+  }
+
+  if (!any(is.null(nodes$amount))) {
+    p <- set_node_attrs(p, node_attr = "fontsize", values = projection(nodes$amount, 10, 20))
+  }
 
   p <- apply_node_color(p)
 
