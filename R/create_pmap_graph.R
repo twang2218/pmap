@@ -127,7 +127,7 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
     add_global_graph_attrs(attr_type = "node", attr = "gradientangle", value = "90") %>%
     # edge [...]
     ## grey900(#212121)
-    add_global_graph_attrs(attr_type = "edge", attr = "color", value = "#21212180") %>%
+    add_global_graph_attrs(attr_type = "edge", attr = "color", value = "#212121CC") %>%
     ## grey900(#212121)
     add_global_graph_attrs(attr_type = "edge", attr = "fontcolor", value = "#212121")
 
@@ -161,10 +161,14 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
     # Add amount attribute
     set_edge_attrs(edge_attr = "amount", values = edges$amount) %>%
     # Edge attributes
-    set_edge_attrs(edge_attr = "penwidth", values = (log10(edges$amount) + 1)) %>%
+    set_edge_attrs(edge_attr = "penwidth", values = 1) %>%
     set_edge_attrs(edge_attr = "label", values = edges$amount) %>%
     set_edge_attrs(edge_attr = "tooltip", values = edges$tooltips) %>%
     set_edge_attrs(edge_attr = "labeltooltip", values = edges$tooltips)
+
+  if (!any(is.null(edges$amount))) {
+    p <- set_edge_attrs(p, edge_attr = "penwidth", values = projection(edges$amount, 1, 15))
+  }
 
   return(p)
 }
