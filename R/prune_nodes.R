@@ -45,5 +45,7 @@ prune_nodes <- function(p, percentage = 0.2, rank = "amount") {
       DiagrammeR::delete_nodes_ws()
   }
 
+  p <- clean_graph(p)
+
   return(p)
 }

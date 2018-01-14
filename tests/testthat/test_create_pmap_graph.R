@@ -36,3 +36,27 @@ test_that("create_pmap_graph()", {
   expect_true(!any(is.null(render_pmap(p))))
   # print(render_graph(p))
 })
+
+test_that("create_pmap_graph() should assign `0` to `NA` in `inbound` and `outbound`", {
+  p <- create_pmap_graph(
+    nodes = data.frame(
+      name = c("a", "b", "c", "d", "e"),
+      type = c("campaign", "campaign", "campaign", "sale", "sale"),
+      amount = c(10, 30, 20, 40, NA),
+      stringsAsFactors = FALSE
+    ),
+    edges = data.frame(
+      from = c("a", "b", "b", "a"),
+      to = c("b", "c", "d", "e"),
+      amount = c(10, 30, 20, 40),
+      stringsAsFactors = FALSE
+    ),
+    target_types = c("sale")
+  )
+
+  node_df <- DiagrammeR::get_node_df(p)
+  expect_true(!any(is.na(node_df$inbound)))
+  expect_true(!any(is.na(node_df$outbound)))
+  expect_true(!any(is.na(node_df$amount)))
+})
+

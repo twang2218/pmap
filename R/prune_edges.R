@@ -73,5 +73,7 @@ prune_edges <- function(p, percentage = 0.2) {
       DiagrammeR::delete_edges_ws()
   }
 
+  p <- clean_graph(p)
+
   return(p)
 }

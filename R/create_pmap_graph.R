@@ -68,9 +68,11 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
     dplyr::left_join(nodes_outbound, by = "name")
 
   # Set all 'NA' to zero
-  nodes$inbound[!is.numeric(nodes$inbound)] <- 0
-  nodes$outbound[!is.numeric(nodes$outbound)] <- 0
-  # nodes$amount[!is.numeric(nodes$amount)] <- 0
+  nodes$inbound[is.na(nodes$inbound)] <- 0
+  nodes$outbound[is.na(nodes$outbound)] <- 0
+  if (!is.null(nodes$amount)) {
+    nodes$amount[is.na(nodes$amount)] <- 0
+  }
 
   # print("Converting factor to character [nodes]...")
   nodes <- nodes %>%
@@ -160,6 +162,8 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
       DiagrammeR::set_edge_attrs(edge_attr = "penwidth", values = projections) %>%
       DiagrammeR::set_edge_attrs(edge_attr = "weight", values = projections)
   }
+
+  p <- clean_graph(p)
 
   return(p)
 }
