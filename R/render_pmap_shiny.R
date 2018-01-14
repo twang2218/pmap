@@ -34,19 +34,19 @@
 render_pmap_shiny <- function(p, title = "Process Map", options = NULL) {
   processmap <- p
 
-  ui <- fluidPage(
+  ui <- shiny::fluidPage(
     # Application title
-    titlePanel(title),
+    shiny::titlePanel(title),
 
     # Sidebar with a slider input for graph precision
-    sidebarLayout(
-      sidebarPanel(
-        sliderInput("keep_edges_size",
+    shiny::sidebarLayout(
+      shiny::sidebarPanel(
+        shiny::sliderInput("keep_edges_size",
                     "Edges precision:",
                     min = 1,
                     max = 100,
                     value = 80),
-        sliderInput("keep_nodes_size",
+        shiny::sliderInput("keep_nodes_size",
                     "Nodes precision:",
                     min = 1,
                     max = 100,
@@ -55,7 +55,7 @@ render_pmap_shiny <- function(p, title = "Process Map", options = NULL) {
       ),
 
       # Show Diagram
-      mainPanel(
+      shiny::mainPanel(
         DiagrammeR::grVizOutput("diagram", width = "100%", height = "800px"),
         width = 10
       )
@@ -76,5 +76,5 @@ render_pmap_shiny <- function(p, title = "Process Map", options = NULL) {
   }
 
   # Run the application
-  shinyApp(ui = ui, server = server, options = options)
+  shiny::shinyApp(ui = ui, server = server, options = options)
 }

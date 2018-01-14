@@ -37,9 +37,11 @@
 #' render_pmap(p)
 #' @seealso [create_pmap]
 #' @importFrom dplyr        %>%
+#' @importFrom dplyr        select
 #' @importFrom dplyr        mutate
 #' @importFrom dplyr        mutate_if
 #' @importFrom dplyr        left_join
+#' @importFrom dplyr        rename
 #' @importFrom dplyr        summarize
 #' @importFrom DiagrammeR   create_graph
 #' @importFrom DiagrammeR   add_nodes_from_table
@@ -47,10 +49,6 @@
 #' @importFrom DiagrammeR   add_global_graph_attrs
 #' @importFrom DiagrammeR   set_node_attrs
 #' @importFrom DiagrammeR   set_edge_attrs
-#' @importFrom DiagrammeR   select_nodes
-#' @importFrom DiagrammeR   set_node_attrs_ws
-#' @importFrom DiagrammeR   get_selection
-#' @importFrom DiagrammeR   clear_selection
 #' @export
 create_pmap_graph <- function(nodes, edges, target_types = NULL) {
   # make 'R CMD Check' happy
@@ -58,16 +56,16 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
 
   # Collect inbound and outbound count
   nodes_outbound <- edges %>%
-    group_by(name = from) %>%
-    summarize(outbound = sum(amount))
+    dplyr::group_by(name = from) %>%
+    dplyr::summarize(outbound = sum(amount))
 
   nodes_inbound <- edges %>%
-    group_by(name = to) %>%
-    summarize(inbound = sum(amount))
+    dplyr::group_by(name = to) %>%
+    dplyr::summarize(inbound = sum(amount))
 
   nodes <- nodes %>%
-    left_join(nodes_inbound, by = "name") %>%
-    left_join(nodes_outbound, by = "name")
+    dplyr::left_join(nodes_inbound, by = "name") %>%
+    dplyr::left_join(nodes_outbound, by = "name")
 
   # Set all 'NA' to zero
   nodes$inbound[!is.numeric(nodes$inbound)] <- 0
@@ -76,19 +74,19 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
 
   # print("Converting factor to character [nodes]...")
   nodes <- nodes %>%
-    mutate_if(is.factor, as.character) %>%
-    mutate(
+    dplyr::mutate_if(is.factor, as.character) %>%
+    dplyr::mutate(
       index = 1:nrow(nodes),
       tooltip = get_attrs_desc(nodes),
       name_without_space = gsub(" ", "_", nodes$name)
     ) %>%
-    rename(catalog = type)
+    dplyr::rename(catalog = type)
   # print(str(nodes))
 
   # print("Converting factor to character [edges]...")
   edges <- edges %>%
-    mutate_if(is.factor, as.character) %>%
-    mutate(
+    dplyr::mutate_if(is.factor, as.character) %>%
+    dplyr::mutate(
       tooltips = get_attrs_desc(edges),
       from = gsub(" ", "_", edges$from),
       to = gsub(" ", "_", edges$to)
@@ -96,10 +94,10 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
   # print(str(edges))
 
   # print("create_graph()")
-  p <- create_graph()
+  p <- DiagrammeR::create_graph()
 
   # print("add_nodes_from_table()")
-  p <- add_nodes_from_table(
+  p <- DiagrammeR::add_nodes_from_table(
     p,
     table = nodes,
     label_col = "name",
@@ -108,9 +106,9 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
 
   # print("add_edges_from_table()")
   if (nrow(edges) > 0) {
-    p <- add_edges_from_table(
+    p <- DiagrammeR::add_edges_from_table(
       p,
-      table = edges %>% select(-amount),
+      table = dplyr::select(edges, -amount),
       from_col = "from",
       to_col = "to",
       ndf_mapping = "name_without_space"
@@ -120,47 +118,47 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
   # print("add_global_graph_attrs()")
   p <- p %>%
     # graph [ layout = "dot" ]
-    add_global_graph_attrs(attr_type = "graph", attr = "layout", value = "dot") %>%
+    DiagrammeR::add_global_graph_attrs(attr_type = "graph", attr = "layout", value = "dot") %>%
     # node [...]
-    add_global_graph_attrs(attr_type = "node", attr = "fixedsize", value = "false") %>%
-    add_global_graph_attrs(attr_type = "node", attr = "shape", value = "box") %>%
-    add_global_graph_attrs(attr_type = "node", attr = "style", value = "filled,rounded") %>%
-    add_global_graph_attrs(attr_type = "node", attr = "gradientangle", value = "90") %>%
+    DiagrammeR::add_global_graph_attrs(attr_type = "node", attr = "fixedsize", value = "false") %>%
+    DiagrammeR::add_global_graph_attrs(attr_type = "node", attr = "shape", value = "box") %>%
+    DiagrammeR::add_global_graph_attrs(attr_type = "node", attr = "style", value = "filled,rounded") %>%
+    DiagrammeR::add_global_graph_attrs(attr_type = "node", attr = "gradientangle", value = "90") %>%
     # edge [...]
     ## grey900(#212121)
-    add_global_graph_attrs(attr_type = "edge", attr = "color", value = "#000000A0") %>%
+    DiagrammeR::add_global_graph_attrs(attr_type = "edge", attr = "color", value = "#000000A0") %>%
     ## grey900(#212121)
-    add_global_graph_attrs(attr_type = "edge", attr = "fontcolor", value = "#212121")
+    DiagrammeR::add_global_graph_attrs(attr_type = "edge", attr = "fontcolor", value = "#212121")
 
   # node default attributes
   p <- p %>%
     ## grey900(#212121)
-    set_node_attrs(node_attr = "fontcolor", values = "#212121") %>%
+    DiagrammeR::set_node_attrs(node_attr = "fontcolor", values = "#212121") %>%
     ## lightBlue900(#01579B)
-    set_node_attrs(node_attr = "color", values = "#01579B") %>%
+    DiagrammeR::set_node_attrs(node_attr = "color", values = "#01579B") %>%
     ## lightBlue100(#B3E5FC) => lightBlue50(#E1F5FE)
-    set_node_attrs(node_attr = "fillcolor", values = "#B3E5FC:#E1F5FE") %>%
-    set_node_attrs(node_attr = "tooltip", values = nodes$tooltip) %>%
-    set_node_attrs(node_attr = "fontsize", values = 16) %>%
-    set_node_attrs(node_attr = "label", values = nodes$name)
+    DiagrammeR::set_node_attrs(node_attr = "fillcolor", values = "#B3E5FC:#E1F5FE") %>%
+    DiagrammeR::set_node_attrs(node_attr = "tooltip", values = nodes$tooltip) %>%
+    DiagrammeR::set_node_attrs(node_attr = "fontsize", values = 16) %>%
+    DiagrammeR::set_node_attrs(node_attr = "label", values = nodes$name)
 
   p <- adjust_node_style(p)
 
   # print("set_edge_attrs()")
   p <- p %>%
     # Add amount attribute
-    set_edge_attrs(edge_attr = "amount", values = edges$amount) %>%
+    DiagrammeR::set_edge_attrs(edge_attr = "amount", values = edges$amount) %>%
     # Edge attributes
-    set_edge_attrs(edge_attr = "penwidth", values = 1) %>%
-    set_edge_attrs(edge_attr = "label", values = edges$amount) %>%
-    set_edge_attrs(edge_attr = "tooltip", values = edges$tooltips) %>%
-    set_edge_attrs(edge_attr = "labeltooltip", values = edges$tooltips)
+    DiagrammeR::set_edge_attrs(edge_attr = "penwidth", values = 1) %>%
+    DiagrammeR::set_edge_attrs(edge_attr = "label", values = edges$amount) %>%
+    DiagrammeR::set_edge_attrs(edge_attr = "tooltip", values = edges$tooltips) %>%
+    DiagrammeR::set_edge_attrs(edge_attr = "labeltooltip", values = edges$tooltips)
 
   if (!any(is.null(edges$amount))) {
     projections <- projection(edges$amount, 1, 15)
     p <- p %>%
-      set_edge_attrs(edge_attr = "penwidth", values = projections) %>%
-      set_edge_attrs(edge_attr = "weight", values = projections)
+      DiagrammeR::set_edge_attrs(edge_attr = "penwidth", values = projections) %>%
+      DiagrammeR::set_edge_attrs(edge_attr = "weight", values = projections)
   }
 
   return(p)

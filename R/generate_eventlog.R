@@ -43,7 +43,7 @@ generate_eventlog <- function(size_of_eventlog = 1000, number_of_customers = 20,
   # Function for generating random time vector
   generate_random_datetimes <- function(size, from = "2017-01-01", to = "2017-12-31") {
     as.POSIXct(
-      round(runif(
+      round(stats::runif(
         size,
         min = as.numeric(as.POSIXct(from)),
         max = as.numeric(as.POSIXct(to))
@@ -63,23 +63,23 @@ generate_eventlog <- function(size_of_eventlog = 1000, number_of_customers = 20,
     event_types_of_catalog <- data.frame(
       name = paste0("Event ", nrow(event_types) + 1:event_catalogs_size[i], " (", event_catalogs[i], ")"),
       type = event_catalogs[i],
-      weight = runif(event_catalogs_size[i], 0, 1),
+      weight = stats::runif(event_catalogs_size[i], 0, 1),
       stringsAsFactors = FALSE
     )
     event_types <- rbind(event_types, event_types_of_catalog)
   }
 
-  events <- sample_n(event_types, size_of_eventlog, replace = TRUE, weight = event_types$weight)
+  events <- dplyr::sample_n(event_types, size_of_eventlog, replace = TRUE, weight = event_types$weight)
 
   # print(events %>% group_by(name, weight) %>% summarize(amount = n()))
 
   eventlog <- data.frame(
     timestamp = generate_random_datetimes(size_of_eventlog),
-    customer_id = sample(customers, size_of_eventlog, replace = TRUE)$id,
+    customer_id = dplyr::sample_n(customers, size_of_eventlog, replace = TRUE)$id,
     event_name = events$name,
     event_type = events$type,
     stringsAsFactors = FALSE
-  ) %>% arrange(timestamp, customer_id, event_name)
+  ) %>% dplyr::arrange(timestamp, customer_id, event_name)
 
   return(eventlog)
 }

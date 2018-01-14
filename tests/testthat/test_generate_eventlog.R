@@ -1,5 +1,3 @@
-library(dplyr)
-
 context("generate_eventlog()")
 
 test_that("generate_eventlog() should be able to generate eventlog of given size", {
@@ -11,9 +9,9 @@ test_that("generate_eventlog() should be able to generate eventlog of given size
   )
 
   expect_equal(nrow(eventlog), 1000)
-  expect_equal(nrow(eventlog %>% distinct(customer_id)), 10)
-  expect_equal(nrow(eventlog %>% distinct(event_name)), 10)
-  expect_equal(nrow(eventlog %>% distinct(event_type)), 2)
-  expect_equal(nrow(eventlog %>% filter(event_type == "normal") %>% distinct(event_name)), 8)
-  expect_equal(nrow(eventlog %>% filter(event_type == "target") %>% distinct(event_name)), 2)
+  expect_equal(nrow(eventlog %>% dplyr::distinct(customer_id)), 10)
+  expect_equal(nrow(eventlog %>% dplyr::distinct(event_name)), 10)
+  expect_equal(nrow(eventlog %>% dplyr::distinct(event_type)), 2)
+  expect_equal(nrow(eventlog %>% dplyr::filter(event_type == "normal") %>% dplyr::distinct(event_name)), 8)
+  expect_equal(nrow(eventlog %>% dplyr::filter(event_type == "target") %>% dplyr::distinct(event_name)), 2)
 })

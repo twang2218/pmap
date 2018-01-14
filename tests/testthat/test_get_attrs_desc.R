@@ -1,5 +1,3 @@
-library(data.table)
-
 context("get_attrs_desc()")
 
 test_that("get_attrs_desc() should handle 'list'", {
@@ -66,7 +64,7 @@ test_that("get_attrs_desc() should handle 'matrix'", {
 test_that("get_attrs_desc() should handle inherit type", {
   expect_equal(
     get_attrs_desc(
-      data.table(
+      data.table::data.table(
         id = c(1, 2, 3, 4),
         name = c("Jane", "John", "Eric", "Selena"),
         is_manager = c(FALSE, FALSE, FALSE, TRUE)
@@ -80,5 +78,5 @@ test_that("get_attrs_desc() should handle inherit type", {
     )
   )
 
-  expect_equal(get_attrs_desc(data.table()), "")
+  expect_equal(get_attrs_desc(data.table::data.table()), "")
 })

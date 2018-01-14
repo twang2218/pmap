@@ -16,12 +16,12 @@ test_that("prune_edges() should be able prune nothing", {
     target_types = c("sale")
   )
 
-  edges_count_before_prune <- nrow(get_edge_df(p))
+  edges_count_before_prune <- nrow(DiagrammeR::get_edge_df(p))
 
   # round(0.1 * 4) = round(0.4) = 0, so `prune_edges()` should prune nothing
   p <- prune_edges(p, percentage = 0.1)
 
-  edges_count_after_prune <- nrow(get_edge_df(p))
+  edges_count_after_prune <- nrow(DiagrammeR::get_edge_df(p))
 
   expect_equal(edges_count_after_prune, edges_count_before_prune)
 })
@@ -42,13 +42,13 @@ test_that("prune_edges() should be able prune half of the edges", {
     target_types = c("sale")
   )
 
-  edges_count_before_prune <- nrow(get_edge_df(p))
+  edges_count_before_prune <- nrow(DiagrammeR::get_edge_df(p))
 
   # 0.5 * 4 = 2, so `prune_edges()` should prune 2 edges,
   # which should be "a => b", "b => c" according to the `amount`
   p <- prune_edges(p, percentage = 0.5)
 
-  edges_count_after_prune <- nrow(get_edge_df(p))
+  edges_count_after_prune <- nrow(DiagrammeR::get_edge_df(p))
 
   expect_equal(edges_count_after_prune, edges_count_before_prune - round(edges_count_before_prune * 0.5))
 })
@@ -70,12 +70,12 @@ test_that("prune_edges() should be able prune all of the edges", {
     target_types = c("sale")
   )
 
-  edges_count_before_prune <- nrow(get_edge_df(p))
+  edges_count_before_prune <- nrow(DiagrammeR::get_edge_df(p))
 
   # 1 * 4 = 4, so `prune_edges()` should prune all 4 edges
   p <- prune_edges(p, percentage = 1)
 
-  edges_count_after_prune <- nrow(get_edge_df(p))
+  edges_count_after_prune <- nrow(DiagrammeR::get_edge_df(p))
 
   expect_equal(edges_count_after_prune, 0)
 })

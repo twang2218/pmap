@@ -64,13 +64,13 @@ prune_edges <- function(p, percentage = 0.2) {
   # make 'R CMD Check' happy
   amount <- NULL
 
-  edf <- get_edge_df(p)
+  edf <- DiagrammeR::get_edge_df(p)
 
-  removed_edges <- edf %>% arrange(amount) %>% head(round(percentage * nrow(edf)))
+  removed_edges <- edf %>% dplyr::arrange(amount) %>% head(round(percentage * nrow(edf)))
   if (nrow(removed_edges) > 0) {
     p <- p %>%
-      select_edges_by_edge_id(edges = removed_edges$id) %>%
-      delete_edges_ws()
+      DiagrammeR::select_edges_by_edge_id(edges = removed_edges$id) %>%
+      DiagrammeR::delete_edges_ws()
   }
 
   return(p)

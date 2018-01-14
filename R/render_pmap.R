@@ -16,10 +16,10 @@
 #' @export
 render_pmap <- function(p, title = NULL) {
   # remove node without edges
-  zero_degree_nodes <- p %>% select_nodes_by_degree("deg == 0") %>% get_selection()
-  if (!is.na(zero_degree_nodes) && length(zero_degree_nodes) > 0) {
-    p <- p %>% select_nodes_by_degree("deg == 0") %>% delete_nodes_ws()
+  zero_degree_nodes <- DiagrammeR::select_nodes_by_degree(p, "deg == 0")
+  if (!any(is.na(DiagrammeR::get_selection(zero_degree_nodes)))) {
+    p <- DiagrammeR::delete_nodes_ws(zero_degree_nodes)
   }
 
-  render_graph(p, title = title)
+  DiagrammeR::render_graph(p, title = title)
 }

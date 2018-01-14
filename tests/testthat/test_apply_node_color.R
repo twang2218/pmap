@@ -15,7 +15,7 @@ test_that("apply_node_color() handle graph without type", {
     )
   )
 
-  node_df <- get_node_df(p)
+  node_df <- DiagrammeR::get_node_df(p)
   # 'color' should be the default color
   expect_equal(node_df$color, rep("#01579B", nrow(node_df)))
   # 'fillcolor' should be the default gradient
@@ -37,7 +37,7 @@ test_that("apply_node_color() handle graph with a single type", {
     )
   )
 
-  node_df <- get_node_df(p)
+  node_df <- DiagrammeR::get_node_df(p)
   for (i in 1:nrow(node_df)) {
     # 'color' should not be the default color
     expect_true(node_df$color[i] != "#01579B")
@@ -61,7 +61,7 @@ test_that("apply_node_color() handle graph with multiple types", {
     )
   )
 
-  node_df <- get_node_df(p)
+  node_df <- DiagrammeR::get_node_df(p)
   # Compare with the default color
   for (i in 1:nrow(node_df)) {
     # 'color' should not be the default color

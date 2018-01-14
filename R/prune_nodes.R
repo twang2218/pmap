@@ -27,20 +27,22 @@ prune_nodes <- function(p, percentage = 0.2, rank = "amount") {
   # make 'R CMD Check' happy
   amount <- inbound <- outbound <- NULL
 
+  node_df <- DiagrammeR::get_node_df(p)
+
   # Ranking the nodes
   ranked_nodes <- switch(rank,
-    amount = get_node_df(p) %>% arrange(amount),
-    in_degree = get_node_df(p) %>% arrange(inbound),
-    out_degree = get_node_df(p) %>% arrange(outbound)
+    amount = dplyr::arrange(node_df, amount),
+    in_degree = dplyr::arrange(node_df, inbound),
+    out_degree = dplyr::arrange(node_df, outbound)
   )
   # Select the top part of the nodes
-  removed_nodes <- ranked_nodes %>% head(round(percentage * nrow(ranked_nodes)))
+  removed_nodes <-  head(ranked_nodes, round(percentage * nrow(ranked_nodes)))
 
   # Remove the nodes if it's not empty
   if (nrow(removed_nodes) > 0) {
     p <- p %>%
-      select_nodes_by_id(nodes = removed_nodes$id) %>%
-      delete_nodes_ws()
+      DiagrammeR::select_nodes_by_id(nodes = removed_nodes$id) %>%
+      DiagrammeR::delete_nodes_ws()
   }
 
   return(p)

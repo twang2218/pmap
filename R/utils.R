@@ -14,7 +14,7 @@ projection <- function(x, min = 0, max = 1) {
 #' @importFrom grDevices    col2rgb
 #' @importFrom grDevices    rgb
 get_color_variants <- function(name) {
-  color <- col2rgb(name, alpha = TRUE)
+  color <- grDevices::col2rgb(name, alpha = TRUE)
   arg <- split(color, rownames(color))
 
   alphas <- c(0.3, 0.5, 1)
@@ -22,7 +22,7 @@ get_color_variants <- function(name) {
   for (alpha in alphas) {
     arg$alpha <- round(alpha * 255)
     arg$maxColorValue <- 255
-    result[length(result)+1] <- do.call(rgb, arg)
+    result[length(result)+1] <- do.call(grDevices::rgb, arg)
   }
   return(result)
 }
@@ -46,7 +46,7 @@ get_palette <- function(size) {
 
   # calculate the colors
   sapply(
-    sapply(material_colors[1:size], pal_material, reverse = TRUE),
+    sapply(material_colors[1:size], ggsci::pal_material, reverse = TRUE),
     function(x) { x(1) }
   )
 }

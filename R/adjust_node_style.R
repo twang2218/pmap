@@ -5,7 +5,7 @@ adjust_node_style <- function(p) {
   # make `R CMD Check` happy
   amount <- NULL
 
-  node_df <- get_node_df(p)
+  node_df <- DiagrammeR::get_node_df(p)
   if ("amount" %in% colnames(node_df)) {
     nodes_with_amount <- node_df %>% dplyr::filter(amount >= 0)
     if (nrow(nodes_with_amount) > 0) {
@@ -14,13 +14,13 @@ adjust_node_style <- function(p) {
       # found some nodes.
       p <- p %>%
         # Adjust the node size by `amount`, project to `[10, 20]` range
-        set_node_attrs(
+        DiagrammeR::set_node_attrs(
           node_attr = "fontsize",
           values = fontsizes,
           nodes = nodes_with_amount$id
         ) %>%
         # Attach node label with its `amount`
-        set_node_attrs(
+        DiagrammeR::set_node_attrs(
           node_attr = "label",
           values = labels,
           nodes = nodes_with_amount$id

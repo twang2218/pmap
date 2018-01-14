@@ -15,7 +15,7 @@ test_that("adjust_node_style() handle graph without nodes's `amount`", {
     )
   )
 
-  node_df <- get_node_df(p)
+  node_df <- DiagrammeR::get_node_df(p)
   # 'fontsize' should be the default value `16`
   expect_equal(node_df$fontsize, rep(16, nrow(node_df)))
   # 'label' should be the default value, which is the `name` field
@@ -38,7 +38,7 @@ test_that("adjust_node_style() handle graph with node's amount", {
     )
   )
 
-  node_df <- get_node_df(p)
+  node_df <- DiagrammeR::get_node_df(p)
   projs <- projection(node_df$amount, 10, 20)
   labels <- paste0(node_df$name, "\n(", node_df$amount, ")")
   for (i in 1:nrow(node_df)) {

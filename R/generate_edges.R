@@ -60,7 +60,7 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
   customer_id <- timestamp <- from <- to <- NULL
 
   # sort by customer_id and timestamp
-  eventlog <- data.table(eventlog) %>% arrange(customer_id, timestamp)
+  eventlog <- data.table(eventlog) %>% dplyr::arrange(customer_id, timestamp)
 
   empty_edges <- data.frame(
     from = character(0),
@@ -155,19 +155,19 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
     return(empty_edges)
   }
 
-  edges <- rbindlist(edges)
+  edges <- data.table::rbindlist(edges)
 
   if (distinct_customer) {
-    edges <- distinct(edges, from, to, customer_id)
+    edges <- dplyr::distinct(edges, from, to, customer_id)
   }
 
   edges <- edges %>%
-    group_by(from, to) %>%
+    dplyr::group_by(from, to) %>%
     # Add attributes: `amount` => count
-    summarize(amount = n()) %>%
-    ungroup() %>%
-    mutate_if(is.factor, as.character) %>%
-    arrange(from, to)
+    dplyr::summarize(amount = n()) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate_if(is.factor, as.character) %>%
+    dplyr::arrange(from, to)
 
   return(edges)
 }

@@ -51,9 +51,7 @@
 #' #  9 Event 8 (normal)  normal    100
 #' # 10 Event 9 (target)  target    100
 #' @importFrom dplyr      %>%
-#' @importFrom dplyr      select
 #' @importFrom dplyr      distinct
-#' @importFrom dplyr      rename
 #' @importFrom dplyr      mutate
 #' @importFrom dplyr      arrange
 #' @importFrom dplyr      group_by
@@ -71,26 +69,26 @@ generate_nodes <- function(eventlog, distinct_customer = FALSE) {
       amount = numeric(0)
     )
   } else {
-    nodes <- eventlog %>% mutate(name = as.character(str_trim(event_name)))
+    nodes <- eventlog %>% dplyr::mutate(name = as.character(stringr::str_trim(event_name)))
 
     if ("event_type" %in% colnames(eventlog)) {
-      nodes <- nodes %>% mutate(type = as.character(str_trim(event_type)))
+      nodes <- nodes %>% dplyr::mutate(type = as.character(stringr::str_trim(event_type)))
     } else {
       # if `event_type` column is not provided, then use the `event_name`
       # column as the `type`.
       # TODO: Handle the number of types greater than number of color in
       # palette, in this case, it's 19
-      nodes <- nodes %>% mutate(type = name)
+      nodes <- nodes %>% dplyr::mutate(type = name)
     }
 
     if (distinct_customer) {
-      nodes <- nodes %>% distinct(name, type, customer_id)
+      nodes <- nodes %>% dplyr::distinct(name, type, customer_id)
     }
 
     nodes <- nodes %>%
-      group_by(name, type) %>%
-      summarize(amount = n()) %>%
-      ungroup() %>%
-      arrange(name)
+      dplyr::group_by(name, type) %>%
+      dplyr::summarize(amount = n()) %>%
+      dplyr::ungroup() %>%
+      dplyr::arrange(name)
   }
 }
