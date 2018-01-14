@@ -17,10 +17,12 @@ Imports:
   data.table (>= 1.9.8),
   DiagrammeR (>= 0.9.0),
   stringr,
-  ggsci (>= 2.7)
+  ggsci (>= 2.7),
+  shiny
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
 Suggests:
   covr,
   roxygen2,
-  testthat
+  testthat,
+  eventdataR
