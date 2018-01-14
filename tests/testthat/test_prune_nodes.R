@@ -54,7 +54,7 @@ test_that("prune_nodes() should be able prune half of the nodes", {
     p <- prune_nodes(p, percentage = 0.5, rank = rank)
 
     nodes_count_after_prune <- nrow(get_node_df(p))
-    expect_equal(nodes_count_after_prune, ceiling(nodes_count_before_prune / 2))
+    expect_equal(nodes_count_after_prune, nodes_count_before_prune - round(nodes_count_before_prune * 0.5))
   }
 })
 

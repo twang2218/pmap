@@ -18,7 +18,7 @@ test_that("prune_edges() should be able prune nothing", {
 
   edges_count_before_prune <- nrow(get_edge_df(p))
 
-  # 0.1 * 4 = 0.4 ~= 0, so `prune_edges()` should prune nothing
+  # round(0.1 * 4) = round(0.4) = 0, so `prune_edges()` should prune nothing
   p <- prune_edges(p, percentage = 0.1)
 
   edges_count_after_prune <- nrow(get_edge_df(p))
@@ -50,7 +50,7 @@ test_that("prune_edges() should be able prune half of the edges", {
 
   edges_count_after_prune <- nrow(get_edge_df(p))
 
-  expect_equal(edges_count_after_prune, edges_count_before_prune / 2)
+  expect_equal(edges_count_after_prune, edges_count_before_prune - round(edges_count_before_prune * 0.5))
 })
 
 

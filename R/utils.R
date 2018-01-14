@@ -14,13 +14,14 @@ projection <- function(x, min = 0, max = 1) {
 #' @importFrom grDevices    col2rgb
 #' @importFrom grDevices    rgb
 get_color_variants <- function(name) {
-  color <- col2rgb(name, alpha = TRUE) / 255
+  color <- col2rgb(name, alpha = TRUE)
   arg <- split(color, rownames(color))
 
   alphas <- c(0.3, 0.5, 1)
   result <- c()
   for (alpha in alphas) {
-    arg$alpha <- alpha
+    arg$alpha <- round(alpha * 255)
+    arg$maxColorValue <- 255
     result[length(result)+1] <- do.call(rgb, arg)
   }
   return(result)

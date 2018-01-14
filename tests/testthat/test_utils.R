@@ -29,20 +29,20 @@ test_that("get_palette()", {
 })
 
 test_that("get_color_variants()", {
-  expect_equal(get_color_variants("#123456"), c("#1234564D", "#12345680", "#123456FF"))
+  expect_equal(get_color_variants("#123456"), c("#1234564C", "#12345680", "#123456FF"))
 })
 
 test_that("get_colors()", {
   expect_equal(
     get_colors(c("type1")),
-    list(type1 = c("#0C46A04D", "#0C46A080", "#0C46A0FF"))
+    list(type1 = c("#0C46A04C", "#0C46A080", "#0C46A0FF"))
   )
   expect_equal(
     get_colors(c("a", "b", "c")),
     list(
-      a = c("#0C46A04D", "#0C46A080", "#0C46A0FF"),
-      b = c("#B71B1B4D", "#B71B1B80", "#B71B1BFF"),
-      c = c("#1A5E1F4D", "#1A5E1F80", "#1A5E1FFF")
+      a = c("#0C46A04C", "#0C46A080", "#0C46A0FF"),
+      b = c("#B71B1B4C", "#B71B1B80", "#B71B1BFF"),
+      c = c("#1A5E1F4C", "#1A5E1F80", "#1A5E1FFF")
     )
   )
 

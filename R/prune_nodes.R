@@ -34,7 +34,7 @@ prune_nodes <- function(p, percentage = 0.2, rank = "amount") {
     out_degree = get_node_df(p) %>% arrange(outbound)
   )
   # Select the top part of the nodes
-  removed_nodes <- ranked_nodes %>% head(percentage * nrow(ranked_nodes))
+  removed_nodes <- ranked_nodes %>% head(round(percentage * nrow(ranked_nodes)))
 
   # Remove the nodes if it's not empty
   if (nrow(removed_nodes) > 0) {
