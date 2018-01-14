@@ -2,7 +2,7 @@
 #' @description `eventlog` should be a `data.frame`, which contains, at least, following columns:
 #'
 #'  * `event_name`: event name. (`character`)
-#'  * `event_type`: event type. (`character`)
+#'  * `event_type`: event type, which is optional. If the `event_type` column is missing, the `event_name` column will be used as the `event_type`. (`character`)
 #'  * `amount`: how many time this event happened in the `eventlog`
 #'
 #' `generate_nodes()` will generate the node list from the given `eventlog` for the graph purpose.
@@ -71,11 +71,17 @@ generate_nodes <- function(eventlog, distinct_customer = FALSE) {
       amount = numeric(0)
     )
   } else {
-    nodes <- eventlog %>%
-      mutate(
-        name = as.character(str_trim(event_name)),
-        type = as.character(str_trim(event_type))
-      )
+    nodes <- eventlog %>% mutate(name = as.character(str_trim(event_name)))
+
+    if ("event_type" %in% colnames(eventlog)) {
+      nodes <- nodes %>% mutate(type = as.character(str_trim(event_type)))
+    } else {
+      # if `event_type` column is not provided, then use the `event_name`
+      # column as the `type`.
+      # TODO: Handle the number of types greater than number of color in
+      # palette, in this case, it's 19
+      nodes <- nodes %>% mutate(type = name)
+    }
 
     if (distinct_customer) {
       nodes <- nodes %>% distinct(name, type, customer_id)

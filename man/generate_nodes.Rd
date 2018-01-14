@@ -18,7 +18,7 @@ a nodes \code{data.frame} which represents a event list, it contains \code{name}
 \code{eventlog} should be a \code{data.frame}, which contains, at least, following columns:
 \itemize{
 \item \code{event_name}: event name. (\code{character})
-\item \code{event_type}: event type. (\code{character})
+\item \code{event_type}: event type, which is optional. If the \code{event_type} column is missing, the \code{event_name} column will be used as the \code{event_type}. (\code{character})
 \item \code{amount}: how many time this event happened in the \code{eventlog}
 }
 

@@ -114,3 +114,26 @@ test_that("generate_nodes() should count every path if 'distinct_customer' is no
   expect_equal(nodes$amount, c(3, 2))
   expect_equal(nodes$type, c("campaign", "sale"))
 })
+
+test_that("generate_nodes() should handle the eventlog without `event_type`", {
+  nodes <- generate_nodes(
+    data.frame(
+      timestamp = c(
+        as.POSIXct("2017-10-01"),
+        as.POSIXct("2017-10-02"),
+        as.POSIXct("2017-10-03"),
+        as.POSIXct("2017-10-04"),
+        as.POSIXct("2017-10-20")
+      ),
+      customer_id = c("c1", "c1", "c2", "c1", "c1"),
+      event_name = c("a", "b", "a", "a", "b"),
+      stringsAsFactors = FALSE
+    ),
+    distinct_customer = TRUE
+  )
+
+  expect_equal(nrow(nodes), 2)
+  expect_equal(nodes$name, c("a", "b"))
+  expect_equal(nodes$amount, c(2, 1))
+  expect_equal(nodes$type, c("a", "b"))
+})
