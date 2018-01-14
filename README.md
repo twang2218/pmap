@@ -1,4 +1,6 @@
-# Process Map [![Build Status]][Travis] [![AppVeyor Build Status]][AppVeyor Link] [![Coverage status]][Coverage status link] [![CRAN Version]][CRAN Link] [![Download Stats]][CRAN Link]
+# Process Map
+
+[![Build Status]][Travis] [![AppVeyor Build Status]][AppVeyor Link] [![Coverage status]][Coverage status link] [![CRAN Version]][CRAN Link] [![Download Stats]][CRAN Link]
 
 [Build Status]: https://travis-ci.org/twang2218/pmap.svg?branch=master
 [Travis]: https://travis-ci.org/twang2218/pmap
@@ -18,45 +20,63 @@ The goal of `pmap` is to provide functionality of generating process map from gi
 
 ## Usage
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to use `pmap` create a process map from an event log. We use `sepsis` dataset in `eventdataR` package as the example.
 
 ``` r
-## basic example code
-library(pmap)
+library(eventdataR)
 library(dplyr)
+library(pmap)
 
-# Generate simulated eventlog
-> eventlog <- generate_eventlog(
-     size_of_eventlog = 10000,
-     number_of_customers = 2000,
-     event_catalogs = c("campaign", "sale"),
-     event_catalogs_size = c(10, 4))
+# Prepare the event log data frame
+> eventlog <- eventdataR::sepsis %>%
+    rename(
+      timestamp = Complete_Timestamp,
+      customer_id = Case_ID,
+      event_name = Activity
+    ) %>%
+    select(timestamp, customer_id, event_name) %>%
+    filter(!is.na(customer_id))
+```
 
-# Check eventlog data frame structure
+Check eventlog data frame structure.
+
+```R
 > head(eventlog)
-            timestamp   customer_id         event_name event_type
-1 2017-01-01 00:08:35 Customer 1072 Event 6 (campaign)   campaign
-2 2017-01-01 00:14:42 Customer 1979 Event 1 (campaign)   campaign
-3 2017-01-01 00:55:58   Customer 32 Event 3 (campaign)   campaign
-4 2017-01-01 01:04:01 Customer 1877 Event 8 (campaign)   campaign
-5 2017-01-01 01:47:37  Customer 833 Event 7 (campaign)   campaign
-6 2017-01-01 03:34:39 Customer 1119 Event 4 (campaign)   campaign
-> str(eventlog)
-'data.frame':   10000 obs. of  4 variables:
- $ timestamp  : POSIXct, format: "2017-01-01 00:08:35" "2017-01-01 00:14:42" ...
- $ customer_id: chr  "Customer 1072" "Customer 1979" "Customer 32" "Customer 1877" ...
- $ event_name : chr  "Event 6 (campaign)" "Event 1 (campaign)" "Event 3 (campaign)" "Event 8 (campaign)" ...
- $ event_type : chr  "campaign" "campaign" "campaign" "campaign" ...
+# A tibble: 6 x 3
+  timestamp           customer_id event_name      
+  <dttm>              <chr>       <chr>           
+1 2014-10-22 11:15:41 A           ER Registration 
+2 2014-10-22 11:27:00 A           Leucocytes      
+3 2014-10-22 11:27:00 A           CRP             
+4 2014-10-22 11:27:00 A           LacticAcid      
+5 2014-10-22 11:33:37 A           ER Triage       
+6 2014-10-22 11:34:00 A           ER Sepsis Triage
 
+> str(eventlog)
+Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	15190 obs. of  3 variables:
+ $ timestamp  : POSIXct, format: "2014-10-22 11:15:41" ...
+ $ customer_id: chr  "A" "A" "A" "A" ...
+ $ event_name : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
+ - attr(*, "case_id")= chr "Case_ID"
+ - attr(*, "activity_id")= chr "Activity"
+ - attr(*, "activity_instance_id")= chr "activity_instance"
+ - attr(*, "lifecycle_id")= chr "lifecycle_transition"
+ - attr(*, "timestamp")= chr "Complete_Timestamp"
+ - attr(*, "resource_id")= chr "org_group"
+```
+
+Create process map from the `eventlog`.
+
+```R
 # Create process map
-> p <- create_pmap(eventlog, target_types = c("sale"))
+> p <- create_pmap(eventlog)
 # Render the process map
 > print(render_pmap(p))
 ```
 
 The result will be a bit messy.
 
-![process map without prune](man/figures/example.prune_edges.none.svg)
+<p align="center"><img src="man/figures/example.prune_edges.none.svg" alt="process map without prune" height="500px" /></p>
 
 Let's prune the process map.
 
@@ -67,4 +87,5 @@ Let's prune the process map.
 > print(render_pmap(p))
 ```
 
-![cleaner process map](man/figures/example.prune_edges.both.svg)
+
+<p align="center"><img src="man/figures/example.prune_edges.both.svg" alt="cleaner process map" height="500px" /></p>

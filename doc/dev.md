@@ -46,5 +46,5 @@ Export
 library(dplyr)
 library(DiagrammeR)
 
-p %>% render_pmap() %>% export_graph(file_name = "mygraph.svg", file_type = "svg")
+DiagrammeR::export_graph(p, file_name = "mygraph.svg", file_type = "svg")
 ```
