@@ -82,10 +82,9 @@ Let's prune the process map.
 
 ```R
 # Prune the process map
-> p <- p %>% prune_edges(0.5) %>% prune_nodes(0.5)
+> p <- p %>% prune_nodes(0.5) %>% prune_edges(0.5)
 # Render the pruned process map
 > print(render_pmap(p))
 ```
-
 
 <p align="center"><img src="man/figures/example.prune_edges.both.svg" alt="cleaner process map" height="500px" /></p>
