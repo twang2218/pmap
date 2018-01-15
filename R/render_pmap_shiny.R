@@ -4,22 +4,13 @@
 #' @param title The title you want to display on the web page
 #' @param options The Shiny server options, such as binding address or listening port.
 #' @examples
-#' # We can use the real life event log from 'eventdataR' package to do the shiny app demo
-#' library(eventdataR)
-#' library(dplyr)
-#' eventlog <- eventdataR::sepsis %>%
-#'   rename(
-#'     timestamp = Complete_Timestamp,
-#'     customer_id = Case_ID,
-#'     event_name = Activity
-#'   ) %>%
-#'   mutate(
-#'     event_type = event_name
-#'   ) %>%
-#'   select(timestamp, customer_id, event_name, event_type) %>%
-#'   filter(!is.na(customer_id))
-#' app <- eventlog %>% create_pmap() %>% render_pmap_shiny()
-#' # To run the app, just print(app)
+#' library(pmap)
+#' # Generate a random eventlog
+#' eventlog <- generate_eventlog()
+#' # Create the process map from the event log
+#' p <- create_pmap(eventlog)
+#' # Render process map as Shiny app
+#' # render_pmap_shiny(p)
 #' @importFrom shiny        fluidPage
 #' @importFrom shiny        titlePanel
 #' @importFrom shiny        sidebarLayout

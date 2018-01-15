@@ -16,7 +16,7 @@
 [AppVeyor Build Status]: https://ci.appveyor.com/api/projects/status/github/twang2218/pmap?branch=master&svg=true
 [AppVeyor Link]: https://ci.appveyor.com/project/twang2218/pmap
 
-The goal of `pmap` is to provide functionality of generating process map from given event logs.
+The goal of `pmap` is to provide functionality of generating a process map from an event log.
 
 ## Usage
 

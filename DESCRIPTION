@@ -24,5 +24,4 @@ RoxygenNote: 6.0.1
 Suggests:
   covr,
   roxygen2,
-  testthat,
-  eventdataR
+  testthat
