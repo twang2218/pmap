@@ -1,34 +1,26 @@
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        distinct
-#' @importFrom dplyr        arrange
+#' @importFrom dplyr        inner_join
 #' @importFrom DiagrammeR   get_node_df
-#' @importFrom DiagrammeR   select_nodes
-#' @importFrom DiagrammeR   get_selection
-#' @importFrom DiagrammeR   set_node_attrs_ws
-#' @importFrom DiagrammeR   clear_selection
+#' @importFrom DiagrammeR   set_node_attrs
 apply_node_color <- function(p) {
   # Make `R CMD check` happy
-  type <- NULL
+  type <- id <- NULL
 
-  types <- DiagrammeR::get_node_df(p) %>%
-    dplyr::distinct(type) %>%
-    dplyr::arrange(type)
+  node_df <- DiagrammeR::get_node_df(p) %>% select(id, type)
 
-  types <- types$type
+  types <- dplyr::distinct(node_df, type)$type
 
-  colors <- get_colors(types)
+  if (any(is.na(types))) {
+    # we don't handle the types with `NA`
+    return(p)
+  }
 
-  for (t in types) {
-    color <- colors[[t]]
-    p <- DiagrammeR::select_nodes(p, conditions = type == t)
-    if (!any(is.na(DiagrammeR::get_selection(p)))) {
-      # print(paste("type:", t))
-      # print(paste("color:", color))
-      p <- p %>%
-        DiagrammeR::set_node_attrs_ws(node_attr = "color", value = color[3]) %>%
-        DiagrammeR::set_node_attrs_ws(node_attr = "fillcolor", value = paste0(color[2], ":", color[1]))
-    }
-    p <- DiagrammeR::clear_selection(p)
+  nodes <- dplyr::inner_join(node_df, get_colors(types), by = "type")
+
+  if (nrow(nodes) > 0) {
+    p <- DiagrammeR::set_node_attrs(p, node_attr = "color", values = nodes$color, nodes = nodes$id)
+    p <- DiagrammeR::set_node_attrs(p, node_attr = "fillcolor", values = nodes$fillcolor, nodes = nodes$id)
   }
 
   return(p)

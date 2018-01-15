@@ -9,46 +9,35 @@ test_that("projection()", {
   expect_equal(projection(c(0, 5, 10), 10, 20), c(10, 15, 20))
 })
 
-test_that("get_palette()", {
-  expect_equal(length(get_palette(1)), 1)
-  expect_equal(length(get_palette(5)), 5)
-  expect_equal(length(get_palette(19)), 19)
-  # only can get 19 colors, no more
-  expect_equal(length(get_palette(50)), 19)
-
-  expect_equal(names(get_palette(4)), c("blue", "red", "green", "yellow"))
-  expect_equal(
-    get_palette(4),
-    c(
-      blue = "#0C46A0FF",
-      red = "#B71B1BFF",
-      green = "#1A5E1FFF",
-      yellow = "#F47F17FF"
-    )
-  )
-})
-
-test_that("get_color_variants()", {
-  expect_equal(get_color_variants("#123456"), c("#1234564C", "#12345680", "#123456FF"))
+test_that("get_color_variant()", {
+  expect_equal(get_color_variant("#0C46A0", 1), "#0C46A0")
+  expect_equal(get_color_variant("#0C46A0", 0.5), "#85A2CF")
+  expect_equal(get_color_variant("#0C46A0", 0.3), "#B6C7E2")
+  expect_equal(get_color_variant("#B71B1BFF", 1), "#B71B1B")
+  expect_equal(get_color_variant("#B71B1BFF", 0.3), "#E9BABA")
 })
 
 test_that("get_colors()", {
-  expect_equal(
-    get_colors(c("type1")),
-    list(type1 = c("#0C46A04C", "#0C46A080", "#0C46A0FF"))
-  )
-  expect_equal(
-    get_colors(c("a", "b", "c")),
-    list(
-      a = c("#0C46A04C", "#0C46A080", "#0C46A0FF"),
-      b = c("#B71B1B4C", "#B71B1B80", "#B71B1BFF"),
-      c = c("#1A5E1F4C", "#1A5E1F80", "#1A5E1FFF")
-    )
-  )
+  expect_equal(nrow(get_colors(c())), 0)
+  expect_equal(nrow(get_colors(NULL)), 0)
 
-  # return empty list for invalid input
-  expect_equal(get_colors(c()), list())
-  expect_equal(get_colors(NULL), list())
+  #        type   color       fillcolor
+  # blue normal #0C46A0 #85A2CF:#B6C7E2
+  pal <- get_colors(c("normal"))
+  expect_equal(pal[1,"type"], "normal")
+  expect_equal(pal[1,"color"], "#0C46A0")
+  expect_equal(pal[1,"fillcolor"], "#85A2CF:#B6C7E2")
+
+  #        type   color       fillcolor
+  # blue normal #0C46A0 #85A2CF:#B6C7E2
+  # red  target #B71B1B #DB8D8D:#E9BABA
+  pal <- get_colors(c("normal", "target"))
+  expect_equal(pal[1,"type"], "normal")
+  expect_equal(pal[1,"color"], "#0C46A0")
+  expect_equal(pal[1,"fillcolor"], "#85A2CF:#B6C7E2")
+  expect_equal(pal[2,"type"], "target")
+  expect_equal(pal[2,"color"], "#B71B1B")
+  expect_equal(pal[2,"fillcolor"], "#DB8D8D:#E9BABA")
 })
 
 test_that("generate_random_datetimes()", {

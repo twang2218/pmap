@@ -11,55 +11,51 @@ projection <- function(x, min = 0, max = 1) {
   ((x - x_min)/(x_max - x_min)) * (max - min) + min
 }
 
-#' @importFrom grDevices    col2rgb
-#' @importFrom grDevices    rgb
-get_color_variants <- function(name) {
-  color <- grDevices::col2rgb(name, alpha = TRUE)
-  arg <- split(color, rownames(color))
-
-  alphas <- c(0.3, 0.5, 1)
-  result <- c()
-  for (alpha in alphas) {
-    arg$alpha <- round(alpha * 255)
-    arg$maxColorValue <- 255
-    result[length(result)+1] <- do.call(grDevices::rgb, arg)
-  }
-  return(result)
-}
-
 # define material design palette base colors
-material_colors <- c(
+MATERIAL_DESIGN_PALETTE <- c(
   "blue",         "red",          "green",        "yellow",   "brown",
   "indigo",       "pink",         "teal",         "amber",    "orange",
   "purple",       "deep-orange",  "light-green",  "lime",     "grey",
   "deep-purple",  "cyan",         "blue-grey",    "light-blue"
 )
 
-#' @importFrom ggsci        pal_material
-get_palette <- function(size) {
-  # limit the size to the length of `material_colors`
-  if (size > length(material_colors)) {
-    size <- length(material_colors)
-  } else if (size < 1) {
-    return()
-  }
-
-  # calculate the colors
-  sapply(
-    sapply(material_colors[1:size], ggsci::pal_material, reverse = TRUE),
-    function(x) { x(1) }
+#' @importFrom grDevices rgb
+#' @importFrom grDevices colorRamp
+get_color_variant <- function(color, level = 1) {
+  return(
+    grDevices::rgb(
+      grDevices::colorRamp(c(color, "white"))(1 - level),
+      maxColorValue = 255
+    )
   )
 }
 
+#' @importFrom ggsci  pal_material
 get_colors <- function(types) {
   if (length(types) < 1) {
-    return(list())
+    return(data.frame())
   }
 
-  colors <- lapply(get_palette(length(types)), get_color_variants)
-  names(colors) <- types
+  # Get base colors from ggsci's material design color palette
+  colors <- sapply(
+    sapply(
+      MATERIAL_DESIGN_PALETTE[1:min(length(types), length(MATERIAL_DESIGN_PALETTE))],
+      ggsci::pal_material,
+      reverse = TRUE
+    ),
+    function(x) { x(1) }
+  )
 
-  return(colors)
+  color1 <- sapply(colors, get_color_variant, 1)
+  color2 <- sapply(colors, get_color_variant, 0.5)
+  color3 <- sapply(colors, get_color_variant, 0.3)
+
+  data.frame(
+    type = types,
+    color = color1,
+    fillcolor = paste0(color2, ":", color3),
+    stringsAsFactors = FALSE
+  )
 }
 
 # Function for generating random time vector
