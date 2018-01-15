@@ -24,4 +24,7 @@ RoxygenNote: 6.0.1
 Suggests:
   covr,
   roxygen2,
-  testthat
+  testthat,
+  DiagrammeRsvg,
+  rsvg
+

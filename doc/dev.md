@@ -30,21 +30,7 @@ document()
 Prerequest
 
 ```bash
+# macOS
 brew install v8@3.15 librsvg
 
-```
-
-```R
-install.packages("DiagrammeRsvg")
-install.packages("rsvg")
-
-```
-
-Export
-
-```R
-library(dplyr)
-library(DiagrammeR)
-
-DiagrammeR::export_graph(p, file_name = "mygraph.svg", file_type = "svg")
 ```
