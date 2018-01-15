@@ -10,10 +10,16 @@
 #'  * For Ubuntu/Debian user, please install `libv8-dev` package;
 #'  * For Fedora/RHEL user, please install `v8-devel` package;
 #'  * For macOS user, please `brew install v8@3.15`;
-#' @examples
+#'
+#' Example:
+#'
+#' ```R
 #' library(dplyr)
 #' library(pmap)
-#' generate_eventlog() %>% create_pmap() %>% render_pmap_file(file_name = "test.svg", format = "svg")
+#' eventlog <- generate_eventlog()
+#' p <- create_pmap(eventlog)
+#' render_pmap_file(p, file_name = "test.svg", format = "svg")
+#' ```
 #' @importFrom DiagrammeR   export_graph
 #' @export
 render_pmap_file <- function(p, file_name, format = c("png", "pdf", "svg", "ps"), width = NULL, height = NULL) {

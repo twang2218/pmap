@@ -28,9 +28,11 @@ The function depends on V8 engine, so please install \code{v8} engine support on
 \item For Fedora/RHEL user, please install \code{v8-devel} package;
 \item For macOS user, please \code{brew install v8@3.15};
 }
-}
-\examples{
-library(dplyr)
+
+Example:\preformatted{library(dplyr)
 library(pmap)
-generate_eventlog() \%>\% create_pmap() \%>\% render_pmap_file(file_name = "test.svg", format = "svg")
+eventlog <- generate_eventlog()
+p <- create_pmap(eventlog)
+render_pmap_file(p, file_name = "test.svg", format = "svg")
+}
 }
