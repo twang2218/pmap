@@ -1,7 +1,3 @@
-#' @title Apply node colors based on the node's type
-#' @description Different type of node should be differenciate by different colors, this function applies the material design palette for the node's color.
-#' @usage apply_node_color(p)
-#' @param p process map generated `by create_pmap()`
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        distinct
 #' @importFrom dplyr        arrange

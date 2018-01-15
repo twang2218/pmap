@@ -1,6 +1,3 @@
-#' @title Clean the graph
-#' @description remove any nodes without edge
-#' @param p The process map created by `create_pmap()`
 #' @importFrom DiagrammeR   select_nodes_by_degree
 #' @importFrom DiagrammeR   get_selection
 #' @importFrom DiagrammeR   delete_nodes_ws
