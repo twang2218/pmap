@@ -4,7 +4,7 @@
 \alias{prune_nodes}
 \title{Prune nodes based on given percentage}
 \usage{
-prune_nodes(p, percentage = 0.2, rank = "amount")
+prune_nodes(p, percentage = 0.2, rank = c("amount", "in_degree", "out_degree"))
 }
 \arguments{
 \item{p}{process map object created by \code{create_pmap_graph()} function}

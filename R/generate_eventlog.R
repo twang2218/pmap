@@ -6,8 +6,8 @@
 #' @usage generate_eventlog(
 #'      size_of_eventlog = 1000, 
 #'      number_of_customers = 20, 
-#'      event_catalogs = c("normal", "target"), 
-#'      event_catalogs_size = c(8, 2))
+#'      event_catalogs = c("normal", "visit", "phone", "target"),
+#'      event_catalogs_size = c(5, 4, 3, 2))
 #' @description This function provides the ability to randomly generate the `eventlog` data frame based on given parameters.
 #' @examples
 #' eventlog <- generate_eventlog(
@@ -36,21 +36,14 @@
 #' @importFrom dplyr  arrange
 #' @importFrom stats  runif
 #' @export
-generate_eventlog <- function(size_of_eventlog = 1000, number_of_customers = 20, event_catalogs = c("normal", "target"), event_catalogs_size = c(8, 2)) {
+generate_eventlog <- function(
+  size_of_eventlog = 1000,
+  number_of_customers = 20,
+  event_catalogs = c("normal", "visit", "phone", "target"),
+  event_catalogs_size = c(5, 4, 3, 2)) {
+
   # make 'R CMD check' happy
   customer_id <- timestamp <- event_name <- NULL
-
-  # Function for generating random time vector
-  generate_random_datetimes <- function(size, from = "2017-01-01", to = "2017-12-31") {
-    as.POSIXct(
-      round(stats::runif(
-        size,
-        min = as.numeric(as.POSIXct(from)),
-        max = as.numeric(as.POSIXct(to))
-      )),
-      origin = "1970-01-01"
-    )
-  }
 
   # Generate Customers
   customers <- data.frame(

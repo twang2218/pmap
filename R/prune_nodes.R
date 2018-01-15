@@ -5,7 +5,7 @@
 #'  `amount` means ranking the nodes by `amount` column (default);
 #'  `in_degree` means ranking the nodes by `in_degree`;
 #'  `out_degree` means ranking the nodes by `out_degree`;
-#' @usage prune_nodes(p, percentage = 0.2, rank = "amount")
+#' @usage prune_nodes(p, percentage = 0.2, rank = c("amount", "in_degree", "out_degree"))
 #' @description Prune nodes based on given percentage
 #' @examples
 #' library(dplyr)
@@ -23,9 +23,11 @@
 #' @importFrom DiagrammeR   delete_nodes_ws
 #' @importFrom utils        head
 #' @export
-prune_nodes <- function(p, percentage = 0.2, rank = "amount") {
+prune_nodes <- function(p, percentage = 0.2, rank = c("amount", "in_degree", "out_degree")) {
   # make 'R CMD Check' happy
   amount <- inbound <- outbound <- NULL
+
+  rank <- match.arg(rank)
 
   node_df <- DiagrammeR::get_node_df(p)
 

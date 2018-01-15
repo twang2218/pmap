@@ -50,3 +50,9 @@ test_that("get_colors()", {
   expect_equal(get_colors(c()), list())
   expect_equal(get_colors(NULL), list())
 })
+
+test_that("generate_random_datetimes()", {
+  dates <- generate_random_datetimes(10)
+  expect_is(dates, "POSIXct")
+  expect_equal(length(dates), 10)
+})

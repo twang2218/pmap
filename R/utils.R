@@ -61,3 +61,15 @@ get_colors <- function(types) {
 
   return(colors)
 }
+
+# Function for generating random time vector
+generate_random_datetimes <- function(size, from = "2017-01-01", to = "2017-12-31") {
+  as.POSIXct(
+    round(stats::runif(
+      size,
+      min = as.numeric(as.POSIXct(from)),
+      max = as.numeric(as.POSIXct(to))
+    )),
+    origin = "1970-01-01"
+  )
+}

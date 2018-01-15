@@ -7,8 +7,8 @@
 generate_eventlog(
      size_of_eventlog = 1000, 
      number_of_customers = 20, 
-     event_catalogs = c("normal", "target"), 
-     event_catalogs_size = c(8, 2))
+     event_catalogs = c("normal", "visit", "phone", "target"),
+     event_catalogs_size = c(5, 4, 3, 2))
 }
 \arguments{
 \item{size_of_eventlog}{The size of generated event log}
