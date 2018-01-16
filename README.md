@@ -18,9 +18,31 @@
 
 The goal of `pmap` is to provide functionality of generating a process map from an event log.
 
+## Installation
+
+An older version of `pmap` is available on [CRAN](https://cran.r-project.org/web/packages/pmap/index.html), if you want to install this version, you can do it by:
+
+```R
+install.packages("pmap")
+```
+
+However, as [CRAN policy](https://cran.r-project.org/web/packages/policies.html#Submission) states, I shouldn't submit package to CRAN more than once a month, so I will do normal [release on GitHub](https://github.com/twang2218/pmap/releases), and submit to CRAN only when it's possible. That is, the version on CRAN might be a little bit old.
+
+To install the latest version, you can install `pmap` from GitHub directly:
+
+```R
+devtools::install_github("twang2218/pmap")
+```
+
+And, as I [tagged](https://github.com/twang2218/pmap/tags) each released version, you can even specify which version you want to install:
+
+```R
+devtools::install_github("twang2218/pmap", ref = "v0.4.0")
+```
+
 ## Usage
 
-This is a basic example which shows you how to use `pmap` create a process map from an event log. We use `sepsis` dataset in `eventdataR` package as the example.
+This is a basic example which shows you how to use `pmap` create a process map from an event log. We use `sepsis` dataset in `eventdataR` package as the example here.
 
 ``` r
 library(eventdataR)
@@ -34,35 +56,32 @@ library(pmap)
       customer_id = Case_ID,
       event_name = Activity
     ) %>%
-    select(timestamp, customer_id, event_name) %>%
+    mutate(
+      event_type = event_name
+    ) %>%
+    select(timestamp, customer_id, event_name, event_type) %>%
     filter(!is.na(customer_id))
 ```
 
-Check eventlog data frame structure.
+Check `eventlog` data frame structure.
 
 ```R
 > head(eventlog)
-# A tibble: 6 x 3
-  timestamp           customer_id event_name      
-  <dttm>              <chr>       <chr>           
-1 2014-10-22 11:15:41 A           ER Registration 
-2 2014-10-22 11:27:00 A           Leucocytes      
-3 2014-10-22 11:27:00 A           CRP             
-4 2014-10-22 11:27:00 A           LacticAcid      
-5 2014-10-22 11:33:37 A           ER Triage       
-6 2014-10-22 11:34:00 A           ER Sepsis Triage
-
+# A tibble: 6 x 4
+  timestamp           customer_id event_name       event_type      
+  <dttm>              <chr>       <chr>            <chr>           
+1 2014-10-22 11:15:41 A           ER Registration  ER Registration 
+2 2014-10-22 11:27:00 A           Leucocytes       Leucocytes      
+3 2014-10-22 11:27:00 A           CRP              CRP             
+4 2014-10-22 11:27:00 A           LacticAcid       LacticAcid      
+5 2014-10-22 11:33:37 A           ER Triage        ER Triage       
+6 2014-10-22 11:34:00 A           ER Sepsis Triage ER Sepsis Triage
 > str(eventlog)
-Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	15190 obs. of  3 variables:
- $ timestamp  : POSIXct, format: "2014-10-22 11:15:41" ...
+Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	15190 obs. of  4 variables:
+ $ timestamp  : POSIXct, format: "2014-10-22 11:15:41" "2014-10-22 11:27:00" "2014-10-22 11:27:00" ...
  $ customer_id: chr  "A" "A" "A" "A" ...
  $ event_name : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
- - attr(*, "case_id")= chr "Case_ID"
- - attr(*, "activity_id")= chr "Activity"
- - attr(*, "activity_instance_id")= chr "activity_instance"
- - attr(*, "lifecycle_id")= chr "lifecycle_transition"
- - attr(*, "timestamp")= chr "Complete_Timestamp"
- - attr(*, "resource_id")= chr "org_group"
+ $ event_type : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
 ```
 
 Create process map from the `eventlog`.
