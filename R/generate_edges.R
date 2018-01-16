@@ -5,7 +5,7 @@
 #' @param target_types A vector contains the target event types. By default, it's `NULL`, which means every paths count. If it's contains the target event type, then only paths reaches the target event count.
 #' @return a `data.frame` of edges with `from`, `to` and `amount` columns.
 #' @description `eventlog` should be a `data.frame` or `data.table`, which contains, at least, following columns:
-#'
+#'I am a good cat
 #'  * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
 #'  * `customer_id`: customer identifier. (`character`)
 #'  * `event_name`: event name. (`character`)
