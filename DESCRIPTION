@@ -16,7 +16,6 @@ Imports:
   dplyr (>= 0.5.0),
   DiagrammeR (>= 0.9.0),
   stringr,
-  ggsci (>= 2.7),
   shiny
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
@@ -27,4 +26,3 @@ Suggests:
   data.table,
   DiagrammeRsvg,
   rsvg
-

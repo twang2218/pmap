@@ -13,8 +13,8 @@ test_that("get_color_variant()", {
   expect_equal(get_color_variant("#0C46A0", 1), "#0C46A0")
   expect_equal(get_color_variant("#0C46A0", 0.5), "#85A2CF")
   expect_equal(get_color_variant("#0C46A0", 0.3), "#B6C7E2")
-  expect_equal(get_color_variant("#B71B1BFF", 1), "#B71B1B")
-  expect_equal(get_color_variant("#B71B1BFF", 0.3), "#E9BABA")
+  expect_equal(get_color_variant("#B71C1CFF", 1), "#B71C1C")
+  expect_equal(get_color_variant("#B71C1CFF", 0.3), "#E9BABA")
 })
 
 test_that("get_colors()", {
@@ -22,21 +22,21 @@ test_that("get_colors()", {
   expect_equal(nrow(get_colors(NULL)), 0)
 
   #        type   color       fillcolor
-  # blue normal #0C46A0 #85A2CF:#B6C7E2
+  # blue normal #0D47A1 #86A3D0:#B6C7E2
   pal <- get_colors(c("normal"))
   expect_equal(pal[1,"type"], "normal")
-  expect_equal(pal[1,"color"], "#0C46A0")
-  expect_equal(pal[1,"fillcolor"], "#85A2CF:#B6C7E2")
+  expect_equal(pal[1,"color"], "#0D47A1")
+  expect_equal(pal[1,"fillcolor"], "#86A3D0:#B6C7E2")
 
   #        type   color       fillcolor
-  # blue normal #0C46A0 #85A2CF:#B6C7E2
-  # red  target #B71B1B #DB8D8D:#E9BABA
+  # blue normal #0D47A1 #86A3D0:#B6C7E2
+  # red  target #B71C1C #DB8D8D:#E9BABA
   pal <- get_colors(c("normal", "target"))
   expect_equal(pal[1,"type"], "normal")
-  expect_equal(pal[1,"color"], "#0C46A0")
-  expect_equal(pal[1,"fillcolor"], "#85A2CF:#B6C7E2")
+  expect_equal(pal[1,"color"], "#0D47A1")
+  expect_equal(pal[1,"fillcolor"], "#86A3D0:#B6C7E2")
   expect_equal(pal[2,"type"], "target")
-  expect_equal(pal[2,"color"], "#B71B1B")
+  expect_equal(pal[2,"color"], "#B71C1C")
   expect_equal(pal[2,"fillcolor"], "#DB8D8D:#E9BABA")
 })
 

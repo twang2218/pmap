@@ -11,14 +11,6 @@ projection <- function(x, min = 0, max = 1) {
   ((x - x_min)/(x_max - x_min)) * (max - min) + min
 }
 
-# define material design palette base colors
-MATERIAL_DESIGN_PALETTE <- c(
-  "blue",         "red",          "green",        "yellow",   "brown",
-  "indigo",       "pink",         "teal",         "amber",    "orange",
-  "purple",       "deep-orange",  "light-green",  "lime",     "grey",
-  "deep-purple",  "cyan",         "blue-grey",    "light-blue"
-)
-
 #' @importFrom grDevices rgb
 #' @importFrom grDevices colorRamp
 get_color_variant <- function(color, level = 1) {
@@ -30,21 +22,27 @@ get_color_variant <- function(color, level = 1) {
   )
 }
 
-#' @importFrom ggsci  pal_material
+# Define material design palette base colors
+# Use 900 of each color
+# Reference: https://material.io/guidelines/style/color.html#color-color-palette
+MATERIAL_DESIGN_PALETTE <- c(
+  #   blue        red      green     yellow      brown
+  "#0D47A1", "#B71C1C", "#1B5E20", "#F57F17", "#3E2723",
+  # indigo       pink       teal      amber     orange
+  "#1A237E", "#880E4F", "#004D40", "#FF6F00", "#E65100",
+  # purple   d-orange    l-green       lime       grey
+  "#4A148C", "#BF360C", "#33691E", "#827717", "#212121",
+  # d-purple     cyan   blue-grey light-blue
+  "#311B92", "#006064", "#263238", "#01579B"
+)
+
 get_colors <- function(types) {
   if (length(types) < 1) {
     return(data.frame())
   }
 
   # Get base colors from ggsci's material design color palette
-  colors <- sapply(
-    sapply(
-      MATERIAL_DESIGN_PALETTE[1:min(length(types), length(MATERIAL_DESIGN_PALETTE))],
-      ggsci::pal_material,
-      reverse = TRUE
-    ),
-    function(x) { x(1) }
-  )
+  colors <- MATERIAL_DESIGN_PALETTE[1:min(length(types), length(MATERIAL_DESIGN_PALETTE))]
 
   color1 <- sapply(colors, get_color_variant, 1)
   color2 <- sapply(colors, get_color_variant, 0.5)
