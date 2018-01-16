@@ -52,15 +52,13 @@
 #' @importFrom dplyr        ungroup
 #' @importFrom dplyr        mutate_if
 #' @importFrom dplyr        n
-#' @importFrom data.table   data.table
-#' @importFrom data.table   rbindlist
 #' @export
 generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
   # make 'R CMD check' happy
   customer_id <- timestamp <- from <- to <- NULL
 
   # sort by customer_id and timestamp
-  eventlog <- data.table(eventlog) %>% dplyr::arrange(customer_id, timestamp)
+  eventlog <- dplyr::arrange(eventlog, customer_id, timestamp)
 
   empty_edges <- data.frame(
     from = character(0),
@@ -155,7 +153,8 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
     return(empty_edges)
   }
 
-  edges <- data.table::rbindlist(edges)
+
+  edges <- dplyr::bind_rows(edges)
 
   if (distinct_customer) {
     edges <- dplyr::distinct(edges, from, to, customer_id)
