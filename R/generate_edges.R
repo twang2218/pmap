@@ -32,9 +32,9 @@
 #' #  $ from  : chr  "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" ...
 #' #  $ to    : chr  "Event 1 (normal)" "Event 10 (target)" "Event 2 (normal)" "Event 3 (normal)" ...
 #' #  $ amount: int  13 3 7 9 11 14 8 12 16 15 ...
-#' #  - attr(*, ".internal.selfref")=<externalptr> 
+#' #  - attr(*, ".internal.selfref")=<externalptr>
 #' # -----------------------------------------------------
-#' # Generate edges by specify the target types, and the paths 
+#' # Generate edges by specify the target types, and the paths
 #' # not reaching the target type events will be ignored.
 #' # -----------------------------------------------------
 #' edges <- generate_edges(eventlog, target_types = c("target"))
@@ -43,7 +43,7 @@
 #' #  $ from  : chr  "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" ...
 #' #  $ to    : chr  "Event 1 (normal)" "Event 10 (target)" "Event 2 (normal)" "Event 3 (normal)" ...
 #' #  $ amount: int  12 3 7 7 11 9 7 8 16 15 ...
-#' #  - attr(*, ".internal.selfref")=<externalptr> 
+#' #  - attr(*, ".internal.selfref")=<externalptr>
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        arrange
 #' @importFrom dplyr        distinct
@@ -81,9 +81,9 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
       edges <- list()
     }
     if (length(new_edges) > 0) {
-      for (i in 1:length(new_edges)) {
-        edges[[length(edges) + 1]] <- new_edges[[i]]
-      }
+      begin <- length(edges) + 1
+      end <- length(edges) + length(new_edges)
+      edges[begin:end] <- new_edges
     }
     return(edges)
   }
@@ -110,9 +110,10 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
       # pre-process
       # Reached another customer
       if (current["customer_id"] != previous["customer_id"]) {
-        if (is_target_types_empty(target_types)) {
+        if (is_target_types_empty(target_types) && length(temp_edges) > 0) {
           # Not have target_types, so every path count.
-          edges <<- append_edges(edges, temp_edges)
+          edges[(length(edges) + 1):(length(edges) + length(temp_edges))] <<- temp_edges
+          # edges <<- append_edges(edges, temp_edges)
         }
 
         # it's a new customer, so set it to 'previous' and continue to the next record, if it's not 'target_types'

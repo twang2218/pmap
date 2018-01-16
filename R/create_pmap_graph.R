@@ -44,15 +44,13 @@
 #' @importFrom dplyr        rename
 #' @importFrom dplyr        summarize
 #' @importFrom DiagrammeR   create_graph
-#' @importFrom DiagrammeR   add_nodes_from_table
-#' @importFrom DiagrammeR   add_edges_from_table
+#' @importFrom DiagrammeR   create_node_df
+#' @importFrom DiagrammeR   create_edge_df
 #' @importFrom DiagrammeR   add_global_graph_attrs
-#' @importFrom DiagrammeR   set_node_attrs
-#' @importFrom DiagrammeR   set_edge_attrs
 #' @export
 create_pmap_graph <- function(nodes, edges, target_types = NULL) {
   # make 'R CMD Check' happy
-  amount <- from <- to <- type <- NULL
+  amount <- from <- to <- id <- name <- NULL
 
   # Collect inbound and outbound count
   nodes_outbound <- edges %>%
@@ -70,52 +68,58 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
   # Set all 'NA' to zero
   nodes$inbound[is.na(nodes$inbound)] <- 0
   nodes$outbound[is.na(nodes$outbound)] <- 0
-  if (!is.null(nodes$amount)) {
+  if (is.null(nodes$amount)) {
+    nodes$amount <- 0
+  } else {
     nodes$amount[is.na(nodes$amount)] <- 0
   }
 
-  # print("Converting factor to character [nodes]...")
   nodes <- nodes %>%
-    dplyr::mutate_if(is.factor, as.character) %>%
-    dplyr::mutate(
-      index = 1:nrow(nodes),
-      tooltip = get_attrs_desc(nodes),
-      name_without_space = gsub(" ", "_", nodes$name)
-    ) %>%
-    dplyr::rename(catalog = type)
+    dplyr::mutate(id = 1:nrow(nodes))
   # print(str(nodes))
 
-  # print("Converting factor to character [edges]...")
+  nodes_id <- dplyr::select(nodes, id, name)
   edges <- edges %>%
-    dplyr::mutate_if(is.factor, as.character) %>%
     dplyr::mutate(
-      tooltips = get_attrs_desc(edges),
-      from = gsub(" ", "_", edges$from),
-      to = gsub(" ", "_", edges$to)
-    )
+      tooltip = get_attrs_desc(edges),
+      size = projection(edges$amount, 1, 15)
+    ) %>%
+    dplyr::left_join(nodes_id, by = c("from" = "name")) %>%
+    dplyr::rename(from_id = id) %>%
+    dplyr::left_join(nodes_id, by = c("to" = "name")) %>%
+    dplyr::rename(to_id = id)
+
   # print(str(edges))
 
-  # print("create_graph()")
-  p <- DiagrammeR::create_graph()
-
-  # print("add_nodes_from_table()")
-  p <- DiagrammeR::add_nodes_from_table(
-    p,
-    table = nodes,
-    label_col = "name",
-    type_col = "catalog"
+  nodes_df <- DiagrammeR::create_node_df(
+    nrow(nodes),
+    type = nodes$type,
+    label = nodes$name,
+    name = nodes$name,
+    tooltip = get_attrs_desc(nodes),
+    fontcolor = "#212121",
+    color = "#01579B",
+    fillcolor = "#B3E5FC:#E1F5FE",
+    fontsize = 16,
+    inbound = nodes$inbound,
+    outbound = nodes$outbound,
+    amount = nodes$amount
   )
 
-  # print("add_edges_from_table()")
-  if (nrow(edges) > 0) {
-    p <- DiagrammeR::add_edges_from_table(
-      p,
-      table = dplyr::select(edges, -amount),
-      from_col = "from",
-      to_col = "to",
-      ndf_mapping = "name_without_space"
-    )
-  }
+  edges_df <- DiagrammeR::create_edge_df(
+    nrow(edges),
+    from = edges$from_id,
+    to = edges$to_id,
+    amount = edges$amount,
+    label = edges$amount,
+    penwidth = edges$size,
+    weight = edges$size,
+    tooltip = edges$tooltip,
+    labeltooltip = edges$tooltip
+  )
+
+  # print("create_graph()")
+  p <- DiagrammeR::create_graph(nodes_df, edges_df)
 
   # print("add_global_graph_attrs()")
   p <- p %>%
@@ -132,36 +136,7 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
     ## grey900(#212121)
     DiagrammeR::add_global_graph_attrs(attr_type = "edge", attr = "fontcolor", value = "#212121")
 
-  # node default attributes
-  p <- p %>%
-    ## grey900(#212121)
-    DiagrammeR::set_node_attrs(node_attr = "fontcolor", values = "#212121") %>%
-    ## lightBlue900(#01579B)
-    DiagrammeR::set_node_attrs(node_attr = "color", values = "#01579B") %>%
-    ## lightBlue100(#B3E5FC) => lightBlue50(#E1F5FE)
-    DiagrammeR::set_node_attrs(node_attr = "fillcolor", values = "#B3E5FC:#E1F5FE") %>%
-    DiagrammeR::set_node_attrs(node_attr = "tooltip", values = nodes$tooltip) %>%
-    DiagrammeR::set_node_attrs(node_attr = "fontsize", values = 16) %>%
-    DiagrammeR::set_node_attrs(node_attr = "label", values = nodes$name)
-
   p <- adjust_node_style(p)
-
-  # print("set_edge_attrs()")
-  p <- p %>%
-    # Add amount attribute
-    DiagrammeR::set_edge_attrs(edge_attr = "amount", values = edges$amount) %>%
-    # Edge attributes
-    DiagrammeR::set_edge_attrs(edge_attr = "penwidth", values = 1) %>%
-    DiagrammeR::set_edge_attrs(edge_attr = "label", values = edges$amount) %>%
-    DiagrammeR::set_edge_attrs(edge_attr = "tooltip", values = edges$tooltips) %>%
-    DiagrammeR::set_edge_attrs(edge_attr = "labeltooltip", values = edges$tooltips)
-
-  if (!any(is.null(edges$amount))) {
-    projections <- projection(edges$amount, 1, 15)
-    p <- p %>%
-      DiagrammeR::set_edge_attrs(edge_attr = "penwidth", values = projections) %>%
-      DiagrammeR::set_edge_attrs(edge_attr = "weight", values = projections)
-  }
 
   p <- clean_graph(p)
 
