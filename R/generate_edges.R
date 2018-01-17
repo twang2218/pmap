@@ -51,122 +51,99 @@
 #' @importFrom dplyr        summarize
 #' @importFrom dplyr        ungroup
 #' @importFrom dplyr        mutate_if
+#' @importFrom dplyr        mutate
+#' @importFrom dplyr        left_join
+#' @importFrom dplyr        inner_join
+#' @importFrom dplyr        select
+#' @importFrom dplyr        rename
+#' @importFrom dplyr        filter
 #' @importFrom dplyr        n
+#' @importFrom utils        head
+#' @importFrom utils        tail
 #' @export
 generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
-  # make 'R CMD check' happy
-  customer_id <- timestamp <- from <- to <- NULL
-
-  # sort by customer_id and timestamp
-  eventlog <- dplyr::arrange(eventlog, customer_id, timestamp)
-
-  empty_edges <- data.frame(
-    from = character(0),
-    to = character(0),
-    amount = numeric(0)
-  )
-
-  # Return empty edges if given eventlog is empty
+  # return empty edge if eventlog is empty
   if (nrow(eventlog) == 0) {
-    return(empty_edges)
-  }
-
-  edges <- list()
-  temp_edges <- list()
-  previous <- NULL
-
-  # function to append edges
-  append_edges <- function(edges, new_edges) {
-    if (is.null(edges)) {
-      edges <- list()
-    }
-    if (length(new_edges) > 0) {
-      begin <- length(edges) + 1
-      end <- length(edges) + length(new_edges)
-      edges[begin:end] <- new_edges
-    }
-    return(edges)
-  }
-
-  # function to assign previous based on 'target_types' value
-  assign_previous <- function(current, target_types) {
-    # target events should not be the starting point
-    if (current["event_type"] %in% target_types) {
-      return(NULL)
-    } else {
-      return(current)
-    }
-  }
-
-  # function to check whether `target_types` is empty
-  is_target_types_empty <- function(target_types) {
-    return(is.null(target_types) || length(target_types) == 0)
-  }
-
-  # `apply()` is about up to 10x faster than `for-loop`
-  apply(eventlog, 1, function(current) {
-    # `previous` is not empty
-    if (!any(is.null(previous))) {
-      # pre-process
-      # Reached another customer
-      if (current["customer_id"] != previous["customer_id"]) {
-        if (is_target_types_empty(target_types) && length(temp_edges) > 0) {
-          # Not have target_types, so every path count.
-          edges[(length(edges) + 1):(length(edges) + length(temp_edges))] <<- temp_edges
-          # edges <<- append_edges(edges, temp_edges)
-        }
-
-        # it's a new customer, so set it to 'previous' and continue to the next record, if it's not 'target_types'
-        previous <<- assign_previous(current, target_types)
-
-        # clear temp_edges
-        temp_edges <<- list()
-        return()
-      }
-
-      edge <- list(
-        from = previous["event_name"],
-        to = current["event_name"],
-        customer_id = current["customer_id"]#,
-        # duration = current["timestamp"] - previous["timestamp"]
+    return(
+      data.frame(
+        from = character(0),
+        to = character(0),
+        amount = numeric(0)
       )
-      temp_edges[[length(temp_edges) + 1]] <<- edge
-    }
-
-    # post-process
-    previous <<- assign_previous(current, target_types)
-    if (current["event_type"] %in% target_types) {
-      # Has target_types, so, only paths reaches the 'target_types' count.
-      # put temp_edges to final edges set as it reached the 'target_types'
-      edges <<- append_edges(edges, temp_edges)
-      # clear `temp_edges` as we reaches the target
-      temp_edges <<- list()
-    }
-  })
-
-  if (is_target_types_empty(target_types)) {
-    # Some edges remains in the 'temp_edges' and we don't care about the 'target_types', so every path count.
-    edges <- append_edges(edges, temp_edges)
+    )
   }
 
-  # Cannot find any edges, so return an empty data frame.
-  if (length(edges) == 0) {
-    return(empty_edges)
+  # make 'R CMD check' happy
+  event_type <- is_target <- customer_id <- timestamp <- last_target_date <-
+  from <- from_cid <- from_time <- from_is_target <-
+  to_cid <- to <- NULL
+
+  # make sure there is no factor in the `eventlog`
+  eventlog <- dplyr::mutate_if(eventlog, is.factor, as.character)
+
+  # Attach `is_target` column
+  if (length(target_types) > 0) {
+    types <- eventlog %>%
+      dplyr::distinct(event_type) %>%
+      dplyr::left_join(
+        data.frame(
+          event_type = target_types,
+          is_target = TRUE,
+          stringsAsFactors = FALSE
+        ),
+        by = "event_type"
+      ) %>%
+      dplyr::select(event_type, is_target) %>%
+      dplyr::mutate(is_target = !is.na(is_target))
+
+    eventlog <- dplyr::inner_join(eventlog, types, by = "event_type")
+  } else {
+    eventlog <- dplyr::mutate(eventlog, is_target = FALSE)
   }
 
+  # Construct potential edges
+  eventlog <- dplyr::arrange(eventlog, customer_id, timestamp)
+  size <- nrow(eventlog)
+  begin <- utils::head(eventlog, size - 1)
+  end <- utils::tail(eventlog, size - 1)
+  edges <- data.frame(
+      from_time = begin$timestamp,
+      from = begin$event_name,
+      from_cid = begin$customer_id,
+      from_is_target = begin$is_target,
+      to_time = end$timestamp,
+      to = end$event_name,
+      to_cid = end$customer_id,
+      to_is_target = end$is_target,
+      stringsAsFactors = FALSE
+    ) %>%
+    dplyr::filter(from_cid == to_cid & from_is_target == FALSE) %>%
+    dplyr::rename(customer_id = from_cid)
 
-  edges <- dplyr::bind_rows(edges)
 
+  # prune edges by target_types
+  if (length(target_types) > 0) {
+    # find the last target event date
+    customer_last_target_date <- eventlog %>%
+      dplyr::filter(is_target) %>%
+      dplyr::group_by(customer_id) %>%
+      dplyr::summarize(last_target_date = max(timestamp))
+
+    # prune all the edges with event after the last target event date
+    edges <- edges %>%
+      dplyr::inner_join(customer_last_target_date, by = "customer_id") %>%
+      dplyr::filter(from_time < last_target_date)
+  }
+
+  # Only count customer once if `distinct_customer` flag is set
   if (distinct_customer) {
     edges <- dplyr::distinct(edges, from, to, customer_id)
   }
 
   edges <- edges %>%
     dplyr::group_by(from, to) %>%
-    # Add attributes: `amount` => count
     dplyr::summarize(amount = n()) %>%
     dplyr::ungroup() %>%
-    dplyr::mutate_if(is.factor, as.character) %>%
     dplyr::arrange(from, to)
 
   return(edges)
