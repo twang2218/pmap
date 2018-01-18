@@ -1,12 +1,15 @@
 # Process Map
 
-[![Build Status]][Travis] [![AppVeyor Build Status]][AppVeyor Link] [![Coverage status]][Coverage status link] [![CRAN Version]][CRAN Link] [![Download Stats]][CRAN Link]
+[![Build Status]][Travis] [![AppVeyor Build Status]][AppVeyor Link] [![Coverage status]][Coverage status link] [![Github Version]][Github Release Page] [![CRAN Version]][CRAN Link] [![Download Stats]][CRAN Link] [![License]][License Page]
 
 [Build Status]: https://travis-ci.org/twang2218/pmap.svg?branch=master
 [Travis]: https://travis-ci.org/twang2218/pmap
 
 [CRAN Version]: http://www.r-pkg.org/badges/version/pmap
 [CRAN Link]: https://cran.r-project.org/web/packages/pmap/index.html
+
+[Github Version]: https://img.shields.io/github/release/twang2218/pmap.svg
+[Github Release Page]: https://github.com/twang2218/pmap/releases
 
 [Coverage status]: https://coveralls.io/repos/github/twang2218/pmap/badge.svg?branch=master
 [Coverage status link]: https://coveralls.io/github/twang2218/pmap?branch=master
@@ -15,6 +18,9 @@
 
 [AppVeyor Build Status]: https://ci.appveyor.com/api/projects/status/github/twang2218/pmap?branch=master&svg=true
 [AppVeyor Link]: https://ci.appveyor.com/project/twang2218/pmap
+
+[License]: https://img.shields.io/cran/l/pmap.svg
+[License Page]: https://github.com/twang2218/pmap/blob/master/LICENSE.md
 
 The goal of `pmap` is to provide functionality of generating a process map from an event log.
 
