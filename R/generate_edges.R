@@ -57,8 +57,7 @@
 #' @importFrom dplyr        filter
 #' @importFrom dplyr        n
 #' @importFrom data.table   setorder
-#' @importFrom utils        head
-#' @importFrom utils        tail
+#' @importFrom data.table   as.data.table
 #' @export
 generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
   # return empty edge if eventlog is empty
@@ -101,11 +100,12 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
   }
 
   # Construct potential edges
-  eventlog <- data.table::setorder(eventlog, customer_id, timestamp)
+  eventlog <- data.table::as.data.table(eventlog) %>% data.table::setorder(customer_id, timestamp)
 
   size <- nrow(eventlog)
-  begin <- utils::head(eventlog, size - 1)
-  end <- utils::tail(eventlog, size - 1)
+  begin <- eventlog[-size, ]
+  end <- eventlog[-1, ]
+
   edges <- data.frame(
       from_time = begin$timestamp,
       from = begin$event_name,
