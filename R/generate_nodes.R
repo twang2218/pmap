@@ -50,13 +50,13 @@
 #' #  8 Event 7 (normal)  normal    100
 #' #  9 Event 8 (normal)  normal    100
 #' # 10 Event 9 (target)  target    100
-#' @importFrom dplyr      %>%
-#' @importFrom dplyr      distinct
-#' @importFrom dplyr      mutate
-#' @importFrom dplyr      arrange
-#' @importFrom dplyr      group_by
-#' @importFrom dplyr      summarize
-#' @importFrom stringr    str_trim
+#' @importFrom dplyr        %>%
+#' @importFrom dplyr        distinct
+#' @importFrom dplyr        mutate
+#' @importFrom dplyr        group_by
+#' @importFrom dplyr        summarize
+#' @importFrom data.table   setorder
+#' @importFrom stringr      str_trim
 #' @export
 generate_nodes <- function(eventlog, distinct_customer = FALSE) {
   # make 'R CMD check' happy
@@ -89,6 +89,6 @@ generate_nodes <- function(eventlog, distinct_customer = FALSE) {
       dplyr::group_by(name, type) %>%
       dplyr::summarize(amount = n()) %>%
       dplyr::ungroup() %>%
-      dplyr::arrange(name)
+      data.table::setorder(name)
   }
 }

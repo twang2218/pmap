@@ -31,10 +31,10 @@
 #' # 4 2017-01-01 05:00:11 Customer 1666    Event 14 (sale)       sale
 #' # 5 2017-01-01 05:38:24 Customer 1287    Event 11 (sale)       sale
 #' # 6 2017-01-01 05:48:22 Customer 1286 Event 7 (campaign)   campaign
-#' @importFrom dplyr  %>%
-#' @importFrom dplyr  sample_n
-#' @importFrom dplyr  arrange
-#' @importFrom stats  runif
+#' @importFrom dplyr        %>%
+#' @importFrom dplyr        sample_n
+#' @importFrom data.table   setorder
+#' @importFrom stats        runif
 #' @export
 generate_eventlog <- function(
   size_of_eventlog = 1000,
@@ -72,7 +72,7 @@ generate_eventlog <- function(
     event_name = events$name,
     event_type = events$type,
     stringsAsFactors = FALSE
-  ) %>% dplyr::arrange(timestamp, customer_id, event_name)
+  ) %>% data.table::setorder(timestamp, customer_id, event_name)
 
   return(eventlog)
 }

@@ -55,7 +55,7 @@
 #'
 #' One thing should be noticed, the order of pruning nodes and edges matters.
 #' @importFrom dplyr        %>%
-#' @importFrom dplyr        arrange
+#' @importFrom data.table   setorder
 #' @importFrom DiagrammeR   get_edge_df
 #' @importFrom DiagrammeR   select_edges_by_edge_id
 #' @importFrom DiagrammeR   delete_edges_ws
@@ -67,7 +67,7 @@ prune_edges <- function(p, percentage = 0.2) {
 
   edf <- DiagrammeR::get_edge_df(p)
 
-  removed_edges <- edf %>% dplyr::arrange(amount) %>% head(round(percentage * nrow(edf)))
+  removed_edges <- edf %>% data.table::setorder(amount) %>% head(round(percentage * nrow(edf)))
   if (nrow(removed_edges) > 0) {
     p <- p %>%
       DiagrammeR::select_edges_by_edge_id(edges = removed_edges$id) %>%

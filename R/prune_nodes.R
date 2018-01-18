@@ -17,7 +17,7 @@
 #' # [1] 5
 #' @seealso [prune_edges]
 #' @importFrom dplyr        %>%
-#' @importFrom dplyr        arrange
+#' @importFrom data.table   setorder
 #' @importFrom DiagrammeR   get_node_df
 #' @importFrom DiagrammeR   select_nodes_by_id
 #' @importFrom DiagrammeR   delete_nodes_ws
@@ -33,9 +33,9 @@ prune_nodes <- function(p, percentage = 0.2, rank = c("amount", "in_degree", "ou
 
   # Ranking the nodes
   ranked_nodes <- switch(rank,
-    amount = dplyr::arrange(node_df, amount),
-    in_degree = dplyr::arrange(node_df, inbound),
-    out_degree = dplyr::arrange(node_df, outbound)
+    amount = data.table::setorder(node_df, amount),
+    in_degree = data.table::setorder(node_df, inbound),
+    out_degree = data.table::setorder(node_df, outbound)
   )
   # Select the top part of the nodes
   removed_nodes <-  head(ranked_nodes, round(percentage * nrow(ranked_nodes)))

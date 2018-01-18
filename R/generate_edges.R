@@ -45,7 +45,6 @@
 #' #  $ amount: int  12 3 7 7 11 9 7 8 16 15 ...
 #' #  - attr(*, ".internal.selfref")=<externalptr>
 #' @importFrom dplyr        %>%
-#' @importFrom dplyr        arrange
 #' @importFrom dplyr        distinct
 #' @importFrom dplyr        group_by
 #' @importFrom dplyr        summarize
@@ -55,9 +54,9 @@
 #' @importFrom dplyr        left_join
 #' @importFrom dplyr        inner_join
 #' @importFrom dplyr        select
-#' @importFrom dplyr        rename
 #' @importFrom dplyr        filter
 #' @importFrom dplyr        n
+#' @importFrom data.table   setorder
 #' @importFrom utils        head
 #' @importFrom utils        tail
 #' @export
@@ -102,14 +101,15 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
   }
 
   # Construct potential edges
-  eventlog <- dplyr::arrange(eventlog, customer_id, timestamp)
+  eventlog <- data.table::setorder(eventlog, customer_id, timestamp)
+
   size <- nrow(eventlog)
   begin <- utils::head(eventlog, size - 1)
   end <- utils::tail(eventlog, size - 1)
   edges <- data.frame(
       from_time = begin$timestamp,
       from = begin$event_name,
-      from_cid = begin$customer_id,
+      customer_id = begin$customer_id,
       from_is_target = begin$is_target,
       to_time = end$timestamp,
       to = end$event_name,
@@ -117,8 +117,7 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
       to_is_target = end$is_target,
       stringsAsFactors = FALSE
     ) %>%
-    dplyr::filter(from_cid == to_cid & from_is_target == FALSE) %>%
-    dplyr::rename(customer_id = from_cid)
+    dplyr::filter(customer_id == to_cid & !from_is_target)
 
 
   # prune edges by target_types
@@ -144,7 +143,7 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
     dplyr::group_by(from, to) %>%
     dplyr::summarize(amount = n()) %>%
     dplyr::ungroup() %>%
-    dplyr::arrange(from, to)
+    data.table::setorder(from, to)
 
   return(edges)
 }
