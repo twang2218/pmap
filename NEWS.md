@@ -1,3 +1,19 @@
+# pmap 0.5.0
+
+This update is mainly about performance improvements. With many of these tuning/refactoring, `0.5.0` is much faster than `0.4.0`. It can be thousands times faster for large dataset, such as event log contains several millions records.
+
+Although the `create_pmap()` is pretty fast, the rendering part is still on V8's Javascript engine, which can be pretty slow for a graph with many nodes and edges. `prune_nodes()` and `prune_edges()` can be used to reduce the final graph's complexity.
+
+* 94b1dd2 Improve slicing performance
+* a4c72a0 Improve sorting performance by 2x or more.
+* 073c2a4 Rewrite `generate_edges()` to improve performance
+* e899f7d Add Installation section in `README.md` and change the example back for better compatibility.
+* 8a4a096 Improve `get_colors()` performance by remove `ggsci` from dependencies
+* 395cc42 Improve `create_pmap_graph()` and `generate_edges()` performance
+* 3c98ac5 Remove data.table from required dependencies
+* e7f4f14 Avoid running slow example
+* a3788ec Refactor `get_colors()` function to make it more efficient.
+
 # pmap 0.4.0
 
 * 5e22bd8 Add `render_pmap_file()` function.
