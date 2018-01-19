@@ -1,8 +1,14 @@
 #' @title Create the process map from event log directly
-#' @usage create_pmap(eventlog, distinct_customer = FALSE, target_types = NULL)
+#' @usage create_pmap(
+#'    eventlog,
+#'    distinct_customer = FALSE,
+#'    target_types = NULL,
+#'    edge_label = c("amount", "mean_duration", "max_duration", "min_duration")
+#'  )
 #' @param eventlog Event log
 #' @param distinct_customer Whether should count distinct customer only. Default is `FALSE`.
 #' @param target_types A vector contains the target event types
+#' @param edge_label Specify which attribute is used for the edge label.
 #' @description Create the process map by analyzing the given `eventlog` and extract the nodes by `generate_nodes()` and edges by `generate_edges()`.
 #' @details
 #' ```R
@@ -70,9 +76,14 @@
 #'
 #' @seealso [prune_edges]
 #' @export
-create_pmap <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
+create_pmap <- function(
+  eventlog,
+  distinct_customer = FALSE,
+  target_types = NULL,
+  edge_label = c("amount", "mean_duration", "max_duration", "min_duration")
+) {
   nodes <- generate_nodes(eventlog, distinct_customer)
   edges <- generate_edges(eventlog, distinct_customer, target_types)
-  p <- create_pmap_graph(nodes, edges, target_types)
+  p <- create_pmap_graph(nodes, edges, target_types, edge_label)
   return(p)
 }

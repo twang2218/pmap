@@ -1,6 +1,11 @@
 #' @title Create the event graph by given nodes and edges.
 #' @description Create the process map graph by specify the nodes and edges
-#' @usage create_pmap_graph(nodes, edges, target_types = NULL)
+#' @usage create_pmap_graph(
+#'  nodes,
+#'  edges,
+#'  target_types = NULL,
+#'  edge_label = c("amount", "mean_duration", "max_duration", "min_duration")
+#'  )
 #' @param nodes Event list, it should be a `data.frame` containing following columns:
 #'   * `name`: Event name, will be used as label. (`character`)
 #'   * `type`: The event type (`character`)
@@ -9,6 +14,7 @@
 #'   * `to`: the ending event of the edge (`character`)
 #'   * `amount`: How many of customer affected by the given event. (`numeric`)
 #' @param target_types A vector contains the target event types
+#' @param edge_label Specify which attribute is used for the edge label.
 #' @examples
 #' eventlog <- generate_eventlog()
 #' nodes <- generate_nodes(eventlog)
@@ -48,7 +54,12 @@
 #' @importFrom DiagrammeR   create_edge_df
 #' @importFrom DiagrammeR   add_global_graph_attrs
 #' @export
-create_pmap_graph <- function(nodes, edges, target_types = NULL) {
+create_pmap_graph <- function(
+  nodes,
+  edges,
+  target_types = NULL,
+  edge_label = c("amount", "mean_duration", "max_duration", "min_duration")
+) {
   # make 'R CMD Check' happy
   amount <- from <- to <- id <- name <- NULL
 
@@ -106,12 +117,21 @@ create_pmap_graph <- function(nodes, edges, target_types = NULL) {
     amount = nodes$amount
   )
 
+  edge_label <- match.arg(edge_label)
+  edge_label_value <- switch(
+    edge_label,
+    amount = edges$amount,
+    max_duration = edges$max_duration,
+    mean_duration = edges$mean_duration,
+    min_duration = edges$min_duration
+  )
+
   edges_df <- DiagrammeR::create_edge_df(
     nrow(edges),
     from = edges$from_id,
     to = edges$to_id,
     amount = edges$amount,
-    label = edges$amount,
+    label = edge_label_value,
     penwidth = edges$size,
     weight = edges$size,
     tooltip = edges$tooltip,

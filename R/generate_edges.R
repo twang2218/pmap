@@ -74,7 +74,8 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
   # make 'R CMD check' happy
   event_type <- is_target <- customer_id <- timestamp <- last_target_date <-
   from <- from_cid <- from_time <- from_is_target <-
-  to_cid <- to <- NULL
+  to_cid <- to <-
+  duration <- mean_duration <- max_duration <- min_duration <- NULL
 
   # make sure there is no factor in the `eventlog`
   eventlog <- dplyr::mutate_if(eventlog, is.factor, as.character)
@@ -115,6 +116,7 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
       to = end$event_name,
       to_cid = end$customer_id,
       to_is_target = end$is_target,
+      duration = end$time - begin$time,
       stringsAsFactors = FALSE
     ) %>%
     dplyr::filter(customer_id == to_cid & !from_is_target)
@@ -136,12 +138,30 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
 
   # Only count customer once if `distinct_customer` flag is set
   if (distinct_customer) {
-    edges <- dplyr::distinct(edges, from, to, customer_id)
+    edges <- edges %>%
+      dplyr::group_by(from, to, customer_id) %>%
+      dplyr::summarize(
+        mean_duration = mean(duration),
+        max_duration = max(duration),
+        min_duration = min(duration)
+      )
+  } else {
+    edges <- dplyr::mutate(
+      edges,
+      mean_duration = duration,
+      max_duration = duration,
+      min_duration = duration,
+    )
   }
 
   edges <- edges %>%
     dplyr::group_by(from, to) %>%
-    dplyr::summarize(amount = n()) %>%
+    dplyr::summarize(
+      amount = n(),
+      mean_duration = format_duration(mean(mean_duration)),
+      max_duration = format_duration(max(max_duration)),
+      min_duration = format_duration(min(min_duration))
+    ) %>%
     dplyr::ungroup() %>%
     data.table::setorder(from, to)
 

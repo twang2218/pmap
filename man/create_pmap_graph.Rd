@@ -4,7 +4,12 @@
 \alias{create_pmap_graph}
 \title{Create the event graph by given nodes and edges.}
 \usage{
-create_pmap_graph(nodes, edges, target_types = NULL)
+create_pmap_graph(
+ nodes,
+ edges,
+ target_types = NULL,
+ edge_label = c("amount", "mean_duration", "max_duration", "min_duration")
+ )
 }
 \arguments{
 \item{nodes}{Event list, it should be a \code{data.frame} containing following columns:
@@ -21,6 +26,8 @@ create_pmap_graph(nodes, edges, target_types = NULL)
 }}
 
 \item{target_types}{A vector contains the target event types}
+
+\item{edge_label}{Specify which attribute is used for the edge label.}
 }
 \description{
 Create the process map graph by specify the nodes and edges

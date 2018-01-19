@@ -45,3 +45,28 @@ test_that("generate_random_datetimes()", {
   expect_is(dates, "POSIXct")
   expect_equal(length(dates), 10)
 })
+
+test_that("format_duration()", {
+  dbl2diff <- function(d) {
+    as.difftime(d, units = "secs")
+  }
+
+  # format_duration() should be able to format the duration to human friendly format.
+  expect_equal(format_duration(dbl2diff(1161.2380952381)), "19.35 minutes")
+  expect_equal(format_duration(dbl2diff(51764.2222222222)), "14.38 hours")
+  expect_equal(format_duration(dbl2diff(171633.037974684)), "1.99 days")
+  # format_duration() should be able to handle vector
+  expect_equal(format_duration(
+      c(
+        dbl2diff(1161.2380952381),
+        dbl2diff(171633.037974684),
+        dbl2diff(51764.2222222222)
+      )
+    ),
+    c(
+      "19.35 minutes",
+      "1.99 days",
+      "14.38 hours"
+    )
+  )
+})

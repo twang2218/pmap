@@ -21,7 +21,7 @@ test_that("create_pmap_graph()", {
   # print("generate_edges()")
   edges <- generate_edges(eventlog, target_types = c("sale"))
 
-  expect_named(edges, c("from", "to", "amount"))
+  expect_true(all(c("from", "to", "amount", "mean_duration", "max_duration", "min_duration") %in% colnames(edges)))
   expect_gt(nrow(edges), 100)
 
   # print(str(edges))

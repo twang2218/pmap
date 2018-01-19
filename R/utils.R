@@ -67,3 +67,13 @@ generate_random_datetimes <- function(size, from = "2017-01-01", to = "2017-12-3
     origin = "1970-01-01"
   )
 }
+
+#' @importFrom lubridate    as.duration
+format_duration <- function(duration) {
+  gsub(
+    # "966.854166666667s (~16.11 minutes)"  => "16.11 minutes"
+    "^.*\\(~?(.+)\\)$",
+    "\\1",
+    as.character(lubridate::as.duration(duration))
+  )
+}
