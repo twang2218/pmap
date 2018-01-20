@@ -58,6 +58,7 @@
 #' @importFrom dplyr        n
 #' @importFrom data.table   setorder
 #' @importFrom data.table   as.data.table
+#' @importFrom stats        median
 #' @export
 generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
   # return empty edge if eventlog is empty
@@ -75,7 +76,7 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
   event_type <- is_target <- customer_id <- timestamp <- last_target_date <-
   from <- from_cid <- from_time <- from_is_target <-
   to_cid <- to <-
-  duration <- mean_duration <- max_duration <- min_duration <- NULL
+  duration <- mean_duration <- median_duration <- max_duration <- min_duration <- NULL
 
   # make sure there is no factor in the `eventlog`
   eventlog <- dplyr::mutate_if(eventlog, is.factor, as.character)
@@ -142,6 +143,7 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
       dplyr::group_by(from, to, customer_id) %>%
       dplyr::summarize(
         mean_duration = mean(duration),
+        median_duration = stats::median(duration),
         max_duration = max(duration),
         min_duration = min(duration)
       )
@@ -149,6 +151,7 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
     edges <- dplyr::mutate(
       edges,
       mean_duration = duration,
+      median_duration = duration,
       max_duration = duration,
       min_duration = duration,
     )
@@ -159,6 +162,7 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
     dplyr::summarize(
       amount = n(),
       mean_duration = format_duration(mean(mean_duration)),
+      median_duration = format_duration(stats::median(median_duration)),
       max_duration = format_duration(max(max_duration)),
       min_duration = format_duration(min(min_duration))
     ) %>%

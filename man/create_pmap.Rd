@@ -8,7 +8,13 @@ create_pmap(
    eventlog,
    distinct_customer = FALSE,
    target_types = NULL,
-   edge_label = c("amount", "mean_duration", "max_duration", "min_duration")
+   edge_label = c(
+     "amount",
+     "mean_duration",
+     "median_duration",
+     "max_duration",
+     "min_duration"
+   )
  )
 }
 \arguments{

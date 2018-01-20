@@ -1,10 +1,16 @@
 #' @title Create the event graph by given nodes and edges.
 #' @description Create the process map graph by specify the nodes and edges
 #' @usage create_pmap_graph(
-#'  nodes,
-#'  edges,
-#'  target_types = NULL,
-#'  edge_label = c("amount", "mean_duration", "max_duration", "min_duration")
+#'    nodes,
+#'    edges,
+#'    target_types = NULL,
+#'    edge_label = c(
+#'      "amount",
+#'      "mean_duration",
+#'      "median_duration",
+#'      "max_duration",
+#'      "min_duration"
+#'    )
 #'  )
 #' @param nodes Event list, it should be a `data.frame` containing following columns:
 #'   * `name`: Event name, will be used as label. (`character`)
@@ -58,7 +64,13 @@ create_pmap_graph <- function(
   nodes,
   edges,
   target_types = NULL,
-  edge_label = c("amount", "mean_duration", "max_duration", "min_duration")
+  edge_label = c(
+    "amount",
+    "mean_duration",
+    "median_duration",
+    "max_duration",
+    "min_duration"
+  )
 ) {
   # make 'R CMD Check' happy
   amount <- from <- to <- id <- name <- NULL
@@ -123,6 +135,7 @@ create_pmap_graph <- function(
     amount = edges$amount,
     max_duration = edges$max_duration,
     mean_duration = edges$mean_duration,
+    median_duration = edges$median_duration,
     min_duration = edges$min_duration
   )
 

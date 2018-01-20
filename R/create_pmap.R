@@ -3,7 +3,13 @@
 #'    eventlog,
 #'    distinct_customer = FALSE,
 #'    target_types = NULL,
-#'    edge_label = c("amount", "mean_duration", "max_duration", "min_duration")
+#'    edge_label = c(
+#'      "amount",
+#'      "mean_duration",
+#'      "median_duration",
+#'      "max_duration",
+#'      "min_duration"
+#'    )
 #'  )
 #' @param eventlog Event log
 #' @param distinct_customer Whether should count distinct customer only. Default is `FALSE`.
@@ -80,7 +86,13 @@ create_pmap <- function(
   eventlog,
   distinct_customer = FALSE,
   target_types = NULL,
-  edge_label = c("amount", "mean_duration", "max_duration", "min_duration")
+  edge_label = c(
+    "amount",
+    "mean_duration",
+    "median_duration",
+    "max_duration",
+    "min_duration"
+  )
 ) {
   nodes <- generate_nodes(eventlog, distinct_customer)
   edges <- generate_edges(eventlog, distinct_customer, target_types)

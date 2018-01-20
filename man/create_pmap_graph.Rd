@@ -5,10 +5,16 @@
 \title{Create the event graph by given nodes and edges.}
 \usage{
 create_pmap_graph(
- nodes,
- edges,
- target_types = NULL,
- edge_label = c("amount", "mean_duration", "max_duration", "min_duration")
+   nodes,
+   edges,
+   target_types = NULL,
+   edge_label = c(
+     "amount",
+     "mean_duration",
+     "median_duration",
+     "max_duration",
+     "min_duration"
+   )
  )
 }
 \arguments{
