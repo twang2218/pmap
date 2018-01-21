@@ -81,6 +81,7 @@
 #' \if{html}{\figure{example.create_pmap.complex.svg}{options: width="100\%" alt="Figure: example.create_pmap.complex.svg"}}
 #'
 #' @seealso [prune_edges]
+#' @seealso [create_pmap_graph]
 #' @export
 create_pmap <- function(
   eventlog,

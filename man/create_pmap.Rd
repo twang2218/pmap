@@ -93,4 +93,6 @@ Or for more complex event log:\preformatted{> eventlog <- generate_eventlog(
 }
 \seealso{
 \link{prune_edges}
+
+\link{create_pmap_graph}
 }

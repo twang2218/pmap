@@ -19,7 +19,7 @@ a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} colum
 \description{
 \code{eventlog} should be a \code{data.frame} or \code{data.table}, which contains, at least, following columns:
 \itemize{
-\item \code{timestamp}: timestamp column which indicates when event happened. (\code{POSIXct})
+\item \code{timestamp}: timestamp column which indicates when event happened. The column's data type should be \code{POSIXct}, otherwise it will be converted to \code{POSIXct} automatically. (\code{POSIXct})
 \item \code{customer_id}: customer identifier. (\code{character})
 \item \code{event_name}: event name. (\code{character})
 \item \code{event_type}: event type. (\code{character})

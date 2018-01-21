@@ -137,7 +137,6 @@ test_that("generate_edges() should count unique 'customer_id' if 'distinct_custo
 })
 
 test_that("generate_edges() should not count paths from 'target_types'", {
-  # browser()
   edges <- generate_edges(
     data.frame(
       timestamp = c(
@@ -148,6 +147,37 @@ test_that("generate_edges() should not count paths from 'target_types'", {
         as.POSIXct("2017-07-05"),
         as.POSIXct("2017-07-06"),
         as.POSIXct("2017-07-20")
+      ),
+      customer_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
+      event_name = c("a", "b", "a", "b", "b", "a", "b"),
+      event_type = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
+      stringsAsFactors = FALSE
+    ),
+    target_types = c("sale")
+  )
+  expect_equal(nrow(edges), 1)
+  expect_equal(edges$from, "a")
+  expect_equal(edges$to, "b")
+  expect_equal(edges$amount, 2)
+
+  # test duration
+  expect_equal(edges$mean_duration, "1.07 weeks")
+  expect_equal(edges$median_duration, "1.07 weeks")
+  expect_equal(edges$max_duration, "2 weeks")
+  expect_equal(edges$min_duration, "1 days")
+})
+
+test_that("generate_edges() should convert 'timestamp' to 'POSIXct' if it's not 'POSIXct' yet", {
+  edges <- generate_edges(
+    data.frame(
+      timestamp = c(
+        "2017-07-01",
+        "2017-07-02",
+        "2017-07-03",
+        "2017-07-04",
+        "2017-07-05",
+        "2017-07-06",
+        "2017-07-20"
       ),
       customer_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
       event_name = c("a", "b", "a", "b", "b", "a", "b"),

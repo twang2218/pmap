@@ -6,7 +6,7 @@
 #' @return a `data.frame` of edges with `from`, `to` and `amount` columns.
 #' @description `eventlog` should be a `data.frame` or `data.table`, which contains, at least, following columns:
 #'
-#'  * `timestamp`: timestamp column which indicates when event happened. (`POSIXct`)
+#'  * `timestamp`: timestamp column which indicates when event happened. The column's data type should be `POSIXct`, otherwise it will be converted to `POSIXct` automatically. (`POSIXct`)
 #'  * `customer_id`: customer identifier. (`character`)
 #'  * `event_name`: event name. (`character`)
 #'  * `event_type`: event type. (`character`)
@@ -99,6 +99,11 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
     eventlog <- dplyr::inner_join(eventlog, types, by = "event_type")
   } else {
     eventlog <- dplyr::mutate(eventlog, is_target = FALSE)
+  }
+
+  # convert timestamp if it's not POSIXct yet.
+  if (!inherits(eventlog$timestamp, "POSIXct")) {
+    eventlog <- dplyr::mutate(eventlog, timestamp = as.POSIXct(timestamp))
   }
 
   # Construct potential edges
