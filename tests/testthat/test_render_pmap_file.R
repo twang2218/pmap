@@ -2,8 +2,8 @@ context("render_pmap_file()")
 
 test_that("render_pmap_file() should be able to render to a file", {
   eventlog <- generate_eventlog(
-    size_of_eventlog = 10000,
-    number_of_customers = 1000,
+    size_of_eventlog = 1000,
+    number_of_customers = 100,
     event_catalogs = c("campaign", "sale"),
     event_catalogs_size = c(10, 4)
   )

@@ -97,6 +97,15 @@ create_pmap <- function(
 ) {
   nodes <- generate_nodes(eventlog, distinct_customer)
   edges <- generate_edges(eventlog, distinct_customer, target_types)
+
+  if (nrow(nodes) == 0) {
+    stop("Generated graph contains empty node.")
+  }
+
+  if (nrow(edges) == 0) {
+    stop("Generated graph contains no edge.")
+  }
+
   p <- create_pmap_graph(nodes, edges, target_types, edge_label)
   return(p)
 }

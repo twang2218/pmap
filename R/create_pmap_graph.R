@@ -88,17 +88,17 @@ create_pmap_graph <- function(
     dplyr::left_join(nodes_inbound, by = "name") %>%
     dplyr::left_join(nodes_outbound, by = "name")
 
-  # Set all 'NA' to zero
+  # Set all 'NA' from joins to zero
   nodes$inbound[is.na(nodes$inbound)] <- 0
   nodes$outbound[is.na(nodes$outbound)] <- 0
   if (is.null(nodes$amount)) {
+    # deal with amount column missing case
     nodes$amount <- 0
   } else {
     nodes$amount[is.na(nodes$amount)] <- 0
   }
 
-  nodes <- nodes %>%
-    dplyr::mutate(id = 1:nrow(nodes))
+  nodes <- nodes %>% dplyr::mutate(id = 1:nrow(nodes))
   # print(str(nodes))
 
   nodes_id <- dplyr::select(nodes, id, name)
@@ -111,6 +111,14 @@ create_pmap_graph <- function(
     dplyr::rename(from_id = id) %>%
     dplyr::left_join(nodes_id, by = c("to" = "name")) %>%
     dplyr::rename(to_id = id)
+
+  edges_cols <- names(edges)
+
+  # Fill missing duration columns with empty string
+  if (!"max_duration" %in% edges_cols) edges <- dplyr::mutate(edges, max_duration = "")
+  if (!"mean_duration" %in% edges_cols) edges <- dplyr::mutate(edges, mean_duration = "")
+  if (!"median_duration" %in% edges_cols) edges <- dplyr::mutate(edges, median_duration = "")
+  if (!"min_duration" %in% edges_cols) edges <- dplyr::mutate(edges, min_duration = "")
 
   # print(str(edges))
 
@@ -148,7 +156,11 @@ create_pmap_graph <- function(
     penwidth = edges$size,
     weight = edges$size,
     tooltip = edges$tooltip,
-    labeltooltip = edges$tooltip
+    labeltooltip = edges$tooltip,
+    max_duration = edges$max_duration,
+    mean_duration = edges$mean_duration,
+    median_duration = edges$median_duration,
+    min_duration = edges$min_duration
   )
 
   # print("create_graph()")

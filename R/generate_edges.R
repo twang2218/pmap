@@ -59,6 +59,7 @@
 #' @importFrom data.table   setorder
 #' @importFrom data.table   as.data.table
 #' @importFrom stats        median
+#' @importFrom stringr      str_trim
 #' @export
 generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
   # return empty edge if eventlog is empty
@@ -73,13 +74,19 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
   }
 
   # make 'R CMD check' happy
-  event_type <- is_target <- customer_id <- timestamp <- last_target_date <-
+  event_name <- event_type <- is_target <- customer_id <- timestamp <- last_target_date <-
   from <- from_cid <- from_time <- from_is_target <-
   to_cid <- to <-
   duration <- mean_duration <- median_duration <- max_duration <- min_duration <- NULL
 
-  # make sure there is no factor in the `eventlog`
-  eventlog <- dplyr::mutate_if(eventlog, is.factor, as.character)
+  # make sure there is no factor in the `eventlog` and trim the SPACE
+  eventlog <- dplyr::mutate(eventlog,
+    customer_id = stringr::str_trim(as.character(customer_id)),
+    event_name = stringr::str_trim(as.character(event_name)),
+    event_type = stringr::str_trim(as.character(event_type))
+  )
+
+  target_types <- stringr::str_trim(target_types)
 
   # Attach `is_target` column
   if (length(target_types) > 0) {

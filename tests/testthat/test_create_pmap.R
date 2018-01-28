@@ -71,3 +71,42 @@ test_that("create_pmap() should handle more complex graph with multiple types wi
   expect_true(!any(is.null(render_pmap(p))))
   print(render_pmap(p))
 })
+
+test_that("create_pmap() should handle names with SPACE padding", {
+  p <- create_pmap(
+    data.frame(
+      timestamp = c(
+        "2017-07-01",
+        "2017-07-02",
+        "2017-07-03",
+        "2017-07-04",
+        "2017-07-05",
+        "2017-07-06",
+        "2017-07-20"
+      ),
+      customer_id = c("c1", "c1 ", "c1 ", "c2 ", "c2", "c3", "c3 "),
+      event_name = c("  a", "b  ", "a  ", "b", " b", "  a", "b "),
+      event_type = c("  campaign", " sale", "campaign  ", " sale  ", " sale", " campaign", "sale"),
+      stringsAsFactors = FALSE
+    ),
+    target_types = c(" sale")
+  )
+
+  nodes <- DiagrammeR::get_node_df(p)
+  expect_equal(nrow(nodes), 2)
+  expect_equal(nodes$name, c("a", "b"))
+  expect_equal(nodes$type, c("campaign", "sale"))
+  expect_equal(nodes$amount, c(3, 4))
+
+  edges <- DiagrammeR::get_edge_df(p)
+  expect_equal(nrow(edges), 1)
+  expect_equal(edges$from, 1)
+  expect_equal(edges$to, 2)
+  expect_equal(edges$amount, 2)
+
+  # test duration
+  expect_equal(edges$mean_duration, "1.07 weeks")
+  expect_equal(edges$median_duration, "1.07 weeks")
+  expect_equal(edges$max_duration, "2 weeks")
+  expect_equal(edges$min_duration, "1 days")
+})

@@ -69,10 +69,10 @@ generate_nodes <- function(eventlog, distinct_customer = FALSE) {
       amount = numeric(0)
     )
   } else {
-    nodes <- eventlog %>% dplyr::mutate(name = as.character(stringr::str_trim(event_name)))
+    nodes <- eventlog %>% dplyr::mutate(name = stringr::str_trim(as.character(event_name)))
 
     if ("event_type" %in% colnames(eventlog)) {
-      nodes <- nodes %>% dplyr::mutate(type = as.character(stringr::str_trim(event_type)))
+      nodes <- nodes %>% dplyr::mutate(type = stringr::str_trim(as.character(event_type)))
     } else {
       # if `event_type` column is not provided, then use the `event_name`
       # column as the `type`.
