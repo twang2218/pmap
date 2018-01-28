@@ -4,12 +4,21 @@
 \alias{render_pmap_shiny}
 \title{Render process map as a web app}
 \usage{
-render_pmap_shiny(p, title = "Process Map", options = NULL)
+render_pmap_shiny(
+   p,
+   title = "Process Map",
+   nodes_prune_percentage = 0.5,
+   edges_prune_percentage = 0.5,
+   options = NULL)
 }
 \arguments{
 \item{p}{The process map created by \code{create_pmap()}}
 
 \item{title}{The title you want to display on the web page}
+
+\item{nodes_prune_percentage}{How many percentage of nodes should be pruned. Default is \code{0.5}}
+
+\item{edges_prune_percentage}{How many percentage of edges should be pruned. Default is \code{0.5}}
 
 \item{options}{The Shiny server options, such as binding address or listening port.}
 }

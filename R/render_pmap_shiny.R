@@ -1,7 +1,15 @@
 #' @title Render process map as a web app
 #' @description Show the given process map in a Shiny server web application, with ability to adjust the nodes and edges precision in the real time.
+#' @usage render_pmap_shiny(
+#'    p,
+#'    title = "Process Map",
+#'    nodes_prune_percentage = 0.5,
+#'    edges_prune_percentage = 0.5,
+#'    options = NULL)
 #' @param p The process map created by `create_pmap()`
 #' @param title The title you want to display on the web page
+#' @param nodes_prune_percentage How many percentage of nodes should be pruned. Default is `0.5`
+#' @param edges_prune_percentage How many percentage of edges should be pruned. Default is `0.5`
 #' @param options The Shiny server options, such as binding address or listening port.
 #' @examples
 #' library(pmap)
@@ -22,7 +30,7 @@
 #' @importFrom DiagrammeR   renderGrViz
 #' @importFrom dplyr        %>%
 #' @export
-render_pmap_shiny <- function(p, title = "Process Map", options = NULL) {
+render_pmap_shiny <- function(p, title = "Process Map", nodes_prune_percentage = 0.5, edges_prune_percentage = 0.5, options = NULL) {
   processmap <- p
 
   ui <- shiny::fluidPage(
@@ -32,16 +40,16 @@ render_pmap_shiny <- function(p, title = "Process Map", options = NULL) {
     # Sidebar with a slider input for graph precision
     shiny::sidebarLayout(
       shiny::sidebarPanel(
-        shiny::sliderInput("keep_edges_size",
-                    "Edges precision:",
+        shiny::sliderInput("nodes_prune_percentage",
+                    "Nodes Prune Percentage:",
                     min = 1,
                     max = 100,
-                    value = 80),
-        shiny::sliderInput("keep_nodes_size",
-                    "Nodes precision:",
+                    value = nodes_prune_percentage * 100),
+        shiny::sliderInput("edges_prune_percentage",
+                    "Edges Prune Percentage:",
                     min = 1,
                     max = 100,
-                    value = 80),
+                    value = edges_prune_percentage * 100),
         width = 2
       ),
 
@@ -58,11 +66,10 @@ render_pmap_shiny <- function(p, title = "Process Map", options = NULL) {
     # print("[server] str(processmap):")
     # print(str(processmap))
     output$diagram <- DiagrammeR::renderGrViz({
-      render_pmap(
-        processmap %>%
-          prune_nodes(1 - (input$keep_nodes_size / 100)) %>%
-          prune_edges(1 - (input$keep_edges_size / 100))
-      )
+      processmap %>%
+        prune_nodes(input$nodes_prune_percentage / 100) %>%
+        prune_edges(input$edges_prune_percentage / 100) %>%
+        render_pmap()
     })
   }
 
