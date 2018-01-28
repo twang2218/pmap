@@ -4,7 +4,7 @@
 \alias{render_pmap_file}
 \title{Render the process map as a file}
 \usage{
-render_pmap_file(p, file_name, format = c("png", "pdf", "svg", "ps"),
+render_pmap_file(p, file_name, format = c(NULL, "png", "pdf", "svg", "ps"),
   width = NULL, height = NULL)
 }
 \arguments{
@@ -12,7 +12,7 @@ render_pmap_file(p, file_name, format = c("png", "pdf", "svg", "ps"),
 
 \item{file_name}{the file name to be stored}
 
-\item{format}{the file format, it can be \code{png}(default), \code{pdf}, \code{svg} and \code{ps}.}
+\item{format}{the file format, it can be \code{NULL}(default), \code{png}, \code{pdf}, \code{svg} and \code{ps}. If it's \code{NULL}, the format will be guessed from the \code{file_name} extension.}
 
 \item{width}{width of the image (optional)}
 

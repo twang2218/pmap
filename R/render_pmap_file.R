@@ -2,7 +2,7 @@
 #' @description You can save the process map to a file
 #' @param p the process map created by `create_pmap()`
 #' @param file_name the file name to be stored
-#' @param format the file format, it can be `png`(default), `pdf`, `svg` and `ps`.
+#' @param format the file format, it can be `NULL`(default), `png`, `pdf`, `svg` and `ps`. If it's `NULL`, the format will be guessed from the `file_name` extension.
 #' @param width width of the image (optional)
 #' @param height height of the image (optional)
 #' @details
@@ -21,7 +21,13 @@
 #' render_pmap_file(p, file_name = "test.svg", format = "svg")
 #' ```
 #' @importFrom DiagrammeR   export_graph
+#' @importFrom tools        file_ext
+#' @importFrom stringr      str_to_lower
 #' @export
-render_pmap_file <- function(p, file_name, format = c("png", "pdf", "svg", "ps"), width = NULL, height = NULL) {
+render_pmap_file <- function(p, file_name, format = c(NULL, "png", "pdf", "svg", "ps"), width = NULL, height = NULL) {
+  format = match.arg(format)
+  if (is.null(format)) {
+    format <- stringr::str_to_lower(tools::file_ext(file_name))
+  }
   DiagrammeR::export_graph(p, file_name = file_name, file_type = format, width = width, height = height)
 }
