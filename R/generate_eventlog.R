@@ -1,20 +1,20 @@
 #' @title Generate random event log
 #' @param size_of_eventlog The size of generated event log
 #' @param number_of_customers How many customers in the simulation
-#' @param event_catalogs A data frame contains the event catalog
-#' @param event_catalogs_size How many event types in each event catalog
+#' @param event_categories A data frame contains the event category
+#' @param event_categories_size How many event categories in each event category
 #' @usage generate_eventlog(
 #'      size_of_eventlog = 1000, 
 #'      number_of_customers = 20, 
-#'      event_catalogs = c("normal", "visit", "phone", "target"),
-#'      event_catalogs_size = c(5, 4, 3, 2))
+#'      event_categories = c("normal", "visit", "phone", "target"),
+#'      event_categories_size = c(5, 4, 3, 2))
 #' @description This function provides the ability to randomly generate the `eventlog` data frame based on given parameters.
 #' @examples
 #' eventlog <- generate_eventlog(
 #'      size_of_eventlog = 10000,
 #'      number_of_customers = 2000,
-#'      event_catalogs = c("campaign", "sale"),
-#'      event_catalogs_size = c(10, 4)
+#'      event_categories = c("campaign", "sale"),
+#'      event_categories_size = c(10, 4)
 #'      )
 #'
 #' str(eventlog)
@@ -22,9 +22,9 @@
 #' #  $ timestamp  : POSIXct, format: "2017-01-01 02:16:16" ...
 #' #  $ customer_id: chr  "Customer 107" "Customer 1828" "Customer 587" "Customer 1666" ...
 #' #  $ event_name : chr  "Event 4 (campaign)" "Event 11 (sale)" "Event 7 (campaign)" ...
-#' #  $ event_type : chr  "campaign" "sale" "campaign" "sale" ...
+#' #  $ event_category : chr  "campaign" "sale" "campaign" "sale" ...
 #' head(eventlog)
-#' #             timestamp   customer_id         event_name event_type
+#' #             timestamp   customer_id         event_name event_category
 #' # 1 2017-01-01 02:16:16  Customer 107 Event 4 (campaign)   campaign
 #' # 2 2017-01-01 03:04:22 Customer 1828    Event 11 (sale)       sale
 #' # 3 2017-01-01 03:36:35  Customer 587 Event 7 (campaign)   campaign
@@ -39,8 +39,8 @@
 generate_eventlog <- function(
   size_of_eventlog = 1000,
   number_of_customers = 20,
-  event_catalogs = c("normal", "visit", "phone", "target"),
-  event_catalogs_size = c(5, 4, 3, 2)) {
+  event_categories = c("normal", "visit", "phone", "target"),
+  event_categories_size = c(5, 4, 3, 2)) {
 
   # make 'R CMD check' happy
   customer_id <- timestamp <- event_name <- NULL
@@ -51,18 +51,18 @@ generate_eventlog <- function(
     stringsAsFactors = FALSE
   )
 
-  event_types <- data.frame()
-  for (i in 1:length(event_catalogs)) {
-    event_types_of_catalog <- data.frame(
-      name = paste0("Event ", nrow(event_types) + 1:event_catalogs_size[i], " (", event_catalogs[i], ")"),
-      type = event_catalogs[i],
-      weight = stats::runif(event_catalogs_size[i], 0, 1),
+  event_names <- data.frame()
+  for (i in 1:length(event_categories)) {
+    event_names_of_category <- data.frame(
+      name = paste0("Event ", nrow(event_names) + 1:event_categories_size[i], " (", event_categories[i], ")"),
+      category = event_categories[i],
+      weight = stats::runif(event_categories_size[i], 0, 1),
       stringsAsFactors = FALSE
     )
-    event_types <- rbind(event_types, event_types_of_catalog)
+    event_names <- rbind(event_names, event_names_of_category)
   }
 
-  events <- dplyr::sample_n(event_types, size_of_eventlog, replace = TRUE, weight = event_types$weight)
+  events <- dplyr::sample_n(event_names, size_of_eventlog, replace = TRUE, weight = event_names$weight)
 
   # print(events %>% group_by(name, weight) %>% summarize(amount = n()))
 
@@ -70,7 +70,7 @@ generate_eventlog <- function(
     timestamp = generate_random_datetimes(size_of_eventlog),
     customer_id = dplyr::sample_n(customers, size_of_eventlog, replace = TRUE)$id,
     event_name = events$name,
-    event_type = events$type,
+    event_category = events$category,
     stringsAsFactors = FALSE
   ) %>% data.table::setorder(timestamp, customer_id, event_name)
 

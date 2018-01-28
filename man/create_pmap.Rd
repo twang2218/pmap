@@ -7,7 +7,7 @@
 create_pmap(
    eventlog,
    distinct_customer = FALSE,
-   target_types = NULL,
+   target_categories = NULL,
    edge_label = c(
      "amount",
      "mean_duration",
@@ -22,7 +22,7 @@ create_pmap(
 
 \item{distinct_customer}{Whether should count distinct customer only. Default is \code{FALSE}.}
 
-\item{target_types}{A vector contains the target event types}
+\item{target_categories}{A vector contains the target event categories}
 
 \item{edge_label}{Specify which attribute is used for the edge label.}
 }
@@ -45,11 +45,11 @@ Create the process map by analyzing the given \code{eventlog} and extract the no
     ),
     customer_id = c("c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1"),
     event_name =  c("a",  "b",  "d",  "a",  "c",  "a",  "b",  "c",  "a",  "d"),
-    event_type =  c("campaign", "campaign", "sale", "campaign", "sale", "campaign", "campaign", "sale", "campaign", "sale"),
+    event_category =  c("campaign", "campaign", "sale", "campaign", "sale", "campaign", "campaign", "sale", "campaign", "sale"),
     stringsAsFactors = FALSE
   )
 > eventlog
-    timestamp customer_id event_name event_type
+    timestamp customer_id event_name event_category
 1  2017-10-01          c1          a   campaign
 2  2017-10-02          c1          b   campaign
 3  2017-10-03          c1          d       sale
@@ -60,7 +60,7 @@ Create the process map by analyzing the given \code{eventlog} and extract the no
 8  2017-10-08          c1          c       sale
 9  2017-10-09          c1          a   campaign
 10 2017-10-10          c1          d       sale
-> p <- create_pmap(eventlog, target_types = c("sale"))
+> p <- create_pmap(eventlog, target_categories = c("sale"))
 > render_pmap(p)
 }
 
@@ -69,10 +69,10 @@ Create the process map by analyzing the given \code{eventlog} and extract the no
 Or for more complex event log:\preformatted{> eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
     number_of_customers = 2000,
-    event_catalogs = c("campaign", "sale"),
-    event_catalogs_size = c(8, 2))
+    event_categories = c("campaign", "sale"),
+    event_categories_size = c(8, 2))
 > head(eventlog)
-            timestamp   customer_id         event_name event_type
+            timestamp   customer_id         event_name event_category
 1 2017-01-01 02:40:20 Customer 1204 Event 7 (campaign)   campaign
 2 2017-01-01 03:10:31 Customer 1554 Event 5 (campaign)   campaign
 3 2017-01-01 04:01:51  Customer 546 Event 4 (campaign)   campaign
@@ -84,8 +84,8 @@ Or for more complex event log:\preformatted{> eventlog <- generate_eventlog(
  $ timestamp  : POSIXct, format: "2017-01-01 02:40:20" "2017-01-01 03:10:31" ...
  $ customer_id: chr  "Customer 1204" "Customer 1554" "Customer 546" "Customer 1119" ...
  $ event_name : chr  "Event 7 (campaign)" "Event 5 (campaign)" "Event 4 (campaign)" "Event 9 (sale)" ...
- $ event_type : chr  "campaign" "campaign" "campaign" "sale" ...
-> p <- create_pmap(eventlog, target_types = c("sale"))
+ $ event_category : chr  "campaign" "campaign" "campaign" "sale" ...
+> p <- create_pmap(eventlog, target_categories = c("sale"))
 > render_pmap(p)
 }
 

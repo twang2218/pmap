@@ -5,18 +5,18 @@
 #' @importFrom DiagrammeR   set_node_attrs
 apply_node_color <- function(p) {
   # Make `R CMD check` happy
-  type <- id <- NULL
+  type <- category <- id <- NULL
 
-  node_df <- DiagrammeR::get_node_df(p) %>% select(id, type)
+  node_df <- DiagrammeR::get_node_df(p) %>% select(id, type) %>% rename(category = type)
 
-  types <- dplyr::distinct(node_df, type)$type
+  categories <- dplyr::distinct(node_df, category)$category
 
-  if (any(is.na(types))) {
-    # we don't handle the types with `NA`
+  if (any(is.na(categories))) {
+    # we don't handle the categories with `NA`
     return(p)
   }
 
-  nodes <- dplyr::inner_join(node_df, get_colors(types), by = "type")
+  nodes <- dplyr::inner_join(node_df, get_colors(categories), by = "category")
 
   if (nrow(nodes) > 0) {
     p <- DiagrammeR::set_node_attrs(p, node_attr = "color", values = nodes$color, nodes = nodes$id)

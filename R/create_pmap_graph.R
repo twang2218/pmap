@@ -3,7 +3,7 @@
 #' @usage create_pmap_graph(
 #'    nodes,
 #'    edges,
-#'    target_types = NULL,
+#'    target_categories = NULL,
 #'    edge_label = c(
 #'      "amount",
 #'      "mean_duration",
@@ -14,19 +14,19 @@
 #'  )
 #' @param nodes Event list, it should be a `data.frame` containing following columns:
 #'   * `name`: Event name, will be used as label. (`character`)
-#'   * `type`: The event type (`character`)
+#'   * `category`: The event category (`character`)
 #' @param edges Event transform list, it should be a `data.frame` containing following columns:
 #'   * `from`: the beginning event of the edge. (`character`)
 #'   * `to`: the ending event of the edge (`character`)
 #'   * `amount`: How many of customer affected by the given event. (`numeric`)
-#' @param target_types A vector contains the target event types
+#' @param target_categories A vector contains the target event categories
 #' @param edge_label Specify which attribute is used for the edge label.
 #' @examples
 #' eventlog <- generate_eventlog()
 #' nodes <- generate_nodes(eventlog)
 #' head(nodes)
 #' #  # A tibble: 6 x 3
-#' #    name              type   amount
+#' #    name              category   amount
 #' #    <chr>             <chr>   <int>
 #' #  1 Event 1 (normal)  normal    105
 #' #  2 Event 10 (target) target     97
@@ -45,7 +45,7 @@
 #' #  4 Event 1 (normal) Event 3 (normal)       9
 #' #  5 Event 1 (normal) Event 4 (normal)       7
 #' #  6 Event 1 (normal) Event 5 (normal)      10
-#' p <- create_pmap_graph(nodes, edges, target_types = c("target"))
+#' p <- create_pmap_graph(nodes, edges, target_categories = c("target"))
 #' render_pmap(p)
 #' @seealso [create_pmap]
 #' @importFrom dplyr        %>%
@@ -63,7 +63,7 @@
 create_pmap_graph <- function(
   nodes,
   edges,
-  target_types = NULL,
+  target_categories = NULL,
   edge_label = c(
     "amount",
     "mean_duration",
@@ -124,7 +124,7 @@ create_pmap_graph <- function(
 
   nodes_df <- DiagrammeR::create_node_df(
     nrow(nodes),
-    type = nodes$type,
+    type = nodes$category,
     label = nodes$name,
     name = nodes$name,
     tooltip = get_attrs_desc(nodes),

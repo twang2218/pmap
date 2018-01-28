@@ -4,14 +4,14 @@
 \alias{generate_edges}
 \title{Generate edges from event logs}
 \usage{
-generate_edges(eventlog, distinct_customer = FALSE, target_types = NULL)
+generate_edges(eventlog, distinct_customer = FALSE, target_categories = NULL)
 }
 \arguments{
 \item{eventlog}{Event logs}
 
 \item{distinct_customer}{Whether should only count unique customer}
 
-\item{target_types}{A vector contains the target event types. By default, it's \code{NULL}, which means every paths count. If it's contains the target event type, then only paths reaches the target event count.}
+\item{target_categories}{A vector contains the target event categories. By default, it's \code{NULL}, which means every paths count. If it's contains the target event category, then only paths reaches the target event count.}
 }
 \value{
 a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} columns.
@@ -22,7 +22,7 @@ a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} colum
 \item \code{timestamp}: timestamp column which indicates when event happened. The column's data type should be \code{POSIXct}, otherwise it will be converted to \code{POSIXct} automatically. (\code{POSIXct})
 \item \code{customer_id}: customer identifier. (\code{character})
 \item \code{event_name}: event name. (\code{character})
-\item \code{event_type}: event type. (\code{character})
+\item \code{event_category}: event category. (\code{character})
 }
 }
 \examples{
@@ -49,10 +49,10 @@ str(edges)
 #  $ amount: int  13 3 7 9 11 14 8 12 16 15 ...
 #  - attr(*, ".internal.selfref")=<externalptr>
 # -----------------------------------------------------
-# Generate edges by specify the target types, and the paths
-# not reaching the target type events will be ignored.
+# Generate edges by specify the target categories, and the paths
+# not reaching the target category events will be ignored.
 # -----------------------------------------------------
-edges <- generate_edges(eventlog, target_types = c("target"))
+edges <- generate_edges(eventlog, target_categories = c("target"))
 str(edges)
 # Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	80 obs. of  3 variables:
 #  $ from  : chr  "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" ...

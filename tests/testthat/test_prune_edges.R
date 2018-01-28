@@ -4,7 +4,7 @@ test_that("prune_edges() should be able prune nothing", {
   p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      type = c("campaign", "campaign", "campaign", "sale", "sale"),
+      category = c("campaign", "campaign", "campaign", "sale", "sale"),
       stringsAsFactors = FALSE
     ),
     edges = data.frame(
@@ -13,7 +13,7 @@ test_that("prune_edges() should be able prune nothing", {
       amount = c(10, 20, 30, 40),
       stringsAsFactors = FALSE
     ),
-    target_types = c("sale")
+    target_categories = c("sale")
   )
 
   edges_count_before_prune <- nrow(DiagrammeR::get_edge_df(p))
@@ -30,7 +30,7 @@ test_that("prune_edges() should be able prune half of the edges", {
   p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      type = c("campaign", "campaign", "campaign", "sale", "sale"),
+      category = c("campaign", "campaign", "campaign", "sale", "sale"),
       stringsAsFactors = FALSE
     ),
     edges = data.frame(
@@ -39,7 +39,7 @@ test_that("prune_edges() should be able prune half of the edges", {
       amount = c(10, 20, 30, 40),
       stringsAsFactors = FALSE
     ),
-    target_types = c("sale")
+    target_categories = c("sale")
   )
 
   edges_count_before_prune <- nrow(DiagrammeR::get_edge_df(p))
@@ -58,7 +58,7 @@ test_that("prune_edges() should be able prune all of the edges", {
   p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      type = c("campaign", "campaign", "campaign", "sale", "sale"),
+      category = c("campaign", "campaign", "campaign", "sale", "sale"),
       stringsAsFactors = FALSE
     ),
     edges = data.frame(
@@ -67,7 +67,7 @@ test_that("prune_edges() should be able prune all of the edges", {
       amount = c(10, 20, 30, 40),
       stringsAsFactors = FALSE
     ),
-    target_types = c("sale")
+    target_categories = c("sale")
   )
 
   edges_count_before_prune <- nrow(DiagrammeR::get_edge_df(p))

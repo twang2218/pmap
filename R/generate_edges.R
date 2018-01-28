@@ -1,15 +1,15 @@
 #' @title Generate edges from event logs
-#' @usage generate_edges(eventlog, distinct_customer = FALSE, target_types = NULL)
+#' @usage generate_edges(eventlog, distinct_customer = FALSE, target_categories = NULL)
 #' @param eventlog Event logs
 #' @param distinct_customer Whether should only count unique customer
-#' @param target_types A vector contains the target event types. By default, it's `NULL`, which means every paths count. If it's contains the target event type, then only paths reaches the target event count.
+#' @param target_categories A vector contains the target event categories. By default, it's `NULL`, which means every paths count. If it's contains the target event category, then only paths reaches the target event count.
 #' @return a `data.frame` of edges with `from`, `to` and `amount` columns.
 #' @description `eventlog` should be a `data.frame` or `data.table`, which contains, at least, following columns:
 #'
 #'  * `timestamp`: timestamp column which indicates when event happened. The column's data type should be `POSIXct`, otherwise it will be converted to `POSIXct` automatically. (`POSIXct`)
 #'  * `customer_id`: customer identifier. (`character`)
 #'  * `event_name`: event name. (`character`)
-#'  * `event_type`: event type. (`character`)
+#'  * `event_category`: event category. (`character`)
 #' @examples
 #' # -----------------------------------------------------
 #' # Generating edges and count every paths no matter whether
@@ -34,10 +34,10 @@
 #' #  $ amount: int  13 3 7 9 11 14 8 12 16 15 ...
 #' #  - attr(*, ".internal.selfref")=<externalptr>
 #' # -----------------------------------------------------
-#' # Generate edges by specify the target types, and the paths
-#' # not reaching the target type events will be ignored.
+#' # Generate edges by specify the target categories, and the paths
+#' # not reaching the target category events will be ignored.
 #' # -----------------------------------------------------
-#' edges <- generate_edges(eventlog, target_types = c("target"))
+#' edges <- generate_edges(eventlog, target_categories = c("target"))
 #' str(edges)
 #' # Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	80 obs. of  3 variables:
 #' #  $ from  : chr  "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" ...
@@ -61,7 +61,7 @@
 #' @importFrom stats        median
 #' @importFrom stringr      str_trim
 #' @export
-generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = NULL) {
+generate_edges <- function(eventlog, distinct_customer = FALSE, target_categories = NULL) {
   # return empty edge if eventlog is empty
   if (nrow(eventlog) == 0) {
     return(
@@ -74,7 +74,7 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
   }
 
   # make 'R CMD check' happy
-  event_name <- event_type <- is_target <- customer_id <- timestamp <- last_target_date <-
+  event_name <- event_category <- is_target <- customer_id <- timestamp <- last_target_date <-
   from <- from_cid <- from_time <- from_is_target <-
   to_cid <- to <-
   duration <- mean_duration <- median_duration <- max_duration <- min_duration <- NULL
@@ -83,27 +83,27 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
   eventlog <- dplyr::mutate(eventlog,
     customer_id = stringr::str_trim(as.character(customer_id)),
     event_name = stringr::str_trim(as.character(event_name)),
-    event_type = stringr::str_trim(as.character(event_type))
+    event_category = stringr::str_trim(as.character(event_category))
   )
 
-  target_types <- stringr::str_trim(target_types)
+  target_categories <- stringr::str_trim(target_categories)
 
   # Attach `is_target` column
-  if (length(target_types) > 0) {
-    types <- eventlog %>%
-      dplyr::distinct(event_type) %>%
+  if (length(target_categories) > 0) {
+    categories <- eventlog %>%
+      dplyr::distinct(event_category) %>%
       dplyr::left_join(
         data.frame(
-          event_type = target_types,
+          event_category = target_categories,
           is_target = TRUE,
           stringsAsFactors = FALSE
         ),
-        by = "event_type"
+        by = "event_category"
       ) %>%
-      dplyr::select(event_type, is_target) %>%
+      dplyr::select(event_category, is_target) %>%
       dplyr::mutate(is_target = !is.na(is_target))
 
-    eventlog <- dplyr::inner_join(eventlog, types, by = "event_type")
+    eventlog <- dplyr::inner_join(eventlog, categories, by = "event_category")
   } else {
     eventlog <- dplyr::mutate(eventlog, is_target = FALSE)
   }
@@ -135,8 +135,8 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_types = N
     dplyr::filter(customer_id == to_cid & !from_is_target)
 
 
-  # prune edges by target_types
-  if (length(target_types) > 0) {
+  # prune edges by target_categories
+  if (length(target_categories) > 0) {
     # find the last target event date
     customer_last_target_date <- eventlog %>%
       dplyr::filter(is_target) %>%

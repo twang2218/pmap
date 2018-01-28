@@ -36,20 +36,20 @@ MATERIAL_DESIGN_PALETTE <- c(
   "#311B92", "#006064", "#263238", "#01579B"
 )
 
-get_colors <- function(types) {
-  if (length(types) < 1) {
+get_colors <- function(categories) {
+  if (length(categories) < 1) {
     return(data.frame())
   }
 
   # Get base colors from ggsci's material design color palette
-  colors <- MATERIAL_DESIGN_PALETTE[1:min(length(types), length(MATERIAL_DESIGN_PALETTE))]
+  colors <- MATERIAL_DESIGN_PALETTE[1:min(length(categories), length(MATERIAL_DESIGN_PALETTE))]
 
   color1 <- sapply(colors, get_color_variant, 1)
   color2 <- sapply(colors, get_color_variant, 0.5)
   color3 <- sapply(colors, get_color_variant, 0.3)
 
   data.frame(
-    type = types,
+    category = categories,
     color = color1,
     fillcolor = paste0(color2, ":", color3),
     stringsAsFactors = FALSE

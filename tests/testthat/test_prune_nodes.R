@@ -4,7 +4,7 @@ test_that("prune_nodes() should be able prune nothing", {
   p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      type = c("campaign", "campaign", "campaign", "sale", "sale"),
+      category = c("campaign", "campaign", "campaign", "sale", "sale"),
       amount = c(10, 30, 20, 40, 5),
       stringsAsFactors = FALSE
     ),
@@ -14,7 +14,7 @@ test_that("prune_nodes() should be able prune nothing", {
       amount = c(10, 30, 20, 40),
       stringsAsFactors = FALSE
     ),
-    target_types = c("sale")
+    target_categories = c("sale")
   )
 
   for (rank in c("amount", "in_degree", "out_degree")) {
@@ -34,7 +34,7 @@ test_that("prune_nodes() should be able prune half of the nodes", {
     p <- create_pmap_graph(
       nodes = data.frame(
         name = c("a", "b", "c", "d", "e"),
-        type = c("campaign", "campaign", "campaign", "sale", "sale"),
+        category = c("campaign", "campaign", "campaign", "sale", "sale"),
         amount = c(10, 30, 20, 40, 5),
         stringsAsFactors = FALSE
       ),
@@ -44,7 +44,7 @@ test_that("prune_nodes() should be able prune half of the nodes", {
         amount = c(10, 30, 20, 40, 50, 60, 70),
         stringsAsFactors = FALSE
       ),
-      target_types = c("sale")
+      target_categories = c("sale")
     )
 
     nodes_count_before_prune <- DiagrammeR::node_count(p)
@@ -66,7 +66,7 @@ test_that("prune_nodes() should be able prune all of the nodes", {
     p <- create_pmap_graph(
       nodes = data.frame(
         name = c("a", "b", "c", "d", "e"),
-        type = c("campaign", "campaign", "campaign", "sale", "sale"),
+        category = c("campaign", "campaign", "campaign", "sale", "sale"),
         amount = c(10, 30, 20, 40, 5),
         stringsAsFactors = FALSE
       ),
@@ -76,7 +76,7 @@ test_that("prune_nodes() should be able prune all of the nodes", {
         amount = c(10, 30, 20, 40),
         stringsAsFactors = FALSE
       ),
-      target_types = c("sale")
+      target_categories = c("sale")
     )
 
     nodes_count_before_prune <- nrow(DiagrammeR::get_node_df(p))

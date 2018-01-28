@@ -7,7 +7,7 @@
 create_pmap_graph(
    nodes,
    edges,
-   target_types = NULL,
+   target_categories = NULL,
    edge_label = c(
      "amount",
      "mean_duration",
@@ -21,7 +21,7 @@ create_pmap_graph(
 \item{nodes}{Event list, it should be a \code{data.frame} containing following columns:
 \itemize{
 \item \code{name}: Event name, will be used as label. (\code{character})
-\item \code{type}: The event type (\code{character})
+\item \code{category}: The event category (\code{character})
 }}
 
 \item{edges}{Event transform list, it should be a \code{data.frame} containing following columns:
@@ -31,7 +31,7 @@ create_pmap_graph(
 \item \code{amount}: How many of customer affected by the given event. (\code{numeric})
 }}
 
-\item{target_types}{A vector contains the target event types}
+\item{target_categories}{A vector contains the target event categories}
 
 \item{edge_label}{Specify which attribute is used for the edge label.}
 }
@@ -43,7 +43,7 @@ eventlog <- generate_eventlog()
 nodes <- generate_nodes(eventlog)
 head(nodes)
 #  # A tibble: 6 x 3
-#    name              type   amount
+#    name              category   amount
 #    <chr>             <chr>   <int>
 #  1 Event 1 (normal)  normal    105
 #  2 Event 10 (target) target     97
@@ -62,7 +62,7 @@ head(edges)
 #  4 Event 1 (normal) Event 3 (normal)       9
 #  5 Event 1 (normal) Event 4 (normal)       7
 #  6 Event 1 (normal) Event 5 (normal)      10
-p <- create_pmap_graph(nodes, edges, target_types = c("target"))
+p <- create_pmap_graph(nodes, edges, target_categories = c("target"))
 render_pmap(p)
 }
 \seealso{

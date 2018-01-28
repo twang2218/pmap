@@ -2,14 +2,14 @@
 #' @description `eventlog` should be a `data.frame`, which contains, at least, following columns:
 #'
 #'  * `event_name`: event name. (`character`)
-#'  * `event_type`: event type, which is optional. If the `event_type` column is missing, the `event_name` column will be used as the `event_type`. (`character`)
+#'  * `event_category`: event category, which is optional. If the `event_category` column is missing, the `event_name` column will be used as the `event_category`. (`character`)
 #'  * `amount`: how many time this event happened in the `eventlog`
 #'
 #' `generate_nodes()` will generate the node list from the given `eventlog` for the graph purpose.
 #' @usage generate_nodes(eventlog, distinct_customer = FALSE)
 #' @param eventlog Event logs
 #' @param distinct_customer Whether should only count unique customer
-#' @return a nodes `data.frame` which represents a event list, it contains `name`, `type` and `amount` columns.
+#' @return a nodes `data.frame` which represents a event list, it contains `name`, `category` and `amount` columns.
 #' @examples
 #' # -----------------------------------------------------
 #' # Generate nodes from eventlog and count every event
@@ -18,7 +18,7 @@
 #' nodes <- generate_nodes(eventlog)
 #' print(nodes)
 #' # # A tibble: 10 x 3
-#' #    name              type   amount
+#' #    name              category   amount
 #' #    <chr>             <chr>   <int>
 #' #  1 Event 1 (normal)  normal    958
 #' #  2 Event 10 (target) target    948
@@ -38,7 +38,7 @@
 #' nodes <- generate_nodes(eventlog, distinct_customer = TRUE)
 #' nodes
 #' # # A tibble: 10 x 3
-#' #    name              type   amount
+#' #    name              category   amount
 #' #    <chr>             <chr>   <int>
 #' #  1 Event 1 (normal)  normal    100
 #' #  2 Event 10 (target) target    100
@@ -60,33 +60,33 @@
 #' @export
 generate_nodes <- function(eventlog, distinct_customer = FALSE) {
   # make 'R CMD check' happy
-  event_name <- event_type <- type <- name <- customer_id <- NULL
+  event_name <- event_category <- category <- name <- customer_id <- NULL
 
   if (is.null(eventlog) || is.na(eventlog) || nrow(eventlog) == 0) {
     data.frame(
       name = character(0),
-      type = character(0),
+      category = character(0),
       amount = numeric(0)
     )
   } else {
     nodes <- eventlog %>% dplyr::mutate(name = stringr::str_trim(as.character(event_name)))
 
-    if ("event_type" %in% colnames(eventlog)) {
-      nodes <- nodes %>% dplyr::mutate(type = stringr::str_trim(as.character(event_type)))
+    if ("event_category" %in% colnames(eventlog)) {
+      nodes <- nodes %>% dplyr::mutate(category = stringr::str_trim(as.character(event_category)))
     } else {
-      # if `event_type` column is not provided, then use the `event_name`
-      # column as the `type`.
-      # TODO: Handle the number of types greater than number of color in
+      # if `event_category` column is not provided, then use the `event_name`
+      # column as the `category`.
+      # TODO: Handle the number of categories greater than number of color in
       # palette, in this case, it's 19
-      nodes <- nodes %>% dplyr::mutate(type = name)
+      nodes <- nodes %>% dplyr::mutate(category = name)
     }
 
     if (distinct_customer) {
-      nodes <- nodes %>% dplyr::distinct(name, type, customer_id)
+      nodes <- nodes %>% dplyr::distinct(name, category, customer_id)
     }
 
     nodes <- nodes %>%
-      dplyr::group_by(name, type) %>%
+      dplyr::group_by(name, category) %>%
       dplyr::summarize(amount = n()) %>%
       dplyr::ungroup() %>%
       data.table::setorder(name)

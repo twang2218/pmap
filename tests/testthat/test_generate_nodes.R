@@ -9,14 +9,14 @@ test_that("generate_nodes() should handle minimal eventlog", {
       ),
       customer_id = c("c1", "c1"),
       event_name = c("a", "b"),
-      event_type = c("campaign", "sale"),
+      event_category = c("campaign", "sale"),
       stringsAsFactors = FALSE
     )
   )
 
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b"))
-  expect_equal(nodes$type, c("campaign", "sale"))
+  expect_equal(nodes$category, c("campaign", "sale"))
 })
 
 test_that("generate_nodes() should handle eventlog with duplicated events", {
@@ -31,14 +31,14 @@ test_that("generate_nodes() should handle eventlog with duplicated events", {
       ),
       customer_id = c("c1", "c1", "c2", "c1", "c1"),
       event_name = c("a", "b", "a", "b", "b"),
-      event_type = c("sale", "campaign", "sale", "campaign", "campaign"),
+      event_category = c("sale", "campaign", "sale", "campaign", "campaign"),
       stringsAsFactors = FALSE
     )
   )
 
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b"))
-  expect_equal(nodes$type, c("sale", "campaign"))
+  expect_equal(nodes$category, c("sale", "campaign"))
 })
 
 test_that("generate_nodes() should handle eventlog with space at beginning or end of the 'event_name'", {
@@ -53,14 +53,14 @@ test_that("generate_nodes() should handle eventlog with space at beginning or en
       ),
       customer_id = c("c1", "c1", "c2", "c1", "c1"),
       event_name = c(" a", "b b ", " a ", " b b ", " b b"),
-      event_type = c("sale", "campaign", "sale", "campaign", "campaign"),
+      event_category = c("sale", "campaign", "sale", "campaign", "campaign"),
       stringsAsFactors = FALSE
     )
   )
 
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b b"))
-  expect_equal(nodes$type, c("sale", "campaign"))
+  expect_equal(nodes$category, c("sale", "campaign"))
 })
 
 test_that("generate_nodes() should handle empty eventlog", {
@@ -79,7 +79,7 @@ test_that("generate_nodes() should count unique 'customer_id' if 'distinct_custo
       ),
       customer_id = c("c1", "c1", "c2", "c1", "c1"),
       event_name = c("a", "b", "a", "a", "b"),
-      event_type = c("campaign", "sale", "campaign", "campaign", "sale"),
+      event_category = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     distinct_customer = TRUE
@@ -88,7 +88,7 @@ test_that("generate_nodes() should count unique 'customer_id' if 'distinct_custo
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b"))
   expect_equal(nodes$amount, c(2, 1))
-  expect_equal(nodes$type, c("campaign", "sale"))
+  expect_equal(nodes$category, c("campaign", "sale"))
 })
 
 test_that("generate_nodes() should count every path if 'distinct_customer' is not set", {
@@ -103,7 +103,7 @@ test_that("generate_nodes() should count every path if 'distinct_customer' is no
       ),
       customer_id = c("c1", "c1", "c2", "c1", "c1"),
       event_name = c("a", "b", "a", "a", "b"),
-      event_type = c("campaign", "sale", "campaign", "campaign", "sale"),
+      event_category = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     distinct_customer = FALSE
@@ -112,10 +112,10 @@ test_that("generate_nodes() should count every path if 'distinct_customer' is no
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b"))
   expect_equal(nodes$amount, c(3, 2))
-  expect_equal(nodes$type, c("campaign", "sale"))
+  expect_equal(nodes$category, c("campaign", "sale"))
 })
 
-test_that("generate_nodes() should handle the eventlog without `event_type`", {
+test_that("generate_nodes() should handle the eventlog without `event_category`", {
   nodes <- generate_nodes(
     data.frame(
       timestamp = c(
@@ -135,5 +135,5 @@ test_that("generate_nodes() should handle the eventlog without `event_type`", {
   expect_equal(nrow(nodes), 2)
   expect_equal(nodes$name, c("a", "b"))
   expect_equal(nodes$amount, c(2, 1))
-  expect_equal(nodes$type, c("a", "b"))
+  expect_equal(nodes$category, c("a", "b"))
 })

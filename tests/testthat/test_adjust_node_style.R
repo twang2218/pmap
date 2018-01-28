@@ -4,7 +4,7 @@ test_that("adjust_node_style() handle graph without nodes's `amount`", {
   p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      type = NA,
+      category = NA,
       stringsAsFactors = FALSE
     ),
     edges = data.frame(
@@ -26,7 +26,7 @@ test_that("adjust_node_style() handle graph with node's amount", {
   p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      type = c("campaign", "campaign", "campaign", "campaign", "campaign"),
+      category = c("campaign", "campaign", "campaign", "campaign", "campaign"),
       amount = c(1, 5, 10, 15, 20),
       stringsAsFactors = FALSE
     ),

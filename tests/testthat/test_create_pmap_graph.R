@@ -4,13 +4,13 @@ test_that("create_pmap_graph()", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
     number_of_customers = 1000,
-    event_catalogs = c("campaign", "sale"),
-    event_catalogs_size = c(10, 4)
+    event_categories = c("campaign", "sale"),
+    event_categories_size = c(10, 4)
   )
 
   expect_named(
     eventlog,
-    c("timestamp", "customer_id", "event_name", "event_type"),
+    c("timestamp", "customer_id", "event_name", "event_category"),
     ignore.order = TRUE,
     ignore.case = TRUE)
   expect_equal(nrow(eventlog), 10000)
@@ -19,7 +19,7 @@ test_that("create_pmap_graph()", {
   # print("generate_nodes()")
   nodes <- generate_nodes(eventlog)
   # print("generate_edges()")
-  edges <- generate_edges(eventlog, target_types = c("sale"))
+  edges <- generate_edges(eventlog, target_categories = c("sale"))
 
   expect_true(all(c("from", "to", "amount", "mean_duration", "max_duration", "min_duration") %in% colnames(edges)))
   expect_gt(nrow(edges), 100)
@@ -27,7 +27,7 @@ test_that("create_pmap_graph()", {
   # print(str(edges))
 
   # print("create_pmap_graph()")
-  p <- create_pmap_graph(nodes, edges, target_types = c("sale"))
+  p <- create_pmap_graph(nodes, edges, target_categories = c("sale"))
 
   edges_from_graph <- DiagrammeR::get_edge_df(p)
   expect_equal(nrow(edges), nrow(edges_from_graph))
@@ -41,7 +41,7 @@ test_that("create_pmap_graph() should assign `0` to `NA` in `inbound` and `outbo
   p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      type = c("campaign", "campaign", "campaign", "sale", "sale"),
+      category = c("campaign", "campaign", "campaign", "sale", "sale"),
       amount = c(10, 30, 20, 40, NA),
       stringsAsFactors = FALSE
     ),
@@ -51,7 +51,7 @@ test_that("create_pmap_graph() should assign `0` to `NA` in `inbound` and `outbo
       amount = c(10, 30, 20, 40),
       stringsAsFactors = FALSE
     ),
-    target_types = c("sale")
+    target_categories = c("sale")
   )
 
   node_df <- DiagrammeR::get_node_df(p)

@@ -5,7 +5,7 @@
 #' @param title The title of rendered graph
 #' @examples
 #' library(dplyr)
-#' p <- generate_eventlog() %>% create_pmap(target_types = c("target"))
+#' p <- generate_eventlog() %>% create_pmap(target_categories = c("target"))
 #' render_pmap
 #' @seealso [create_pmap]
 #' @importFrom DiagrammeR   render_graph

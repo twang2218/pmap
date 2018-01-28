@@ -20,10 +20,10 @@ Create an event log\preformatted{> library(dplyr)
 > eventlog <- generate_eventlog(
   size_of_eventlog = 10000,
   number_of_customers = 2000,
-  event_catalogs = c("campaign", "sale"),
-  event_catalogs_size = c(10, 4))
+  event_categories = c("campaign", "sale"),
+  event_categories_size = c(10, 4))
 > head(eventlog)
-            timestamp   customer_id          event_name event_type
+            timestamp   customer_id          event_name event_category
 1 2017-01-01 02:14:50  Customer 345  Event 1 (campaign)   campaign
 2 2017-01-01 02:26:24 Customer 1625  Event 2 (campaign)   campaign
 3 2017-01-01 03:48:12 Customer 1901     Event 12 (sale)       sale
@@ -35,10 +35,10 @@ Create an event log\preformatted{> library(dplyr)
  $ timestamp  : POSIXct, format: "2017-01-01 02:14:50" "2017-01-01 02:26:24" ...
  $ customer_id: chr  "Customer 345" "Customer 1625" "Customer 1901" "Customer 1029" ...
  $ event_name : chr  "Event 1 (campaign)" "Event 2 (campaign)" "Event 12 (sale)" "Event 10 (campaign)" ...
- $ event_type : chr  "campaign" "campaign" "sale" "campaign" ...
+ $ event_category : chr  "campaign" "campaign" "sale" "campaign" ...
 }
 
-Create a process map from the event log and render it directly.\preformatted{> p <- create_pmap(eventlog, target_types = c("sale"))
+Create a process map from the event log and render it directly.\preformatted{> p <- create_pmap(eventlog, target_categories = c("sale"))
 > render_pmap(p)
 }
 

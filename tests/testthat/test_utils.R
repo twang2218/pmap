@@ -21,21 +21,21 @@ test_that("get_colors()", {
   expect_equal(nrow(get_colors(c())), 0)
   expect_equal(nrow(get_colors(NULL)), 0)
 
-  #        type   color       fillcolor
+  #        category   color       fillcolor
   # blue normal #0D47A1 #86A3D0:#B6C7E2
   pal <- get_colors(c("normal"))
-  expect_equal(pal[1,"type"], "normal")
+  expect_equal(pal[1,"category"], "normal")
   expect_equal(pal[1,"color"], "#0D47A1")
   expect_equal(pal[1,"fillcolor"], "#86A3D0:#B6C7E2")
 
-  #        type   color       fillcolor
+  #        category   color       fillcolor
   # blue normal #0D47A1 #86A3D0:#B6C7E2
   # red  target #B71C1C #DB8D8D:#E9BABA
   pal <- get_colors(c("normal", "target"))
-  expect_equal(pal[1,"type"], "normal")
+  expect_equal(pal[1,"category"], "normal")
   expect_equal(pal[1,"color"], "#0D47A1")
   expect_equal(pal[1,"fillcolor"], "#86A3D0:#B6C7E2")
-  expect_equal(pal[2,"type"], "target")
+  expect_equal(pal[2,"category"], "target")
   expect_equal(pal[2,"color"], "#B71C1C")
   expect_equal(pal[2,"fillcolor"], "#DB8D8D:#E9BABA")
 })

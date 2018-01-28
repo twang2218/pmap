@@ -12,13 +12,13 @@ generate_nodes(eventlog, distinct_customer = FALSE)
 \item{distinct_customer}{Whether should only count unique customer}
 }
 \value{
-a nodes \code{data.frame} which represents a event list, it contains \code{name}, \code{type} and \code{amount} columns.
+a nodes \code{data.frame} which represents a event list, it contains \code{name}, \code{category} and \code{amount} columns.
 }
 \description{
 \code{eventlog} should be a \code{data.frame}, which contains, at least, following columns:
 \itemize{
 \item \code{event_name}: event name. (\code{character})
-\item \code{event_type}: event type, which is optional. If the \code{event_type} column is missing, the \code{event_name} column will be used as the \code{event_type}. (\code{character})
+\item \code{event_category}: event category, which is optional. If the \code{event_category} column is missing, the \code{event_name} column will be used as the \code{event_category}. (\code{character})
 \item \code{amount}: how many time this event happened in the \code{eventlog}
 }
 
@@ -32,7 +32,7 @@ eventlog <- generate_eventlog(10000, 100)
 nodes <- generate_nodes(eventlog)
 print(nodes)
 # # A tibble: 10 x 3
-#    name              type   amount
+#    name              category   amount
 #    <chr>             <chr>   <int>
 #  1 Event 1 (normal)  normal    958
 #  2 Event 10 (target) target    948
@@ -52,7 +52,7 @@ print(nodes)
 nodes <- generate_nodes(eventlog, distinct_customer = TRUE)
 nodes
 # # A tibble: 10 x 3
-#    name              type   amount
+#    name              category   amount
 #    <chr>             <chr>   <int>
 #  1 Event 1 (normal)  normal    100
 #  2 Event 10 (target) target    100

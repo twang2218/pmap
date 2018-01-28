@@ -7,11 +7,11 @@ test_that("create_pmap() should handle simple graph", {
      timestamp = c(as.POSIXct("2017-10-01"), as.POSIXct("2017-10-20")),
      customer_id = c("c1", "c1"),
      event_name = c("a", "b"),
-     event_type = c("campaign", "sale"),
+     event_category = c("campaign", "sale"),
      stringsAsFactors = FALSE
   )
 
-  p <- create_pmap(eventlog, target_types = c("sale"))
+  p <- create_pmap(eventlog, target_categories = c("sale"))
 
   ndf <- DiagrammeR::get_node_df(p)
   expect_equal(nrow(ndf), 2)
@@ -24,20 +24,20 @@ test_that("create_pmap() should handle complex graph", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
     number_of_customers = 1000,
-    event_catalogs = c("campaign", "sale"),
-    event_catalogs_size = c(10, 4)
+    event_categories = c("campaign", "sale"),
+    event_categories_size = c(10, 4)
   )
 
   expect_named(
     eventlog,
-    c("timestamp", "customer_id", "event_name", "event_type"),
+    c("timestamp", "customer_id", "event_name", "event_category"),
     ignore.order = TRUE,
     ignore.case = TRUE)
   expect_equal(nrow(eventlog), 10000)
 
   # print(str(eventlog))
   # print("create_pmap_graph()")
-  p <- create_pmap(eventlog, target_types = c("sale"))
+  p <- create_pmap(eventlog, target_categories = c("sale"))
 
   # print(generate_dot(p))
 
@@ -46,17 +46,17 @@ test_that("create_pmap() should handle complex graph", {
   # print(render_pmap(p))
 })
 
-test_that("create_pmap() should handle more complex graph with multiple types without target", {
+test_that("create_pmap() should handle more complex graph with multiple categories without target", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
     number_of_customers = 1000,
-    event_catalogs = c("campaign", "visit", "phone", "sale"),
-    event_catalogs_size = c(5, 3, 2, 4)
+    event_categories = c("campaign", "visit", "phone", "sale"),
+    event_categories_size = c(5, 3, 2, 4)
   )
 
   expect_named(
     eventlog,
-    c("timestamp", "customer_id", "event_name", "event_type"),
+    c("timestamp", "customer_id", "event_name", "event_category"),
     ignore.order = TRUE,
     ignore.case = TRUE)
   expect_equal(nrow(eventlog), 10000)
@@ -86,10 +86,10 @@ test_that("create_pmap() should handle names with SPACE padding", {
       ),
       customer_id = c("c1", "c1 ", "c1 ", "c2 ", "c2", "c3", "c3 "),
       event_name = c("  a", "b  ", "a  ", "b", " b", "  a", "b "),
-      event_type = c("  campaign", " sale", "campaign  ", " sale  ", " sale", " campaign", "sale"),
+      event_category = c("  campaign", " sale", "campaign  ", " sale  ", " sale", " campaign", "sale"),
       stringsAsFactors = FALSE
     ),
-    target_types = c(" sale")
+    target_categories = c(" sale")
   )
 
   nodes <- DiagrammeR::get_node_df(p)

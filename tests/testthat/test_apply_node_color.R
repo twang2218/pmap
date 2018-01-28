@@ -1,10 +1,10 @@
 context("apply_node_color()")
 
-test_that("apply_node_color() handle graph without type", {
+test_that("apply_node_color() handle graph without category", {
   p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      type = NA,
+      category = NA,
       stringsAsFactors = FALSE
     ),
     edges = data.frame(
@@ -22,11 +22,11 @@ test_that("apply_node_color() handle graph without type", {
   expect_equal(node_df$fillcolor, rep("#B3E5FC:#E1F5FE", nrow(node_df)))
 })
 
-test_that("apply_node_color() handle graph with a single type", {
+test_that("apply_node_color() handle graph with a single category", {
   p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      type = c("campaign", "campaign", "campaign", "campaign", "campaign"),
+      category = c("campaign", "campaign", "campaign", "campaign", "campaign"),
       stringsAsFactors = FALSE
     ),
     edges = data.frame(
@@ -46,11 +46,11 @@ test_that("apply_node_color() handle graph with a single type", {
   }
 })
 
-test_that("apply_node_color() handle graph with multiple types", {
+test_that("apply_node_color() handle graph with multiple categories", {
   p <- create_pmap_graph(
     nodes = data.frame(
       name = c("a", "b", "c", "d", "e"),
-      type = c("campaign", "campaign", "sale", "visit", "visit"),
+      category = c("campaign", "campaign", "sale", "visit", "visit"),
       stringsAsFactors = FALSE
     ),
     edges = data.frame(
@@ -70,14 +70,14 @@ test_that("apply_node_color() handle graph with multiple types", {
     expect_true(node_df$fillcolor[i] != "#B3E5FC:#E1F5FE")
   }
 
-  # the 'color'/'fillcolor' of same type should be the same
+  # the 'color'/'fillcolor' of same category should be the same
   expect_true(node_df$color[1]      == node_df$color[2])
   expect_true(node_df$fillcolor[1]  == node_df$fillcolor[2])
 
   expect_true(node_df$color[4]      == node_df$color[5])
   expect_true(node_df$fillcolor[4]  == node_df$fillcolor[5])
 
-  # the 'color'/'fillcolor' of different type should be different
+  # the 'color'/'fillcolor' of different category should be different
   expect_true(node_df$color[1]      != node_df$color[3])
   expect_true(node_df$fillcolor[1]  != node_df$fillcolor[3])
 
