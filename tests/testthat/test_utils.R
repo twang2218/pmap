@@ -24,20 +24,57 @@ test_that("get_colors()", {
   #        category   color       fillcolor
   # blue normal #0D47A1 #86A3D0:#B6C7E2
   pal <- get_colors(c("normal"))
-  expect_equal(pal[1,"category"], "normal")
-  expect_equal(pal[1,"color"], "#0D47A1")
-  expect_equal(pal[1,"fillcolor"], "#86A3D0:#B6C7E2")
+  expect_equal(pal[1, "category"], "normal")
+  expect_equal(pal[1, "color"], "#0D47A1")
+  expect_equal(pal[1, "fillcolor"], "#86A3D0:#B6C7E2")
 
   #        category   color       fillcolor
   # blue normal #0D47A1 #86A3D0:#B6C7E2
   # red  target #B71C1C #DB8D8D:#E9BABA
   pal <- get_colors(c("normal", "target"))
-  expect_equal(pal[1,"category"], "normal")
-  expect_equal(pal[1,"color"], "#0D47A1")
-  expect_equal(pal[1,"fillcolor"], "#86A3D0:#B6C7E2")
-  expect_equal(pal[2,"category"], "target")
-  expect_equal(pal[2,"color"], "#B71C1C")
-  expect_equal(pal[2,"fillcolor"], "#DB8D8D:#E9BABA")
+  expect_equal(pal[1, "category"], "normal")
+  expect_equal(pal[1, "color"], "#0D47A1")
+  expect_equal(pal[1, "fillcolor"], "#86A3D0:#B6C7E2")
+  expect_equal(pal[2, "category"], "target")
+  expect_equal(pal[2, "color"], "#B71C1C")
+  expect_equal(pal[2, "fillcolor"], "#DB8D8D:#E9BABA")
+
+  pal <- get_colors(paste0("color_", 1:100))
+  expect_equal(nrow(pal), 100)
+  # Material Design Palette
+  expect_equal(pal[1, "color"], "#0D47A1")
+  expect_equal(pal[2, "color"], "#B71C1C")
+  expect_equal(pal[18, "color"], "#263238")
+  expect_equal(pal[19, "color"], "#01579B")
+  # IGV Palette
+  expect_equal(pal[20, "color"], "#5050FF")
+  expect_equal(pal[21, "color"], "#CE3D32")
+  expect_equal(pal[44, "color"], "#A9A9A9")
+  expect_equal(pal[45, "color"], "#33CC00")
+  # NPG Palette
+  expect_equal(pal[46, "color"], "#E64B35")
+  expect_equal(pal[47, "color"], "#4DBBD5")
+  expect_equal(pal[54, "color"], "#7E6148")
+  expect_equal(pal[55, "color"], "#B09C85")
+  # LocusZoom Palette
+  expect_equal(pal[56, "color"], "#D43F3A")
+  expect_equal(pal[57, "color"], "#EEA236")
+  expect_equal(pal[61, "color"], "#9632B8")
+  expect_equal(pal[62, "color"], "#B8B8B8")
+  # Jama Palette
+  expect_equal(pal[63, "color"], "#374E55")
+  expect_equal(pal[64, "color"], "#DF8F44")
+  expect_equal(pal[68, "color"], "#6A6599")
+  expect_equal(pal[69, "color"], "#80796B")
+  # Futurama Palette
+  expect_equal(pal[70, "color"], "#C71000")
+  expect_equal(pal[71, "color"], "#008EA0")
+  expect_equal(pal[79, "color"], "#1A5354")
+  expect_equal(pal[80, "color"], "#3F4041")
+  # Out of palette capability
+  expect_equal(pal[81, "color"], "#428BCA")
+  expect_equal(pal[82, "color"], "#428BCA")
+  expect_equal(pal[100, "color"], "#428BCA")
 })
 
 test_that("generate_random_datetimes()", {

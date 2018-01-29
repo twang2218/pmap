@@ -76,8 +76,6 @@ generate_nodes <- function(eventlog, distinct_customer = FALSE) {
     } else {
       # if `event_category` column is not provided, then use the `event_name`
       # column as the `category`.
-      # TODO: Handle the number of categories greater than number of color in
-      # palette, in this case, it's 19
       nodes <- nodes %>% dplyr::mutate(category = name)
     }
 

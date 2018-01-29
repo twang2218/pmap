@@ -22,7 +22,7 @@ get_color_variant <- function(color, level = 1) {
   )
 }
 
-# Define material design palette base colors
+# Define material design palette (19 colors)
 # Use 900 of each color
 # Reference: https://material.io/guidelines/style/color.html#color-color-palette
 MATERIAL_DESIGN_PALETTE <- c(
@@ -36,13 +36,70 @@ MATERIAL_DESIGN_PALETTE <- c(
   "#311B92", "#006064", "#263238", "#01579B"
 )
 
+# ggsci igv color palette (26 colours)
+# Not all of IGV colours have been chosen as the last colours doesn't seems good.
+# Reference: https://ggsci.net/reference/pal_igv.html
+IGV_PALETTE <- c(
+  "#5050FF", "#CE3D32", "#749B58", "#F0E685", "#466983",
+  "#BA6338", "#5DB1DD", "#802268", "#6BD76B", "#D595A7",
+  "#924822", "#837B8D", "#C75127", "#D58F5C", "#7A65A5",
+  "#E4AF69", "#3B1B53", "#CDDEB7", "#612A79", "#AE1F63",
+  "#E7C76F", "#5A655E", "#CC9900", "#99CC00", "#A9A9A9",
+  "#33CC00"
+)
+
+# ggsci npg color palette (10 colours)
+# Reference: https://ggsci.net/reference/pal_npg.html
+NPG_PALETTE <- c(
+  "#E64B35", "#4DBBD5", "#00A087", "#3C5488", "#F39B7F",
+  "#8491B4", "#91D1C2", "#DC0000", "#7E6148", "#B09C85"
+)
+
+# ggsci locuszoom color palette (7 colours)
+# Reference: https://ggsci.net/reference/pal_locuszoom.html
+LOCUSZOOM_PALETTE <- c(
+  "#D43F3A", "#EEA236", "#5CB85C", "#46B8DA", "#357EBD",
+  "#9632B8", "#B8B8B8"
+)
+
+# ggsci jama color palette (7 colours)
+# Reference: https://ggsci.net/reference/pal_jama.html
+JAMA_PALETTE <- c(
+  "#374E55", "#DF8F44", "#00A1D5", "#B24745", "#79AF97",
+  "#6A6599", "#80796B"
+)
+
+# ggsci futurama color palette (11 colours)
+# Remove "#FF6F00" as it's already in `MATERIAL_DESIGN_PALETTE`
+# Reference: https://ggsci.net/reference/pal_futurama.html
+FUTURAMA_PALETTE <- c(
+  "#C71000", "#008EA0", "#8A4198", "#5A9599", "#FF6348",
+  "#84D7E1", "#FF95A8", "#3D3B25", "#ADE2D0", "#1A5354",
+  "#3F4041"
+)
+
+# 80 colours
+PALETTE <- c(
+  MATERIAL_DESIGN_PALETTE,
+  IGV_PALETTE,
+  NPG_PALETTE,
+  LOCUSZOOM_PALETTE,
+  JAMA_PALETTE,
+  FUTURAMA_PALETTE)
+
 get_colors <- function(categories) {
   if (length(categories) < 1) {
     return(data.frame())
   }
 
-  # Get base colors from ggsci's material design color palette
-  colors <- MATERIAL_DESIGN_PALETTE[1:min(length(categories), length(MATERIAL_DESIGN_PALETTE))]
+  # Get base colors from predefined palette
+  colors <- PALETTE[1:min(length(categories), length(PALETTE))]
+
+  # For more colors, we simply assign them to a single color so the function won't fail
+  if (length(colors) < length(categories)) {
+    # #428BCA is from Bootstrap's color palette
+    colors <- c(colors, rep("#428BCA", length(categories) - length(colors)))
+  }
 
   color1 <- sapply(colors, get_color_variant, 1)
   color2 <- sapply(colors, get_color_variant, 0.5)
