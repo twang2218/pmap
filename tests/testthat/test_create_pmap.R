@@ -110,3 +110,60 @@ test_that("create_pmap() should handle names with SPACE padding", {
   expect_equal(edges$max_duration, "2 weeks")
   expect_equal(edges$min_duration, "1 days")
 })
+
+test_that("create_pmap() should distinct repeated events if `distinct_repeated_events`", {
+  eventlog <- data.frame(
+    timestamp = c(
+      "2017-07-01",
+      "2017-07-02",
+      "2017-07-03",
+      "2017-07-04",
+      "2017-07-05",
+      "2017-07-06",
+      "2017-07-20"
+    ),
+    customer_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
+    event_name = c("a", "b", "a", "b", "b", "a", "b"),
+    event_category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
+    stringsAsFactors = FALSE
+  )
+
+  p <- create_pmap(
+    eventlog,
+    distinct_repeated_events = TRUE
+  )
+
+  nodes <- DiagrammeR::get_node_df(p)
+  expect_equal(nrow(nodes), 4)
+  expect_equal(nodes$name, c("a (1)", "a (2)", "b (1)", "b (2)"))
+  expect_equal(nodes$type, c("campaign", "campaign", "sale", "sale"))
+  expect_equal(nodes$amount, c(2, 1, 3, 1))
+})
+
+test_that("create_pmap() should distinct repeated events if `distinct_repeated_events` with missing `event_category` column in `eventlog`", {
+  eventlog <- data.frame(
+    timestamp = c(
+      "2017-07-01",
+      "2017-07-02",
+      "2017-07-03",
+      "2017-07-04",
+      "2017-07-05",
+      "2017-07-06",
+      "2017-07-20"
+    ),
+    customer_id = c("c1", "c1 ", "c1 ", "c2 ", "c2", "c3", "c3"),
+    event_name = c("a", "b", "a", "b", "b", "a", "b"),
+    stringsAsFactors = FALSE
+  )
+
+  p <- create_pmap(
+    eventlog,
+    distinct_repeated_events = TRUE
+  )
+
+  nodes <- DiagrammeR::get_node_df(p)
+  expect_equal(nrow(nodes), 4)
+  expect_equal(nodes$name, c("a (1)", "a (2)", "b (1)", "b (2)"))
+  expect_equal(nodes$type, c("a", "a", "b", "b"))
+  expect_equal(nodes$amount, c(2, 1, 3, 1))
+})

@@ -80,11 +80,9 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_categorie
   duration <- mean_duration <- median_duration <- max_duration <- min_duration <- NULL
 
   # make sure there is no factor in the `eventlog` and trim the SPACE
-  eventlog <- dplyr::mutate(eventlog,
-    customer_id = stringr::str_trim(as.character(customer_id)),
-    event_name = stringr::str_trim(as.character(event_name)),
-    event_category = stringr::str_trim(as.character(event_category))
-  )
+  eventlog <- eventlog %>%
+    dplyr::mutate_if(is.factor, as.character) %>%
+    dplyr::mutate_if(is.character, stringr::str_trim)
 
   target_categories <- stringr::str_trim(target_categories)
 

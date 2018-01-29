@@ -7,6 +7,7 @@
 create_pmap(
    eventlog,
    distinct_customer = FALSE,
+   distinct_repeated_events = FALSE,
    target_categories = NULL,
    edge_label = c(
      "amount",
@@ -21,6 +22,8 @@ create_pmap(
 \item{eventlog}{Event log}
 
 \item{distinct_customer}{Whether should count distinct customer only. Default is \code{FALSE}.}
+
+\item{distinct_repeated_events}{Whether should distinct repeat events. Default is \code{FALSE}, which means the repeated event will be treated as same node. If it's \code{TRUE}, the name of the event will be attached with the sequence number of occurance of the event.}
 
 \item{target_categories}{A vector contains the target event categories}
 

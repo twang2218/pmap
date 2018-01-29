@@ -24,8 +24,7 @@
 #' @importFrom tools        file_ext
 #' @importFrom stringr      str_to_lower
 #' @export
-render_pmap_file <- function(p, file_name, format = c(NULL, "png", "pdf", "svg", "ps"), width = NULL, height = NULL) {
-  format = match.arg(format)
+render_pmap_file <- function(p, file_name, format = NULL, width = NULL, height = NULL) {
   if (is.null(format)) {
     format <- stringr::str_to_lower(tools::file_ext(file_name))
   }

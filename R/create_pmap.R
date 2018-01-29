@@ -2,6 +2,7 @@
 #' @usage create_pmap(
 #'    eventlog,
 #'    distinct_customer = FALSE,
+#'    distinct_repeated_events = FALSE,
 #'    target_categories = NULL,
 #'    edge_label = c(
 #'      "amount",
@@ -13,6 +14,7 @@
 #'  )
 #' @param eventlog Event log
 #' @param distinct_customer Whether should count distinct customer only. Default is `FALSE`.
+#' @param distinct_repeated_events Whether should distinct repeat events. Default is `FALSE`, which means the repeated event will be treated as same node. If it's `TRUE`, the name of the event will be attached with the sequence number of occurance of the event.
 #' @param target_categories A vector contains the target event categories
 #' @param edge_label Specify which attribute is used for the edge label.
 #' @description Create the process map by analyzing the given `eventlog` and extract the nodes by `generate_nodes()` and edges by `generate_edges()`.
@@ -82,10 +84,18 @@
 #'
 #' @seealso [prune_edges]
 #' @seealso [create_pmap_graph]
+#' @importFrom dplyr        %>%
+#' @importFrom dplyr        group_by
+#' @importFrom dplyr        arrange
+#' @importFrom dplyr        rename
+#' @importFrom dplyr        mutate
+#' @importFrom dplyr        ungroup
+#' @importFrom stringr      str_trim
 #' @export
 create_pmap <- function(
   eventlog,
   distinct_customer = FALSE,
+  distinct_repeated_events = FALSE,
   target_categories = NULL,
   edge_label = c(
     "amount",
@@ -95,6 +105,29 @@ create_pmap <- function(
     "min_duration"
   )
 ) {
+  # Make R Cmd Check happy
+  old_event_name <- customer_id <- event_name <- old_event_name <- timestamp <- NULL
+
+  # clean names
+  eventlog <- eventlog %>%
+    dplyr::mutate_if(is.factor, as.character) %>%
+    dplyr::mutate_if(is.character, stringr::str_trim)
+
+  if (distinct_repeated_events) {
+    eventlog <- eventlog %>%
+      dplyr::group_by(customer_id, event_name) %>%
+      dplyr::arrange(timestamp, .by_group = TRUE) %>%
+      dplyr::rename(old_event_name = event_name) %>%
+      dplyr::mutate(event_name = paste0(old_event_name, " (", 1:n(), ")")) %>%
+      dplyr::ungroup()
+
+    if (!"event_category" %in% colnames(eventlog)) {
+      # if the `event_category` is missing,
+      # then use the original `event_name` as the `event_category`
+      eventlog <- eventlog %>% dplyr::rename(event_category = old_event_name)
+    }
+  }
+
   nodes <- generate_nodes(eventlog, distinct_customer)
   edges <- generate_edges(eventlog, distinct_customer, target_categories)
 

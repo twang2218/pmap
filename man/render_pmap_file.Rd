@@ -4,8 +4,7 @@
 \alias{render_pmap_file}
 \title{Render the process map as a file}
 \usage{
-render_pmap_file(p, file_name, format = c(NULL, "png", "pdf", "svg", "ps"),
-  width = NULL, height = NULL)
+render_pmap_file(p, file_name, format = NULL, width = NULL, height = NULL)
 }
 \arguments{
 \item{p}{the process map created by \code{create_pmap()}}
