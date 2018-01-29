@@ -32,6 +32,6 @@ Example:\preformatted{library(dplyr)
 library(pmap)
 eventlog <- generate_eventlog()
 p <- create_pmap(eventlog)
-render_pmap_file(p, file_name = "test.svg", format = "svg")
+render_pmap_file(p, file_name = "test.svg")
 }
 }

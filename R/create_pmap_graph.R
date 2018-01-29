@@ -132,6 +132,7 @@ create_pmap_graph <- function(
     color = "#01579B",
     fillcolor = "#B3E5FC:#E1F5FE",
     fontsize = 16,
+    margin = 0.2,
     inbound = nodes$inbound,
     outbound = nodes$outbound,
     amount = nodes$amount
@@ -175,6 +176,7 @@ create_pmap_graph <- function(
     DiagrammeR::add_global_graph_attrs(attr_type = "node", attr = "shape", value = "box") %>%
     DiagrammeR::add_global_graph_attrs(attr_type = "node", attr = "style", value = "filled,rounded") %>%
     DiagrammeR::add_global_graph_attrs(attr_type = "node", attr = "gradientangle", value = "90") %>%
+    DiagrammeR::add_global_graph_attrs(attr_type = "node", attr = "margin", value = "0.2") %>%
     # edge [...]
     ## grey900(#212121)
     DiagrammeR::add_global_graph_attrs(attr_type = "edge", attr = "color", value = "#000000A0") %>%

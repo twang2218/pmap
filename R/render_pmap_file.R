@@ -1,5 +1,6 @@
 #' @title Render the process map as a file
 #' @description You can save the process map to a file
+#' @usage render_pmap_file(p, file_name, format = NULL, width = NULL, height = NULL)
 #' @param p the process map created by `create_pmap()`
 #' @param file_name the file name to be stored
 #' @param format the file format, it can be `NULL`(default), `png`, `pdf`, `svg` and `ps`. If it's `NULL`, the format will be guessed from the `file_name` extension.
@@ -18,15 +19,30 @@
 #' library(pmap)
 #' eventlog <- generate_eventlog()
 #' p <- create_pmap(eventlog)
-#' render_pmap_file(p, file_name = "test.svg", format = "svg")
+#' render_pmap_file(p, file_name = "test.svg")
 #' ```
 #' @importFrom DiagrammeR   export_graph
 #' @importFrom tools        file_ext
 #' @importFrom stringr      str_to_lower
 #' @export
 render_pmap_file <- function(p, file_name, format = NULL, width = NULL, height = NULL) {
+  supported_format <- c("pdf", "svg", "png", "ps", "dot")
   if (is.null(format)) {
     format <- stringr::str_to_lower(tools::file_ext(file_name))
   }
-  DiagrammeR::export_graph(p, file_name = file_name, file_type = format, width = width, height = height)
+
+  # Check whether format is supported or not
+  if (!format %in% supported_format) {
+    stop(paste0("'", format, "' is not supported. Supported format are :", paste(supported_format, sep = ", ")))
+  }
+
+  if (format == "dot") {
+    # Generate dot file
+    sink(file_name)
+    cat(gsub("'", "\"", DiagrammeR::generate_dot(p)))
+    sink()
+  } else {
+    # render for the rest formats
+    DiagrammeR::export_graph(p, file_name = file_name, file_type = format, width = width, height = height)
+  }
 }

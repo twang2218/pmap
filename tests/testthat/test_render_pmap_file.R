@@ -27,7 +27,7 @@ test_that("render_pmap_file() should be able to guess file format", {
 
   p <- eventlog %>% create_pmap() %>% prune_nodes(0.5) %>% prune_edges(0.5)
 
-  for (format in c("pdf", "png")) {
+  for (format in c("pdf", "png", "dot")) {
     file_name <- tempfile(fileext = paste0(".", format))
     render_pmap_file(p, file_name)
     expect_true(file.exists(file_name))
