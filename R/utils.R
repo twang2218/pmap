@@ -101,14 +101,10 @@ get_colors <- function(categories) {
     colors <- c(colors, rep("#428BCA", length(categories) - length(colors)))
   }
 
-  color1 <- sapply(colors, get_color_variant, 1)
-  color2 <- sapply(colors, get_color_variant, 0.5)
-  color3 <- sapply(colors, get_color_variant, 0.3)
-
   data.frame(
     category = categories,
-    color = color1,
-    fillcolor = paste0(color2, ":", color3),
+    color = sapply(colors, get_color_variant, 1),
+    fillcolor = sapply(colors, get_color_variant, 0.5),
     stringsAsFactors = FALSE
   )
 }
