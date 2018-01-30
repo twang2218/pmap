@@ -153,7 +153,7 @@ create_pmap_graph <- function(
     from = edges$from_id,
     to = edges$to_id,
     amount = edges$amount,
-    label = paste("  ", edge_label_value, "  "),
+    label = paste0("   ", edge_label_value, "   "),
     penwidth = edges$size,
     weight = edges$size,
     tooltip = edges$tooltip,
