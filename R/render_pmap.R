@@ -11,5 +11,8 @@
 #' @importFrom DiagrammeR   render_graph
 #' @export
 render_pmap <- function(p, title = NULL) {
+  # Warning message for big process map
+  huge_graph_warning(p, nodes_limit = 80, edges_limit = 300)
+
   DiagrammeR::render_graph(p, title = title)
 }

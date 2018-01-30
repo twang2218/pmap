@@ -44,12 +44,18 @@ render_pmap_file <- function(p, file_name, format = NULL, width = NULL, height =
   } else {
     # render for the rest formats
     if (use_external_dot) {
+      # Warning message for big process map
+      huge_graph_warning(p, nodes_limit = 100, edges_limit = 500)
+
       # Use external `dot` command for the graph generation
       dotfile <- tempfile(fileext = ".dot")
       export_dot(p, dotfile)
       external_dot(dotfile, file_name)
       # file.remove(dotfile)
     } else {
+      # Warning message for big process map
+      huge_graph_warning(p, nodes_limit = 80, edges_limit = 300)
+
       # Use viz.js and V8 for graph file generation
       DiagrammeR::export_graph(p, file_name = file_name, file_type = format, width = width, height = height)
     }

@@ -165,3 +165,18 @@ external_dot <- function(dotfile, file_name) {
     )
   }
 }
+
+huge_graph_warning <- function(p, nodes_limit = 80, edges_limit = 300) {
+  if (nrow(p$nodes_df) > nodes_limit || nrow(p$edges_df) > edges_limit) {
+    warning(
+      paste0(
+        "The process map is big (nodes: ",
+        nrow(p$nodes_df),
+        ", edges: ",
+        nrow(p$edges_df),
+        "). It may take too long to render."
+      ),
+      immediate. = TRUE
+    )
+  }
+}
