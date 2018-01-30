@@ -42,7 +42,7 @@ Create a process map from the event log and render it directly.\preformatted{> p
 > render_pmap(p)
 }
 
-\if{html}{\figure{example.prune_edges.none.svg}{options: width="100\%" height="500px" alt="Figure: example.prune_edges.none.svg"}}
+\if{html}{\figure{example.prune_edges.none.svg}{options: width="100\%" height="400px" alt="Figure: example.prune_edges.none.svg"}}
 
 As you can see the event map is very messy. Let's apply the \code{prune_edges()} to remove 50 percent edges.
 

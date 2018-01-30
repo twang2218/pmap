@@ -22,17 +22,17 @@
 [License]: https://img.shields.io/cran/l/pmap.svg
 [License Page]: https://github.com/twang2218/pmap/blob/master/LICENSE.md
 
-The goal of `pmap` is to provide functionality of generating a process map from an event log.
+The goal of `pmap` is to provide the functionality of generating a process map from an event log with the user's preference.
 
 ## Installation
 
-An older version of `pmap` is available on [CRAN](https://cran.r-project.org/web/packages/pmap/index.html), if you want to install this version, you can do it by:
+An older version of `pmap` is available on [CRAN](https://cran.r-project.org/web/packages/pmap/index.html), if you prefer to install this version, you can install it by:
 
 ```R
 install.packages("pmap")
 ```
 
-However, as [CRAN policy](https://cran.r-project.org/web/packages/policies.html#Submission) states, I shouldn't submit package to CRAN more than once a month, so I will do normal [release on GitHub](https://github.com/twang2218/pmap/releases), and submit to CRAN only when it's possible. That is, the version on CRAN might be a little bit old.
+> However, based on the [CRAN policy](https://cran.r-project.org/web/packages/policies.html#Submission), a developer shouldn't submit a package to CRAN more than once within a month, therefore the [GitHub repo](https://github.com/twang2218/pmap/releases) will be the primary release channel, and the package will be submitted to CRAN only when it is possible. That is, the package version in CRAN can be a bit outdated.
 
 To install the latest version, you can install `pmap` from GitHub directly:
 
@@ -40,15 +40,26 @@ To install the latest version, you can install `pmap` from GitHub directly:
 devtools::install_github("twang2218/pmap")
 ```
 
-And, as I [tagged](https://github.com/twang2218/pmap/tags) each released version, you can even specify which version you want to install:
+And, the users have the options to choose the installed version by specifying the version number in the command, as I [git tagged](https://github.com/twang2218/pmap/tags) each release:
 
 ```R
-devtools::install_github("twang2218/pmap", ref = "v0.4.0")
+devtools::install_github("twang2218/pmap", ref = "v0.5.0")
 ```
 
 ## Usage
 
-This is a basic example which shows you how to use `pmap` create a process map from an event log. We use `sepsis` dataset in `eventdataR` package as the example here.
+This is a demonstration of how to use `pmap` to create a process map from an event log. `sepsis` dataset in the `eventdataR` package will be used in the demonstration.
+
+### Data preparation
+
+Like any data analysis task, the first but the most important thing is to prepare our data. `pmap` only requires three mandatory fields and one optional field to meet the requirement of the `eventlog` data:
+
+* `timestamp`: Represent the timestamps of the events when they occurred. The data type should be `POSIXct`. For the timestamp in `character`, the package will attempt to convert the column to `POSIXct`.
+* `customer_id`: Represent customer ID or case ID in the process paths. It is used to calculate the event frequency or process performance.
+* `event_name`: Event name or activity name.
+* `event_category`(_optional since v0.4.0_): It is used to differentiate the grouped events by different colors for the  better visualization purpose. For example, the marketing activities with different purposes can be visualized by different colors, with one purpose each. *(`event_category` was previously called `event_type`, and required before `v0.3.2`. It is no longer mandatory after this version.)* If `event_category` is missing, the `event_name` name will be used as `event_category` for coloring by default.
+
+Let's look at this example step-by-step:
 
 ``` r
 library(eventdataR)
@@ -62,11 +73,8 @@ library(pmap)
       customer_id = Case_ID,
       event_name = Activity
     ) %>%
-    mutate(
-      event_type = event_name
-    ) %>%
-    select(timestamp, customer_id, event_name, event_type) %>%
-    filter(!is.na(customer_id))
+    select(timestamp, customer_id, event_name) %>%
+    na.omit()
 ```
 
 Check `eventlog` data frame structure.
@@ -74,7 +82,7 @@ Check `eventlog` data frame structure.
 ```R
 > head(eventlog)
 # A tibble: 6 x 4
-  timestamp           customer_id event_name       event_type      
+  timestamp           customer_id event_name       event_category      
   <dttm>              <chr>       <chr>            <chr>           
 1 2014-10-22 11:15:41 A           ER Registration  ER Registration 
 2 2014-10-22 11:27:00 A           Leucocytes       Leucocytes      
@@ -83,33 +91,108 @@ Check `eventlog` data frame structure.
 5 2014-10-22 11:33:37 A           ER Triage        ER Triage       
 6 2014-10-22 11:34:00 A           ER Sepsis Triage ER Sepsis Triage
 > str(eventlog)
-Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	15190 obs. of  4 variables:
+Classes ‘tbl_df’, ‘tbl’ and 'data.frame':    15190 obs. of  4 variables:
  $ timestamp  : POSIXct, format: "2014-10-22 11:15:41" "2014-10-22 11:27:00" "2014-10-22 11:27:00" ...
  $ customer_id: chr  "A" "A" "A" "A" ...
  $ event_name : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
- $ event_type : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
+ $ event_category : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
 ```
 
-Create process map from the `eventlog`.
+### Create a process map
+
+You can create a process map from the `eventlog` directly by running only one command:
 
 ```R
 # Create process map
 > p <- create_pmap(eventlog)
 # Render the process map
-> print(render_pmap(p))
+> render_pmap(p)
 ```
 
-The result will be a bit messy.
+The result will be shown in `Viewer` window if you're using R Studio, or in a new browser window if you're running the code from a Terminal.
 
-<p align="center"><img src="man/figures/example.prune_edges.none.svg" alt="process map without prune" height="500px" /></p>
+<p align="center"><img src="man/figures/example.prune_edges.none.svg" alt="process map without prune" height="600px" /></p>
 
-Let's prune the process map.
+### Prune the process map
+
+As you can see, the above result is a bit messy, however, we can prune some edges with smaller volume to simplify the process map. It is a better way to find the common paths in the process.
 
 ```R
-# Prune the process map
-> p <- p %>% prune_nodes(0.5) %>% prune_edges(0.5)
-# Render the pruned process map
-> print(render_pmap(p))
+p %>% prune_edges(0.5) %>% render_pmap()
+```
+
+<p align="center"><img src="man/figures/example.prune_edges.edges.svg" alt="process map without prune" height="500px" /></p>
+
+It's better, but we can improve it even better by pruning some not very important nodes as well.
+
+```R
+> p %>% prune_nodes(0.5) %>% prune_edges(0.5) %>% render_pmap()
+```
+
+Or, if you want a more interactive approach, you can start a Shiny server app with a slide bar for pruning the nodes and/or edges by a certain percentage. Just be careful, the more the edges and nodes, the slower the process will be. Let's keep `50%` nodes and `50%` edges in our example:
+
+```R
+> render_pmap_shiny(p, nodes_prune_percentage = 0.5, edges_prune_percentage = 0.5)
 ```
 
 <p align="center"><img src="man/figures/example.prune_edges.both.svg" alt="cleaner process map" height="500px" /></p>
+
+### Expand the loop
+
+The above process map is great to find the valuable insights as we can immediately observe something very interesting insight from the map: the loop between `CRP` and `Leucocyte`. Is this because of a small group of cases repeatedly went through these two steps many many times? or is this because most cases went through the loop just a few times? To answer the question, we can expand the loop by distinct the repeated event.
+
+```R
+> p <- create_pmap(eventlog, distinct_repeated_events = TRUE)
+```
+
+By this way, each new event name will be attached with the occurrence sequence number of the event in the path, so the same event occurs multiple times in the path will have a different name, which means different nodes in the final map. The newly generated the process map will be much more complex than before, so we need prune it further.
+
+```R
+> p %>% prune_nodes(0.5) %>% prune_edges(0.8) %>% render_pmap()
+```
+
+<p align="center"><img src="man/figures/example.distinct_repeated_events.svg" alt="process map with distinct repeated events" height="700px" /></p>
+
+It's interesting to see that there isn't much connection between first time `CRP (1)` and `Leucocyte (1)`, however, the back and forth happened after `Admission NC`.
+
+### Time is the key
+
+Are this back and forth event loop because of some kind of regular check after `Admission NC`? We are not sure from previous process map, because we don't know how long between each event occurred. By default, the edge label will be the number of cases went between the two connected events. We can change it for the duration of those connected events to understand more about the process in a timely manner.
+
+As there are multiple cases went through the path, we need to decide how to summarize the duration, such as:
+
+* the maximum duration
+* the minimum duration
+* the mean duration
+* the median duration
+
+We can specify the kind of duration by given an `edge_label` argument to the `create_pmap()`.
+
+```R
+p <- create_pmap(eventlog, edge_label = "mean_duration")
+p %>% prune_nodes(0.5) %>% prune_edges(0.8) %>% render_pmap()
+```
+
+or, it can be changed after the process map created by using `adjust_edge_label()` function.
+
+```R
+p <- adjust_edge_label(p, label = "mean_duration")
+render_pmap(p)
+```
+
+<p align="center"><img src="man/figures/example.distinct_repeated_events.mean_duration.svg" alt="process map with distinct repeated events with mean duration" height="700px" /></p>
+
+By adding the duration between each path into the process map, we can eliminate the problem immediately, as it's not a loop. `Leucocyte` almost always occurred immediately after `CRP` occurred, but not the otherwise. It means `CRP` and `Leucocyte` occurred together in the same sequence, might belong to a blood test pack, and the patients will be tested regularly after `Admission NC`.
+
+And we can also discover the patients would normally be released 2 days after `CRP` and `Leucocyte` test. It might because the test results came back ok, the patients will be released after 2 days observation without any further issue.
+
+We can get that information from the process map clearly.
+
+### Persistent the result
+
+If you're happy with the result, you can save the process map to a PDF or other file format by replace `render_pmap()` with `render_pmap_file()`.
+
+```R
+p <- create_pmap(eventlog, edge_label = "mean_duration")
+p %>% prune_nodes(0.5) %>% prune_edges(0.8) %>% render_pmap_file("sepsis_process_map.pdf")
+```
