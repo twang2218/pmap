@@ -13,6 +13,7 @@ addons:
   apt:
     packages:
       - libv8-dev
+      - graphviz
 
 after_success:
   - Rscript -e 'covr::coveralls()'

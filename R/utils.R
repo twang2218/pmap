@@ -130,3 +130,38 @@ format_duration <- function(duration) {
     as.character(lubridate::as.duration(duration))
   )
 }
+
+# Get file extension in lower case
+#' @importFrom stringr    str_to_lower
+#' @importFrom tools      file_ext
+get_file_type <- function(file_name) {
+  stringr::str_to_lower(tools::file_ext(file_name))
+}
+
+# Export graph as a dot file
+#' @importFrom DiagrammeR   generate_dot
+export_dot <- function(p, file_name) {
+  sink(file_name)
+  cat(gsub("'", "\"", DiagrammeR::generate_dot(p)))
+  sink()
+}
+
+# Using external `dot` command to generate the result
+external_dot <- function(dotfile, file_name) {
+  t <- try(system2("dot", c("-V"), stdout = TRUE, stderr = TRUE), silent = TRUE)
+  if (inherits(t, "try-error")) {
+    warning("Cannot find `dot` command. GraphViz should be installed to use `dot` command.")
+  } else {
+    system2(
+      "dot",
+      c(
+        paste0("-T", get_file_type(file_name)),
+        paste0("\"", dotfile, "\""),
+        "-o",
+        paste0("\"", file_name, "\"")
+      ),
+      stdout = TRUE,
+      stderr = TRUE
+    )
+  }
+}

@@ -107,3 +107,11 @@ test_that("format_duration()", {
     )
   )
 })
+
+test_that("get_file_type()", {
+  expect_equal(get_file_type("abc.def"), "def")
+  expect_equal(get_file_type("/a/1/3.34/abc.DeF"), "def")
+  expect_equal(get_file_type("/a/b/c/de.cd.ed.def"), "def")
+  expect_equal(get_file_type("abc"), "")
+  expect_equal(get_file_type("cdedf."), "")
+})

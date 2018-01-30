@@ -4,7 +4,10 @@
 \alias{render_pmap_file}
 \title{Render the process map as a file}
 \usage{
-render_pmap_file(p, file_name, format = NULL, width = NULL, height = NULL)
+render_pmap_file(p, 
+   file_name, format = NULL, 
+   width = NULL, height = NULL,
+   use_external_dot = FALSE)
 }
 \arguments{
 \item{p}{the process map created by \code{create_pmap()}}
@@ -16,6 +19,8 @@ render_pmap_file(p, file_name, format = NULL, width = NULL, height = NULL)
 \item{width}{width of the image (optional)}
 
 \item{height}{height of the image (optional)}
+
+\item{use_external_dot}{Whether to use external \code{dot} command to generate the file}
 }
 \description{
 You can save the process map to a file
