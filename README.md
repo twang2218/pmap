@@ -52,14 +52,28 @@ This is a demonstration of how to use `pmap` to create a process map from an eve
 
 ### Data preparation
 
-Like any data analysis task, the first but the most important thing is to prepare our data. `pmap` only requires three mandatory fields and one optional field to meet the requirement of the `eventlog` data:
+Like any data analysis task, the first but the most important thing is to prepare our data.
 
-* `timestamp`: Represent the timestamps of the activities when they occurred. The data type should be `POSIXct`. For the timestamp in `character`, the package will attempt to convert the column to `POSIXct`.
-* `case_id`: Represent case ID or case ID in the process paths. It is used to calculate the activity frequency or process performance.
-* `activity`: Activity name or activity name.
-* `category`(_optional since v0.4.0_): It is used to differentiate the grouped activities by different colors for the  better visualization purpose. For example, the marketing activities with different purposes can be visualized by different colors, with one purpose each. *(`category` was previously called `activity_type`, and required before `v0.3.2`. It is no longer mandatory after this version.)* If `category` is missing, the `activity` name will be used as `category` for coloring by default.
+Before the actual preparation steps, we should have a common ground on the terminology to be used later. There are mainly four terms, `Case`, `Activity`, `Category` and `Event`. The relation between the terms can be described as the following graph.
 
-Let's look at this example step-by-step:
+<p align="center"><img src="man/figures/relation_schema.svg" alt="process map without prune" height="300px" /></p>
+
+And `eventlog` is a collection of `Event`. So, each row in the `eventlog` represents an `Event` object, and each `Event` contains several attributes, including:
+
+* when - `timestamp`;
+* who - `case_id`;
+* what - `activity` and `category`;
+
+Therefore `pmap` requires three mandatory fields and one optional field in the given `eventlog` data frame:
+
+* `timestamp`: Represent the timestamps of the events when they occurred. The data type should be `POSIXct`. For the case of data type of `timestamp` is `character`, the package will attempt to convert the column to `POSIXct`, but it's just handy in some cases, it's better to make sure the `timestamp` column is in correct data type.
+* `case_id`: Represent `Case` ID in the process paths. It is used to calculate the activity frequency or process performance.
+* `activity`: Activity name.
+* `category`(_optional since v0.4.0_): It is used to differentiate the grouped activities by different colors for a better visualization purpose. For example, the marketing activities with different purposes can be visualized by different colors, with one purpose each. If `category` is missing, the `activity` name will be used as `category` for coloring by default.
+
+> `category` was previously called `event_type`, and required before `v0.3.2`. It is no longer necessary after `v0.4.0`.
+
+Now, let's do the data preparation.
 
 ``` r
 library(eventdataR)
@@ -81,21 +95,22 @@ Check `eventlog` data frame structure.
 
 ```R
 > head(eventlog)
-# A tibble: 6 x 4
-  timestamp           case_id activity       category      
-  <dttm>              <chr>       <chr>            <chr>           
-1 2014-10-22 11:15:41 A           ER Registration  ER Registration 
-2 2014-10-22 11:27:00 A           Leucocytes       Leucocytes      
-3 2014-10-22 11:27:00 A           CRP              CRP             
-4 2014-10-22 11:27:00 A           LacticAcid       LacticAcid      
-5 2014-10-22 11:33:37 A           ER Triage        ER Triage       
-6 2014-10-22 11:34:00 A           ER Sepsis Triage ER Sepsis Triage
+# A tibble: 6 x 3
+  timestamp           case_id activity
+  <dttm>              <chr>   <chr>
+1 2014-10-22 11:15:41 A       ER Registration
+2 2014-10-22 11:27:00 A       Leucocytes
+3 2014-10-22 11:27:00 A       CRP
+4 2014-10-22 11:27:00 A       LacticAcid
+5 2014-10-22 11:33:37 A       ER Triage
+6 2014-10-22 11:34:00 A       ER Sepsis Triage
 > str(eventlog)
-Classes ‘tbl_df’, ‘tbl’ and 'data.frame':    15190 obs. of  4 variables:
- $ timestamp  : POSIXct, format: "2014-10-22 11:15:41" "2014-10-22 11:27:00" "2014-10-22 11:27:00" ...
- $ case_id: chr  "A" "A" "A" "A" ...
+Classes ‘tbl_df’, ‘tbl’ and 'data.frame':       15190 obs. of  3 variables:
+ $ timestamp: POSIXct, format: "2014-10-22 11:15:41" "2014-10-22 11:27:00" ...
+ $ case_id  : chr  "A" "A" "A" "A" ...
  $ activity : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
- $ category : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
+ - attr(*, "na.action")=Class 'omit'  Named int [1:24] 442 443 444 445 446 447 448 449 450 451 ...
+  .. ..- attr(*, "names")= chr [1:24] "442" "443" "444" "445" ...
 ```
 
 ### Create a process map
