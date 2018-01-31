@@ -13,8 +13,8 @@ test_that("adjust_edge_label() handle graph change the edge label", {
         "2017-07-20"
       ),
       case_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
-      event_name = c("a", "b", "a", "b", "b", "a", "b"),
-      event_category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
+      activity = c("a", "b", "a", "b", "b", "a", "b"),
+      activity_category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
       stringsAsFactors = FALSE
     )
   )

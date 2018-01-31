@@ -2,14 +2,14 @@
 #' @usage generate_edges(eventlog, distinct_case = FALSE, target_categories = NULL)
 #' @param eventlog Event logs
 #' @param distinct_case Whether should only count unique case
-#' @param target_categories A vector contains the target event categories. By default, it's `NULL`, which means every paths count. If it's contains the target event category, then only paths reaches the target event count.
+#' @param target_categories A vector contains the target activity categories. By default, it's `NULL`, which means every paths count. If it's contains the target activity category, then only paths reaches the target activity count.
 #' @return a `data.frame` of edges with `from`, `to` and `amount` columns.
 #' @description `eventlog` should be a `data.frame` or `data.table`, which contains, at least, following columns:
 #'
-#'  * `timestamp`: timestamp column which indicates when event happened. The column's data type should be `POSIXct`, otherwise it will be converted to `POSIXct` automatically. (`POSIXct`)
+#'  * `timestamp`: timestamp column which indicates when activity happened. The column's data type should be `POSIXct`, otherwise it will be converted to `POSIXct` automatically. (`POSIXct`)
 #'  * `case_id`: case identifier. (`character`)
-#'  * `event_name`: event name. (`character`)
-#'  * `event_category`: event category. (`character`)
+#'  * `activity`: activity name. (`character`)
+#'  * `activity_category`: activity category. (`character`)
 #' @examples
 #' # -----------------------------------------------------
 #' # Generating edges and count every paths no matter whether
@@ -17,33 +17,47 @@
 #' # -----------------------------------------------------
 #' eventlog <- generate_eventlog()
 #' edges <- generate_edges(eventlog)
+#' # Have a look on generated edges
 #' head(edges)
-#' # # A tibble: 6 x 3
-#' #   from             to                amount
-#' #   <chr>            <chr>              <int>
-#' # 1 Event 1 (normal) Event 1 (normal)      13
-#' # 2 Event 1 (normal) Event 10 (target)      3
-#' # 3 Event 1 (normal) Event 2 (normal)       7
-#' # 4 Event 1 (normal) Event 3 (normal)       9
-#' # 5 Event 1 (normal) Event 4 (normal)      11
-#' # 6 Event 1 (normal) Event 5 (normal)      14
+#' # # A tibble: 6 x 7
+#' #   from    to     amount mean_duration median_duration max_duration min_duration
+#' #   <chr>   <chr>   <int> <chr>         <chr>           <chr>        <chr>
+#' # 1 Activi… Activ…     12 1.02 weeks    1.12 weeks      1.91 weeks   2 hours
+#' # 2 Activi… Activ…      5 3.59 days     4.41 days       1.03 weeks   17.33 hours
+#' # 3 Activi… Activ…     10 1.13 weeks    7 days          2.93 weeks   1.51 days
+#' # 4 Activi… Activ…      1 2.46 weeks    2.46 weeks      2.46 weeks   2.46 weeks
+#' # 5 Activi… Activ…      3 1.72 weeks    1.2 weeks       2.79 weeks   1.16 weeks
+#' # 6 Activi… Activ…      8 3.38 days     2.2 days        1.85 weeks   15.1 hours
+#'
 #' str(edges)
-#' # Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	100 obs. of  3 variables:
-#' #  $ from  : chr  "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" ...
-#' #  $ to    : chr  "Event 1 (normal)" "Event 10 (target)" "Event 2 (normal)" "Event 3 (normal)" ...
-#' #  $ amount: int  13 3 7 9 11 14 8 12 16 15 ...
-#' #  - attr(*, ".internal.selfref")=<externalptr>
+#' # Classes ‘tbl_df’, ‘tbl’ and 'data.frame':       161 obs. of  7 variables:
+#' #  $ from           : chr  "Activity 1 (normal)" "Activity 1 (normal)" "Activity 1 (normal)"
+#' # "Activity 1 (normal)" ...
+#' #  $ to             : chr  "Activity 1 (normal)" "Activity 10 (phone)" "Activity 11 (phone)"
+#' # "Activity 12 (phone)" ...
+#' #  $ amount         : int  12 5 10 1 3 8 2 15 9 15 ...
+#' #  $ mean_duration  : chr  "1.02 weeks" "3.59 days" "1.13 weeks" "2.46 weeks" ...
+#' #  $ median_duration: chr  "1.12 weeks" "4.41 days" "7 days" "2.46 weeks" ...
+#' #  $ max_duration   : chr  "1.91 weeks" "1.03 weeks" "2.93 weeks" "2.46 weeks" ...
+#' #  $ min_duration   : chr  "2 hours" "17.33 hours" "1.51 days" "2.46 weeks" ...
+#' #
 #' # -----------------------------------------------------
 #' # Generate edges by specify the target categories, and the paths
-#' # not reaching the target category events will be ignored.
+#' # not reaching the target category activities will be ignored.
 #' # -----------------------------------------------------
 #' edges <- generate_edges(eventlog, target_categories = c("target"))
 #' str(edges)
-#' # Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	80 obs. of  3 variables:
-#' #  $ from  : chr  "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" ...
-#' #  $ to    : chr  "Event 1 (normal)" "Event 10 (target)" "Event 2 (normal)" "Event 3 (normal)" ...
-#' #  $ amount: int  12 3 7 7 11 9 7 8 16 15 ...
-#' #  - attr(*, ".internal.selfref")=<externalptr>
+#' # Classes ‘tbl_df’, ‘tbl’ and 'data.frame':       115 obs. of  7 variables:
+#' #  $ from           : chr  "Activity 1 (normal)" "Activity 1 (normal)" "Activity 1 (normal)"
+#' # "Activity 1 (normal)" ...
+#' #  $ to             : chr  "Activity 1 (normal)" "Activity 11 (phone)" "Activity 13 (target)"
+#' # "Activity 14 (target)" ...
+#' #  $ amount         : int  1 3 1 4 2 6 1 1 3 1 ...
+#' #  $ mean_duration  : chr  "4.4 days" "2.12 weeks" "2.89 hours" "1.47 weeks" ...
+#' #  $ median_duration: chr  "4.4 days" "2.15 weeks" "2.89 hours" "1.04 weeks" ...
+#' #  $ max_duration   : chr  "4.4 days" "2.16 weeks" "2.89 hours" "3.53 weeks" ...
+#' #  $ min_duration   : chr  "4.4 days" "2.03 weeks" "2.89 hours" "1.76 days" ...
+#' #
 #' @importFrom dplyr        %>%
 #' @importFrom dplyr        distinct
 #' @importFrom dplyr        group_by
@@ -74,7 +88,7 @@ generate_edges <- function(eventlog, distinct_case = FALSE, target_categories = 
   }
 
   # make 'R CMD check' happy
-  event_name <- event_category <- is_target <- case_id <- timestamp <- last_target_date <-
+  activity <- activity_category <- is_target <- case_id <- timestamp <- last_target_date <-
   from <- from_cid <- from_time <- from_is_target <-
   to_cid <- to <-
   duration <- mean_duration <- median_duration <- max_duration <- min_duration <- NULL
@@ -89,19 +103,19 @@ generate_edges <- function(eventlog, distinct_case = FALSE, target_categories = 
   # Attach `is_target` column
   if (length(target_categories) > 0) {
     categories <- eventlog %>%
-      dplyr::distinct(event_category) %>%
+      dplyr::distinct(activity_category) %>%
       dplyr::left_join(
         data.frame(
-          event_category = target_categories,
+          activity_category = target_categories,
           is_target = TRUE,
           stringsAsFactors = FALSE
         ),
-        by = "event_category"
+        by = "activity_category"
       ) %>%
-      dplyr::select(event_category, is_target) %>%
+      dplyr::select(activity_category, is_target) %>%
       dplyr::mutate(is_target = !is.na(is_target))
 
-    eventlog <- dplyr::inner_join(eventlog, categories, by = "event_category")
+    eventlog <- dplyr::inner_join(eventlog, categories, by = "activity_category")
   } else {
     eventlog <- dplyr::mutate(eventlog, is_target = FALSE)
   }
@@ -120,11 +134,11 @@ generate_edges <- function(eventlog, distinct_case = FALSE, target_categories = 
 
   edges <- data.frame(
       from_time = begin$timestamp,
-      from = begin$event_name,
+      from = begin$activity,
       case_id = begin$case_id,
       from_is_target = begin$is_target,
       to_time = end$timestamp,
-      to = end$event_name,
+      to = end$activity,
       to_cid = end$case_id,
       to_is_target = end$is_target,
       duration = end$time - begin$time,
@@ -135,13 +149,13 @@ generate_edges <- function(eventlog, distinct_case = FALSE, target_categories = 
 
   # prune edges by target_categories
   if (length(target_categories) > 0) {
-    # find the last target event date
+    # find the last target activity date
     case_last_target_date <- eventlog %>%
       dplyr::filter(is_target) %>%
       dplyr::group_by(case_id) %>%
       dplyr::summarize(last_target_date = max(timestamp))
 
-    # prune all the edges with event after the last target event date
+    # prune all the edges with activity after the last target activity date
     edges <- edges %>%
       dplyr::inner_join(case_last_target_date, by = "case_id") %>%
       dplyr::filter(from_time < last_target_date)

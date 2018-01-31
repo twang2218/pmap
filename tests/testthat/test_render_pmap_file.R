@@ -4,8 +4,8 @@ test_that("render_pmap_file() should be able to render to a file", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 1000,
     number_of_cases = 100,
-    event_categories = c("campaign", "sale"),
-    event_categories_size = c(10, 4)
+    activity_categories = c("campaign", "sale"),
+    activity_categories_size = c(10, 4)
   )
 
   p <- eventlog %>% create_pmap() %>% prune_nodes(0.5) %>% prune_edges(0.5)
@@ -21,8 +21,8 @@ test_that("render_pmap_file() should be able to guess file format", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 1000,
     number_of_cases = 100,
-    event_categories = c("campaign", "sale"),
-    event_categories_size = c(10, 4)
+    activity_categories = c("campaign", "sale"),
+    activity_categories_size = c(10, 4)
   )
 
   p <- eventlog %>% create_pmap() %>% prune_nodes(0.5) %>% prune_edges(0.5)
@@ -48,8 +48,8 @@ test_that("render_pmap_file() should be able to use external `dot` command", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 1000,
     number_of_cases = 100,
-    event_categories = c("campaign", "sale"),
-    event_categories_size = c(10, 4)
+    activity_categories = c("campaign", "sale"),
+    activity_categories_size = c(10, 4)
   )
 
   p <- eventlog %>% create_pmap() %>% prune_nodes(0.5) %>% prune_edges(0.5)

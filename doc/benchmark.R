@@ -210,7 +210,7 @@ microbenchmark(
 el_1m_2 <- generate_eventlog(
   size_of_eventlog = 1000 * 1000,
   number_of_cases = 100 * 1000,
-  event_categories_size = c(30, 5, 20, 5)
+  activity_categories_size = c(30, 5, 20, 5)
 )
 
 library(data.table)

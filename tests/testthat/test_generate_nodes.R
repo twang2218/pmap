@@ -8,8 +8,8 @@ test_that("generate_nodes() should handle minimal eventlog", {
         as.POSIXct("2017-10-20")
       ),
       case_id = c("c1", "c1"),
-      event_name = c("a", "b"),
-      event_category = c("campaign", "sale"),
+      activity = c("a", "b"),
+      activity_category = c("campaign", "sale"),
       stringsAsFactors = FALSE
     )
   )
@@ -19,7 +19,7 @@ test_that("generate_nodes() should handle minimal eventlog", {
   expect_equal(nodes$category, c("campaign", "sale"))
 })
 
-test_that("generate_nodes() should handle eventlog with duplicated events", {
+test_that("generate_nodes() should handle eventlog with duplicated activities", {
   nodes <- generate_nodes(
     data.frame(
       timestamp = c(
@@ -30,8 +30,8 @@ test_that("generate_nodes() should handle eventlog with duplicated events", {
         as.POSIXct("2017-10-20")
       ),
       case_id = c("c1", "c1", "c2", "c1", "c1"),
-      event_name = c("a", "b", "a", "b", "b"),
-      event_category = c("sale", "campaign", "sale", "campaign", "campaign"),
+      activity = c("a", "b", "a", "b", "b"),
+      activity_category = c("sale", "campaign", "sale", "campaign", "campaign"),
       stringsAsFactors = FALSE
     )
   )
@@ -41,7 +41,7 @@ test_that("generate_nodes() should handle eventlog with duplicated events", {
   expect_equal(nodes$category, c("sale", "campaign"))
 })
 
-test_that("generate_nodes() should handle eventlog with space at beginning or end of the 'event_name'", {
+test_that("generate_nodes() should handle eventlog with space at beginning or end of the 'activity'", {
   nodes <- generate_nodes(
     data.frame(
       timestamp = c(
@@ -52,8 +52,8 @@ test_that("generate_nodes() should handle eventlog with space at beginning or en
         as.POSIXct("2017-10-20")
       ),
       case_id = c("c1", "c1", "c2", "c1", "c1"),
-      event_name = c(" a", "b b ", " a ", " b b ", " b b"),
-      event_category = c("sale", "campaign", "sale", "campaign", "campaign"),
+      activity = c(" a", "b b ", " a ", " b b ", " b b"),
+      activity_category = c("sale", "campaign", "sale", "campaign", "campaign"),
       stringsAsFactors = FALSE
     )
   )
@@ -78,8 +78,8 @@ test_that("generate_nodes() should count unique 'case_id' if 'distinct_case' is 
         as.POSIXct("2017-10-20")
       ),
       case_id = c("c1", "c1", "c2", "c1", "c1"),
-      event_name = c("a", "b", "a", "a", "b"),
-      event_category = c("campaign", "sale", "campaign", "campaign", "sale"),
+      activity = c("a", "b", "a", "a", "b"),
+      activity_category = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     distinct_case = TRUE
@@ -102,8 +102,8 @@ test_that("generate_nodes() should count every path if 'distinct_case' is not se
         as.POSIXct("2017-10-20")
       ),
       case_id = c("c1", "c1", "c2", "c1", "c1"),
-      event_name = c("a", "b", "a", "a", "b"),
-      event_category = c("campaign", "sale", "campaign", "campaign", "sale"),
+      activity = c("a", "b", "a", "a", "b"),
+      activity_category = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     distinct_case = FALSE
@@ -115,7 +115,7 @@ test_that("generate_nodes() should count every path if 'distinct_case' is not se
   expect_equal(nodes$category, c("campaign", "sale"))
 })
 
-test_that("generate_nodes() should handle the eventlog without `event_category`", {
+test_that("generate_nodes() should handle the eventlog without `activity_category`", {
   nodes <- generate_nodes(
     data.frame(
       timestamp = c(
@@ -126,7 +126,7 @@ test_that("generate_nodes() should handle the eventlog without `event_category`"
         as.POSIXct("2017-10-20")
       ),
       case_id = c("c1", "c1", "c2", "c1", "c1"),
-      event_name = c("a", "b", "a", "a", "b"),
+      activity = c("a", "b", "a", "a", "b"),
       stringsAsFactors = FALSE
     ),
     distinct_case = TRUE

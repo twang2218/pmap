@@ -20,22 +20,22 @@ Create an event log\preformatted{> library(dplyr)
 > eventlog <- generate_eventlog(
   size_of_eventlog = 10000,
   number_of_cases = 2000,
-  event_categories = c("campaign", "sale"),
-  event_categories_size = c(10, 4))
+  activity_categories = c("campaign", "sale"),
+  activity_categories_size = c(10, 4))
 > head(eventlog)
-            timestamp   case_id          event_name event_category
-1 2017-01-01 02:14:50  Case 345  Event 1 (campaign)   campaign
-2 2017-01-01 02:26:24 Case 1625  Event 2 (campaign)   campaign
-3 2017-01-01 03:48:12 Case 1901     Event 12 (sale)       sale
-4 2017-01-01 03:57:54 Case 1029 Event 10 (campaign)   campaign
-5 2017-01-01 07:46:54  Case 215 Event 10 (campaign)   campaign
-6 2017-01-01 09:44:51 Case 1354  Event 1 (campaign)   campaign
+            timestamp   case_id          activity activity_category
+1 2017-01-01 02:14:50  Case 345  Activity 1 (campaign)   campaign
+2 2017-01-01 02:26:24 Case 1625  Activity 2 (campaign)   campaign
+3 2017-01-01 03:48:12 Case 1901     Activity 12 (sale)       sale
+4 2017-01-01 03:57:54 Case 1029 Activity 10 (campaign)   campaign
+5 2017-01-01 07:46:54  Case 215 Activity 10 (campaign)   campaign
+6 2017-01-01 09:44:51 Case 1354  Activity 1 (campaign)   campaign
 > str(eventlog)
 'data.frame':	10000 obs. of  4 variables:
  $ timestamp  : POSIXct, format: "2017-01-01 02:14:50" "2017-01-01 02:26:24" ...
  $ case_id: chr  "Case 345" "Case 1625" "Case 1901" "Case 1029" ...
- $ event_name : chr  "Event 1 (campaign)" "Event 2 (campaign)" "Event 12 (sale)" "Event 10 (campaign)" ...
- $ event_category : chr  "campaign" "campaign" "sale" "campaign" ...
+ $ activity : chr  "Activity 1 (campaign)" "Activity 2 (campaign)" "Activity 12 (sale)" "Activity 10 (campaign)" ...
+ $ activity_category : chr  "campaign" "campaign" "sale" "campaign" ...
 }
 
 Create a process map from the event log and render it directly.\preformatted{> p <- create_pmap(eventlog, target_categories = c("sale"))
@@ -44,7 +44,7 @@ Create a process map from the event log and render it directly.\preformatted{> p
 
 \if{html}{\figure{example.prune_edges.none.svg}{options: width="100\%" height="400px" alt="Figure: example.prune_edges.none.svg"}}
 
-As you can see the event map is very messy. Let's apply the \code{prune_edges()} to remove 50 percent edges.
+As you can see the activity map is very messy. Let's apply the \code{prune_edges()} to remove 50 percent edges.
 
 \code{
  > p \%>\% prune_edges(0.5) \%>\% render_pmap()

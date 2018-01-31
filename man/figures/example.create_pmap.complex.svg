@@ -12,12 +12,12 @@
 <!-- 1&#45;&gt;1 -->
 <g id="1" class="edge">
 <title>1&#45;&gt;1</title>
-<g id="a_1"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 88&#10;mean_duration: 6.92 weeks&#10;median_duration: 3.86 weeks&#10;max_duration: 34.39 weeks&#10;min_duration: 17.08 hours">
+<g id="a_1"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 88&#10;mean_duration: 6.92 weeks&#10;median_duration: 3.86 weeks&#10;max_duration: 34.39 weeks&#10;min_duration: 17.08 hours">
 <path fill="none" stroke="#000000" stroke-width="7.5134" stroke-opacity="0.627451" d="M665.0406,-798.5192C675.8402,-796.8038 682.709,-793.95 682.709,-789.9579 682.709,-786.6518 677.9984,-784.1265 670.2458,-782.3819"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="7.5134" stroke-opacity="0.627451" points="670.5648,-779.0968 665.0406,-781.3965 669.3419,-785.5563 670.5648,-779.0968"/>
 </a>
 </g>
-<g id="a_1&#45;label"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 88&#10;mean_duration: 6.92 weeks&#10;median_duration: 3.86 weeks&#10;max_duration: 34.39 weeks&#10;min_duration: 17.08 hours">
+<g id="a_1&#45;label"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 88&#10;mean_duration: 6.92 weeks&#10;median_duration: 3.86 weeks&#10;max_duration: 34.39 weeks&#10;min_duration: 17.08 hours">
 <text text-anchor="middle" x="700.209" y="-785.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;88 &#160;&#160;</text>
 </a>
 </g>
@@ -25,12 +25,12 @@
 <!-- 1&#45;&gt;2 -->
 <g id="2" class="edge">
 <title>1&#45;&gt;2</title>
-<g id="a_2"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 10 (sale)&#10;amount: 188&#10;mean_duration: 8.22 weeks&#10;median_duration: 6.21 weeks&#10;max_duration: 40.37 weeks&#10;min_duration: 5.06 hours">
+<g id="a_2"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 188&#10;mean_duration: 8.22 weeks&#10;median_duration: 6.21 weeks&#10;max_duration: 40.37 weeks&#10;min_duration: 5.06 hours">
 <path fill="none" stroke="#000000" stroke-width="15" stroke-opacity="0.627451" d="M447.1469,-781.4281C285.2825,-767.2573 0,-735.9058 0,-690.9579 0,-690.9579 0,-690.9579 0,-123.0894 0,-87.3493 91.8503,-58.4842 162.3778,-41.588"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="15" stroke-opacity="0.627451" points="164.0676,-47.9319 167.4174,-40.3923 161.0373,-35.1614 164.0676,-47.9319"/>
 </a>
 </g>
-<g id="a_2&#45;label"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 10 (sale)&#10;amount: 188&#10;mean_duration: 8.22 weeks&#10;median_duration: 6.21 weeks&#10;max_duration: 40.37 weeks&#10;min_duration: 5.06 hours">
+<g id="a_2&#45;label"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 188&#10;mean_duration: 8.22 weeks&#10;median_duration: 6.21 weeks&#10;max_duration: 40.37 weeks&#10;min_duration: 5.06 hours">
 <text text-anchor="middle" x="21" y="-411.2176" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;188 &#160;&#160;</text>
 </a>
 </g>
@@ -38,12 +38,12 @@
 <!-- 1&#45;&gt;3 -->
 <g id="3" class="edge">
 <title>1&#45;&gt;3</title>
-<g id="a_3"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 8&#10;mean_duration: 10.95 weeks&#10;median_duration: 6.73 weeks&#10;max_duration: 33.03 weeks&#10;min_duration: 2.43 weeks">
+<g id="a_3"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 8&#10;mean_duration: 10.95 weeks&#10;median_duration: 6.73 weeks&#10;max_duration: 33.03 weeks&#10;min_duration: 2.43 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.5241" stroke-opacity="0.627451" d="M551.01,-758.767C550.701,-748.1535 551.9865,-736.5569 557,-726.9579 559.8628,-721.4765 563.9826,-716.635 568.6456,-712.4237"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.5241" stroke-opacity="0.627451" points="569.975,-713.5922 572.6746,-709.0343 567.7219,-710.9139 569.975,-713.5922"/>
 </a>
 </g>
-<g id="a_3&#45;label"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 8&#10;mean_duration: 10.95 weeks&#10;median_duration: 6.73 weeks&#10;max_duration: 33.03 weeks&#10;min_duration: 2.43 weeks">
+<g id="a_3&#45;label"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 8&#10;mean_duration: 10.95 weeks&#10;median_duration: 6.73 weeks&#10;max_duration: 33.03 weeks&#10;min_duration: 2.43 weeks">
 <text text-anchor="middle" x="571" y="-729.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;8 &#160;&#160;</text>
 </a>
 </g>
@@ -51,12 +51,12 @@
 <!-- 1&#45;&gt;4 -->
 <g id="4" class="edge">
 <title>1&#45;&gt;4</title>
-<g id="a_4"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 9&#10;mean_duration: 6.62 weeks&#10;median_duration: 3.68 weeks&#10;max_duration: 19.16 weeks&#10;min_duration: 5.01 hours">
+<g id="a_4"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 9&#10;mean_duration: 6.62 weeks&#10;median_duration: 3.68 weeks&#10;max_duration: 19.16 weeks&#10;min_duration: 5.01 hours">
 <path fill="none" stroke="#000000" stroke-width="1.5989" stroke-opacity="0.627451" d="M664.8577,-783.2508C788.3525,-774.8323 976.2933,-759.2563 1004,-740.9579 1030.0873,-723.7289 1028.8201,-703.468 1022,-672.9579 1018.451,-657.0812 1010.7678,-640.5388 1003.8196,-627.7456"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.5989" stroke-opacity="0.627451" points="1005.2588,-626.7324 1001.302,-623.2101 1002.1987,-628.4311 1005.2588,-626.7324"/>
 </a>
 </g>
-<g id="a_4&#45;label"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 9&#10;mean_duration: 6.62 weeks&#10;median_duration: 3.68 weeks&#10;max_duration: 19.16 weeks&#10;min_duration: 5.01 hours">
+<g id="a_4&#45;label"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 9&#10;mean_duration: 6.62 weeks&#10;median_duration: 3.68 weeks&#10;max_duration: 19.16 weeks&#10;min_duration: 5.01 hours">
 <text text-anchor="middle" x="1040" y="-686.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;9 &#160;&#160;</text>
 </a>
 </g>
@@ -64,12 +64,12 @@
 <!-- 1&#45;&gt;5 -->
 <g id="5" class="edge">
 <title>1&#45;&gt;5</title>
-<g id="a_5"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 41&#10;mean_duration: 4.92 weeks&#10;median_duration: 4.63 weeks&#10;max_duration: 14.7 weeks&#10;min_duration: 5.41 hours">
+<g id="a_5"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 41&#10;mean_duration: 4.92 weeks&#10;median_duration: 4.63 weeks&#10;max_duration: 14.7 weeks&#10;min_duration: 5.41 hours">
 <path fill="none" stroke="#000000" stroke-width="3.9947" stroke-opacity="0.627451" d="M664.8971,-788.0726C877.9902,-783.7629 1342.9692,-771.1353 1500,-740.9579 1567.7692,-727.9343 1647,-759.9671 1647,-690.9579 1647,-690.9579 1647,-690.9579 1647,-561.9579 1647,-498.6826 1637.9569,-329.1881 1596,-281.8238 1492.6259,-165.1267 1407.9346,-229.9257 1261,-177.8238 1245.2095,-172.2246 1242.3835,-167.3269 1226,-163.8238 1130.0865,-143.3153 882.5829,-155.7023 785,-145.8238 768.0155,-144.1044 749.9627,-141.6489 732.6658,-138.9822"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.9947" stroke-opacity="0.627451" points="732.5342,-137.1905 727.3241,-138.1484 731.9944,-140.6486 732.5342,-137.1905"/>
 </a>
 </g>
-<g id="a_5&#45;label"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 41&#10;mean_duration: 4.92 weeks&#10;median_duration: 4.63 weeks&#10;max_duration: 14.7 weeks&#10;min_duration: 5.41 hours">
+<g id="a_5&#45;label"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 41&#10;mean_duration: 4.92 weeks&#10;median_duration: 4.63 weeks&#10;max_duration: 14.7 weeks&#10;min_duration: 5.41 hours">
 <text text-anchor="middle" x="1660.5" y="-465.3747" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;41 &#160;&#160;</text>
 </a>
 </g>
@@ -77,12 +77,12 @@
 <!-- 1&#45;&gt;6 -->
 <g id="6" class="edge">
 <title>1&#45;&gt;6</title>
-<g id="a_6"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 30&#10;mean_duration: 6.12 weeks&#10;median_duration: 4.47 weeks&#10;max_duration: 31.64 weeks&#10;min_duration: 8.66 hours">
+<g id="a_6"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 30&#10;mean_duration: 6.12 weeks&#10;median_duration: 4.47 weeks&#10;max_duration: 31.64 weeks&#10;min_duration: 8.66 hours">
 <path fill="none" stroke="#000000" stroke-width="3.1711" stroke-opacity="0.627451" d="M664.9324,-786.6021C886.95,-779.3831 1377.1279,-761.3696 1451,-740.9579 1496.9898,-728.2503 1546,-738.671 1546,-690.9579 1546,-690.9579 1546,-690.9579 1546,-561.9579 1546,-434.6301 1581.0611,-366.5336 1486,-281.8238 1454.8318,-254.0495 1340.387,-269.2991 1299,-263.8238 1261.9132,-258.9173 1253.1606,-254.1363 1216,-249.8238 1091.6895,-235.3972 1059.4526,-244.9681 935,-231.8238 918.213,-230.0508 900.1941,-227.6625 883.2944,-225.2062"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.1711" stroke-opacity="0.627451" points="883.2893,-223.4367 878.0882,-224.4423 882.7812,-226.8997 883.2893,-223.4367"/>
 </a>
 </g>
-<g id="a_6&#45;label"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 30&#10;mean_duration: 6.12 weeks&#10;median_duration: 4.47 weeks&#10;max_duration: 31.64 weeks&#10;min_duration: 8.66 hours">
+<g id="a_6&#45;label"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 30&#10;mean_duration: 6.12 weeks&#10;median_duration: 4.47 weeks&#10;max_duration: 31.64 weeks&#10;min_duration: 8.66 hours">
 <text text-anchor="middle" x="1565.5" y="-511.5663" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;30 &#160;&#160;</text>
 </a>
 </g>
@@ -90,12 +90,12 @@
 <!-- 1&#45;&gt;7 -->
 <g id="7" class="edge">
 <title>1&#45;&gt;7</title>
-<g id="a_7"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 69&#10;mean_duration: 7.22 weeks&#10;median_duration: 5.42 weeks&#10;max_duration: 28.57 weeks&#10;min_duration: 7.2 hours">
+<g id="a_7"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 69&#10;mean_duration: 7.22 weeks&#10;median_duration: 5.42 weeks&#10;max_duration: 28.57 weeks&#10;min_duration: 7.2 hours">
 <path fill="none" stroke="#000000" stroke-width="6.0909" stroke-opacity="0.627451" d="M664.9251,-783.8789C782.1101,-776.4011 960.3529,-762.0491 1025,-740.9579 1067.0323,-727.2447 1111,-735.1706 1111,-690.9579 1111,-690.9579 1111,-690.9579 1111,-415.4176 1111,-386.0045 1091.3665,-359.3291 1071.8,-340.0479"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="6.0909" stroke-opacity="0.627451" points="1073.3447,-337.8363 1067.8935,-336.2916 1069.6507,-341.6781 1073.3447,-337.8363"/>
 </a>
 </g>
-<g id="a_7&#45;label"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 69&#10;mean_duration: 7.22 weeks&#10;median_duration: 5.42 weeks&#10;max_duration: 28.57 weeks&#10;min_duration: 7.2 hours">
+<g id="a_7&#45;label"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 69&#10;mean_duration: 7.22 weeks&#10;median_duration: 5.42 weeks&#10;max_duration: 28.57 weeks&#10;min_duration: 7.2 hours">
 <text text-anchor="middle" x="1128.5" y="-557.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;69 &#160;&#160;</text>
 </a>
 </g>
@@ -103,12 +103,12 @@
 <!-- 1&#45;&gt;8 -->
 <g id="8" class="edge">
 <title>1&#45;&gt;8</title>
-<g id="a_8"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 78&#10;mean_duration: 6.62 weeks&#10;median_duration: 5.62 weeks&#10;max_duration: 24.17 weeks&#10;min_duration: 11.9 hours">
+<g id="a_8"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 78&#10;mean_duration: 6.62 weeks&#10;median_duration: 5.62 weeks&#10;max_duration: 24.17 weeks&#10;min_duration: 11.9 hours">
 <path fill="none" stroke="#000000" stroke-width="6.7647" stroke-opacity="0.627451" d="M446.9326,-771.8612C368.6812,-755.6779 277,-728.67 277,-690.9579 277,-690.9579 277,-690.9579 277,-561.9579 277,-505.9769 328.2997,-469.2908 379.4488,-446.6256"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="6.7647" stroke-opacity="0.627451" points="380.674,-449.3202 384.0782,-444.6116 378.3126,-443.8925 380.674,-449.3202"/>
 </a>
 </g>
-<g id="a_8&#45;label"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 78&#10;mean_duration: 6.62 weeks&#10;median_duration: 5.62 weeks&#10;max_duration: 24.17 weeks&#10;min_duration: 11.9 hours">
+<g id="a_8&#45;label"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 78&#10;mean_duration: 6.62 weeks&#10;median_duration: 5.62 weeks&#10;max_duration: 24.17 weeks&#10;min_duration: 11.9 hours">
 <text text-anchor="middle" x="294.5" y="-600.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;78 &#160;&#160;</text>
 </a>
 </g>
@@ -116,12 +116,12 @@
 <!-- 1&#45;&gt;9 -->
 <g id="9" class="edge">
 <title>1&#45;&gt;9</title>
-<g id="a_9"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 44&#10;mean_duration: 6.57 weeks&#10;median_duration: 4.52 weeks&#10;max_duration: 35.07 weeks&#10;min_duration: 1.2 days">
+<g id="a_9"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 44&#10;mean_duration: 6.57 weeks&#10;median_duration: 4.52 weeks&#10;max_duration: 35.07 weeks&#10;min_duration: 1.2 days">
 <path fill="none" stroke="#000000" stroke-width="4.2193" stroke-opacity="0.627451" d="M550.8895,-758.9235C550.1023,-752.9761 549.4142,-746.7866 549,-740.9579 548.5589,-734.7513 548.9424,-733.1798 549,-726.9579 549.717,-649.5104 541.4445,-623.765 577,-554.9579 579.5009,-550.1181 582.7397,-545.4036 586.2359,-541.0193"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="4.2193" stroke-opacity="0.627451" points="587.7252,-542.1154 589.5053,-537.0916 584.8877,-539.7535 587.7252,-542.1154"/>
 </a>
 </g>
-<g id="a_9&#45;label"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 44&#10;mean_duration: 6.57 weeks&#10;median_duration: 4.52 weeks&#10;max_duration: 35.07 weeks&#10;min_duration: 1.2 days">
+<g id="a_9&#45;label"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 44&#10;mean_duration: 6.57 weeks&#10;median_duration: 4.52 weeks&#10;max_duration: 35.07 weeks&#10;min_duration: 1.2 days">
 <text text-anchor="middle" x="567.5" y="-643.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;44 &#160;&#160;</text>
 </a>
 </g>
@@ -129,12 +129,12 @@
 <!-- 1&#45;&gt;10 -->
 <g id="10" class="edge">
 <title>1&#45;&gt;10</title>
-<g id="a_10"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 9 (sale)&#10;amount: 99&#10;mean_duration: 9.85 weeks&#10;median_duration: 7.25 weeks&#10;max_duration: 41.26 weeks&#10;min_duration: 22.94 hours">
+<g id="a_10"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 99&#10;mean_duration: 9.85 weeks&#10;median_duration: 7.25 weeks&#10;max_duration: 41.26 weeks&#10;min_duration: 22.94 hours">
 <path fill="none" stroke="#000000" stroke-width="8.3369" stroke-opacity="0.627451" d="M664.9682,-789.2976C891.7083,-787.1788 1407.4269,-778.2785 1579,-740.9579 1637.0649,-728.3275 1703,-750.3806 1703,-690.9579 1703,-690.9579 1703,-690.9579 1703,-123.0894 1703,-48.3502 1449.1865,-30.6493 1334.7762,-26.4669"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="8.3369" stroke-opacity="0.627451" points="1334.8936,-22.8215 1329.7673,-26.2892 1334.6348,-30.1117 1334.8936,-22.8215"/>
 </a>
 </g>
-<g id="a_10&#45;label"><a xlink:title="from: Event 1 (campaign)&#10;to: Event 9 (sale)&#10;amount: 99&#10;mean_duration: 9.85 weeks&#10;median_duration: 7.25 weeks&#10;max_duration: 41.26 weeks&#10;min_duration: 22.94 hours">
+<g id="a_10&#45;label"><a xlink:title="from: Activity 1 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 99&#10;mean_duration: 9.85 weeks&#10;median_duration: 7.25 weeks&#10;max_duration: 41.26 weeks&#10;min_duration: 22.94 hours">
 <text text-anchor="middle" x="1720.5" y="-411.2176" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;99 &#160;&#160;</text>
 </a>
 </g>
@@ -142,12 +142,12 @@
 <!-- 3&#45;&gt;1 -->
 <g id="11" class="edge">
 <title>3&#45;&gt;1</title>
-<g id="a_11"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 2&#10;mean_duration: 12.65 weeks&#10;median_duration: 12.65 weeks&#10;max_duration: 17.26 weeks&#10;min_duration: 8.04 weeks">
+<g id="a_11"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 2&#10;mean_duration: 12.65 weeks&#10;median_duration: 12.65 weeks&#10;max_duration: 17.26 weeks&#10;min_duration: 8.04 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.0749" stroke-opacity="0.627451" d="M599.5718,-709.2547C595.53,-718.8277 590.2858,-730.6658 585,-740.9579 582.7307,-745.3765 580.2349,-749.9484 577.689,-754.4432"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.0749" stroke-opacity="0.627451" points="576.1006,-753.6954 575.1329,-758.9037 579.1373,-755.4356 576.1006,-753.6954"/>
 </a>
 </g>
-<g id="a_11&#45;label"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 2&#10;mean_duration: 12.65 weeks&#10;median_duration: 12.65 weeks&#10;max_duration: 17.26 weeks&#10;min_duration: 8.04 weeks">
+<g id="a_11&#45;label"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 2&#10;mean_duration: 12.65 weeks&#10;median_duration: 12.65 weeks&#10;max_duration: 17.26 weeks&#10;min_duration: 8.04 weeks">
 <text text-anchor="middle" x="605" y="-729.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;2 &#160;&#160;</text>
 </a>
 </g>
@@ -155,12 +155,12 @@
 <!-- 3&#45;&gt;2 -->
 <g id="12" class="edge">
 <title>3&#45;&gt;2</title>
-<g id="a_12"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 10 (sale)&#10;amount: 26&#10;mean_duration: 7.99 weeks&#10;median_duration: 6.35 weeks&#10;max_duration: 25.18 weeks&#10;min_duration: 8.81 hours">
+<g id="a_12"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 26&#10;mean_duration: 7.99 weeks&#10;median_duration: 6.35 weeks&#10;max_duration: 25.18 weeks&#10;min_duration: 8.81 hours">
 <path fill="none" stroke="#000000" stroke-width="2.8717" stroke-opacity="0.627451" d="M559.0867,-686.8398C466.3232,-678.2218 266.0422,-656.2823 206,-622.9579 126.3388,-578.7445 70,-560.683 70,-469.5747 70,-469.5747 70,-469.5747 70,-123.0894 70,-76.9246 117.3754,-52.2478 162.3989,-39.2197"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="2.8717" stroke-opacity="0.627451" points="162.9677,-40.8777 167.3087,-37.8415 162.0218,-37.508 162.9677,-40.8777"/>
 </a>
 </g>
-<g id="a_12&#45;label"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 10 (sale)&#10;amount: 26&#10;mean_duration: 7.99 weeks&#10;median_duration: 6.35 weeks&#10;max_duration: 25.18 weeks&#10;min_duration: 8.81 hours">
+<g id="a_12&#45;label"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 26&#10;mean_duration: 7.99 weeks&#10;median_duration: 6.35 weeks&#10;max_duration: 25.18 weeks&#10;min_duration: 8.81 hours">
 <text text-anchor="middle" x="87.5" y="-357.0605" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;26 &#160;&#160;</text>
 </a>
 </g>
@@ -168,12 +168,12 @@
 <!-- 3&#45;&gt;3 -->
 <g id="13" class="edge">
 <title>3&#45;&gt;3</title>
-<g id="a_13"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 2&#10;mean_duration: 6.22 weeks&#10;median_duration: 6.22 weeks&#10;max_duration: 8.6 weeks&#10;min_duration: 3.84 weeks">
+<g id="a_13"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 2&#10;mean_duration: 6.22 weeks&#10;median_duration: 6.22 weeks&#10;max_duration: 8.6 weeks&#10;min_duration: 3.84 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.0749" stroke-opacity="0.627451" d="M654.7858,-698.6002C665.1298,-697.853 672.6313,-695.3055 672.6313,-690.9579 672.6313,-687.3575 667.4868,-684.9916 659.8439,-683.8603"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.0749" stroke-opacity="0.627451" points="659.9445,-682.1111 654.7858,-683.3155 659.5696,-685.591 659.9445,-682.1111"/>
 </a>
 </g>
-<g id="a_13&#45;label"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 2&#10;mean_duration: 6.22 weeks&#10;median_duration: 6.22 weeks&#10;max_duration: 8.6 weeks&#10;min_duration: 3.84 weeks">
+<g id="a_13&#45;label"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 2&#10;mean_duration: 6.22 weeks&#10;median_duration: 6.22 weeks&#10;max_duration: 8.6 weeks&#10;min_duration: 3.84 weeks">
 <text text-anchor="middle" x="686.6313" y="-686.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;2 &#160;&#160;</text>
 </a>
 </g>
@@ -181,12 +181,12 @@
 <!-- 3&#45;&gt;4 -->
 <g id="14" class="edge">
 <title>3&#45;&gt;4</title>
-<g id="a_14"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 2&#10;mean_duration: 6.66 weeks&#10;median_duration: 6.66 weeks&#10;max_duration: 9.48 weeks&#10;min_duration: 3.84 weeks">
+<g id="a_14"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 2&#10;mean_duration: 6.66 weeks&#10;median_duration: 6.66 weeks&#10;max_duration: 9.48 weeks&#10;min_duration: 3.84 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.0749" stroke-opacity="0.627451" d="M654.7879,-685.5614C690.476,-680.4693 739.9592,-671.1317 781,-654.9579 792.1336,-650.5702 792.8341,-645.2629 804,-640.9579 843.689,-625.6555 856.2384,-631.0417 898,-622.9579 910.8364,-620.4731 924.6764,-617.7752 937.626,-615.2427"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.0749" stroke-opacity="0.627451" points="938.1604,-616.9214 942.7314,-614.2438 937.4883,-613.4865 938.1604,-616.9214"/>
 </a>
 </g>
-<g id="a_14&#45;label"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 2&#10;mean_duration: 6.66 weeks&#10;median_duration: 6.66 weeks&#10;max_duration: 9.48 weeks&#10;min_duration: 3.84 weeks">
+<g id="a_14&#45;label"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 2&#10;mean_duration: 6.66 weeks&#10;median_duration: 6.66 weeks&#10;max_duration: 9.48 weeks&#10;min_duration: 3.84 weeks">
 <text text-anchor="middle" x="818" y="-643.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;2 &#160;&#160;</text>
 </a>
 </g>
@@ -194,12 +194,12 @@
 <!-- 3&#45;&gt;5 -->
 <g id="15" class="edge">
 <title>3&#45;&gt;5</title>
-<g id="a_15"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 8&#10;mean_duration: 7.55 weeks&#10;median_duration: 8.21 weeks&#10;max_duration: 12.26 weeks&#10;min_duration: 2.25 weeks">
+<g id="a_15"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 8&#10;mean_duration: 7.55 weeks&#10;median_duration: 8.21 weeks&#10;max_duration: 12.26 weeks&#10;min_duration: 2.25 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.5241" stroke-opacity="0.627451" d="M559.0975,-683.0446C527.5596,-677.0915 485.665,-667.7558 450,-654.9579 436.9043,-650.2586 435.3501,-644.8765 422,-640.9579 386.185,-630.4451 286.1445,-643.5311 255,-622.9579 161.4818,-561.1821 121.3925,-488.1901 168,-386.2605 177.041,-366.488 185.4626,-363.7989 205,-354.2605 242.0486,-336.1731 262.6755,-360.5347 296,-336.2605 353.7101,-294.2234 321.4501,-244.1569 374,-195.8238 399.4755,-172.3925 412.0605,-174.4545 445,-163.8238 481.1593,-152.1539 522.1154,-143.1136 557.5062,-136.5474"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.5241" stroke-opacity="0.627451" points="558.0844,-138.2206 562.6862,-135.5965 557.4524,-134.7781 558.0844,-138.2206"/>
 </a>
 </g>
-<g id="a_15&#45;label"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 8&#10;mean_duration: 7.55 weeks&#10;median_duration: 8.21 weeks&#10;max_duration: 12.26 weeks&#10;min_duration: 2.25 weeks">
+<g id="a_15&#45;label"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 8&#10;mean_duration: 7.55 weeks&#10;median_duration: 8.21 weeks&#10;max_duration: 12.26 weeks&#10;min_duration: 2.25 weeks">
 <text text-anchor="middle" x="182" y="-411.2176" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;8 &#160;&#160;</text>
 </a>
 </g>
@@ -207,12 +207,12 @@
 <!-- 3&#45;&gt;6 -->
 <g id="16" class="edge">
 <title>3&#45;&gt;6</title>
-<g id="a_16"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 4&#10;mean_duration: 6.25 weeks&#10;median_duration: 5.66 weeks&#10;max_duration: 12.8 weeks&#10;min_duration: 6.24 days">
+<g id="a_16"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 4&#10;mean_duration: 6.25 weeks&#10;median_duration: 5.66 weeks&#10;max_duration: 12.8 weeks&#10;min_duration: 6.24 days">
 <path fill="none" stroke="#000000" stroke-width="1.2246" stroke-opacity="0.627451" d="M590.7826,-672.9476C581.0434,-662.7776 568.0434,-650.2776 555,-640.9579 540.7676,-630.7886 533.6925,-633.8432 520,-622.9579 479.3455,-590.6381 386.8686,-493.3402 369,-444.5747 360.0831,-420.2395 352.3588,-406.1297 369,-386.2605 398.2766,-351.305 427.2574,-384.1376 470,-368.2605 496.1516,-358.5463 503.5528,-355.2391 524,-336.2605 545.6259,-316.1879 537.866,-298.7984 562,-281.8238 615.6608,-244.0815 689.2752,-227.2766 742.9014,-219.8005"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.2246" stroke-opacity="0.627451" points="743.3076,-221.5115 748.0273,-219.1057 742.8375,-218.0432 743.3076,-221.5115"/>
 </a>
 </g>
-<g id="a_16&#45;label"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 4&#10;mean_duration: 6.25 weeks&#10;median_duration: 5.66 weeks&#10;max_duration: 12.8 weeks&#10;min_duration: 6.24 days">
+<g id="a_16&#45;label"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 4&#10;mean_duration: 6.25 weeks&#10;median_duration: 5.66 weeks&#10;max_duration: 12.8 weeks&#10;min_duration: 6.24 days">
 <text text-anchor="middle" x="400" y="-465.3747" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;4 &#160;&#160;</text>
 </a>
 </g>
@@ -220,12 +220,12 @@
 <!-- 3&#45;&gt;7 -->
 <g id="17" class="edge">
 <title>3&#45;&gt;7</title>
-<g id="a_17"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 8&#10;mean_duration: 11.05 weeks&#10;median_duration: 12.19 weeks&#10;max_duration: 18.05 weeks&#10;min_duration: 3.45 weeks">
+<g id="a_17"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 8&#10;mean_duration: 11.05 weeks&#10;median_duration: 12.19 weeks&#10;max_duration: 18.05 weeks&#10;min_duration: 3.45 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.5241" stroke-opacity="0.627451" d="M654.7748,-674.6169C670.8817,-668.7888 688.8603,-661.9314 705,-654.9579 717.7721,-649.4394 719.8128,-645.3939 733,-640.9579 774.1447,-627.1173 788.4168,-638.3672 829,-622.9579 872.6098,-606.3993 883.2078,-598.873 919,-568.9579 990.054,-509.5708 1018.2222,-397.2984 1028.1778,-341.7967"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.5241" stroke-opacity="0.627451" points="1029.9479,-341.8332 1029.0852,-336.6065 1026.5002,-341.2304 1029.9479,-341.8332"/>
 </a>
 </g>
-<g id="a_17&#45;label"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 8&#10;mean_duration: 11.05 weeks&#10;median_duration: 12.19 weeks&#10;max_duration: 18.05 weeks&#10;min_duration: 3.45 weeks">
+<g id="a_17&#45;label"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 8&#10;mean_duration: 11.05 weeks&#10;median_duration: 12.19 weeks&#10;max_duration: 18.05 weeks&#10;min_duration: 3.45 weeks">
 <text text-anchor="middle" x="991" y="-511.5663" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;8 &#160;&#160;</text>
 </a>
 </g>
@@ -233,12 +233,12 @@
 <!-- 3&#45;&gt;8 -->
 <g id="18" class="edge">
 <title>3&#45;&gt;8</title>
-<g id="a_18"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 7&#10;mean_duration: 7.14 weeks&#10;median_duration: 5.3 weeks&#10;max_duration: 16.88 weeks&#10;min_duration: 6.61 days">
+<g id="a_18"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 7&#10;mean_duration: 7.14 weeks&#10;median_duration: 5.3 weeks&#10;max_duration: 16.88 weeks&#10;min_duration: 6.61 days">
 <path fill="none" stroke="#000000" stroke-width="1.4492" stroke-opacity="0.627451" d="M608.5756,-672.5016C608.8241,-662.8849 608.219,-651.056 605,-640.9579 591.1473,-597.501 580.4881,-587.9562 549,-554.9579 539.548,-545.0525 532.2139,-547.9118 524,-536.9579 504.6136,-511.1045 493.4173,-475.7552 487.3391,-449.8436"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.4492" stroke-opacity="0.627451" points="489.0058,-449.2804 486.1909,-444.7928 485.5929,-450.0563 489.0058,-449.2804"/>
 </a>
 </g>
-<g id="a_18&#45;label"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 7&#10;mean_duration: 7.14 weeks&#10;median_duration: 5.3 weeks&#10;max_duration: 16.88 weeks&#10;min_duration: 6.61 days">
+<g id="a_18&#45;label"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 7&#10;mean_duration: 7.14 weeks&#10;median_duration: 5.3 weeks&#10;max_duration: 16.88 weeks&#10;min_duration: 6.61 days">
 <text text-anchor="middle" x="576" y="-557.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;7 &#160;&#160;</text>
 </a>
 </g>
@@ -246,12 +246,12 @@
 <!-- 3&#45;&gt;9 -->
 <g id="19" class="edge">
 <title>3&#45;&gt;9</title>
-<g id="a_19"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 4&#10;mean_duration: 3.77 weeks&#10;median_duration: 3.62 weeks&#10;max_duration: 6.4 weeks&#10;min_duration: 1.43 weeks">
+<g id="a_19"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 4&#10;mean_duration: 3.77 weeks&#10;median_duration: 3.62 weeks&#10;max_duration: 6.4 weeks&#10;min_duration: 1.43 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.2246" stroke-opacity="0.627451" d="M621.3503,-672.889C624.8798,-667.4342 628.1696,-661.2226 630,-654.9579 642.4644,-612.297 639.494,-598.3764 630,-554.9579 629.0573,-550.6468 627.5947,-546.2435 625.9014,-542.0189"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.2246" stroke-opacity="0.627451" points="627.3985,-541.0686 623.825,-537.1579 624.1798,-542.4435 627.3985,-541.0686"/>
 </a>
 </g>
-<g id="a_19&#45;label"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 4&#10;mean_duration: 3.77 weeks&#10;median_duration: 3.62 weeks&#10;max_duration: 6.4 weeks&#10;min_duration: 1.43 weeks">
+<g id="a_19&#45;label"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 4&#10;mean_duration: 3.77 weeks&#10;median_duration: 3.62 weeks&#10;max_duration: 6.4 weeks&#10;min_duration: 1.43 weeks">
 <text text-anchor="middle" x="652" y="-600.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;4 &#160;&#160;</text>
 </a>
 </g>
@@ -259,12 +259,12 @@
 <!-- 3&#45;&gt;10 -->
 <g id="20" class="edge">
 <title>3&#45;&gt;10</title>
-<g id="a_20"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 9 (sale)&#10;amount: 9&#10;mean_duration: 6.98 weeks&#10;median_duration: 5.62 weeks&#10;max_duration: 24.14 weeks&#10;min_duration: 6.49 days">
+<g id="a_20"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 9&#10;mean_duration: 6.98 weeks&#10;median_duration: 5.62 weeks&#10;max_duration: 24.14 weeks&#10;min_duration: 6.49 days">
 <path fill="none" stroke="#000000" stroke-width="1.5989" stroke-opacity="0.627451" d="M655.0746,-684.607C708.3657,-677.5308 796.8577,-665.6729 873,-654.9579 1191.4996,-610.1372 1297.2654,-676.6172 1587,-536.9579 1623.4088,-519.4079 1638.1142,-513.2963 1655,-476.5747 1676.4147,-430.0039 1657,-412.519 1657,-361.2605 1657,-361.2605 1657,-361.2605 1657,-123.0894 1657,-57.3374 1439.4528,-34.9808 1334.8722,-28.0322"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.5989" stroke-opacity="0.627451" points="1334.7771,-26.2724 1329.6738,-27.6933 1334.5494,-29.765 1334.7771,-26.2724"/>
 </a>
 </g>
-<g id="a_20&#45;label"><a xlink:title="from: Event 2 (campaign)&#10;to: Event 9 (sale)&#10;amount: 9&#10;mean_duration: 6.98 weeks&#10;median_duration: 5.62 weeks&#10;max_duration: 24.14 weeks&#10;min_duration: 6.49 days">
+<g id="a_20&#45;label"><a xlink:title="from: Activity 2 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 9&#10;mean_duration: 6.98 weeks&#10;median_duration: 5.62 weeks&#10;max_duration: 24.14 weeks&#10;min_duration: 6.49 days">
 <text text-anchor="middle" x="1671" y="-357.0605" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;9 &#160;&#160;</text>
 </a>
 </g>
@@ -272,12 +272,12 @@
 <!-- 4&#45;&gt;1 -->
 <g id="21" class="edge">
 <title>4&#45;&gt;1</title>
-<g id="a_21"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 7&#10;mean_duration: 6.59 weeks&#10;median_duration: 5.27 weeks&#10;max_duration: 17.84 weeks&#10;min_duration: 3.56 days">
+<g id="a_21"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 7&#10;mean_duration: 6.59 weeks&#10;median_duration: 5.27 weeks&#10;max_duration: 17.84 weeks&#10;min_duration: 3.56 days">
 <path fill="none" stroke="#000000" stroke-width="1.4492" stroke-opacity="0.627451" d="M979.5477,-623.1005C961.1927,-653.1258 920.119,-712.641 868,-740.9579 834.4183,-759.2032 744.8921,-772.1077 670.3085,-780.0777"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.4492" stroke-opacity="0.627451" points="669.7533,-778.3766 664.9652,-780.643 670.1216,-781.8572 669.7533,-778.3766"/>
 </a>
 </g>
-<g id="a_21&#45;label"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 7&#10;mean_duration: 6.59 weeks&#10;median_duration: 5.27 weeks&#10;max_duration: 17.84 weeks&#10;min_duration: 3.56 days">
+<g id="a_21&#45;label"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 7&#10;mean_duration: 6.59 weeks&#10;median_duration: 5.27 weeks&#10;max_duration: 17.84 weeks&#10;min_duration: 3.56 days">
 <text text-anchor="middle" x="957" y="-686.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;7 &#160;&#160;</text>
 </a>
 </g>
@@ -285,12 +285,12 @@
 <!-- 4&#45;&gt;2 -->
 <g id="22" class="edge">
 <title>4&#45;&gt;2</title>
-<g id="a_22"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 10 (sale)&#10;amount: 21&#10;mean_duration: 6.81 weeks&#10;median_duration: 3.59 weeks&#10;max_duration: 28.39 weeks&#10;min_duration: 1.27 days">
+<g id="a_22"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 21&#10;mean_duration: 6.81 weeks&#10;median_duration: 3.59 weeks&#10;max_duration: 28.39 weeks&#10;min_duration: 1.27 days">
 <path fill="none" stroke="#000000" stroke-width="2.4973" stroke-opacity="0.627451" d="M1037.4256,-602.9108C1089.7694,-599.6024 1176.0127,-591.0265 1247,-568.9579 1260.2861,-564.8275 1261.8825,-559.596 1275,-554.9579 1310.1779,-542.5194 1329.1429,-561.7808 1357,-536.9579 1452.3348,-452.0069 1452.3201,-344.8283 1367,-249.8238 1289.9696,-164.0498 1262.6214,-141.6887 1155,-100.355 1097.4369,-78.2471 1081.0235,-77.2094 1020,-68.355 887.0833,-49.0692 492.2847,-33.7243 321.8326,-27.8099"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="2.4973" stroke-opacity="0.627451" points="321.6653,-26.0532 316.6077,-27.6291 321.5442,-29.5511 321.6653,-26.0532"/>
 </a>
 </g>
-<g id="a_22&#45;label"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 10 (sale)&#10;amount: 21&#10;mean_duration: 6.81 weeks&#10;median_duration: 3.59 weeks&#10;max_duration: 28.39 weeks&#10;min_duration: 1.27 days">
+<g id="a_22&#45;label"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 21&#10;mean_duration: 6.81 weeks&#10;median_duration: 3.59 weeks&#10;max_duration: 28.39 weeks&#10;min_duration: 1.27 days">
 <text text-anchor="middle" x="1436.5" y="-304.8421" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;21 &#160;&#160;</text>
 </a>
 </g>
@@ -298,12 +298,12 @@
 <!-- 4&#45;&gt;3 -->
 <g id="23" class="edge">
 <title>4&#45;&gt;3</title>
-<g id="a_23"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 1&#10;mean_duration: 23.18 weeks&#10;median_duration: 23.18 weeks&#10;max_duration: 23.18 weeks&#10;min_duration: 23.18 weeks">
+<g id="a_23"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 1&#10;mean_duration: 23.18 weeks&#10;median_duration: 23.18 weeks&#10;max_duration: 23.18 weeks&#10;min_duration: 23.18 weeks">
 <path fill="none" stroke="#000000" stroke-opacity="0.627451" d="M942.3676,-614.9642C928.1341,-617.7683 912.468,-620.6717 898,-622.9579 832.1138,-633.3687 811.004,-616.3633 749,-640.9579 739.2498,-644.8254 739.3995,-650.3023 730,-654.9579 708.0343,-665.8374 682.1951,-674.0201 659.8843,-679.8123"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-opacity="0.627451" points="659.2992,-678.1554 654.8859,-681.0856 660.1632,-681.547 659.2992,-678.1554"/>
 </a>
 </g>
-<g id="a_23&#45;label"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 1&#10;mean_duration: 23.18 weeks&#10;median_duration: 23.18 weeks&#10;max_duration: 23.18 weeks&#10;min_duration: 23.18 weeks">
+<g id="a_23&#45;label"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 1&#10;mean_duration: 23.18 weeks&#10;median_duration: 23.18 weeks&#10;max_duration: 23.18 weeks&#10;min_duration: 23.18 weeks">
 <text text-anchor="middle" x="763" y="-643.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;1 &#160;&#160;</text>
 </a>
 </g>
@@ -311,12 +311,12 @@
 <!-- 4&#45;&gt;4 -->
 <g id="24" class="edge">
 <title>4&#45;&gt;4</title>
-<g id="a_24"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 1&#10;mean_duration: 6.68 weeks&#10;median_duration: 6.68 weeks&#10;max_duration: 6.68 weeks&#10;min_duration: 6.68 weeks">
+<g id="a_24"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 1&#10;mean_duration: 6.68 weeks&#10;median_duration: 6.68 weeks&#10;max_duration: 6.68 weeks&#10;min_duration: 6.68 weeks">
 <path fill="none" stroke="#000000" stroke-opacity="0.627451" d="M1037.292,-612.6209C1047.743,-611.9009 1055.3545,-609.3465 1055.3545,-604.9579 1055.3545,-601.3235 1050.1346,-598.9471 1042.4049,-597.8286"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-opacity="0.627451" points="1042.4467,-596.0736 1037.292,-597.2948 1042.0832,-599.5547 1042.4467,-596.0736"/>
 </a>
 </g>
-<g id="a_24&#45;label"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 1&#10;mean_duration: 6.68 weeks&#10;median_duration: 6.68 weeks&#10;max_duration: 6.68 weeks&#10;min_duration: 6.68 weeks">
+<g id="a_24&#45;label"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 1&#10;mean_duration: 6.68 weeks&#10;median_duration: 6.68 weeks&#10;max_duration: 6.68 weeks&#10;min_duration: 6.68 weeks">
 <text text-anchor="middle" x="1069.3545" y="-600.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;1 &#160;&#160;</text>
 </a>
 </g>
@@ -324,12 +324,12 @@
 <!-- 4&#45;&gt;5 -->
 <g id="25" class="edge">
 <title>4&#45;&gt;5</title>
-<g id="a_25"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 3&#10;mean_duration: 4 weeks&#10;median_duration: 2.31 weeks&#10;max_duration: 9.35 weeks&#10;min_duration: 2.46 days">
+<g id="a_25"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 3&#10;mean_duration: 4 weeks&#10;median_duration: 2.31 weeks&#10;max_duration: 9.35 weeks&#10;min_duration: 2.46 days">
 <path fill="none" stroke="#000000" stroke-width="1.1497" stroke-opacity="0.627451" d="M1037.6416,-601.8907C1085.246,-597.8282 1160.0632,-588.7157 1222,-568.9579 1235.2552,-564.7294 1236.9011,-559.648 1250,-554.9579 1283.9032,-542.8185 1301.5105,-560.2198 1329,-536.9579 1362.891,-508.2788 1358.1071,-488.0719 1367,-444.5747 1384.4115,-359.4115 1399.7512,-320.3946 1349,-249.8238 1325.8879,-217.6858 1231.1093,-174.5334 1193,-163.8238 1105.6296,-139.2706 875.2782,-155.1131 785,-145.8238 768.0183,-144.0764 749.9668,-141.6081 732.6704,-138.9375"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.1497" stroke-opacity="0.627451" points="732.539,-137.1459 727.3288,-138.1028 731.9986,-140.6039 732.539,-137.1459"/>
 </a>
 </g>
-<g id="a_25&#45;label"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 3&#10;mean_duration: 4 weeks&#10;median_duration: 2.31 weeks&#10;max_duration: 9.35 weeks&#10;min_duration: 2.46 days">
+<g id="a_25&#45;label"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 3&#10;mean_duration: 4 weeks&#10;median_duration: 2.31 weeks&#10;max_duration: 9.35 weeks&#10;min_duration: 2.46 days">
 <text text-anchor="middle" x="1397" y="-357.0605" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;3 &#160;&#160;</text>
 </a>
 </g>
@@ -337,12 +337,12 @@
 <!-- 4&#45;&gt;6 -->
 <g id="26" class="edge">
 <title>4&#45;&gt;6</title>
-<g id="a_26"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 1&#10;mean_duration: 4.42 days&#10;median_duration: 4.42 days&#10;max_duration: 4.42 days&#10;min_duration: 4.42 days">
+<g id="a_26"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 1&#10;mean_duration: 4.42 days&#10;median_duration: 4.42 days&#10;max_duration: 4.42 days&#10;min_duration: 4.42 days">
 <path fill="none" stroke="#000000" stroke-opacity="0.627451" d="M1037.589,-601.3576C1084.9575,-596.7855 1153.2316,-587.1959 1172,-568.9579 1265.0675,-478.5204 1303.7328,-384.982 1225,-281.8238 1208.6463,-260.3966 1134.4934,-254.7906 1108,-249.8238 1032.0198,-235.5793 1011.7,-241.4676 935,-231.8238 918.2515,-229.7179 900.2474,-227.2018 883.3497,-224.7279"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-opacity="0.627451" points="883.3453,-222.9585 878.1438,-223.962 882.8358,-226.4212 883.3453,-222.9585"/>
 </a>
 </g>
-<g id="a_26&#45;label"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 1&#10;mean_duration: 4.42 days&#10;median_duration: 4.42 days&#10;max_duration: 4.42 days&#10;min_duration: 4.42 days">
+<g id="a_26&#45;label"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 1&#10;mean_duration: 4.42 days&#10;median_duration: 4.42 days&#10;max_duration: 4.42 days&#10;min_duration: 4.42 days">
 <text text-anchor="middle" x="1281" y="-411.2176" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;1 &#160;&#160;</text>
 </a>
 </g>
@@ -350,12 +350,12 @@
 <!-- 4&#45;&gt;7 -->
 <g id="27" class="edge">
 <title>4&#45;&gt;7</title>
-<g id="a_27"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 7&#10;mean_duration: 8.17 weeks&#10;median_duration: 7.69 weeks&#10;max_duration: 19.42 weeks&#10;min_duration: 1.91 hours">
+<g id="a_27"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 7&#10;mean_duration: 8.17 weeks&#10;median_duration: 7.69 weeks&#10;max_duration: 19.42 weeks&#10;min_duration: 1.91 hours">
 <path fill="none" stroke="#000000" stroke-width="1.4492" stroke-opacity="0.627451" d="M1031.6793,-586.7863C1038.5327,-581.9704 1044.7691,-576.0747 1049,-568.9579 1073.407,-527.9026 1071.3208,-400.4063 1059,-354.2605 1057.7991,-349.7629 1056.0322,-345.2483 1053.9749,-340.9048"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.4492" stroke-opacity="0.627451" points="1055.4523,-339.9475 1051.6416,-336.2677 1052.3258,-341.5208 1055.4523,-339.9475"/>
 </a>
 </g>
-<g id="a_27&#45;label"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 7&#10;mean_duration: 8.17 weeks&#10;median_duration: 7.69 weeks&#10;max_duration: 19.42 weeks&#10;min_duration: 1.91 hours">
+<g id="a_27&#45;label"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 7&#10;mean_duration: 8.17 weeks&#10;median_duration: 7.69 weeks&#10;max_duration: 19.42 weeks&#10;min_duration: 1.91 hours">
 <text text-anchor="middle" x="1081" y="-465.3747" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;7 &#160;&#160;</text>
 </a>
 </g>
@@ -363,12 +363,12 @@
 <!-- 4&#45;&gt;8 -->
 <g id="28" class="edge">
 <title>4&#45;&gt;8</title>
-<g id="a_28"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 13&#10;mean_duration: 5.7 weeks&#10;median_duration: 4.53 weeks&#10;max_duration: 16.82 weeks&#10;min_duration: 2.62 days">
+<g id="a_28"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 13&#10;mean_duration: 5.7 weeks&#10;median_duration: 4.53 weeks&#10;max_duration: 16.82 weeks&#10;min_duration: 2.62 days">
 <path fill="none" stroke="#000000" stroke-width="1.8984" stroke-opacity="0.627451" d="M968.4665,-586.8522C954.1988,-575.8445 934.567,-562.4986 915,-554.9579 864.2674,-535.4065 842.3547,-561.815 794,-536.9579 770.691,-524.9757 775.4442,-508.1076 753,-494.5747 703.2223,-464.5609 641.4325,-445.3886 589.3314,-433.4445"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.8984" stroke-opacity="0.627451" points="589.5833,-431.7073 584.3204,-432.311 588.8111,-435.1211 589.5833,-431.7073"/>
 </a>
 </g>
-<g id="a_28&#45;label"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 13&#10;mean_duration: 5.7 weeks&#10;median_duration: 4.53 weeks&#10;max_duration: 16.82 weeks&#10;min_duration: 2.62 days">
+<g id="a_28&#45;label"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 13&#10;mean_duration: 5.7 weeks&#10;median_duration: 4.53 weeks&#10;max_duration: 16.82 weeks&#10;min_duration: 2.62 days">
 <text text-anchor="middle" x="811.5" y="-511.5663" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;13 &#160;&#160;</text>
 </a>
 </g>
@@ -376,12 +376,12 @@
 <!-- 4&#45;&gt;9 -->
 <g id="29" class="edge">
 <title>4&#45;&gt;9</title>
-<g id="a_29"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 6&#10;mean_duration: 6.63 weeks&#10;median_duration: 4.63 weeks&#10;max_duration: 20.18 weeks&#10;min_duration: 1.07 weeks">
+<g id="a_29"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 6&#10;mean_duration: 6.63 weeks&#10;median_duration: 4.63 weeks&#10;max_duration: 20.18 weeks&#10;min_duration: 1.07 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.3743" stroke-opacity="0.627451" d="M942.7649,-590.7718C924.9544,-584.8235 904.7256,-577.3356 887,-568.9579 876.1805,-563.8442 875.2393,-559.0674 864,-554.9579 855.9798,-552.0254 766.0824,-538.3905 695.9198,-528.0198"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.3743" stroke-opacity="0.627451" points="696.1057,-526.2783 690.9036,-527.2789 695.5942,-529.7407 696.1057,-526.2783"/>
 </a>
 </g>
-<g id="a_29&#45;label"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 6&#10;mean_duration: 6.63 weeks&#10;median_duration: 4.63 weeks&#10;max_duration: 20.18 weeks&#10;min_duration: 1.07 weeks">
+<g id="a_29&#45;label"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 6&#10;mean_duration: 6.63 weeks&#10;median_duration: 4.63 weeks&#10;max_duration: 20.18 weeks&#10;min_duration: 1.07 weeks">
 <text text-anchor="middle" x="901" y="-557.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;6 &#160;&#160;</text>
 </a>
 </g>
@@ -389,12 +389,12 @@
 <!-- 4&#45;&gt;10 -->
 <g id="30" class="edge">
 <title>4&#45;&gt;10</title>
-<g id="a_30"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 9 (sale)&#10;amount: 13&#10;mean_duration: 7.28 weeks&#10;median_duration: 7.67 weeks&#10;max_duration: 15.32 weeks&#10;min_duration: 8.37 hours">
+<g id="a_30"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 13&#10;mean_duration: 7.28 weeks&#10;median_duration: 7.67 weeks&#10;max_duration: 15.32 weeks&#10;min_duration: 8.37 hours">
 <path fill="none" stroke="#000000" stroke-width="1.8984" stroke-opacity="0.627451" d="M1037.5915,-601.421C1154.3245,-592.3198 1447.7052,-566.7069 1480,-536.9579 1574.8832,-449.5543 1556,-385.8284 1556,-256.8238 1556,-256.8238 1556,-256.8238 1556,-123.0894 1556,-76.6352 1415.3674,-46.611 1334.8748,-33.2308"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.8984" stroke-opacity="0.627451" points="1334.8798,-31.4582 1329.662,-32.3736 1334.3118,-34.9118 1334.8798,-31.4582"/>
 </a>
 </g>
-<g id="a_30&#45;label"><a xlink:title="from: Event 3 (campaign)&#10;to: Event 9 (sale)&#10;amount: 13&#10;mean_duration: 7.28 weeks&#10;median_duration: 7.67 weeks&#10;max_duration: 15.32 weeks&#10;min_duration: 8.37 hours">
+<g id="a_30&#45;label"><a xlink:title="from: Activity 3 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 13&#10;mean_duration: 7.28 weeks&#10;median_duration: 7.67 weeks&#10;max_duration: 15.32 weeks&#10;min_duration: 8.37 hours">
 <text text-anchor="middle" x="1574.5" y="-304.8421" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;13 &#160;&#160;</text>
 </a>
 </g>
@@ -402,12 +402,12 @@
 <!-- 5&#45;&gt;1 -->
 <g id="31" class="edge">
 <title>5&#45;&gt;1</title>
-<g id="a_31"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 52&#10;mean_duration: 5.97 weeks&#10;median_duration: 4.78 weeks&#10;max_duration: 22.04 weeks&#10;min_duration: 16.34 hours">
+<g id="a_31"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 52&#10;mean_duration: 5.97 weeks&#10;median_duration: 4.78 weeks&#10;max_duration: 22.04 weeks&#10;min_duration: 16.34 hours">
 <path fill="none" stroke="#000000" stroke-width="4.8182" stroke-opacity="0.627451" d="M562.5263,-128.5647C513.2637,-133.7949 450.1414,-143.9893 397,-163.8238 371.5765,-173.3128 366.5391,-179.3173 345,-195.8238 270.0264,-253.2797 165.2355,-359.7368 147,-386.2605 96.5222,-459.6812 108,-457.5809 108,-469.5747 108,-690.9579 108,-690.9579 108,-690.9579 108,-725.143 309.4535,-757.9982 442.1805,-775.9351"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="4.8182" stroke-opacity="0.627451" points="442.0293,-778.0416 447.2658,-776.6196 442.5918,-773.8634 442.0293,-778.0416"/>
 </a>
 </g>
-<g id="a_31&#45;label"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 52&#10;mean_duration: 5.97 weeks&#10;median_duration: 4.78 weeks&#10;max_duration: 22.04 weeks&#10;min_duration: 16.34 hours">
+<g id="a_31&#45;label"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 52&#10;mean_duration: 5.97 weeks&#10;median_duration: 4.78 weeks&#10;max_duration: 22.04 weeks&#10;min_duration: 16.34 hours">
 <text text-anchor="middle" x="125.5" y="-465.3747" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;52 &#160;&#160;</text>
 </a>
 </g>
@@ -415,12 +415,12 @@
 <!-- 5&#45;&gt;2 -->
 <g id="32" class="edge">
 <title>5&#45;&gt;2</title>
-<g id="a_32"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 10 (sale)&#10;amount: 108&#10;mean_duration: 7.76 weeks&#10;median_duration: 5.19 weeks&#10;max_duration: 45.27 weeks&#10;min_duration: 9.03 hours">
+<g id="a_32"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 108&#10;mean_duration: 7.76 weeks&#10;median_duration: 5.19 weeks&#10;max_duration: 45.27 weeks&#10;min_duration: 9.03 hours">
 <path fill="none" stroke="#000000" stroke-width="9.0107" stroke-opacity="0.627451" d="M562.4745,-103.0392C491.9739,-85.9106 391.2003,-61.4269 321.5647,-44.5084"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="9.0107" stroke-opacity="0.627451" points="322.3951,-40.6533 316.6056,-43.3035 320.5335,-48.3148 322.3951,-40.6533"/>
 </a>
 </g>
-<g id="a_32&#45;label"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 10 (sale)&#10;amount: 108&#10;mean_duration: 7.76 weeks&#10;median_duration: 5.19 weeks&#10;max_duration: 45.27 weeks&#10;min_duration: 9.03 hours">
+<g id="a_32&#45;label"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 108&#10;mean_duration: 7.76 weeks&#10;median_duration: 5.19 weeks&#10;max_duration: 45.27 weeks&#10;min_duration: 9.03 hours">
 <text text-anchor="middle" x="489" y="-71.155" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;108 &#160;&#160;</text>
 </a>
 </g>
@@ -428,12 +428,12 @@
 <!-- 5&#45;&gt;3 -->
 <g id="33" class="edge">
 <title>5&#45;&gt;3</title>
-<g id="a_33"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 2&#10;mean_duration: 7.68 weeks&#10;median_duration: 7.68 weeks&#10;max_duration: 12.45 weeks&#10;min_duration: 2.9 weeks">
+<g id="a_33"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 2&#10;mean_duration: 7.68 weeks&#10;median_duration: 7.68 weeks&#10;max_duration: 12.45 weeks&#10;min_duration: 2.9 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.0749" stroke-opacity="0.627451" d="M589.546,-145.9429C508.6982,-182.7471 361.8157,-263.6676 304,-386.2605 241.4294,-518.9358 453.7322,-627.5562 555.5714,-670.8022"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.0749" stroke-opacity="0.627451" points="555.0487,-672.4811 560.3358,-672.812 556.4091,-669.2562 555.0487,-672.4811"/>
 </a>
 </g>
-<g id="a_33&#45;label"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 2&#10;mean_duration: 7.68 weeks&#10;median_duration: 7.68 weeks&#10;max_duration: 12.45 weeks&#10;min_duration: 2.9 weeks">
+<g id="a_33&#45;label"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 2&#10;mean_duration: 7.68 weeks&#10;median_duration: 7.68 weeks&#10;max_duration: 12.45 weeks&#10;min_duration: 2.9 weeks">
 <text text-anchor="middle" x="318" y="-411.2176" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;2 &#160;&#160;</text>
 </a>
 </g>
@@ -441,12 +441,12 @@
 <!-- 5&#45;&gt;4 -->
 <g id="34" class="edge">
 <title>5&#45;&gt;4</title>
-<g id="a_34"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 4&#10;mean_duration: 4.66 weeks&#10;median_duration: 4.22 weeks&#10;max_duration: 9.99 weeks&#10;min_duration: 1.54 days">
+<g id="a_34"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 4&#10;mean_duration: 4.66 weeks&#10;median_duration: 4.22 weeks&#10;max_duration: 9.99 weeks&#10;min_duration: 1.54 days">
 <path fill="none" stroke="#000000" stroke-width="1.2246" stroke-opacity="0.627451" d="M727.41,-137.401C746.2979,-140.4224 766.3167,-143.4198 785,-145.8238 1047.1787,-179.5584 1248.009,-134.6335 1329,-386.2605 1360.0962,-482.8718 1284.4403,-527.0593 1192,-568.9579 1165.9649,-580.7583 1093.1844,-591.9116 1042.5007,-598.5915"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.2246" stroke-opacity="0.627451" points="1042.0906,-596.8801 1037.3597,-599.2637 1042.5444,-600.3506 1042.0906,-596.8801"/>
 </a>
 </g>
-<g id="a_34&#45;label"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 4&#10;mean_duration: 4.66 weeks&#10;median_duration: 4.22 weeks&#10;max_duration: 9.99 weeks&#10;min_duration: 1.54 days">
+<g id="a_34&#45;label"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 4&#10;mean_duration: 4.66 weeks&#10;median_duration: 4.22 weeks&#10;max_duration: 9.99 weeks&#10;min_duration: 1.54 days">
 <text text-anchor="middle" x="1335" y="-357.0605" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;4 &#160;&#160;</text>
 </a>
 </g>
@@ -454,12 +454,12 @@
 <!-- 5&#45;&gt;5 -->
 <g id="35" class="edge">
 <title>5&#45;&gt;5</title>
-<g id="a_35"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 31&#10;mean_duration: 7.98 weeks&#10;median_duration: 5.66 weeks&#10;max_duration: 24.61 weeks&#10;min_duration: 4.11 days">
+<g id="a_35"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 31&#10;mean_duration: 7.98 weeks&#10;median_duration: 5.66 weeks&#10;max_duration: 24.61 weeks&#10;min_duration: 4.11 days">
 <path fill="none" stroke="#000000" stroke-width="3.246" stroke-opacity="0.627451" d="M727.5621,-130.6484C738.1925,-129.3376 745.2155,-126.8179 745.2155,-123.0894 745.2155,-120.0017 740.3992,-117.7431 732.7064,-116.3134"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.246" stroke-opacity="0.627451" points="732.7685,-114.5528 727.5621,-115.5304 732.2418,-118.013 732.7685,-114.5528"/>
 </a>
 </g>
-<g id="a_35&#45;label"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 31&#10;mean_duration: 7.98 weeks&#10;median_duration: 5.66 weeks&#10;max_duration: 24.61 weeks&#10;min_duration: 4.11 days">
+<g id="a_35&#45;label"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 31&#10;mean_duration: 7.98 weeks&#10;median_duration: 5.66 weeks&#10;max_duration: 24.61 weeks&#10;min_duration: 4.11 days">
 <text text-anchor="middle" x="762.7155" y="-118.8894" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;31 &#160;&#160;</text>
 </a>
 </g>
@@ -467,12 +467,12 @@
 <!-- 5&#45;&gt;6 -->
 <g id="36" class="edge">
 <title>5&#45;&gt;6</title>
-<g id="a_36"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 18&#10;mean_duration: 5.62 weeks&#10;median_duration: 2.43 weeks&#10;max_duration: 18.84 weeks&#10;min_duration: 1.35 days">
+<g id="a_36"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 18&#10;mean_duration: 5.62 weeks&#10;median_duration: 2.43 weeks&#10;max_duration: 18.84 weeks&#10;min_duration: 1.35 days">
 <path fill="none" stroke="#000000" stroke-width="2.2727" stroke-opacity="0.627451" d="M696.5518,-146.0299C708.3301,-151.6003 720.7024,-157.7182 732,-163.8238 734.528,-165.19 758.2249,-179.8346 779.3388,-192.9237"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="2.2727" stroke-opacity="0.627451" points="778.6249,-194.5401 783.7965,-195.6878 780.4694,-191.5656 778.6249,-194.5401"/>
 </a>
 </g>
-<g id="a_36&#45;label"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 18&#10;mean_duration: 5.62 weeks&#10;median_duration: 2.43 weeks&#10;max_duration: 18.84 weeks&#10;min_duration: 1.35 days">
+<g id="a_36&#45;label"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 18&#10;mean_duration: 5.62 weeks&#10;median_duration: 2.43 weeks&#10;max_duration: 18.84 weeks&#10;min_duration: 1.35 days">
 <text text-anchor="middle" x="770.5" y="-166.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;18 &#160;&#160;</text>
 </a>
 </g>
@@ -480,12 +480,12 @@
 <!-- 5&#45;&gt;7 -->
 <g id="37" class="edge">
 <title>5&#45;&gt;7</title>
-<g id="a_37"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 49&#10;mean_duration: 7.22 weeks&#10;median_duration: 4.67 weeks&#10;max_duration: 29.73 weeks&#10;min_duration: 1.72 days">
+<g id="a_37"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 49&#10;mean_duration: 7.22 weeks&#10;median_duration: 4.67 weeks&#10;max_duration: 29.73 weeks&#10;min_duration: 1.72 days">
 <path fill="none" stroke="#000000" stroke-width="4.5936" stroke-opacity="0.627451" d="M727.3813,-130.537C803.0275,-138.0263 909.2139,-150.3659 949,-163.8238 955.7886,-166.12 1000.6798,-190.1059 1005,-195.8238 1022.6633,-219.2017 1029.3044,-252.3259 1031.7404,-276.7084"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="4.5936" stroke-opacity="0.627451" points="1029.7464,-276.9736 1032.1988,-281.772 1033.7494,-276.6111 1029.7464,-276.9736"/>
 </a>
 </g>
-<g id="a_37&#45;label"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 49&#10;mean_duration: 7.22 weeks&#10;median_duration: 4.67 weeks&#10;max_duration: 29.73 weeks&#10;min_duration: 1.72 days">
+<g id="a_37&#45;label"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 49&#10;mean_duration: 7.22 weeks&#10;median_duration: 4.67 weeks&#10;max_duration: 29.73 weeks&#10;min_duration: 1.72 days">
 <text text-anchor="middle" x="1039.5" y="-209.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;49 &#160;&#160;</text>
 </a>
 </g>
@@ -493,12 +493,12 @@
 <!-- 5&#45;&gt;8 -->
 <g id="38" class="edge">
 <title>5&#45;&gt;8</title>
-<g id="a_38"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 52&#10;mean_duration: 7.27 weeks&#10;median_duration: 5.31 weeks&#10;max_duration: 28.36 weeks&#10;min_duration: 9.82 hours">
+<g id="a_38"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 52&#10;mean_duration: 7.27 weeks&#10;median_duration: 5.31 weeks&#10;max_duration: 28.36 weeks&#10;min_duration: 9.82 hours">
 <path fill="none" stroke="#000000" stroke-width="4.8182" stroke-opacity="0.627451" d="M632.2392,-145.8354C603.558,-196.9592 533.8692,-321.1789 500.045,-381.4701"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="4.8182" stroke-opacity="0.627451" points="498.0838,-380.6576 497.4758,-386.0496 501.7607,-382.7204 498.0838,-380.6576"/>
 </a>
 </g>
-<g id="a_38&#45;label"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 52&#10;mean_duration: 7.27 weeks&#10;median_duration: 5.31 weeks&#10;max_duration: 28.36 weeks&#10;min_duration: 9.82 hours">
+<g id="a_38&#45;label"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 52&#10;mean_duration: 7.27 weeks&#10;median_duration: 5.31 weeks&#10;max_duration: 28.36 weeks&#10;min_duration: 9.82 hours">
 <text text-anchor="middle" x="589.5" y="-252.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;52 &#160;&#160;</text>
 </a>
 </g>
@@ -506,12 +506,12 @@
 <!-- 5&#45;&gt;9 -->
 <g id="39" class="edge">
 <title>5&#45;&gt;9</title>
-<g id="a_39"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 35&#10;mean_duration: 5.78 weeks&#10;median_duration: 4.57 weeks&#10;max_duration: 17.85 weeks&#10;min_duration: 3.33 days">
+<g id="a_39"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 35&#10;mean_duration: 5.78 weeks&#10;median_duration: 4.57 weeks&#10;max_duration: 17.85 weeks&#10;min_duration: 3.33 days">
 <path fill="none" stroke="#000000" stroke-width="3.5455" stroke-opacity="0.627451" d="M664.6013,-146.1785C683.4768,-168.3133 712.9235,-202.5856 739,-231.8238 759.0986,-254.3593 774.0278,-253.6917 785,-281.8238 793.7913,-304.3641 800.1389,-317.3881 785,-336.2605 761.9243,-365.0271 729.8535,-327.9623 704,-354.2605 665.1016,-393.828 711.3099,-431.4666 679,-476.5747 674.998,-482.162 669.9314,-487.0785 664.3833,-491.3698"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.5455" stroke-opacity="0.627451" points="663.0618,-490.1679 660.0564,-494.5302 665.1263,-492.9942 663.0618,-490.1679"/>
 </a>
 </g>
-<g id="a_39&#45;label"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 35&#10;mean_duration: 5.78 weeks&#10;median_duration: 4.57 weeks&#10;max_duration: 17.85 weeks&#10;min_duration: 3.33 days">
+<g id="a_39&#45;label"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 35&#10;mean_duration: 5.78 weeks&#10;median_duration: 4.57 weeks&#10;max_duration: 17.85 weeks&#10;min_duration: 3.33 days">
 <text text-anchor="middle" x="811.5" y="-304.8421" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;35 &#160;&#160;</text>
 </a>
 </g>
@@ -519,12 +519,12 @@
 <!-- 5&#45;&gt;10 -->
 <g id="40" class="edge">
 <title>5&#45;&gt;10</title>
-<g id="a_40"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 9 (sale)&#10;amount: 57&#10;mean_duration: 7.91 weeks&#10;median_duration: 5.84 weeks&#10;max_duration: 33.31 weeks&#10;min_duration: 20.15 hours">
+<g id="a_40"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 57&#10;mean_duration: 7.91 weeks&#10;median_duration: 5.84 weeks&#10;max_duration: 33.31 weeks&#10;min_duration: 20.15 hours">
 <path fill="none" stroke="#000000" stroke-width="5.1925" stroke-opacity="0.627451" d="M727.3642,-110.3895C859.0021,-90.092 1113.3259,-50.8773 1225.0704,-33.6472"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="5.1925" stroke-opacity="0.627451" points="1225.6873,-35.8508 1230.2827,-32.8435 1224.9949,-31.3604 1225.6873,-35.8508"/>
 </a>
 </g>
-<g id="a_40&#45;label"><a xlink:title="from: Event 4 (campaign)&#10;to: Event 9 (sale)&#10;amount: 57&#10;mean_duration: 7.91 weeks&#10;median_duration: 5.84 weeks&#10;max_duration: 33.31 weeks&#10;min_duration: 20.15 hours">
+<g id="a_40&#45;label"><a xlink:title="from: Activity 4 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 57&#10;mean_duration: 7.91 weeks&#10;median_duration: 5.84 weeks&#10;max_duration: 33.31 weeks&#10;min_duration: 20.15 hours">
 <text text-anchor="middle" x="998.5" y="-71.155" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;57 &#160;&#160;</text>
 </a>
 </g>
@@ -532,12 +532,12 @@
 <!-- 6&#45;&gt;1 -->
 <g id="41" class="edge">
 <title>6&#45;&gt;1</title>
-<g id="a_41"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 34&#10;mean_duration: 4.48 weeks&#10;median_duration: 3.25 weeks&#10;max_duration: 12.93 weeks&#10;min_duration: 13.08 hours">
+<g id="a_41"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 34&#10;mean_duration: 4.48 weeks&#10;median_duration: 3.25 weeks&#10;max_duration: 12.93 weeks&#10;min_duration: 13.08 hours">
 <path fill="none" stroke="#000000" stroke-width="3.4706" stroke-opacity="0.627451" d="M878.1083,-224.2588C896.4732,-226.9765 916.4918,-229.727 935,-231.8238 1035.5623,-243.2162 1062.9536,-229.0301 1162,-249.8238 1204.3681,-258.7184 1213.7767,-265.8158 1254,-281.8238 1326.9031,-310.8375 1368.9781,-290.7102 1415,-354.2605 1469.4456,-429.443 1437,-469.1315 1437,-561.9579 1437,-690.9579 1437,-690.9579 1437,-690.9579 1437,-767.2557 908.452,-784.7534 670.1388,-788.7651"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.4706" stroke-opacity="0.627451" points="669.8818,-787.019 664.9115,-788.8517 669.9398,-790.5185 669.8818,-787.019"/>
 </a>
 </g>
-<g id="a_41&#45;label"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 34&#10;mean_duration: 4.48 weeks&#10;median_duration: 3.25 weeks&#10;max_duration: 12.93 weeks&#10;min_duration: 13.08 hours">
+<g id="a_41&#45;label"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 34&#10;mean_duration: 4.48 weeks&#10;median_duration: 3.25 weeks&#10;max_duration: 12.93 weeks&#10;min_duration: 13.08 hours">
 <text text-anchor="middle" x="1458.5" y="-511.5663" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;34 &#160;&#160;</text>
 </a>
 </g>
@@ -545,12 +545,12 @@
 <!-- 6&#45;&gt;2 -->
 <g id="42" class="edge">
 <title>6&#45;&gt;2</title>
-<g id="a_42"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 10 (sale)&#10;amount: 68&#10;mean_duration: 7.48 weeks&#10;median_duration: 3.91 weeks&#10;max_duration: 41.15 weeks&#10;min_duration: 10.3 hours">
+<g id="a_42"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 68&#10;mean_duration: 7.48 weeks&#10;median_duration: 3.91 weeks&#10;max_duration: 41.15 weeks&#10;min_duration: 10.3 hours">
 <path fill="none" stroke="#000000" stroke-width="6.016" stroke-opacity="0.627451" d="M831.4483,-195.4726C838.4306,-186.2855 843.8651,-174.8044 840,-163.8238 827.9851,-129.6898 820.4889,-118.1858 789,-100.355 710.8149,-56.0822 453.8146,-36.3368 321.8116,-28.9376"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="6.016" stroke-opacity="0.627451" points="321.9205,-26.3076 316.7822,-28.6582 321.6285,-31.5636 321.9205,-26.3076"/>
 </a>
 </g>
-<g id="a_42&#45;label"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 10 (sale)&#10;amount: 68&#10;mean_duration: 7.48 weeks&#10;median_duration: 3.91 weeks&#10;max_duration: 41.15 weeks&#10;min_duration: 10.3 hours">
+<g id="a_42&#45;label"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 68&#10;mean_duration: 7.48 weeks&#10;median_duration: 3.91 weeks&#10;max_duration: 41.15 weeks&#10;min_duration: 10.3 hours">
 <text text-anchor="middle" x="849.5" y="-118.8894" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;68 &#160;&#160;</text>
 </a>
 </g>
@@ -558,12 +558,12 @@
 <!-- 6&#45;&gt;3 -->
 <g id="43" class="edge">
 <title>6&#45;&gt;3</title>
-<g id="a_43"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 5&#10;mean_duration: 6.02 weeks&#10;median_duration: 5.55 weeks&#10;max_duration: 14.18 weeks&#10;min_duration: 2.33 days">
+<g id="a_43"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 5&#10;mean_duration: 6.02 weeks&#10;median_duration: 5.55 weeks&#10;max_duration: 14.18 weeks&#10;min_duration: 2.33 days">
 <path fill="none" stroke="#000000" stroke-width="1.2995" stroke-opacity="0.627451" d="M747.7686,-218.96C702.1819,-223.8225 640.3471,-232.9891 588,-249.8238 474.124,-286.446 420.7976,-285.711 356,-386.2605 323.3102,-436.9868 337.4815,-452.5583 346,-476.5747 353.2965,-497.1458 458.604,-611.2107 477,-622.9579 497.9667,-636.3467 507.6176,-630.1001 530,-640.9579 546.7653,-649.0908 564.2762,-660.2228 578.3554,-669.9187"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.2995" stroke-opacity="0.627451" points="577.5057,-671.4593 582.61,-672.8768 579.5037,-668.5856 577.5057,-671.4593"/>
 </a>
 </g>
-<g id="a_43&#45;label"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 5&#10;mean_duration: 6.02 weeks&#10;median_duration: 5.55 weeks&#10;max_duration: 14.18 weeks&#10;min_duration: 2.33 days">
+<g id="a_43&#45;label"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 5&#10;mean_duration: 6.02 weeks&#10;median_duration: 5.55 weeks&#10;max_duration: 14.18 weeks&#10;min_duration: 2.33 days">
 <text text-anchor="middle" x="360" y="-465.3747" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;5 &#160;&#160;</text>
 </a>
 </g>
@@ -571,12 +571,12 @@
 <!-- 6&#45;&gt;4 -->
 <g id="44" class="edge">
 <title>6&#45;&gt;4</title>
-<g id="a_44"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 2&#10;mean_duration: 5.17 days&#10;median_duration: 5.17 days&#10;max_duration: 5.44 days&#10;min_duration: 4.89 days">
+<g id="a_44"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 2&#10;mean_duration: 5.17 days&#10;median_duration: 5.17 days&#10;max_duration: 5.44 days&#10;min_duration: 4.89 days">
 <path fill="none" stroke="#000000" stroke-width="1.0749" stroke-opacity="0.627451" d="M877.95,-224.3932C984.9253,-241.9503 1186.9601,-275.7991 1192,-281.8238 1233.4412,-331.362 1191.8778,-522.5102 1147,-568.9579 1132.6345,-583.8258 1082.488,-593.5285 1042.6858,-599.0727"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.0749" stroke-opacity="0.627451" points="1042.1092,-597.385 1037.3915,-599.7944 1042.582,-600.8529 1042.1092,-597.385"/>
 </a>
 </g>
-<g id="a_44&#45;label"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 2&#10;mean_duration: 5.17 days&#10;median_duration: 5.17 days&#10;max_duration: 5.44 days&#10;min_duration: 4.89 days">
+<g id="a_44&#45;label"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 2&#10;mean_duration: 5.17 days&#10;median_duration: 5.17 days&#10;max_duration: 5.44 days&#10;min_duration: 4.89 days">
 <text text-anchor="middle" x="1221" y="-411.2176" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;2 &#160;&#160;</text>
 </a>
 </g>
@@ -584,12 +584,12 @@
 <!-- 6&#45;&gt;5 -->
 <g id="45" class="edge">
 <title>6&#45;&gt;5</title>
-<g id="a_45"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 17&#10;mean_duration: 4.57 weeks&#10;median_duration: 3.48 weeks&#10;max_duration: 17.55 weeks&#10;min_duration: 3.63 days">
+<g id="a_45"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 17&#10;mean_duration: 4.57 weeks&#10;median_duration: 3.48 weeks&#10;max_duration: 17.55 weeks&#10;min_duration: 3.63 days">
 <path fill="none" stroke="#000000" stroke-width="2.1979" stroke-opacity="0.627451" d="M808.7899,-195.76C805.4067,-185.0515 799.5914,-172.014 790,-163.8238 780.3994,-155.6256 757.4111,-147.8165 732.5008,-141.2694"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="2.1979" stroke-opacity="0.627451" points="732.7752,-139.5329 727.4965,-139.9771 731.9,-142.9218 732.7752,-139.5329"/>
 </a>
 </g>
-<g id="a_45&#45;label"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 17&#10;mean_duration: 4.57 weeks&#10;median_duration: 3.48 weeks&#10;max_duration: 17.55 weeks&#10;min_duration: 3.63 days">
+<g id="a_45&#45;label"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 17&#10;mean_duration: 4.57 weeks&#10;median_duration: 3.48 weeks&#10;max_duration: 17.55 weeks&#10;min_duration: 3.63 days">
 <text text-anchor="middle" x="818.5" y="-166.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;17 &#160;&#160;</text>
 </a>
 </g>
@@ -597,12 +597,12 @@
 <!-- 6&#45;&gt;6 -->
 <g id="46" class="edge">
 <title>6&#45;&gt;6</title>
-<g id="a_46"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 11&#10;mean_duration: 8.24 weeks&#10;median_duration: 7.78 weeks&#10;max_duration: 22.6 weeks&#10;min_duration: 1.92 weeks">
+<g id="a_46"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 11&#10;mean_duration: 8.24 weeks&#10;median_duration: 7.78 weeks&#10;max_duration: 22.6 weeks&#10;min_duration: 1.92 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.7487" stroke-opacity="0.627451" d="M878.0117,-221.11C888.6276,-220.0669 895.9234,-217.6382 895.9234,-213.8238 895.9234,-210.6649 890.92,-208.4564 883.1711,-207.1982"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.7487" stroke-opacity="0.627451" points="883.1935,-205.4368 878.0117,-206.5376 882.7489,-208.9085 883.1935,-205.4368"/>
 </a>
 </g>
-<g id="a_46&#45;label"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 11&#10;mean_duration: 8.24 weeks&#10;median_duration: 7.78 weeks&#10;max_duration: 22.6 weeks&#10;min_duration: 1.92 weeks">
+<g id="a_46&#45;label"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 11&#10;mean_duration: 8.24 weeks&#10;median_duration: 7.78 weeks&#10;max_duration: 22.6 weeks&#10;min_duration: 1.92 weeks">
 <text text-anchor="middle" x="913.1671" y="-209.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;11 &#160;&#160;</text>
 </a>
 </g>
@@ -610,12 +610,12 @@
 <!-- 6&#45;&gt;7 -->
 <g id="47" class="edge">
 <title>6&#45;&gt;7</title>
-<g id="a_47"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 36&#10;mean_duration: 6.23 weeks&#10;median_duration: 4.84 weeks&#10;max_duration: 22.18 weeks&#10;min_duration: 18.84 hours">
+<g id="a_47"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 36&#10;mean_duration: 6.23 weeks&#10;median_duration: 4.84 weeks&#10;max_duration: 22.18 weeks&#10;min_duration: 18.84 hours">
 <path fill="none" stroke="#000000" stroke-width="3.6203" stroke-opacity="0.627451" d="M865.4341,-231.9806C879.172,-237.2568 893.8224,-243.3561 907,-249.8238 917.7428,-255.0964 919.3866,-258.2951 930,-263.8238 940.3813,-269.2315 951.5477,-274.5857 962.5623,-279.6151"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.6203" stroke-opacity="0.627451" points="961.9944,-281.279 967.2709,-281.7499 963.4397,-278.0913 961.9944,-281.279"/>
 </a>
 </g>
-<g id="a_47&#45;label"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 36&#10;mean_duration: 6.23 weeks&#10;median_duration: 4.84 weeks&#10;max_duration: 22.18 weeks&#10;min_duration: 18.84 hours">
+<g id="a_47&#45;label"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 36&#10;mean_duration: 6.23 weeks&#10;median_duration: 4.84 weeks&#10;max_duration: 22.18 weeks&#10;min_duration: 18.84 hours">
 <text text-anchor="middle" x="947.5" y="-252.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;36 &#160;&#160;</text>
 </a>
 </g>
@@ -623,12 +623,12 @@
 <!-- 6&#45;&gt;8 -->
 <g id="48" class="edge">
 <title>6&#45;&gt;8</title>
-<g id="a_48"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 25&#10;mean_duration: 5.64 weeks&#10;median_duration: 3.68 weeks&#10;max_duration: 25.91 weeks&#10;min_duration: 1.45 days">
+<g id="a_48"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 25&#10;mean_duration: 5.64 weeks&#10;median_duration: 3.68 weeks&#10;max_duration: 25.91 weeks&#10;min_duration: 1.45 days">
 <path fill="none" stroke="#000000" stroke-width="2.7968" stroke-opacity="0.627451" d="M795.657,-232.0866C782.8719,-245.6595 765.1446,-264.7097 750,-281.8238 729.0086,-305.5449 730.0504,-318.241 704,-336.2605 698.0334,-340.3878 630.7357,-364.0676 571.6175,-384.4621"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="2.7968" stroke-opacity="0.627451" points="570.8092,-382.8897 566.6526,-386.1739 571.95,-386.1986 570.8092,-382.8897"/>
 </a>
 </g>
-<g id="a_48&#45;label"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 25&#10;mean_duration: 5.64 weeks&#10;median_duration: 3.68 weeks&#10;max_duration: 25.91 weeks&#10;min_duration: 1.45 days">
+<g id="a_48&#45;label"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 25&#10;mean_duration: 5.64 weeks&#10;median_duration: 3.68 weeks&#10;max_duration: 25.91 weeks&#10;min_duration: 1.45 days">
 <text text-anchor="middle" x="767.5" y="-304.8421" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;25 &#160;&#160;</text>
 </a>
 </g>
@@ -636,12 +636,12 @@
 <!-- 6&#45;&gt;9 -->
 <g id="49" class="edge">
 <title>6&#45;&gt;9</title>
-<g id="a_49"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 11&#10;mean_duration: 8.41 weeks&#10;median_duration: 4.64 weeks&#10;max_duration: 29.5 weeks&#10;min_duration: 2.84 days">
+<g id="a_49"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 11&#10;mean_duration: 8.41 weeks&#10;median_duration: 4.64 weeks&#10;max_duration: 29.5 weeks&#10;min_duration: 2.84 days">
 <path fill="none" stroke="#000000" stroke-width="1.7487" stroke-opacity="0.627451" d="M824.4878,-231.9318C831.5671,-242.1344 841.3171,-254.6344 852,-263.8238 864.3708,-274.465 875.762,-267.738 884,-281.8238 903.4992,-315.1644 902.01,-340.6512 875,-368.2605 855.8283,-387.8577 838.777,-371.0023 816,-386.2605 772.887,-415.142 785.1607,-447.7646 742,-476.5747 728.1409,-485.8257 712.0238,-492.9561 695.9522,-498.4315"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.7487" stroke-opacity="0.627451" points="695.167,-496.8478 690.9685,-500.0781 696.2651,-500.1711 695.167,-496.8478"/>
 </a>
 </g>
-<g id="a_49&#45;label"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 11&#10;mean_duration: 8.41 weeks&#10;median_duration: 4.64 weeks&#10;max_duration: 29.5 weeks&#10;min_duration: 2.84 days">
+<g id="a_49&#45;label"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 11&#10;mean_duration: 8.41 weeks&#10;median_duration: 4.64 weeks&#10;max_duration: 29.5 weeks&#10;min_duration: 2.84 days">
 <text text-anchor="middle" x="903.2437" y="-357.0605" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;11 &#160;&#160;</text>
 </a>
 </g>
@@ -649,12 +649,12 @@
 <!-- 6&#45;&gt;10 -->
 <g id="50" class="edge">
 <title>6&#45;&gt;10</title>
-<g id="a_50"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 9 (sale)&#10;amount: 36&#10;mean_duration: 7.86 weeks&#10;median_duration: 5.19 weeks&#10;max_duration: 35.67 weeks&#10;min_duration: 20.23 hours">
+<g id="a_50"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 36&#10;mean_duration: 7.86 weeks&#10;median_duration: 5.19 weeks&#10;max_duration: 35.67 weeks&#10;min_duration: 20.23 hours">
 <path fill="none" stroke="#000000" stroke-width="3.6203" stroke-opacity="0.627451" d="M878.0376,-204.1409C935.7868,-195.3368 1013.1335,-182.9605 1027,-177.8238 1115.7753,-144.9376 1208.0351,-80.139 1252.621,-46.5287"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.6203" stroke-opacity="0.627451" points="1253.8555,-47.7891 1256.7853,-43.3756 1251.7426,-44.9988 1253.8555,-47.7891"/>
 </a>
 </g>
-<g id="a_50&#45;label"><a xlink:title="from: Event 5 (campaign)&#10;to: Event 9 (sale)&#10;amount: 36&#10;mean_duration: 7.86 weeks&#10;median_duration: 5.19 weeks&#10;max_duration: 35.67 weeks&#10;min_duration: 20.23 hours">
+<g id="a_50&#45;label"><a xlink:title="from: Activity 5 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 36&#10;mean_duration: 7.86 weeks&#10;median_duration: 5.19 weeks&#10;max_duration: 35.67 weeks&#10;min_duration: 20.23 hours">
 <text text-anchor="middle" x="1189.5" y="-118.8894" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;36 &#160;&#160;</text>
 </a>
 </g>
@@ -662,12 +662,12 @@
 <!-- 7&#45;&gt;1 -->
 <g id="51" class="edge">
 <title>7&#45;&gt;1</title>
-<g id="a_51"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 63&#10;mean_duration: 7.46 weeks&#10;median_duration: 5.15 weeks&#10;max_duration: 26.82 weeks&#10;min_duration: 5.58 hours">
+<g id="a_51"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 63&#10;mean_duration: 7.46 weeks&#10;median_duration: 5.15 weeks&#10;max_duration: 26.82 weeks&#10;min_duration: 5.58 hours">
 <path fill="none" stroke="#000000" stroke-width="5.6417" stroke-opacity="0.627451" d="M1130.2513,-329.7196C1185.4363,-343.6408 1246.6773,-363.5624 1263,-386.2605 1354.2749,-513.1861 1235.6219,-600.5258 1123,-708.9579 1102.6271,-728.5728 1094.9226,-732.2988 1068,-740.9579 996.5227,-763.9469 798.01,-777.8775 670.2082,-784.7303"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="5.6417" stroke-opacity="0.627451" points="669.7965,-782.2804 664.9349,-785.0112 670.0592,-787.2099 669.7965,-782.2804"/>
 </a>
 </g>
-<g id="a_51&#45;label"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 63&#10;mean_duration: 7.46 weeks&#10;median_duration: 5.15 weeks&#10;max_duration: 26.82 weeks&#10;min_duration: 5.58 hours">
+<g id="a_51&#45;label"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 63&#10;mean_duration: 7.46 weeks&#10;median_duration: 5.15 weeks&#10;max_duration: 26.82 weeks&#10;min_duration: 5.58 hours">
 <text text-anchor="middle" x="1285.5" y="-557.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;63 &#160;&#160;</text>
 </a>
 </g>
@@ -675,12 +675,12 @@
 <!-- 7&#45;&gt;2 -->
 <g id="52" class="edge">
 <title>7&#45;&gt;2</title>
-<g id="a_52"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 10 (sale)&#10;amount: 166&#10;mean_duration: 8.37 weeks&#10;median_duration: 5.88 weeks&#10;max_duration: 40.67 weeks&#10;min_duration: 12.67 hours">
+<g id="a_52"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 166&#10;mean_duration: 8.37 weeks&#10;median_duration: 5.88 weeks&#10;max_duration: 40.67 weeks&#10;min_duration: 12.67 hours">
 <path fill="none" stroke="#000000" stroke-width="13.3529" stroke-opacity="0.627451" d="M1064.1523,-281.7203C1109.4792,-238.7767 1183.0255,-154.7791 1133,-100.355 1078.6629,-41.2402 530.1974,-28.5737 321.7799,-25.8894"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="13.3529" stroke-opacity="0.627451" points="321.692,-20.046 316.6184,-25.8241 321.5439,-31.7289 321.692,-20.046"/>
 </a>
 </g>
-<g id="a_52&#45;label"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 10 (sale)&#10;amount: 166&#10;mean_duration: 8.37 weeks&#10;median_duration: 5.88 weeks&#10;max_duration: 40.67 weeks&#10;min_duration: 12.67 hours">
+<g id="a_52&#45;label"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 166&#10;mean_duration: 8.37 weeks&#10;median_duration: 5.88 weeks&#10;max_duration: 40.67 weeks&#10;min_duration: 12.67 hours">
 <text text-anchor="middle" x="1168" y="-166.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;166 &#160;&#160;</text>
 </a>
 </g>
@@ -688,12 +688,12 @@
 <!-- 7&#45;&gt;3 -->
 <g id="53" class="edge">
 <title>7&#45;&gt;3</title>
-<g id="a_53"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 7&#10;mean_duration: 4.26 weeks&#10;median_duration: 3.79 weeks&#10;max_duration: 8.79 weeks&#10;min_duration: 3.33 days">
+<g id="a_53"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 7&#10;mean_duration: 4.26 weeks&#10;median_duration: 3.79 weeks&#10;max_duration: 8.79 weeks&#10;min_duration: 3.33 days">
 <path fill="none" stroke="#000000" stroke-width="1.4492" stroke-opacity="0.627451" d="M1015.3276,-336.4727C992.2512,-372.4787 950.8139,-437.7792 917,-494.5747 905.926,-513.1751 910.3296,-523.9851 893,-536.9579 864.8651,-558.0194 848.1828,-540.836 816,-554.9579 743.6422,-586.7086 735.8759,-612.8702 669,-654.9579 660.9116,-660.0482 652.0978,-665.3235 643.7213,-670.2149"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.4492" stroke-opacity="0.627451" points="642.5636,-668.8636 639.1201,-672.8892 644.3224,-671.8896 642.5636,-668.8636"/>
 </a>
 </g>
-<g id="a_53&#45;label"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 7&#10;mean_duration: 4.26 weeks&#10;median_duration: 3.79 weeks&#10;max_duration: 8.79 weeks&#10;min_duration: 3.33 days">
+<g id="a_53&#45;label"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 7&#10;mean_duration: 4.26 weeks&#10;median_duration: 3.79 weeks&#10;max_duration: 8.79 weeks&#10;min_duration: 3.33 days">
 <text text-anchor="middle" x="931" y="-511.5663" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;7 &#160;&#160;</text>
 </a>
 </g>
@@ -701,12 +701,12 @@
 <!-- 7&#45;&gt;4 -->
 <g id="54" class="edge">
 <title>7&#45;&gt;4</title>
-<g id="a_54"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 10&#10;mean_duration: 4.85 weeks&#10;median_duration: 4.64 weeks&#10;max_duration: 9.49 weeks&#10;min_duration: 1.65 days">
+<g id="a_54"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 10&#10;mean_duration: 4.85 weeks&#10;median_duration: 4.64 weeks&#10;max_duration: 9.49 weeks&#10;min_duration: 1.65 days">
 <path fill="none" stroke="#000000" stroke-width="1.6738" stroke-opacity="0.627451" d="M1033.1472,-336.4877C1033.0398,-346.4981 1032.7302,-357.901 1032,-368.2605 1026.6879,-443.6288 1026.875,-463.0892 1011,-536.9579 1007.7456,-552.1011 1002.6428,-568.7193 998.2823,-581.7368"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.6738" stroke-opacity="0.627451" points="996.5414,-581.4213 996.5911,-586.7185 999.8556,-582.5464 996.5414,-581.4213"/>
 </a>
 </g>
-<g id="a_54&#45;label"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 10&#10;mean_duration: 4.85 weeks&#10;median_duration: 4.64 weeks&#10;max_duration: 9.49 weeks&#10;min_duration: 1.65 days">
+<g id="a_54&#45;label"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 10&#10;mean_duration: 4.85 weeks&#10;median_duration: 4.64 weeks&#10;max_duration: 9.49 weeks&#10;min_duration: 1.65 days">
 <text text-anchor="middle" x="1041.5" y="-465.3747" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;10 &#160;&#160;</text>
 </a>
 </g>
@@ -714,12 +714,12 @@
 <!-- 7&#45;&gt;5 -->
 <g id="55" class="edge">
 <title>7&#45;&gt;5</title>
-<g id="a_55"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 45&#10;mean_duration: 6.25 weeks&#10;median_duration: 5.33 weeks&#10;max_duration: 27.67 weeks&#10;min_duration: 1.32 days">
+<g id="a_55"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 45&#10;mean_duration: 6.25 weeks&#10;median_duration: 5.33 weeks&#10;max_duration: 27.67 weeks&#10;min_duration: 1.32 days">
 <path fill="none" stroke="#000000" stroke-width="4.2941" stroke-opacity="0.627451" d="M1008.3251,-281.5701C995.4542,-267.0005 979.6002,-248.6735 966,-231.8238 953.4384,-216.2608 955.278,-207.4439 939,-195.8238 906.1409,-172.3671 806.9126,-150.8797 732.7635,-137.4394"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="4.2941" stroke-opacity="0.627451" points="732.7232,-135.5233 727.4693,-136.4857 732.057,-139.2212 732.7232,-135.5233"/>
 </a>
 </g>
-<g id="a_55&#45;label"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 45&#10;mean_duration: 6.25 weeks&#10;median_duration: 5.33 weeks&#10;max_duration: 27.67 weeks&#10;min_duration: 1.32 days">
+<g id="a_55&#45;label"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 45&#10;mean_duration: 6.25 weeks&#10;median_duration: 5.33 weeks&#10;max_duration: 27.67 weeks&#10;min_duration: 1.32 days">
 <text text-anchor="middle" x="983.5" y="-209.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;45 &#160;&#160;</text>
 </a>
 </g>
@@ -727,12 +727,12 @@
 <!-- 7&#45;&gt;6 -->
 <g id="56" class="edge">
 <title>7&#45;&gt;6</title>
-<g id="a_56"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 34&#10;mean_duration: 8.31 weeks&#10;median_duration: 5.98 weeks&#10;max_duration: 40.14 weeks&#10;min_duration: 5.74 days">
+<g id="a_56"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 34&#10;mean_duration: 8.31 weeks&#10;median_duration: 5.98 weeks&#10;max_duration: 40.14 weeks&#10;min_duration: 5.74 days">
 <path fill="none" stroke="#000000" stroke-width="3.4706" stroke-opacity="0.627451" d="M935.6343,-284.3251C903.8177,-275.8618 874.8324,-267.5799 868,-263.8238 860.6725,-259.7955 846.6692,-247.0324 834.6268,-235.4104"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.4706" stroke-opacity="0.627451" points="835.7681,-234.0793 830.962,-231.8512 833.3296,-236.5901 835.7681,-234.0793"/>
 </a>
 </g>
-<g id="a_56&#45;label"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 34&#10;mean_duration: 8.31 weeks&#10;median_duration: 5.98 weeks&#10;max_duration: 40.14 weeks&#10;min_duration: 5.74 days">
+<g id="a_56&#45;label"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 34&#10;mean_duration: 8.31 weeks&#10;median_duration: 5.98 weeks&#10;max_duration: 40.14 weeks&#10;min_duration: 5.74 days">
 <text text-anchor="middle" x="885.5" y="-252.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;34 &#160;&#160;</text>
 </a>
 </g>
@@ -740,12 +740,12 @@
 <!-- 7&#45;&gt;7 -->
 <g id="57" class="edge">
 <title>7&#45;&gt;7</title>
-<g id="a_57"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 60&#10;mean_duration: 7.34 weeks&#10;median_duration: 6.35 weeks&#10;max_duration: 24.34 weeks&#10;min_duration: 3.83 hours">
+<g id="a_57"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 60&#10;mean_duration: 7.34 weeks&#10;median_duration: 6.35 weeks&#10;max_duration: 24.34 weeks&#10;min_duration: 3.83 hours">
 <path fill="none" stroke="#000000" stroke-width="5.4171" stroke-opacity="0.627451" d="M1130.3086,-317.2443C1141.0498,-315.6864 1147.9849,-312.9523 1147.9849,-309.0421 1147.9849,-305.804 1143.2289,-303.3725 1135.4938,-301.7475"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="5.4171" stroke-opacity="0.627451" points="1135.6424,-299.3676 1130.3086,-300.84 1134.8251,-304.0366 1135.6424,-299.3676"/>
 </a>
 </g>
-<g id="a_57&#45;label"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 60&#10;mean_duration: 7.34 weeks&#10;median_duration: 6.35 weeks&#10;max_duration: 24.34 weeks&#10;min_duration: 3.83 hours">
+<g id="a_57&#45;label"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 60&#10;mean_duration: 7.34 weeks&#10;median_duration: 6.35 weeks&#10;max_duration: 24.34 weeks&#10;min_duration: 3.83 hours">
 <text text-anchor="middle" x="1165.4849" y="-304.8421" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;60 &#160;&#160;</text>
 </a>
 </g>
@@ -753,12 +753,12 @@
 <!-- 7&#45;&gt;8 -->
 <g id="58" class="edge">
 <title>7&#45;&gt;8</title>
-<g id="a_58"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 61&#10;mean_duration: 6.62 weeks&#10;median_duration: 6 weeks&#10;max_duration: 19.03 weeks&#10;min_duration: 2.25 hours">
+<g id="a_58"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 61&#10;mean_duration: 6.62 weeks&#10;median_duration: 6 weeks&#10;max_duration: 19.03 weeks&#10;min_duration: 2.25 hours">
 <path fill="none" stroke="#000000" stroke-width="5.492" stroke-opacity="0.627451" d="M935.9318,-323.1882C846.3225,-336.256 726.6548,-353.7336 724,-354.2605 679.6133,-363.0703 631.1772,-374.8181 589.311,-385.6618"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="5.492" stroke-opacity="0.627451" points="588.4739,-383.3967 584.2387,-386.9794 589.6822,-388.0478 588.4739,-383.3967"/>
 </a>
 </g>
-<g id="a_58&#45;label"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 61&#10;mean_duration: 6.62 weeks&#10;median_duration: 6 weeks&#10;max_duration: 19.03 weeks&#10;min_duration: 2.25 hours">
+<g id="a_58&#45;label"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 61&#10;mean_duration: 6.62 weeks&#10;median_duration: 6 weeks&#10;max_duration: 19.03 weeks&#10;min_duration: 2.25 hours">
 <text text-anchor="middle" x="741.5" y="-357.0605" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;61 &#160;&#160;</text>
 </a>
 </g>
@@ -766,12 +766,12 @@
 <!-- 7&#45;&gt;9 -->
 <g id="59" class="edge">
 <title>7&#45;&gt;9</title>
-<g id="a_59"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 34&#10;mean_duration: 5.23 weeks&#10;median_duration: 3.51 weeks&#10;max_duration: 18.12 weeks&#10;min_duration: 15.79 hours">
+<g id="a_59"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 34&#10;mean_duration: 5.23 weeks&#10;median_duration: 3.51 weeks&#10;max_duration: 18.12 weeks&#10;min_duration: 15.79 hours">
 <path fill="none" stroke="#000000" stroke-width="3.4706" stroke-opacity="0.627451" d="M1002.3074,-336.3309C989.0129,-347.233 972.878,-359.2989 957,-368.2605 937.5201,-379.2551 927.8667,-372.8022 910,-386.2605 869.8668,-416.4913 884.9112,-450.4365 842,-476.5747 835.5754,-480.4881 759.1388,-493.0597 696.1191,-502.9216"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.4706" stroke-opacity="0.627451" points="695.5078,-501.2458 690.8378,-503.7466 696.048,-504.7038 695.5078,-501.2458"/>
 </a>
 </g>
-<g id="a_59&#45;label"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 34&#10;mean_duration: 5.23 weeks&#10;median_duration: 3.51 weeks&#10;max_duration: 18.12 weeks&#10;min_duration: 15.79 hours">
+<g id="a_59&#45;label"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 34&#10;mean_duration: 5.23 weeks&#10;median_duration: 3.51 weeks&#10;max_duration: 18.12 weeks&#10;min_duration: 15.79 hours">
 <text text-anchor="middle" x="927.5" y="-411.2176" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;34 &#160;&#160;</text>
 </a>
 </g>
@@ -779,12 +779,12 @@
 <!-- 7&#45;&gt;10 -->
 <g id="60" class="edge">
 <title>7&#45;&gt;10</title>
-<g id="a_60"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 9 (sale)&#10;amount: 93&#10;mean_duration: 6.67 weeks&#10;median_duration: 4.58 weeks&#10;max_duration: 36.15 weeks&#10;min_duration: 1.08 days">
+<g id="a_60"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 93&#10;mean_duration: 6.67 weeks&#10;median_duration: 4.58 weeks&#10;max_duration: 36.15 weeks&#10;min_duration: 1.08 days">
 <path fill="none" stroke="#000000" stroke-width="7.8877" stroke-opacity="0.627451" d="M1130.1348,-283.967C1141.2911,-278.4972 1151.9062,-271.8627 1161,-263.8238 1228.9385,-203.7657 1262.5771,-95.9124 1274.6321,-48.5552"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="7.8877" stroke-opacity="0.627451" points="1277.9998,-49.3123 1275.8645,-43.6247 1271.3041,-47.6386 1277.9998,-49.3123"/>
 </a>
 </g>
-<g id="a_60&#45;label"><a xlink:title="from: Event 6 (campaign)&#10;to: Event 9 (sale)&#10;amount: 93&#10;mean_duration: 6.67 weeks&#10;median_duration: 4.58 weeks&#10;max_duration: 36.15 weeks&#10;min_duration: 1.08 days">
+<g id="a_60&#45;label"><a xlink:title="from: Activity 6 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 93&#10;mean_duration: 6.67 weeks&#10;median_duration: 4.58 weeks&#10;max_duration: 36.15 weeks&#10;min_duration: 1.08 days">
 <text text-anchor="middle" x="1249.5" y="-166.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;93 &#160;&#160;</text>
 </a>
 </g>
@@ -792,12 +792,12 @@
 <!-- 8&#45;&gt;1 -->
 <g id="61" class="edge">
 <title>8&#45;&gt;1</title>
-<g id="a_61"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 77&#10;mean_duration: 6.74 weeks&#10;median_duration: 5.34 weeks&#10;max_duration: 34.17 weeks&#10;min_duration: 6.39 hours">
+<g id="a_61"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 77&#10;mean_duration: 6.74 weeks&#10;median_duration: 5.34 weeks&#10;max_duration: 34.17 weeks&#10;min_duration: 6.39 hours">
 <path fill="none" stroke="#000000" stroke-width="6.6898" stroke-opacity="0.627451" d="M478.0258,-444.7066C474.7018,-485.2796 471.4125,-560.6346 485,-622.9579 495.3301,-670.3397 518.9073,-721.1197 536.0661,-754.0805"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="6.6898" stroke-opacity="0.627451" points="533.6339,-755.7443 538.5489,-758.8117 538.8172,-753.0243 533.6339,-755.7443"/>
 </a>
 </g>
-<g id="a_61&#45;label"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 77&#10;mean_duration: 6.74 weeks&#10;median_duration: 5.34 weeks&#10;max_duration: 34.17 weeks&#10;min_duration: 6.39 hours">
+<g id="a_61&#45;label"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 77&#10;mean_duration: 6.74 weeks&#10;median_duration: 5.34 weeks&#10;max_duration: 34.17 weeks&#10;min_duration: 6.39 hours">
 <text text-anchor="middle" x="502.5" y="-600.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;77 &#160;&#160;</text>
 </a>
 </g>
@@ -805,12 +805,12 @@
 <!-- 8&#45;&gt;2 -->
 <g id="62" class="edge">
 <title>8&#45;&gt;2</title>
-<g id="a_62"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 10 (sale)&#10;amount: 184&#10;mean_duration: 7.82 weeks&#10;median_duration: 5.34 weeks&#10;max_duration: 35.9 weeks&#10;min_duration: 8.88 hours">
+<g id="a_62"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 184&#10;mean_duration: 7.82 weeks&#10;median_duration: 5.34 weeks&#10;max_duration: 35.9 weeks&#10;min_duration: 8.88 hours">
 <path fill="none" stroke="#000000" stroke-width="14.7005" stroke-opacity="0.627451" d="M410.8977,-386.1774C400.8343,-380.8107 390.8906,-374.8089 382,-368.2605 315.5407,-319.3096 288.6477,-307.6338 256,-231.8238 230.9036,-173.5484 233.7523,-97.4317 237.9458,-55.7549"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="14.7005" stroke-opacity="0.627451" points="244.3609,-56.2473 238.4891,-50.6005 231.5688,-54.8986 244.3609,-56.2473"/>
 </a>
 </g>
-<g id="a_62&#45;label"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 10 (sale)&#10;amount: 184&#10;mean_duration: 7.82 weeks&#10;median_duration: 5.34 weeks&#10;max_duration: 35.9 weeks&#10;min_duration: 8.88 hours">
+<g id="a_62&#45;label"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 184&#10;mean_duration: 7.82 weeks&#10;median_duration: 5.34 weeks&#10;max_duration: 35.9 weeks&#10;min_duration: 8.88 hours">
 <text text-anchor="middle" x="277" y="-209.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;184 &#160;&#160;</text>
 </a>
 </g>
@@ -818,12 +818,12 @@
 <!-- 8&#45;&gt;3 -->
 <g id="63" class="edge">
 <title>8&#45;&gt;3</title>
-<g id="a_63"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 10&#10;mean_duration: 9.67 weeks&#10;median_duration: 11.79 weeks&#10;max_duration: 21.28 weeks&#10;min_duration: 1.56 days">
+<g id="a_63"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 10&#10;mean_duration: 9.67 weeks&#10;median_duration: 11.79 weeks&#10;max_duration: 21.28 weeks&#10;min_duration: 1.56 days">
 <path fill="none" stroke="#000000" stroke-width="1.6738" stroke-opacity="0.627451" d="M482.9538,-444.83C485.1173,-469.7193 489.4914,-506.1521 498,-536.9579 502.0439,-551.599 501.8668,-556.1295 510,-568.9579 533.8976,-606.6514 553.5899,-604.98 580,-640.9579 586.1078,-649.2783 591.7329,-659.1492 596.2498,-667.9135"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.6738" stroke-opacity="0.627451" points="594.826,-668.9766 598.6411,-672.6518 597.9506,-667.3996 594.826,-668.9766"/>
 </a>
 </g>
-<g id="a_63&#45;label"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 10&#10;mean_duration: 9.67 weeks&#10;median_duration: 11.79 weeks&#10;max_duration: 21.28 weeks&#10;min_duration: 1.56 days">
+<g id="a_63&#45;label"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 10&#10;mean_duration: 9.67 weeks&#10;median_duration: 11.79 weeks&#10;max_duration: 21.28 weeks&#10;min_duration: 1.56 days">
 <text text-anchor="middle" x="527.5" y="-557.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;10 &#160;&#160;</text>
 </a>
 </g>
@@ -831,12 +831,12 @@
 <!-- 8&#45;&gt;4 -->
 <g id="64" class="edge">
 <title>8&#45;&gt;4</title>
-<g id="a_64"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 7&#10;mean_duration: 8.93 weeks&#10;median_duration: 6.67 weeks&#10;max_duration: 20.82 weeks&#10;min_duration: 3.87 weeks">
+<g id="a_64"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 7&#10;mean_duration: 8.93 weeks&#10;median_duration: 6.67 weeks&#10;max_duration: 20.82 weeks&#10;min_duration: 3.87 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.4492" stroke-opacity="0.627451" d="M584.4676,-430.9361C671.874,-445.4864 789.0277,-468.8138 829,-494.5747 849.7745,-507.9632 843.9441,-524.0165 865,-536.9579 894.2047,-554.9076 910.0903,-538.2091 940,-554.9579 952.4818,-561.9474 963.9605,-572.934 972.7631,-582.8305"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.4492" stroke-opacity="0.627451" points="971.5241,-584.0729 976.1231,-586.702 974.1675,-581.7788 971.5241,-584.0729"/>
 </a>
 </g>
-<g id="a_64&#45;label"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 7&#10;mean_duration: 8.93 weeks&#10;median_duration: 6.67 weeks&#10;max_duration: 20.82 weeks&#10;min_duration: 3.87 weeks">
+<g id="a_64&#45;label"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 7&#10;mean_duration: 8.93 weeks&#10;median_duration: 6.67 weeks&#10;max_duration: 20.82 weeks&#10;min_duration: 3.87 weeks">
 <text text-anchor="middle" x="879" y="-511.5663" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;7 &#160;&#160;</text>
 </a>
 </g>
@@ -844,12 +844,12 @@
 <!-- 8&#45;&gt;5 -->
 <g id="65" class="edge">
 <title>8&#45;&gt;5</title>
-<g id="a_65"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 55&#10;mean_duration: 7.34 weeks&#10;median_duration: 5.83 weeks&#10;max_duration: 25.93 weeks&#10;min_duration: 20.68 hours">
+<g id="a_65"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 55&#10;mean_duration: 7.34 weeks&#10;median_duration: 5.83 weeks&#10;max_duration: 25.93 weeks&#10;min_duration: 20.68 hours">
 <path fill="none" stroke="#000000" stroke-width="5.0428" stroke-opacity="0.627451" d="M484.8411,-385.9809C490.2832,-351.5535 502.4413,-293.6937 527,-249.8238 549.2547,-210.0693 586.5127,-172.9697 613.2117,-149.3133"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="5.0428" stroke-opacity="0.627451" points="614.7716,-150.8796 617.0713,-145.9218 611.859,-147.565 614.7716,-150.8796"/>
 </a>
 </g>
-<g id="a_65&#45;label"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 55&#10;mean_duration: 7.34 weeks&#10;median_duration: 5.83 weeks&#10;max_duration: 25.93 weeks&#10;min_duration: 20.68 hours">
+<g id="a_65&#45;label"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 55&#10;mean_duration: 7.34 weeks&#10;median_duration: 5.83 weeks&#10;max_duration: 25.93 weeks&#10;min_duration: 20.68 hours">
 <text text-anchor="middle" x="544.5" y="-252.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;55 &#160;&#160;</text>
 </a>
 </g>
@@ -857,12 +857,12 @@
 <!-- 8&#45;&gt;6 -->
 <g id="66" class="edge">
 <title>8&#45;&gt;6</title>
-<g id="a_66"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 22&#10;mean_duration: 6.93 weeks&#10;median_duration: 4.99 weeks&#10;max_duration: 27.1 weeks&#10;min_duration: 5.55 days">
+<g id="a_66"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 22&#10;mean_duration: 6.93 weeks&#10;median_duration: 4.99 weeks&#10;max_duration: 27.1 weeks&#10;min_duration: 5.55 days">
 <path fill="none" stroke="#000000" stroke-width="2.5722" stroke-opacity="0.627451" d="M512.4604,-386.0202C527.7535,-371.394 546.1976,-353.2488 562,-336.2605 583.5738,-313.0678 581.087,-298.5278 608,-281.8238 636.392,-264.2018 649.0953,-273.7602 681,-263.8238 709.0766,-255.0795 739.8353,-243.5467 764.5924,-233.7609"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="2.5722" stroke-opacity="0.627451" points="765.4596,-235.2996 769.4613,-231.8284 764.1683,-232.0465 765.4596,-235.2996"/>
 </a>
 </g>
-<g id="a_66&#45;label"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 22&#10;mean_duration: 6.93 weeks&#10;median_duration: 4.99 weeks&#10;max_duration: 27.1 weeks&#10;min_duration: 5.55 days">
+<g id="a_66&#45;label"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 22&#10;mean_duration: 6.93 weeks&#10;median_duration: 4.99 weeks&#10;max_duration: 27.1 weeks&#10;min_duration: 5.55 days">
 <text text-anchor="middle" x="625.5" y="-304.8421" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;22 &#160;&#160;</text>
 </a>
 </g>
@@ -870,12 +870,12 @@
 <!-- 8&#45;&gt;7 -->
 <g id="67" class="edge">
 <title>8&#45;&gt;7</title>
-<g id="a_67"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 57&#10;mean_duration: 5.31 weeks&#10;median_duration: 3.03 weeks&#10;max_duration: 23.06 weeks&#10;min_duration: 15.8 hours">
+<g id="a_67"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 57&#10;mean_duration: 5.31 weeks&#10;median_duration: 3.03 weeks&#10;max_duration: 23.06 weeks&#10;min_duration: 15.8 hours">
 <path fill="none" stroke="#000000" stroke-width="5.1925" stroke-opacity="0.627451" d="M584.3033,-405.5462C666.8296,-396.8042 775.327,-383.148 817,-368.2605 828.2695,-364.2346 828.9246,-358.7933 840,-354.2605 868.6029,-342.5545 900.8887,-333.4968 930.7536,-326.6699"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="5.1925" stroke-opacity="0.627451" points="931.5331,-328.823 935.9112,-325.5074 930.5341,-324.3907 931.5331,-328.823"/>
 </a>
 </g>
-<g id="a_67&#45;label"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 57&#10;mean_duration: 5.31 weeks&#10;median_duration: 3.03 weeks&#10;max_duration: 23.06 weeks&#10;min_duration: 15.8 hours">
+<g id="a_67&#45;label"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 57&#10;mean_duration: 5.31 weeks&#10;median_duration: 3.03 weeks&#10;max_duration: 23.06 weeks&#10;min_duration: 15.8 hours">
 <text text-anchor="middle" x="857.5" y="-357.0605" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;57 &#160;&#160;</text>
 </a>
 </g>
@@ -883,12 +883,12 @@
 <!-- 8&#45;&gt;8 -->
 <g id="68" class="edge">
 <title>8&#45;&gt;8</title>
-<g id="a_68"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 59&#10;mean_duration: 8.29 weeks&#10;median_duration: 6.75 weeks&#10;max_duration: 35.43 weeks&#10;min_duration: 3.16 hours">
+<g id="a_68"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 59&#10;mean_duration: 8.29 weeks&#10;median_duration: 6.75 weeks&#10;max_duration: 35.43 weeks&#10;min_duration: 3.16 hours">
 <path fill="none" stroke="#000000" stroke-width="5.3422" stroke-opacity="0.627451" d="M584.3182,-423.8067C595.1278,-422.1691 602.0546,-419.3727 602.0546,-415.4176 602.0546,-412.1423 597.3042,-409.6617 589.5323,-407.9756"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="5.3422" stroke-opacity="0.627451" points="589.6554,-405.6226 584.3182,-407.0285 588.82,-410.2218 589.6554,-405.6226"/>
 </a>
 </g>
-<g id="a_68&#45;label"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 59&#10;mean_duration: 8.29 weeks&#10;median_duration: 6.75 weeks&#10;max_duration: 35.43 weeks&#10;min_duration: 3.16 hours">
+<g id="a_68&#45;label"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 59&#10;mean_duration: 8.29 weeks&#10;median_duration: 6.75 weeks&#10;max_duration: 35.43 weeks&#10;min_duration: 3.16 hours">
 <text text-anchor="middle" x="619.5546" y="-411.2176" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;59 &#160;&#160;</text>
 </a>
 </g>
@@ -896,12 +896,12 @@
 <!-- 8&#45;&gt;9 -->
 <g id="69" class="edge">
 <title>8&#45;&gt;9</title>
-<g id="a_69"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 37&#10;mean_duration: 7.43 weeks&#10;median_duration: 6.53 weeks&#10;max_duration: 25.84 weeks&#10;min_duration: 1.41 days">
+<g id="a_69"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 37&#10;mean_duration: 7.43 weeks&#10;median_duration: 6.53 weeks&#10;max_duration: 25.84 weeks&#10;min_duration: 1.41 days">
 <path fill="none" stroke="#000000" stroke-width="3.6952" stroke-opacity="0.627451" d="M560.9988,-444.7233C569.6734,-449.8659 577.9099,-455.79 585,-462.5747 592.8447,-470.0816 598.7925,-480.3614 603.0814,-489.8837"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.6952" stroke-opacity="0.627451" points="601.4747,-490.5772 605.0547,-494.4819 604.691,-489.197 601.4747,-490.5772"/>
 </a>
 </g>
-<g id="a_69&#45;label"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 37&#10;mean_duration: 7.43 weeks&#10;median_duration: 6.53 weeks&#10;max_duration: 25.84 weeks&#10;min_duration: 1.41 days">
+<g id="a_69&#45;label"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 37&#10;mean_duration: 7.43 weeks&#10;median_duration: 6.53 weeks&#10;max_duration: 25.84 weeks&#10;min_duration: 1.41 days">
 <text text-anchor="middle" x="613.5" y="-465.3747" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;37 &#160;&#160;</text>
 </a>
 </g>
@@ -909,12 +909,12 @@
 <!-- 8&#45;&gt;10 -->
 <g id="70" class="edge">
 <title>8&#45;&gt;10</title>
-<g id="a_70"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 9 (sale)&#10;amount: 87&#10;mean_duration: 8.22 weeks&#10;median_duration: 5.75 weeks&#10;max_duration: 29.75 weeks&#10;min_duration: 19.67 hours">
+<g id="a_70"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 87&#10;mean_duration: 8.22 weeks&#10;median_duration: 5.75 weeks&#10;max_duration: 29.75 weeks&#10;min_duration: 19.67 hours">
 <path fill="none" stroke="#000000" stroke-width="7.4385" stroke-opacity="0.627451" d="M439.9939,-386.2494C418.2578,-367.1393 396,-340.0101 396,-309.0421 396,-309.0421 396,-309.0421 396,-123.0894 396,-81.1671 1032.3387,-39.9005 1225.2334,-28.3543"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="7.4385" stroke-opacity="0.627451" points="1225.4622,-31.6009 1230.2593,-28.0542 1225.0741,-25.1038 1225.4622,-31.6009"/>
 </a>
 </g>
-<g id="a_70&#45;label"><a xlink:title="from: Event 7 (campaign)&#10;to: Event 9 (sale)&#10;amount: 87&#10;mean_duration: 8.22 weeks&#10;median_duration: 5.75 weeks&#10;max_duration: 29.75 weeks&#10;min_duration: 19.67 hours">
+<g id="a_70&#45;label"><a xlink:title="from: Activity 7 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 87&#10;mean_duration: 8.22 weeks&#10;median_duration: 5.75 weeks&#10;max_duration: 29.75 weeks&#10;min_duration: 19.67 hours">
 <text text-anchor="middle" x="413.5" y="-209.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;87 &#160;&#160;</text>
 </a>
 </g>
@@ -922,12 +922,12 @@
 <!-- 9&#45;&gt;1 -->
 <g id="71" class="edge">
 <title>9&#45;&gt;1</title>
-<g id="a_71"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 47&#10;mean_duration: 7.47 weeks&#10;median_duration: 6.37 weeks&#10;max_duration: 22.93 weeks&#10;min_duration: 2.61 days">
+<g id="a_71"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 47&#10;mean_duration: 7.47 weeks&#10;median_duration: 6.37 weeks&#10;max_duration: 22.93 weeks&#10;min_duration: 2.61 days">
 <path fill="none" stroke="#000000" stroke-width="4.4439" stroke-opacity="0.627451" d="M666.4539,-537.0284C738.2943,-566.7178 853.3269,-620.7849 832,-654.9579 796.4277,-711.957 729.0434,-745.5482 669.7636,-764.9671"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="4.4439" stroke-opacity="0.627451" points="668.947,-763.1875 664.7842,-766.5714 670.1395,-766.8885 668.947,-763.1875"/>
 </a>
 </g>
-<g id="a_71&#45;label"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 1 (campaign)&#10;amount: 47&#10;mean_duration: 7.47 weeks&#10;median_duration: 6.37 weeks&#10;max_duration: 22.93 weeks&#10;min_duration: 2.61 days">
+<g id="a_71&#45;label"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 1 (campaign)&#10;amount: 47&#10;mean_duration: 7.47 weeks&#10;median_duration: 6.37 weeks&#10;max_duration: 22.93 weeks&#10;min_duration: 2.61 days">
 <text text-anchor="middle" x="851.5" y="-643.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;47 &#160;&#160;</text>
 </a>
 </g>
@@ -935,12 +935,12 @@
 <!-- 9&#45;&gt;2 -->
 <g id="72" class="edge">
 <title>9&#45;&gt;2</title>
-<g id="a_72"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 10 (sale)&#10;amount: 115&#10;mean_duration: 8.78 weeks&#10;median_duration: 6.12 weeks&#10;max_duration: 35.95 weeks&#10;min_duration: 8.61 hours">
+<g id="a_72"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 115&#10;mean_duration: 8.78 weeks&#10;median_duration: 6.12 weeks&#10;max_duration: 35.95 weeks&#10;min_duration: 8.61 hours">
 <path fill="none" stroke="#000000" stroke-width="9.5348" stroke-opacity="0.627451" d="M533.1414,-504.8178C482.9846,-495.0419 418.4175,-477.0391 369,-444.5747 281.8714,-387.3363 254.6489,-361.972 219.5127,-263.8238 193.9352,-192.3765 216.207,-101.6256 231.1377,-55.325"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="9.5348" stroke-opacity="0.627451" points="235.1441,-56.4947 232.7379,-50.4439 227.2163,-53.8956 235.1441,-56.4947"/>
 </a>
 </g>
-<g id="a_72&#45;label"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 10 (sale)&#10;amount: 115&#10;mean_duration: 8.78 weeks&#10;median_duration: 6.12 weeks&#10;max_duration: 35.95 weeks&#10;min_duration: 8.61 hours">
+<g id="a_72&#45;label"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 10 (sale)&#10;amount: 115&#10;mean_duration: 8.78 weeks&#10;median_duration: 6.12 weeks&#10;max_duration: 35.95 weeks&#10;min_duration: 8.61 hours">
 <text text-anchor="middle" x="240.7437" y="-252.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;115 &#160;&#160;</text>
 </a>
 </g>
@@ -948,12 +948,12 @@
 <!-- 9&#45;&gt;3 -->
 <g id="73" class="edge">
 <title>9&#45;&gt;3</title>
-<g id="a_73"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 10&#10;mean_duration: 5.96 weeks&#10;median_duration: 4.8 weeks&#10;max_duration: 11.71 weeks&#10;min_duration: 1.82 weeks">
+<g id="a_73"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 10&#10;mean_duration: 5.96 weeks&#10;median_duration: 4.8 weeks&#10;max_duration: 11.71 weeks&#10;min_duration: 1.82 weeks">
 <path fill="none" stroke="#000000" stroke-width="1.6738" stroke-opacity="0.627451" d="M636.3187,-537.1963C649.0827,-550.1438 663.4086,-567.8142 670,-586.9579 675.2089,-602.0862 675.2089,-607.8295 670,-622.9579 663.7324,-641.1609 649.5659,-657.2001 636.2512,-669.1229"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="1.6738" stroke-opacity="0.627451" points="634.7777,-668.0856 632.1561,-672.6888 637.0761,-670.7251 634.7777,-668.0856"/>
 </a>
 </g>
-<g id="a_73&#45;label"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 2 (campaign)&#10;amount: 10&#10;mean_duration: 5.96 weeks&#10;median_duration: 4.8 weeks&#10;max_duration: 11.71 weeks&#10;min_duration: 1.82 weeks">
+<g id="a_73&#45;label"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 2 (campaign)&#10;amount: 10&#10;mean_duration: 5.96 weeks&#10;median_duration: 4.8 weeks&#10;max_duration: 11.71 weeks&#10;min_duration: 1.82 weeks">
 <text text-anchor="middle" x="690.5" y="-600.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;10 &#160;&#160;</text>
 </a>
 </g>
@@ -961,12 +961,12 @@
 <!-- 9&#45;&gt;4 -->
 <g id="74" class="edge">
 <title>9&#45;&gt;4</title>
-<g id="a_74"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 1&#10;mean_duration: 17.26 weeks&#10;median_duration: 17.26 weeks&#10;max_duration: 17.26 weeks&#10;min_duration: 17.26 weeks">
+<g id="a_74"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 1&#10;mean_duration: 17.26 weeks&#10;median_duration: 17.26 weeks&#10;max_duration: 17.26 weeks&#10;min_duration: 17.26 weeks">
 <path fill="none" stroke="#000000" stroke-opacity="0.627451" d="M690.8948,-531.0234C722.2497,-537.6106 758.5212,-545.8887 791,-554.9579 809.5458,-560.1365 813.4763,-563.7007 832,-568.9579 866.795,-578.833 906.4901,-587.8689 937.3882,-594.4179"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-opacity="0.627451" points="937.4062,-596.2101 942.6597,-595.5292 938.1282,-592.7854 937.4062,-596.2101"/>
 </a>
 </g>
-<g id="a_74&#45;label"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 3 (campaign)&#10;amount: 1&#10;mean_duration: 17.26 weeks&#10;median_duration: 17.26 weeks&#10;max_duration: 17.26 weeks&#10;min_duration: 17.26 weeks">
+<g id="a_74&#45;label"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 3 (campaign)&#10;amount: 1&#10;mean_duration: 17.26 weeks&#10;median_duration: 17.26 weeks&#10;max_duration: 17.26 weeks&#10;min_duration: 17.26 weeks">
 <text text-anchor="middle" x="846" y="-557.7579" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;1 &#160;&#160;</text>
 </a>
 </g>
@@ -974,12 +974,12 @@
 <!-- 9&#45;&gt;5 -->
 <g id="75" class="edge">
 <title>9&#45;&gt;5</title>
-<g id="a_75"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 37&#10;mean_duration: 6.87 weeks&#10;median_duration: 6.73 weeks&#10;max_duration: 21.64 weeks&#10;min_duration: 2.39 days">
+<g id="a_75"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 37&#10;mean_duration: 6.87 weeks&#10;median_duration: 6.73 weeks&#10;max_duration: 21.64 weeks&#10;min_duration: 2.39 days">
 <path fill="none" stroke="#000000" stroke-width="3.6952" stroke-opacity="0.627451" d="M626.1063,-494.3902C634.0741,-480.7777 643.0206,-462.4074 646,-444.5747 663.9096,-337.3808 653.9959,-207.2615 648.2233,-151.1081"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.6952" stroke-opacity="0.627451" points="649.9401,-150.6986 647.6787,-145.9081 646.4591,-151.0632 649.9401,-150.6986"/>
 </a>
 </g>
-<g id="a_75&#45;label"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 4 (campaign)&#10;amount: 37&#10;mean_duration: 6.87 weeks&#10;median_duration: 6.73 weeks&#10;max_duration: 21.64 weeks&#10;min_duration: 2.39 days">
+<g id="a_75&#45;label"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 4 (campaign)&#10;amount: 37&#10;mean_duration: 6.87 weeks&#10;median_duration: 6.73 weeks&#10;max_duration: 21.64 weeks&#10;min_duration: 2.39 days">
 <text text-anchor="middle" x="673.5" y="-304.8421" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;37 &#160;&#160;</text>
 </a>
 </g>
@@ -987,12 +987,12 @@
 <!-- 9&#45;&gt;6 -->
 <g id="76" class="edge">
 <title>9&#45;&gt;6</title>
-<g id="a_76"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 16&#10;mean_duration: 5.46 weeks&#10;median_duration: 4.29 weeks&#10;max_duration: 15.56 weeks&#10;min_duration: 6.65 days">
+<g id="a_76"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 16&#10;mean_duration: 5.46 weeks&#10;median_duration: 4.29 weeks&#10;max_duration: 15.56 weeks&#10;min_duration: 6.65 days">
 <path fill="none" stroke="#000000" stroke-width="2.123" stroke-opacity="0.627451" d="M686.7074,-494.4494C696.5584,-489.5965 705.9971,-483.7047 714,-476.5747 759.8099,-435.7611 730.0527,-392.5405 778,-354.2605 802.4317,-334.7548 826.9307,-361.0344 846,-336.2605 860.7575,-317.0884 853.0111,-304.9798 846,-281.8238 843.2138,-272.6215 838.5488,-272.2944 834,-263.8238 829.4148,-255.2854 825.1216,-245.5293 821.627,-236.9154"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="2.123" stroke-opacity="0.627451" points="823.249,-236.2581 819.7709,-232.2624 819.9981,-237.5549 823.249,-236.2581"/>
 </a>
 </g>
-<g id="a_76&#45;label"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 5 (campaign)&#10;amount: 16&#10;mean_duration: 5.46 weeks&#10;median_duration: 4.29 weeks&#10;max_duration: 15.56 weeks&#10;min_duration: 6.65 days">
+<g id="a_76&#45;label"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 5 (campaign)&#10;amount: 16&#10;mean_duration: 5.46 weeks&#10;median_duration: 4.29 weeks&#10;max_duration: 15.56 weeks&#10;min_duration: 6.65 days">
 <text text-anchor="middle" x="795.5" y="-357.0605" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;16 &#160;&#160;</text>
 </a>
 </g>
@@ -1000,12 +1000,12 @@
 <!-- 9&#45;&gt;7 -->
 <g id="77" class="edge">
 <title>9&#45;&gt;7</title>
-<g id="a_77"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 40&#10;mean_duration: 5.76 weeks&#10;median_duration: 5.61 weeks&#10;max_duration: 16.49 weeks&#10;min_duration: 16.01 hours">
+<g id="a_77"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 40&#10;mean_duration: 5.76 weeks&#10;median_duration: 5.61 weeks&#10;max_duration: 16.49 weeks&#10;min_duration: 16.01 hours">
 <path fill="none" stroke="#000000" stroke-width="3.9198" stroke-opacity="0.627451" d="M690.8692,-504.7365C743.6266,-496.6384 804.994,-485.535 814,-476.5747 843.0148,-447.7072 802.7904,-414.9309 832,-386.2605 864.2281,-354.6274 889.6445,-383.9232 932,-368.2605 943.0797,-364.1634 964.919,-351.5791 985.4635,-339.0591"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.9198" stroke-opacity="0.627451" points="986.4718,-340.4939 989.8235,-336.3916 984.6451,-337.5083 986.4718,-340.4939"/>
 </a>
 </g>
-<g id="a_77&#45;label"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 6 (campaign)&#10;amount: 40&#10;mean_duration: 5.76 weeks&#10;median_duration: 5.61 weeks&#10;max_duration: 16.49 weeks&#10;min_duration: 16.01 hours">
+<g id="a_77&#45;label"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 6 (campaign)&#10;amount: 40&#10;mean_duration: 5.76 weeks&#10;median_duration: 5.61 weeks&#10;max_duration: 16.49 weeks&#10;min_duration: 16.01 hours">
 <text text-anchor="middle" x="849.5" y="-411.2176" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;40 &#160;&#160;</text>
 </a>
 </g>
@@ -1013,12 +1013,12 @@
 <!-- 9&#45;&gt;8 -->
 <g id="78" class="edge">
 <title>9&#45;&gt;8</title>
-<g id="a_78"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 40&#10;mean_duration: 6.86 weeks&#10;median_duration: 4.66 weeks&#10;max_duration: 32.36 weeks&#10;min_duration: 1.34 days">
+<g id="a_78"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 40&#10;mean_duration: 6.86 weeks&#10;median_duration: 4.66 weeks&#10;max_duration: 32.36 weeks&#10;min_duration: 1.34 days">
 <path fill="none" stroke="#000000" stroke-width="3.9198" stroke-opacity="0.627451" d="M573.0377,-494.5497C563.9149,-489.0638 554.4102,-482.9074 546,-476.5747 534.7555,-468.1079 523.3063,-457.9489 513.2137,-448.365"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.9198" stroke-opacity="0.627451" points="514.3808,-447.0596 509.5596,-444.8643 511.9595,-449.5869 514.3808,-447.0596"/>
 </a>
 </g>
-<g id="a_78&#45;label"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 7 (campaign)&#10;amount: 40&#10;mean_duration: 6.86 weeks&#10;median_duration: 4.66 weeks&#10;max_duration: 32.36 weeks&#10;min_duration: 1.34 days">
+<g id="a_78&#45;label"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 7 (campaign)&#10;amount: 40&#10;mean_duration: 6.86 weeks&#10;median_duration: 4.66 weeks&#10;max_duration: 32.36 weeks&#10;min_duration: 1.34 days">
 <text text-anchor="middle" x="563.5" y="-465.3747" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;40 &#160;&#160;</text>
 </a>
 </g>
@@ -1026,12 +1026,12 @@
 <!-- 9&#45;&gt;9 -->
 <g id="79" class="edge">
 <title>9&#45;&gt;9</title>
-<g id="a_79"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 22&#10;mean_duration: 6.19 weeks&#10;median_duration: 5.59 weeks&#10;max_duration: 23.45 weeks&#10;min_duration: 2.27 hours">
+<g id="a_79"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 22&#10;mean_duration: 6.19 weeks&#10;median_duration: 5.59 weeks&#10;max_duration: 23.45 weeks&#10;min_duration: 2.27 hours">
 <path fill="none" stroke="#000000" stroke-width="2.5722" stroke-opacity="0.627451" d="M691.0508,-523.4179C701.7432,-522.1352 708.8623,-519.5846 708.8623,-515.7663 708.8623,-512.6042 703.9801,-510.3116 696.2294,-508.8884"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="2.5722" stroke-opacity="0.627451" points="696.2545,-507.1228 691.0508,-508.1146 695.7373,-510.5844 696.2545,-507.1228"/>
 </a>
 </g>
-<g id="a_79&#45;label"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 8 (campaign)&#10;amount: 22&#10;mean_duration: 6.19 weeks&#10;median_duration: 5.59 weeks&#10;max_duration: 23.45 weeks&#10;min_duration: 2.27 hours">
+<g id="a_79&#45;label"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 8 (campaign)&#10;amount: 22&#10;mean_duration: 6.19 weeks&#10;median_duration: 5.59 weeks&#10;max_duration: 23.45 weeks&#10;min_duration: 2.27 hours">
 <text text-anchor="middle" x="726.3623" y="-511.5663" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;22 &#160;&#160;</text>
 </a>
 </g>
@@ -1039,12 +1039,12 @@
 <!-- 9&#45;&gt;10 -->
 <g id="80" class="edge">
 <title>9&#45;&gt;10</title>
-<g id="a_80"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 9 (sale)&#10;amount: 40&#10;mean_duration: 8.57 weeks&#10;median_duration: 6.08 weeks&#10;max_duration: 37.69 weeks&#10;min_duration: 1.35 days">
+<g id="a_80"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 40&#10;mean_duration: 8.57 weeks&#10;median_duration: 6.08 weeks&#10;max_duration: 37.69 weeks&#10;min_duration: 1.35 days">
 <path fill="none" stroke="#000000" stroke-width="3.9198" stroke-opacity="0.627451" d="M690.7878,-502.1714C709.7993,-499.281 730.0863,-496.5188 749,-494.5747 810.0415,-488.3006 1259.1846,-491.267 1299,-444.5747 1324.738,-414.3913 1292.9637,-132.2703 1282.878,-48.5129"/>
 <polygon fill="#000000" fill-opacity="0.627451" stroke="#000000" stroke-width="3.9198" stroke-opacity="0.627451" points="1284.6116,-48.2707 1282.2738,-43.517 1281.1369,-48.691 1284.6116,-48.2707"/>
 </a>
 </g>
-<g id="a_80&#45;label"><a xlink:title="from: Event 8 (campaign)&#10;to: Event 9 (sale)&#10;amount: 40&#10;mean_duration: 8.57 weeks&#10;median_duration: 6.08 weeks&#10;max_duration: 37.69 weeks&#10;min_duration: 1.35 days">
+<g id="a_80&#45;label"><a xlink:title="from: Activity 8 (campaign)&#10;to: Activity 9 (sale)&#10;amount: 40&#10;mean_duration: 8.57 weeks&#10;median_duration: 6.08 weeks&#10;max_duration: 37.69 weeks&#10;min_duration: 1.35 days">
 <text text-anchor="middle" x="1321.5" y="-252.6238" font-family="Times,serif" font-size="14.00" fill="#212121"> &#160;&#160;40 &#160;&#160;</text>
 </a>
 </g>
@@ -1052,9 +1052,9 @@
 <!-- 1 -->
 <g id="node1" class="node">
 <title>1</title>
-<g id="a_node1"><a xlink:title="name: Event 1 (campaign)&#10;category: campaign&#10;amount: 1758&#10;inbound: 370&#10;outbound: 654&#10;id: 1">
+<g id="a_node1"><a xlink:title="name: Activity 1 (campaign)&#10;category: campaign&#10;amount: 1758&#10;inbound: 370&#10;outbound: 654&#10;id: 1">
 <path fill="#86a3d0" stroke="#0d47a1" d="M652.9184,-820.9579C652.9184,-820.9579 459.0816,-820.9579 459.0816,-820.9579 453.0816,-820.9579 447.0816,-814.9579 447.0816,-808.9579 447.0816,-808.9579 447.0816,-770.9579 447.0816,-770.9579 447.0816,-764.9579 453.0816,-758.9579 459.0816,-758.9579 459.0816,-758.9579 652.9184,-758.9579 652.9184,-758.9579 658.9184,-758.9579 664.9184,-764.9579 664.9184,-770.9579 664.9184,-770.9579 664.9184,-808.9579 664.9184,-808.9579 664.9184,-814.9579 658.9184,-820.9579 652.9184,-820.9579"/>
-<text text-anchor="middle" x="556" y="-793.9579" font-family="Helvetica,sans-Serif" font-size="20.00" fill="#212121">Event 1 (campaign)</text>
+<text text-anchor="middle" x="556" y="-793.9579" font-family="Helvetica,sans-Serif" font-size="20.00" fill="#212121">Activity 1 (campaign)</text>
 <text text-anchor="middle" x="556" y="-773.9579" font-family="Helvetica,sans-Serif" font-size="20.00" fill="#212121">(1758)</text>
 </a>
 </g>
@@ -1062,9 +1062,9 @@
 <!-- 2 -->
 <g id="node2" class="node">
 <title>2</title>
-<g id="a_node2"><a xlink:title="name: Event 10 (sale)&#10;category: sale&#10;amount: 1316&#10;inbound: 876&#10;outbound: 0&#10;id: 2">
+<g id="a_node2"><a xlink:title="name: Activity 10 (sale)&#10;category: sale&#10;amount: 1316&#10;inbound: 876&#10;outbound: 0&#10;id: 2">
 <path fill="#db8d8d" stroke="#b71c1c" d="M304.5296,-50.5338C304.5296,-50.5338 179.4704,-50.5338 179.4704,-50.5338 173.4704,-50.5338 167.4704,-44.5338 167.4704,-38.5338 167.4704,-38.5338 167.4704,-11.8212 167.4704,-11.8212 167.4704,-5.8212 173.4704,.1788 179.4704,.1788 179.4704,.1788 304.5296,.1788 304.5296,.1788 310.5296,.1788 316.5296,-5.8212 316.5296,-11.8212 316.5296,-11.8212 316.5296,-38.5338 316.5296,-38.5338 316.5296,-44.5338 310.5296,-50.5338 304.5296,-50.5338"/>
-<text text-anchor="middle" x="242" y="-28.613" font-family="Helvetica,sans-Serif" font-size="17.18" fill="#212121">Event 10 (sale)</text>
+<text text-anchor="middle" x="242" y="-28.613" font-family="Helvetica,sans-Serif" font-size="17.18" fill="#212121">Activity 10 (sale)</text>
 <text text-anchor="middle" x="242" y="-11.4355" font-family="Helvetica,sans-Serif" font-size="17.18" fill="#212121">(1316)</text>
 </a>
 </g>
@@ -1072,9 +1072,9 @@
 <!-- 3 -->
 <g id="node3" class="node">
 <title>3</title>
-<g id="a_node3"><a xlink:title="name: Event 2 (campaign)&#10;category: campaign&#10;amount: 202&#10;inbound: 45&#10;outbound: 72&#10;id: 3">
+<g id="a_node3"><a xlink:title="name: Activity 2 (campaign)&#10;category: campaign&#10;amount: 202&#10;inbound: 45&#10;outbound: 72&#10;id: 3">
 <path fill="#86a3d0" stroke="#0d47a1" d="M642.763,-708.9579C642.763,-708.9579 571.237,-708.9579 571.237,-708.9579 565.237,-708.9579 559.237,-702.9579 559.237,-696.9579 559.237,-696.9579 559.237,-684.9579 559.237,-684.9579 559.237,-678.9579 565.237,-672.9579 571.237,-672.9579 571.237,-672.9579 642.763,-672.9579 642.763,-672.9579 648.763,-672.9579 654.763,-678.9579 654.763,-684.9579 654.763,-684.9579 654.763,-696.9579 654.763,-696.9579 654.763,-702.9579 648.763,-708.9579 642.763,-708.9579"/>
-<text text-anchor="middle" x="607" y="-692.9706" font-family="Helvetica,sans-Serif" font-size="10.06" fill="#212121">Event 2 (campaign)</text>
+<text text-anchor="middle" x="607" y="-692.9706" font-family="Helvetica,sans-Serif" font-size="10.06" fill="#212121">Activity 2 (campaign)</text>
 <text text-anchor="middle" x="607" y="-682.9068" font-family="Helvetica,sans-Serif" font-size="10.06" fill="#212121">(202)</text>
 </a>
 </g>
@@ -1082,9 +1082,9 @@
 <!-- 4 -->
 <g id="node4" class="node">
 <title>4</title>
-<g id="a_node4"><a xlink:title="name: Event 3 (campaign)&#10;category: campaign&#10;amount: 192&#10;inbound: 36&#10;outbound: 73&#10;id: 4">
+<g id="a_node4"><a xlink:title="name: Activity 3 (campaign)&#10;category: campaign&#10;amount: 192&#10;inbound: 36&#10;outbound: 73&#10;id: 4">
 <path fill="#86a3d0" stroke="#0d47a1" d="M1025.2094,-622.9579C1025.2094,-622.9579 954.7906,-622.9579 954.7906,-622.9579 948.7906,-622.9579 942.7906,-616.9579 942.7906,-610.9579 942.7906,-610.9579 942.7906,-598.9579 942.7906,-598.9579 942.7906,-592.9579 948.7906,-586.9579 954.7906,-586.9579 954.7906,-586.9579 1025.2094,-586.9579 1025.2094,-586.9579 1031.2094,-586.9579 1037.2094,-592.9579 1037.2094,-598.9579 1037.2094,-598.9579 1037.2094,-610.9579 1037.2094,-610.9579 1037.2094,-616.9579 1031.2094,-622.9579 1025.2094,-622.9579"/>
-<text text-anchor="middle" x="990" y="-606.9579" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#212121">Event 3 (campaign)</text>
+<text text-anchor="middle" x="990" y="-606.9579" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#212121">Activity 3 (campaign)</text>
 <text text-anchor="middle" x="990" y="-596.9579" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#212121">(192)</text>
 </a>
 </g>
@@ -1092,9 +1092,9 @@
 <!-- 5 -->
 <g id="node5" class="node">
 <title>5</title>
-<g id="a_node5"><a xlink:title="name: Event 4 (campaign)&#10;category: campaign&#10;amount: 1090&#10;inbound: 237&#10;outbound: 408&#10;id: 5">
+<g id="a_node5"><a xlink:title="name: Activity 4 (campaign)&#10;category: campaign&#10;amount: 1090&#10;inbound: 237&#10;outbound: 408&#10;id: 5">
 <path fill="#86a3d0" stroke="#0d47a1" d="M715.4316,-146.0606C715.4316,-146.0606 574.5684,-146.0606 574.5684,-146.0606 568.5684,-146.0606 562.5684,-140.0606 562.5684,-134.0606 562.5684,-134.0606 562.5684,-112.1182 562.5684,-112.1182 562.5684,-106.1182 568.5684,-100.1182 574.5684,-100.1182 574.5684,-100.1182 715.4316,-100.1182 715.4316,-100.1182 721.4316,-100.1182 727.4316,-106.1182 727.4316,-112.1182 727.4316,-112.1182 727.4316,-134.0606 727.4316,-134.0606 727.4316,-140.0606 721.4316,-146.0606 715.4316,-146.0606"/>
-<text text-anchor="middle" x="645" y="-126.2363" font-family="Helvetica,sans-Serif" font-size="15.73" fill="#212121">Event 4 (campaign)</text>
+<text text-anchor="middle" x="645" y="-126.2363" font-family="Helvetica,sans-Serif" font-size="15.73" fill="#212121">Activity 4 (campaign)</text>
 <text text-anchor="middle" x="645" y="-110.5019" font-family="Helvetica,sans-Serif" font-size="15.73" fill="#212121">(1090)</text>
 </a>
 </g>
@@ -1102,9 +1102,9 @@
 <!-- 6 -->
 <g id="node6" class="node">
 <title>6</title>
-<g id="a_node6"><a xlink:title="name: Event 5 (campaign)&#10;category: campaign&#10;amount: 646&#10;inbound: 136&#10;outbound: 245&#10;id: 6">
+<g id="a_node6"><a xlink:title="name: Activity 5 (campaign)&#10;category: campaign&#10;amount: 646&#10;inbound: 136&#10;outbound: 245&#10;id: 6">
 <path fill="#86a3d0" stroke="#0d47a1" d="M865.8469,-231.8238C865.8469,-231.8238 760.1531,-231.8238 760.1531,-231.8238 754.1531,-231.8238 748.1531,-225.8238 748.1531,-219.8238 748.1531,-219.8238 748.1531,-207.8238 748.1531,-207.8238 748.1531,-201.8238 754.1531,-195.8238 760.1531,-195.8238 760.1531,-195.8238 865.8469,-195.8238 865.8469,-195.8238 871.8469,-195.8238 877.8469,-201.8238 877.8469,-207.8238 877.8469,-207.8238 877.8469,-219.8238 877.8469,-219.8238 877.8469,-225.8238 871.8469,-231.8238 865.8469,-231.8238"/>
-<text text-anchor="middle" x="813" y="-216.4036" font-family="Helvetica,sans-Serif" font-size="12.90" fill="#212121">Event 5 (campaign)</text>
+<text text-anchor="middle" x="813" y="-216.4036" font-family="Helvetica,sans-Serif" font-size="12.90" fill="#212121">Activity 5 (campaign)</text>
 <text text-anchor="middle" x="813" y="-203.5045" font-family="Helvetica,sans-Serif" font-size="12.90" fill="#212121">(646)</text>
 </a>
 </g>
@@ -1112,9 +1112,9 @@
 <!-- 7 -->
 <g id="node7" class="node">
 <title>7</title>
-<g id="a_node7"><a xlink:title="name: Event 6 (campaign)&#10;category: campaign&#10;amount: 1479&#10;inbound: 326&#10;outbound: 573&#10;id: 7">
+<g id="a_node7"><a xlink:title="name: Activity 6 (campaign)&#10;category: campaign&#10;amount: 1479&#10;inbound: 326&#10;outbound: 573&#10;id: 7">
 <path fill="#86a3d0" stroke="#0d47a1" d="M1117.9698,-336.4807C1117.9698,-336.4807 948.0302,-336.4807 948.0302,-336.4807 942.0302,-336.4807 936.0302,-330.4807 936.0302,-324.4807 936.0302,-324.4807 936.0302,-293.6036 936.0302,-293.6036 936.0302,-287.6036 942.0302,-281.6036 948.0302,-281.6036 948.0302,-281.6036 1117.9698,-281.6036 1117.9698,-281.6036 1123.9698,-281.6036 1129.9698,-287.6036 1129.9698,-293.6036 1129.9698,-293.6036 1129.9698,-324.4807 1129.9698,-324.4807 1129.9698,-330.4807 1123.9698,-336.4807 1117.9698,-336.4807"/>
-<text text-anchor="middle" x="1033" y="-312.6858" font-family="Helvetica,sans-Serif" font-size="18.22" fill="#212121">Event 6 (campaign)</text>
+<text text-anchor="middle" x="1033" y="-312.6858" font-family="Helvetica,sans-Serif" font-size="18.22" fill="#212121">Activity 6 (campaign)</text>
 <text text-anchor="middle" x="1033" y="-294.4674" font-family="Helvetica,sans-Serif" font-size="18.22" fill="#212121">(1479)</text>
 </a>
 </g>
@@ -1122,9 +1122,9 @@
 <!-- 8 -->
 <g id="node8" class="node">
 <title>8</title>
-<g id="a_node8"><a xlink:title="name: Event 7 (campaign)&#10;category: campaign&#10;amount: 1626&#10;inbound: 335&#10;outbound: 595&#10;id: 8">
+<g id="a_node8"><a xlink:title="name: Activity 7 (campaign)&#10;category: campaign&#10;amount: 1626&#10;inbound: 335&#10;outbound: 595&#10;id: 8">
 <path fill="#86a3d0" stroke="#0d47a1" d="M572.1092,-444.7327C572.1092,-444.7327 389.8908,-444.7327 389.8908,-444.7327 383.8908,-444.7327 377.8908,-438.7327 377.8908,-432.7327 377.8908,-432.7327 377.8908,-398.1026 377.8908,-398.1026 377.8908,-392.1026 383.8908,-386.1026 389.8908,-386.1026 389.8908,-386.1026 572.1092,-386.1026 572.1092,-386.1026 578.1092,-386.1026 584.1092,-392.1026 584.1092,-398.1026 584.1092,-398.1026 584.1092,-432.7327 584.1092,-432.7327 584.1092,-438.7327 578.1092,-444.7327 572.1092,-444.7327"/>
-<text text-anchor="middle" x="481" y="-419.249" font-family="Helvetica,sans-Serif" font-size="19.16" fill="#212121">Event 7 (campaign)</text>
+<text text-anchor="middle" x="481" y="-419.249" font-family="Helvetica,sans-Serif" font-size="19.16" fill="#212121">Activity 7 (campaign)</text>
 <text text-anchor="middle" x="481" y="-400.092" font-family="Helvetica,sans-Serif" font-size="19.16" fill="#212121">(1626)</text>
 </a>
 </g>
@@ -1132,9 +1132,9 @@
 <!-- 9 -->
 <g id="node9" class="node">
 <title>9</title>
-<g id="a_node9"><a xlink:title="name: Event 8 (campaign)&#10;category: campaign&#10;amount: 1005&#10;inbound: 193&#10;outbound: 368&#10;id: 9">
+<g id="a_node9"><a xlink:title="name: Activity 8 (campaign)&#10;category: campaign&#10;amount: 1005&#10;inbound: 193&#10;outbound: 368&#10;id: 9">
 <path fill="#86a3d0" stroke="#0d47a1" d="M678.7248,-537.1512C678.7248,-537.1512 545.2752,-537.1512 545.2752,-537.1512 539.2752,-537.1512 533.2752,-531.1512 533.2752,-525.1512 533.2752,-525.1512 533.2752,-506.3814 533.2752,-506.3814 533.2752,-500.3814 539.2752,-494.3814 545.2752,-494.3814 545.2752,-494.3814 678.7248,-494.3814 678.7248,-494.3814 684.7248,-494.3814 690.7248,-500.3814 690.7248,-506.3814 690.7248,-506.3814 690.7248,-525.1512 690.7248,-525.1512 690.7248,-531.1512 684.7248,-537.1512 678.7248,-537.1512"/>
-<text text-anchor="middle" x="612" y="-518.8046" font-family="Helvetica,sans-Serif" font-size="15.19" fill="#212121">Event 8 (campaign)</text>
+<text text-anchor="middle" x="612" y="-518.8046" font-family="Helvetica,sans-Serif" font-size="15.19" fill="#212121">Activity 8 (campaign)</text>
 <text text-anchor="middle" x="612" y="-503.613" font-family="Helvetica,sans-Serif" font-size="15.19" fill="#212121">(1005)</text>
 </a>
 </g>
@@ -1142,9 +1142,9 @@
 <!-- 10 -->
 <g id="node10" class="node">
 <title>10</title>
-<g id="a_node10"><a xlink:title="name: Event 9 (sale)&#10;category: sale&#10;amount: 686&#10;inbound: 434&#10;outbound: 0&#10;id: 10">
+<g id="a_node10"><a xlink:title="name: Activity 9 (sale)&#10;category: sale&#10;amount: 686&#10;inbound: 434&#10;outbound: 0&#10;id: 10">
 <path fill="#db8d8d" stroke="#b71c1c" d="M1317.6561,-43.4879C1317.6561,-43.4879 1242.3439,-43.4879 1242.3439,-43.4879 1236.3439,-43.4879 1230.3439,-37.4879 1230.3439,-31.4879 1230.3439,-31.4879 1230.3439,-18.8671 1230.3439,-18.8671 1230.3439,-12.8671 1236.3439,-6.8671 1242.3439,-6.8671 1242.3439,-6.8671 1317.6561,-6.8671 1317.6561,-6.8671 1323.6561,-6.8671 1329.6561,-12.8671 1329.6561,-18.8671 1329.6561,-18.8671 1329.6561,-31.4879 1329.6561,-31.4879 1329.6561,-37.4879 1323.6561,-43.4879 1317.6561,-43.4879"/>
-<text text-anchor="middle" x="1280" y="-27.8084" font-family="Helvetica,sans-Serif" font-size="13.15" fill="#212121">Event 9 (sale)</text>
+<text text-anchor="middle" x="1280" y="-27.8084" font-family="Helvetica,sans-Serif" font-size="13.15" fill="#212121">Activity 9 (sale)</text>
 <text text-anchor="middle" x="1280" y="-14.6539" font-family="Helvetica,sans-Serif" font-size="13.15" fill="#212121">(686)</text>
 </a>
 </g>

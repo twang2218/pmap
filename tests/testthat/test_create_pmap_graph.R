@@ -4,13 +4,13 @@ test_that("create_pmap_graph()", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
     number_of_cases = 1000,
-    event_categories = c("campaign", "sale"),
-    event_categories_size = c(10, 4)
+    activity_categories = c("campaign", "sale"),
+    activity_categories_size = c(10, 4)
   )
 
   expect_named(
     eventlog,
-    c("timestamp", "case_id", "event_name", "event_category"),
+    c("timestamp", "case_id", "activity", "activity_category"),
     ignore.order = TRUE,
     ignore.case = TRUE)
   expect_equal(nrow(eventlog), 10000)

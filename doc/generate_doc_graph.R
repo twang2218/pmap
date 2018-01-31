@@ -6,12 +6,12 @@ eventlog <- eventdataR::sepsis %>%
   rename(
     timestamp = Complete_Timestamp,
     case_id = Case_ID,
-    event_name = Activity
+    activity = Activity
   ) %>%
   mutate(
-    event_type = event_name
+    activity_type = activity
   ) %>%
-  select(timestamp, case_id, event_name, event_type) %>%
+  select(timestamp, case_id, activity, activity_type) %>%
   na.omit()
 
 p <- create_pmap(eventlog)
@@ -25,10 +25,10 @@ p %>% prune_edges(0.5) %>%
 p %>% prune_nodes(0.5) %>% prune_edges(0.5) %>%
   render_pmap_file("man/figures/example.prune_edges.both.svg", use_external_dot = TRUE)
 
-p <- create_pmap(eventlog, distinct_repeated_events = TRUE)
+p <- create_pmap(eventlog, distinct_repeated_activities = TRUE)
 p %>% prune_nodes(0.5) %>% prune_edges(0.93) %>% render_pmap()
 p %>% prune_nodes(0.5) %>% prune_edges(0.93) %>%
-  render_pmap_file("man/figures/example.distinct_repeated_events.svg", use_external_dot = TRUE)
+  render_pmap_file("man/figures/example.distinct_repeated_activities.svg", use_external_dot = TRUE)
 
 # create_pmap()
 
@@ -46,8 +46,8 @@ eventlog <- data.frame(
     as.POSIXct("2017-10-10")
   ),
   case_id = c("c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1"),
-  event_name =  c("a",  "b",  "d",  "a",  "c",  "a",  "b",  "c",  "a",  "d"),
-  event_category =  c("campaign", "campaign", "sale", "campaign", "sale", "campaign", "campaign", "sale", "campaign", "sale"),
+  activity =  c("a",  "b",  "d",  "a",  "c",  "a",  "b",  "c",  "a",  "d"),
+  activity_category =  c("campaign", "campaign", "sale", "campaign", "sale", "campaign", "campaign", "sale", "campaign", "sale"),
   stringsAsFactors = FALSE
 )
 
@@ -58,8 +58,8 @@ create_pmap(eventlog, target_categories = c("sale")) %>%
 eventlog <- generate_eventlog(
   size_of_eventlog = 10000,
   number_of_cases = 2000,
-  event_categories = c("campaign", "sale"),
-  event_categories_size = c(8, 2))
+  activity_categories = c("campaign", "sale"),
+  activity_categories_size = c(8, 2))
 
 create_pmap(eventlog, target_categories = c("sale")) %>%
   render_pmap_file("man/figures/example.create_pmap.complex.svg", use_external_dot = TRUE)

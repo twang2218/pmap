@@ -11,7 +11,7 @@ generate_edges(eventlog, distinct_case = FALSE, target_categories = NULL)
 
 \item{distinct_case}{Whether should only count unique case}
 
-\item{target_categories}{A vector contains the target event categories. By default, it's \code{NULL}, which means every paths count. If it's contains the target event category, then only paths reaches the target event count.}
+\item{target_categories}{A vector contains the target activity categories. By default, it's \code{NULL}, which means every paths count. If it's contains the target activity category, then only paths reaches the target activity count.}
 }
 \value{
 a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} columns.
@@ -19,10 +19,10 @@ a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} colum
 \description{
 \code{eventlog} should be a \code{data.frame} or \code{data.table}, which contains, at least, following columns:
 \itemize{
-\item \code{timestamp}: timestamp column which indicates when event happened. The column's data type should be \code{POSIXct}, otherwise it will be converted to \code{POSIXct} automatically. (\code{POSIXct})
+\item \code{timestamp}: timestamp column which indicates when activity happened. The column's data type should be \code{POSIXct}, otherwise it will be converted to \code{POSIXct} automatically. (\code{POSIXct})
 \item \code{case_id}: case identifier. (\code{character})
-\item \code{event_name}: event name. (\code{character})
-\item \code{event_category}: event category. (\code{character})
+\item \code{activity}: activity name. (\code{character})
+\item \code{activity_category}: activity category. (\code{character})
 }
 }
 \examples{
@@ -32,31 +32,45 @@ a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} colum
 # -----------------------------------------------------
 eventlog <- generate_eventlog()
 edges <- generate_edges(eventlog)
+# Have a look on generated edges
 head(edges)
-# # A tibble: 6 x 3
-#   from             to                amount
-#   <chr>            <chr>              <int>
-# 1 Event 1 (normal) Event 1 (normal)      13
-# 2 Event 1 (normal) Event 10 (target)      3
-# 3 Event 1 (normal) Event 2 (normal)       7
-# 4 Event 1 (normal) Event 3 (normal)       9
-# 5 Event 1 (normal) Event 4 (normal)      11
-# 6 Event 1 (normal) Event 5 (normal)      14
+# # A tibble: 6 x 7
+#   from    to     amount mean_duration median_duration max_duration min_duration
+#   <chr>   <chr>   <int> <chr>         <chr>           <chr>        <chr>
+# 1 Activi… Activ…     12 1.02 weeks    1.12 weeks      1.91 weeks   2 hours
+# 2 Activi… Activ…      5 3.59 days     4.41 days       1.03 weeks   17.33 hours
+# 3 Activi… Activ…     10 1.13 weeks    7 days          2.93 weeks   1.51 days
+# 4 Activi… Activ…      1 2.46 weeks    2.46 weeks      2.46 weeks   2.46 weeks
+# 5 Activi… Activ…      3 1.72 weeks    1.2 weeks       2.79 weeks   1.16 weeks
+# 6 Activi… Activ…      8 3.38 days     2.2 days        1.85 weeks   15.1 hours
+
 str(edges)
-# Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	100 obs. of  3 variables:
-#  $ from  : chr  "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" ...
-#  $ to    : chr  "Event 1 (normal)" "Event 10 (target)" "Event 2 (normal)" "Event 3 (normal)" ...
-#  $ amount: int  13 3 7 9 11 14 8 12 16 15 ...
-#  - attr(*, ".internal.selfref")=<externalptr>
+# Classes ‘tbl_df’, ‘tbl’ and 'data.frame':       161 obs. of  7 variables:
+#  $ from           : chr  "Activity 1 (normal)" "Activity 1 (normal)" "Activity 1 (normal)"
+# "Activity 1 (normal)" ...
+#  $ to             : chr  "Activity 1 (normal)" "Activity 10 (phone)" "Activity 11 (phone)"
+# "Activity 12 (phone)" ...
+#  $ amount         : int  12 5 10 1 3 8 2 15 9 15 ...
+#  $ mean_duration  : chr  "1.02 weeks" "3.59 days" "1.13 weeks" "2.46 weeks" ...
+#  $ median_duration: chr  "1.12 weeks" "4.41 days" "7 days" "2.46 weeks" ...
+#  $ max_duration   : chr  "1.91 weeks" "1.03 weeks" "2.93 weeks" "2.46 weeks" ...
+#  $ min_duration   : chr  "2 hours" "17.33 hours" "1.51 days" "2.46 weeks" ...
+#
 # -----------------------------------------------------
 # Generate edges by specify the target categories, and the paths
-# not reaching the target category events will be ignored.
+# not reaching the target category activities will be ignored.
 # -----------------------------------------------------
 edges <- generate_edges(eventlog, target_categories = c("target"))
 str(edges)
-# Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	80 obs. of  3 variables:
-#  $ from  : chr  "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" "Event 1 (normal)" ...
-#  $ to    : chr  "Event 1 (normal)" "Event 10 (target)" "Event 2 (normal)" "Event 3 (normal)" ...
-#  $ amount: int  12 3 7 7 11 9 7 8 16 15 ...
-#  - attr(*, ".internal.selfref")=<externalptr>
+# Classes ‘tbl_df’, ‘tbl’ and 'data.frame':       115 obs. of  7 variables:
+#  $ from           : chr  "Activity 1 (normal)" "Activity 1 (normal)" "Activity 1 (normal)"
+# "Activity 1 (normal)" ...
+#  $ to             : chr  "Activity 1 (normal)" "Activity 11 (phone)" "Activity 13 (target)"
+# "Activity 14 (target)" ...
+#  $ amount         : int  1 3 1 4 2 6 1 1 3 1 ...
+#  $ mean_duration  : chr  "4.4 days" "2.12 weeks" "2.89 hours" "1.47 weeks" ...
+#  $ median_duration: chr  "4.4 days" "2.15 weeks" "2.89 hours" "1.04 weeks" ...
+#  $ max_duration   : chr  "4.4 days" "2.16 weeks" "2.89 hours" "3.53 weeks" ...
+#  $ min_duration   : chr  "4.4 days" "2.03 weeks" "2.89 hours" "1.76 days" ...
+#
 }

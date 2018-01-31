@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_pmap_graph.R
 \name{create_pmap_graph}
 \alias{create_pmap_graph}
-\title{Create the event graph by given nodes and edges.}
+\title{Create the activity graph by given nodes and edges.}
 \usage{
 create_pmap_graph(
    nodes,
@@ -20,18 +20,18 @@ create_pmap_graph(
 \arguments{
 \item{nodes}{Event list, it should be a \code{data.frame} containing following columns:
 \itemize{
-\item \code{name}: Event name, will be used as label. (\code{character})
-\item \code{category}: The event category (\code{character})
+\item \code{name}: Activity name, will be used as label. (\code{character})
+\item \code{category}: The activity category (\code{character})
 }}
 
-\item{edges}{Event transform list, it should be a \code{data.frame} containing following columns:
+\item{edges}{Activity transform list, it should be a \code{data.frame} containing following columns:
 \itemize{
-\item \code{from}: the beginning event of the edge. (\code{character})
-\item \code{to}: the ending event of the edge (\code{character})
-\item \code{amount}: How many of case affected by the given event. (\code{numeric})
+\item \code{from}: the beginning activity of the edge. (\code{character})
+\item \code{to}: the ending activity of the edge (\code{character})
+\item \code{amount}: How many of case affected by the given activity. (\code{numeric})
 }}
 
-\item{target_categories}{A vector contains the target event categories}
+\item{target_categories}{A vector contains the target activity categories}
 
 \item{edge_label}{Specify which attribute is used for the edge label.}
 }
@@ -42,26 +42,26 @@ Create the process map graph by specify the nodes and edges
 eventlog <- generate_eventlog()
 nodes <- generate_nodes(eventlog)
 head(nodes)
-#  # A tibble: 6 x 3
-#    name              category   amount
-#    <chr>             <chr>   <int>
-#  1 Event 1 (normal)  normal    105
-#  2 Event 10 (target) target     97
-#  3 Event 2 (normal)  normal     94
-#  4 Event 3 (normal)  normal     94
-#  5 Event 4 (normal)  normal    101
-#  6 Event 5 (normal)  normal     95
+# # A tibble: 6 x 3
+#   name                 category amount
+#   <chr>                <chr>     <int>
+# 1 Activity 1 (normal)  normal       68
+# 2 Activity 10 (phone)  phone        63
+# 3 Activity 11 (phone)  phone       116
+# 4 Activity 12 (phone)  phone        79
+# 5 Activity 13 (target) target       78
+# 6 Activity 14 (target) target        9
 edges <- generate_edges(eventlog)
 head(edges)
 #  # A tibble: 6 x 3
-#    from             to                amount
-#    <chr>            <chr>              <int>
-#  1 Event 1 (normal) Event 1 (normal)       8
-#  2 Event 1 (normal) Event 10 (target)     10
-#  3 Event 1 (normal) Event 2 (normal)      12
-#  4 Event 1 (normal) Event 3 (normal)       9
-#  5 Event 1 (normal) Event 4 (normal)       7
-#  6 Event 1 (normal) Event 5 (normal)      10
+#    from                to                        amount
+#    <chr>               <chr>                     <int>
+#  1 Activity 1 (normal) Activity 1 (normal)       8
+#  2 Activity 1 (normal) Activity 10 (target)     10
+#  3 Activity 1 (normal) Activity 2 (normal)      12
+#  4 Activity 1 (normal) Activity 3 (normal)       9
+#  5 Activity 1 (normal) Activity 4 (normal)       7
+#  6 Activity 1 (normal) Activity 5 (normal)      10
 p <- create_pmap_graph(nodes, edges, target_categories = c("target"))
 render_pmap(p)
 }
