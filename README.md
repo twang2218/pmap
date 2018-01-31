@@ -57,7 +57,7 @@ Like any data analysis task, the first but the most important thing is to prepar
 * `timestamp`: Represent the timestamps of the activities when they occurred. The data type should be `POSIXct`. For the timestamp in `character`, the package will attempt to convert the column to `POSIXct`.
 * `case_id`: Represent case ID or case ID in the process paths. It is used to calculate the activity frequency or process performance.
 * `activity`: Activity name or activity name.
-* `activity_category`(_optional since v0.4.0_): It is used to differentiate the grouped activities by different colors for the  better visualization purpose. For example, the marketing activities with different purposes can be visualized by different colors, with one purpose each. *(`activity_category` was previously called `activity_type`, and required before `v0.3.2`. It is no longer mandatory after this version.)* If `activity_category` is missing, the `activity` name will be used as `activity_category` for coloring by default.
+* `category`(_optional since v0.4.0_): It is used to differentiate the grouped activities by different colors for the  better visualization purpose. For example, the marketing activities with different purposes can be visualized by different colors, with one purpose each. *(`category` was previously called `activity_type`, and required before `v0.3.2`. It is no longer mandatory after this version.)* If `category` is missing, the `activity` name will be used as `category` for coloring by default.
 
 Let's look at this example step-by-step:
 
@@ -82,7 +82,7 @@ Check `eventlog` data frame structure.
 ```R
 > head(eventlog)
 # A tibble: 6 x 4
-  timestamp           case_id activity       activity_category      
+  timestamp           case_id activity       category      
   <dttm>              <chr>       <chr>            <chr>           
 1 2014-10-22 11:15:41 A           ER Registration  ER Registration 
 2 2014-10-22 11:27:00 A           Leucocytes       Leucocytes      
@@ -95,7 +95,7 @@ Classes ‘tbl_df’, ‘tbl’ and 'data.frame':    15190 obs. of  4 variables:
  $ timestamp  : POSIXct, format: "2014-10-22 11:15:41" "2014-10-22 11:27:00" "2014-10-22 11:27:00" ...
  $ case_id: chr  "A" "A" "A" "A" ...
  $ activity : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
- $ activity_category : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
+ $ category : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
 ```
 
 ### Create a process map

@@ -9,7 +9,7 @@
 #'  * `timestamp`: timestamp column which indicates when activity happened. The column's data type should be `POSIXct`, otherwise it will be converted to `POSIXct` automatically. (`POSIXct`)
 #'  * `case_id`: case identifier. (`character`)
 #'  * `activity`: activity name. (`character`)
-#'  * `activity_category`: activity category. (`character`)
+#'  * `category`: activity category. (`character`)
 #' @examples
 #' # -----------------------------------------------------
 #' # Generating edges and count every paths no matter whether
@@ -88,7 +88,7 @@ generate_edges <- function(eventlog, distinct_case = FALSE, target_categories = 
   }
 
   # make 'R CMD check' happy
-  activity <- activity_category <- is_target <- case_id <- timestamp <- last_target_date <-
+  activity <- category <- is_target <- case_id <- timestamp <- last_target_date <-
   from <- from_cid <- from_time <- from_is_target <-
   to_cid <- to <-
   duration <- mean_duration <- median_duration <- max_duration <- min_duration <- NULL
@@ -103,19 +103,19 @@ generate_edges <- function(eventlog, distinct_case = FALSE, target_categories = 
   # Attach `is_target` column
   if (length(target_categories) > 0) {
     categories <- eventlog %>%
-      dplyr::distinct(activity_category) %>%
+      dplyr::distinct(category) %>%
       dplyr::left_join(
         data.frame(
-          activity_category = target_categories,
+          category = target_categories,
           is_target = TRUE,
           stringsAsFactors = FALSE
         ),
-        by = "activity_category"
+        by = "category"
       ) %>%
-      dplyr::select(activity_category, is_target) %>%
+      dplyr::select(category, is_target) %>%
       dplyr::mutate(is_target = !is.na(is_target))
 
-    eventlog <- dplyr::inner_join(eventlog, categories, by = "activity_category")
+    eventlog <- dplyr::inner_join(eventlog, categories, by = "category")
   } else {
     eventlog <- dplyr::mutate(eventlog, is_target = FALSE)
   }

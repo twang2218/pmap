@@ -10,10 +10,10 @@
 #' > eventlog <- generate_eventlog(
 #'   size_of_eventlog = 10000,
 #'   number_of_cases = 2000,
-#'   activity_categories = c("campaign", "sale"),
-#'   activity_categories_size = c(10, 4))
+#'   categories = c("campaign", "sale"),
+#'   categories_size = c(10, 4))
 #' > head(eventlog)
-#'             timestamp   case_id          activity activity_category
+#'             timestamp   case_id          activity category
 #' 1 2017-01-01 02:14:50  Case 345  Activity 1 (campaign)   campaign
 #' 2 2017-01-01 02:26:24 Case 1625  Activity 2 (campaign)   campaign
 #' 3 2017-01-01 03:48:12 Case 1901     Activity 12 (sale)       sale
@@ -25,7 +25,7 @@
 #'  $ timestamp  : POSIXct, format: "2017-01-01 02:14:50" "2017-01-01 02:26:24" ...
 #'  $ case_id: chr  "Case 345" "Case 1625" "Case 1901" "Case 1029" ...
 #'  $ activity : chr  "Activity 1 (campaign)" "Activity 2 (campaign)" "Activity 12 (sale)" "Activity 10 (campaign)" ...
-#'  $ activity_category : chr  "campaign" "campaign" "sale" "campaign" ...
+#'  $ category : chr  "campaign" "campaign" "sale" "campaign" ...
 #' ```
 #'
 #' Create a process map from the event log and render it directly.

@@ -7,7 +7,7 @@ test_that("create_pmap() should handle simple graph", {
      timestamp = c(as.POSIXct("2017-10-01"), as.POSIXct("2017-10-20")),
      case_id = c("c1", "c1"),
      activity = c("a", "b"),
-     activity_category = c("campaign", "sale"),
+     category = c("campaign", "sale"),
      stringsAsFactors = FALSE
   )
 
@@ -24,13 +24,13 @@ test_that("create_pmap() should handle complex graph", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
     number_of_cases = 1000,
-    activity_categories = c("campaign", "sale"),
-    activity_categories_size = c(10, 4)
+    categories = c("campaign", "sale"),
+    categories_size = c(10, 4)
   )
 
   expect_named(
     eventlog,
-    c("timestamp", "case_id", "activity", "activity_category"),
+    c("timestamp", "case_id", "activity", "category"),
     ignore.order = TRUE,
     ignore.case = TRUE)
   expect_equal(nrow(eventlog), 10000)
@@ -50,13 +50,13 @@ test_that("create_pmap() should handle more complex graph with multiple categori
   eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
     number_of_cases = 1000,
-    activity_categories = c("campaign", "visit", "phone", "sale"),
-    activity_categories_size = c(5, 3, 2, 4)
+    categories = c("campaign", "visit", "phone", "sale"),
+    categories_size = c(5, 3, 2, 4)
   )
 
   expect_named(
     eventlog,
-    c("timestamp", "case_id", "activity", "activity_category"),
+    c("timestamp", "case_id", "activity", "category"),
     ignore.order = TRUE,
     ignore.case = TRUE)
   expect_equal(nrow(eventlog), 10000)
@@ -86,7 +86,7 @@ test_that("create_pmap() should handle names with SPACE padding", {
       ),
       case_id = c("c1", "c1 ", "c1 ", "c2 ", "c2", "c3", "c3 "),
       activity = c("  a", "b  ", "a  ", "b", " b", "  a", "b "),
-      activity_category = c("  campaign", " sale", "campaign  ", " sale  ", " sale", " campaign", "sale"),
+      category = c("  campaign", " sale", "campaign  ", " sale  ", " sale", " campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     target_categories = c(" sale")
@@ -124,7 +124,7 @@ test_that("create_pmap() should distinct repeated activities if `distinct_repeat
     ),
     case_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
     activity = c("a", "b", "a", "b", "b", "a", "b"),
-    activity_category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
+    category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
     stringsAsFactors = FALSE
   )
 
@@ -140,7 +140,7 @@ test_that("create_pmap() should distinct repeated activities if `distinct_repeat
   expect_equal(nodes$amount, c(2, 1, 3, 1))
 })
 
-test_that("create_pmap() should distinct repeated activities if `distinct_repeated_activities` with missing `activity_category` column in `eventlog`", {
+test_that("create_pmap() should distinct repeated activities if `distinct_repeated_activities` with missing `category` column in `eventlog`", {
   eventlog <- data.frame(
     timestamp = c(
       "2017-07-01",

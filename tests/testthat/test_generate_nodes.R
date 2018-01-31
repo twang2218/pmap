@@ -9,7 +9,7 @@ test_that("generate_nodes() should handle minimal eventlog", {
       ),
       case_id = c("c1", "c1"),
       activity = c("a", "b"),
-      activity_category = c("campaign", "sale"),
+      category = c("campaign", "sale"),
       stringsAsFactors = FALSE
     )
   )
@@ -31,7 +31,7 @@ test_that("generate_nodes() should handle eventlog with duplicated activities", 
       ),
       case_id = c("c1", "c1", "c2", "c1", "c1"),
       activity = c("a", "b", "a", "b", "b"),
-      activity_category = c("sale", "campaign", "sale", "campaign", "campaign"),
+      category = c("sale", "campaign", "sale", "campaign", "campaign"),
       stringsAsFactors = FALSE
     )
   )
@@ -53,7 +53,7 @@ test_that("generate_nodes() should handle eventlog with space at beginning or en
       ),
       case_id = c("c1", "c1", "c2", "c1", "c1"),
       activity = c(" a", "b b ", " a ", " b b ", " b b"),
-      activity_category = c("sale", "campaign", "sale", "campaign", "campaign"),
+      category = c("sale", "campaign", "sale", "campaign", "campaign"),
       stringsAsFactors = FALSE
     )
   )
@@ -79,7 +79,7 @@ test_that("generate_nodes() should count unique 'case_id' if 'distinct_case' is 
       ),
       case_id = c("c1", "c1", "c2", "c1", "c1"),
       activity = c("a", "b", "a", "a", "b"),
-      activity_category = c("campaign", "sale", "campaign", "campaign", "sale"),
+      category = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     distinct_case = TRUE
@@ -103,7 +103,7 @@ test_that("generate_nodes() should count every path if 'distinct_case' is not se
       ),
       case_id = c("c1", "c1", "c2", "c1", "c1"),
       activity = c("a", "b", "a", "a", "b"),
-      activity_category = c("campaign", "sale", "campaign", "campaign", "sale"),
+      category = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     distinct_case = FALSE
@@ -115,7 +115,7 @@ test_that("generate_nodes() should count every path if 'distinct_case' is not se
   expect_equal(nodes$category, c("campaign", "sale"))
 })
 
-test_that("generate_nodes() should handle the eventlog without `activity_category`", {
+test_that("generate_nodes() should handle the eventlog without `category`", {
   nodes <- generate_nodes(
     data.frame(
       timestamp = c(

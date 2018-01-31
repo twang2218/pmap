@@ -47,7 +47,7 @@ eventlog <- data.frame(
   ),
   case_id = c("c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1"),
   activity =  c("a",  "b",  "d",  "a",  "c",  "a",  "b",  "c",  "a",  "d"),
-  activity_category =  c("campaign", "campaign", "sale", "campaign", "sale", "campaign", "campaign", "sale", "campaign", "sale"),
+  category =  c("campaign", "campaign", "sale", "campaign", "sale", "campaign", "campaign", "sale", "campaign", "sale"),
   stringsAsFactors = FALSE
 )
 
@@ -58,8 +58,8 @@ create_pmap(eventlog, target_categories = c("sale")) %>%
 eventlog <- generate_eventlog(
   size_of_eventlog = 10000,
   number_of_cases = 2000,
-  activity_categories = c("campaign", "sale"),
-  activity_categories_size = c(8, 2))
+  categories = c("campaign", "sale"),
+  categories_size = c(8, 2))
 
 create_pmap(eventlog, target_categories = c("sale")) %>%
   render_pmap_file("man/figures/example.create_pmap.complex.svg", use_external_dot = TRUE)

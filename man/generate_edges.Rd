@@ -22,7 +22,7 @@ a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} colum
 \item \code{timestamp}: timestamp column which indicates when activity happened. The column's data type should be \code{POSIXct}, otherwise it will be converted to \code{POSIXct} automatically. (\code{POSIXct})
 \item \code{case_id}: case identifier. (\code{character})
 \item \code{activity}: activity name. (\code{character})
-\item \code{activity_category}: activity category. (\code{character})
+\item \code{category}: activity category. (\code{character})
 }
 }
 \examples{

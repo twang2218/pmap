@@ -7,17 +7,17 @@
 generate_eventlog(
      size_of_eventlog = 1000, 
      number_of_cases = 20, 
-     activity_categories = c("normal", "visit", "phone", "target"),
-     activity_categories_size = c(5, 4, 3, 2))
+     categories = c("normal", "visit", "phone", "target"),
+     categories_size = c(5, 4, 3, 2))
 }
 \arguments{
 \item{size_of_eventlog}{The size of generated event log}
 
 \item{number_of_cases}{How many cases in the simulation}
 
-\item{activity_categories}{A data frame contains the activity category}
+\item{categories}{A data frame contains the activity category}
 
-\item{activity_categories_size}{How many activity categories in each activity category}
+\item{categories_size}{How many activity categories in each activity category}
 }
 \description{
 This function provides the ability to randomly generate the \code{eventlog} data frame based on given parameters.
@@ -26,8 +26,8 @@ This function provides the ability to randomly generate the \code{eventlog} data
 eventlog <- generate_eventlog(
      size_of_eventlog = 10000,
      number_of_cases = 2000,
-     activity_categories = c("campaign", "sale"),
-     activity_categories_size = c(10, 4)
+     categories = c("campaign", "sale"),
+     categories_size = c(10, 4)
      )
 
 str(eventlog)
@@ -35,9 +35,9 @@ str(eventlog)
 #  $ timestamp  : POSIXct, format: "2017-01-01 02:16:16" ...
 #  $ case_id: chr  "Case 107" "Case 1828" "Case 587" "Case 1666" ...
 #  $ activity : chr  "Activity 4 (campaign)" "Activity 11 (sale)" "Activity 7 (campaign)" ...
-#  $ activity_category : chr  "campaign" "sale" "campaign" "sale" ...
+#  $ category : chr  "campaign" "sale" "campaign" "sale" ...
 head(eventlog)
-#             timestamp   case_id         activity activity_category
+#             timestamp   case_id         activity category
 # 1 2017-01-01 02:16:16  Case 107 Activity 4 (campaign)   campaign
 # 2 2017-01-01 03:04:22 Case 1828    Activity 11 (sale)       sale
 # 3 2017-01-01 03:36:35  Case 587 Activity 7 (campaign)   campaign

@@ -35,11 +35,11 @@
 #'     ),
 #'     case_id = c("c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1"),
 #'     activity =  c("a",  "b",  "d",  "a",  "c",  "a",  "b",  "c",  "a",  "d"),
-#'     activity_category =  c("campaign", "campaign", "sale", "campaign", "sale", "campaign", "campaign", "sale", "campaign", "sale"),
+#'     category =  c("campaign", "campaign", "sale", "campaign", "sale", "campaign", "campaign", "sale", "campaign", "sale"),
 #'     stringsAsFactors = FALSE
 #'   )
 #' > eventlog
-#'     timestamp case_id activity activity_category
+#'     timestamp case_id activity category
 #' 1  2017-10-01          c1          a   campaign
 #' 2  2017-10-02          c1          b   campaign
 #' 3  2017-10-03          c1          d       sale
@@ -61,10 +61,10 @@
 #' > eventlog <- generate_eventlog(
 #'     size_of_eventlog = 10000,
 #'     number_of_cases = 2000,
-#'     activity_categories = c("campaign", "sale"),
-#'     activity_categories_size = c(8, 2))
+#'     categories = c("campaign", "sale"),
+#'     categories_size = c(8, 2))
 #' > head(eventlog)
-#'             timestamp   case_id         activity activity_category
+#'             timestamp   case_id         activity category
 #' 1 2017-01-01 02:40:20 Case 1204 Activity 7 (campaign)   campaign
 #' 2 2017-01-01 03:10:31 Case 1554 Activity 5 (campaign)   campaign
 #' 3 2017-01-01 04:01:51  Case 546 Activity 4 (campaign)   campaign
@@ -76,7 +76,7 @@
 #'  $ timestamp  : POSIXct, format: "2017-01-01 02:40:20" "2017-01-01 03:10:31" ...
 #'  $ case_id: chr  "Case 1204" "Case 1554" "Case 546" "Case 1119" ...
 #'  $ activity : chr  "Activity 7 (campaign)" "Activity 5 (campaign)" "Activity 4 (campaign)" "Activity 9 (sale)" ...
-#'  $ activity_category : chr  "campaign" "campaign" "campaign" "sale" ...
+#'  $ category : chr  "campaign" "campaign" "campaign" "sale" ...
 #' > p <- create_pmap(eventlog, target_categories = c("sale"))
 #' > render_pmap(p)
 #' ```
@@ -121,10 +121,10 @@ create_pmap <- function(
       dplyr::mutate(activity = paste0(old_activity, " (", 1:n(), ")")) %>%
       dplyr::ungroup()
 
-    if (!"activity_category" %in% colnames(eventlog)) {
-      # if the `activity_category` is missing,
-      # then use the original `activity` as the `activity_category`
-      eventlog <- eventlog %>% dplyr::rename(activity_category = old_activity)
+    if (!"category" %in% colnames(eventlog)) {
+      # if the `category` is missing,
+      # then use the original `activity` as the `category`
+      eventlog <- eventlog %>% dplyr::rename(category = old_activity)
     }
   }
 

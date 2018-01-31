@@ -2,7 +2,7 @@
 #' @description `eventlog` should be a `data.frame`, which contains, at least, following columns:
 #'
 #'  * `activity`: activity name. (`character`)
-#'  * `activity_category`: activity category, which is optional. If the `activity_category` column is missing, the `activity` column will be used as the `activity_category`. (`character`)
+#'  * `category`: activity category, which is optional. If the `category` column is missing, the `activity` column will be used as the `category`. (`character`)
 #'  * `amount`: how many time this activity happened in the `eventlog`
 #'
 #' `generate_nodes()` will generate the node list from the given `eventlog` for the graph purpose.
@@ -60,7 +60,7 @@
 #' @export
 generate_nodes <- function(eventlog, distinct_case = FALSE) {
   # make 'R CMD check' happy
-  activity <- activity_category <- category <- name <- case_id <- NULL
+  activity <- category <- category <- name <- case_id <- NULL
 
   if (is.null(eventlog) || is.na(eventlog) || nrow(eventlog) == 0) {
     data.frame(
@@ -71,10 +71,10 @@ generate_nodes <- function(eventlog, distinct_case = FALSE) {
   } else {
     nodes <- eventlog %>% dplyr::mutate(name = stringr::str_trim(as.character(activity)))
 
-    if ("activity_category" %in% colnames(eventlog)) {
-      nodes <- nodes %>% dplyr::mutate(category = stringr::str_trim(as.character(activity_category)))
+    if ("category" %in% colnames(eventlog)) {
+      nodes <- nodes %>% dplyr::mutate(category = stringr::str_trim(as.character(category)))
     } else {
-      # if `activity_category` column is not provided, then use the `activity`
+      # if `category` column is not provided, then use the `activity`
       # column as the `category`.
       nodes <- nodes %>% dplyr::mutate(category = name)
     }

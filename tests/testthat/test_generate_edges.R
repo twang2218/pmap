@@ -6,7 +6,7 @@ test_that("generate_edges() should handle minimal eventlog", {
       timestamp = c(as.POSIXct("2017-07-01"), as.POSIXct("2017-07-20")),
       case_id = c("c1", "c1"),
       activity = c("a", "b"),
-      activity_category = c("campaign", "sale"),
+      category = c("campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     target_categories = c("sale")
@@ -30,7 +30,7 @@ test_that("generate_edges() should handle eventlog without specifies 'target_cat
       timestamp = c(as.POSIXct("2017-07-20"), as.POSIXct("2017-07-01")),
       case_id = c("c1", "c1"),
       activity = c("a", "b"),
-      activity_category = c("compaign", "sale"),
+      category = c("compaign", "sale"),
       stringsAsFactors = FALSE
     )
   )
@@ -45,13 +45,13 @@ test_that("generate_edges() should handle eventlog without specifies 'target_cat
 })
 
 test_that("generate_edges() should handle eventlog without edge reaches 'target_categories'", {
-  # There is no case activity ends in `activity_category == 'sale'`
+  # There is no case activity ends in `category == 'sale'`
   edges <- generate_edges(
     data.frame(
       timestamp = c(as.POSIXct("2017-07-20"), as.POSIXct("2017-07-01")),
       case_id = c("c1", "c1"),
       activity = c("a", "b"),
-      activity_category = c("compaign", "sale"),
+      category = c("compaign", "sale"),
       stringsAsFactors = FALSE
     ),
     target_categories = c("sale")
@@ -86,7 +86,7 @@ test_that("generate_edges() should count every paths if 'distinct_case' is not s
       ),
       case_id = c("c1", "c1", "c2", "c1", "c1", "c1", "c1"),
       activity = c("a", "b", "a", "a", "b", "a", "b"),
-      activity_category = c("campaign", "sale", "campaign", "campaign", "sale", "campaign", "sale"),
+      category = c("campaign", "sale", "campaign", "campaign", "sale", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     target_categories = c("sale")
@@ -117,7 +117,7 @@ test_that("generate_edges() should count unique 'case_id' if 'distinct_case' is 
       ),
       case_id = c("c1", "c1", "c2", "c1", "c1"),
       activity = c("a", "b", "a", "a", "b"),
-      activity_category = c("campaign", "sale", "campaign", "campaign", "sale"),
+      category = c("campaign", "sale", "campaign", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     distinct_case = TRUE,
@@ -150,7 +150,7 @@ test_that("generate_edges() should not count paths from 'target_categories'", {
       ),
       case_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
       activity = c("a", "b", "a", "b", "b", "a", "b"),
-      activity_category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
+      category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     target_categories = c("sale")
@@ -181,7 +181,7 @@ test_that("generate_edges() should convert 'timestamp' to 'POSIXct' if it's not 
       ),
       case_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
       activity = c("a", "b", "a", "b", "b", "a", "b"),
-      activity_category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
+      category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
       stringsAsFactors = FALSE
     ),
     target_categories = c("sale")
