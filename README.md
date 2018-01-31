@@ -55,7 +55,7 @@ This is a demonstration of how to use `pmap` to create a process map from an eve
 Like any data analysis task, the first but the most important thing is to prepare our data. `pmap` only requires three mandatory fields and one optional field to meet the requirement of the `eventlog` data:
 
 * `timestamp`: Represent the timestamps of the events when they occurred. The data type should be `POSIXct`. For the timestamp in `character`, the package will attempt to convert the column to `POSIXct`.
-* `customer_id`: Represent customer ID or case ID in the process paths. It is used to calculate the event frequency or process performance.
+* `case_id`: Represent case ID or case ID in the process paths. It is used to calculate the event frequency or process performance.
 * `event_name`: Event name or activity name.
 * `event_category`(_optional since v0.4.0_): It is used to differentiate the grouped events by different colors for the  better visualization purpose. For example, the marketing activities with different purposes can be visualized by different colors, with one purpose each. *(`event_category` was previously called `event_type`, and required before `v0.3.2`. It is no longer mandatory after this version.)* If `event_category` is missing, the `event_name` name will be used as `event_category` for coloring by default.
 
@@ -70,10 +70,10 @@ library(pmap)
 > eventlog <- eventdataR::sepsis %>%
     rename(
       timestamp = Complete_Timestamp,
-      customer_id = Case_ID,
+      case_id = Case_ID,
       event_name = Activity
     ) %>%
-    select(timestamp, customer_id, event_name) %>%
+    select(timestamp, case_id, event_name) %>%
     na.omit()
 ```
 
@@ -82,7 +82,7 @@ Check `eventlog` data frame structure.
 ```R
 > head(eventlog)
 # A tibble: 6 x 4
-  timestamp           customer_id event_name       event_category      
+  timestamp           case_id event_name       event_category      
   <dttm>              <chr>       <chr>            <chr>           
 1 2014-10-22 11:15:41 A           ER Registration  ER Registration 
 2 2014-10-22 11:27:00 A           Leucocytes       Leucocytes      
@@ -93,7 +93,7 @@ Check `eventlog` data frame structure.
 > str(eventlog)
 Classes ‘tbl_df’, ‘tbl’ and 'data.frame':    15190 obs. of  4 variables:
  $ timestamp  : POSIXct, format: "2014-10-22 11:15:41" "2014-10-22 11:27:00" "2014-10-22 11:27:00" ...
- $ customer_id: chr  "A" "A" "A" "A" ...
+ $ case_id: chr  "A" "A" "A" "A" ...
  $ event_name : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
  $ event_category : chr  "ER Registration" "Leucocytes" "CRP" "LacticAcid" ...
 ```

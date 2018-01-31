@@ -4,12 +4,12 @@
 \alias{generate_nodes}
 \title{Generate nodes from event logs}
 \usage{
-generate_nodes(eventlog, distinct_customer = FALSE)
+generate_nodes(eventlog, distinct_case = FALSE)
 }
 \arguments{
 \item{eventlog}{Event logs}
 
-\item{distinct_customer}{Whether should only count unique customer}
+\item{distinct_case}{Whether should only count unique case}
 }
 \value{
 a nodes \code{data.frame} which represents a event list, it contains \code{name}, \code{category} and \code{amount} columns.
@@ -46,10 +46,10 @@ print(nodes)
 # 10 Event 9 (target)  target   1012
 #
 # -----------------------------------------------------
-# Generate nodes and only count by unique customer.
+# Generate nodes and only count by unique case.
 # -----------------------------------------------------
 #
-nodes <- generate_nodes(eventlog, distinct_customer = TRUE)
+nodes <- generate_nodes(eventlog, distinct_case = TRUE)
 nodes
 # # A tibble: 10 x 3
 #    name              category   amount

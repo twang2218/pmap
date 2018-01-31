@@ -4,12 +4,12 @@
 \alias{generate_edges}
 \title{Generate edges from event logs}
 \usage{
-generate_edges(eventlog, distinct_customer = FALSE, target_categories = NULL)
+generate_edges(eventlog, distinct_case = FALSE, target_categories = NULL)
 }
 \arguments{
 \item{eventlog}{Event logs}
 
-\item{distinct_customer}{Whether should only count unique customer}
+\item{distinct_case}{Whether should only count unique case}
 
 \item{target_categories}{A vector contains the target event categories. By default, it's \code{NULL}, which means every paths count. If it's contains the target event category, then only paths reaches the target event count.}
 }
@@ -20,7 +20,7 @@ a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} colum
 \code{eventlog} should be a \code{data.frame} or \code{data.table}, which contains, at least, following columns:
 \itemize{
 \item \code{timestamp}: timestamp column which indicates when event happened. The column's data type should be \code{POSIXct}, otherwise it will be converted to \code{POSIXct} automatically. (\code{POSIXct})
-\item \code{customer_id}: customer identifier. (\code{character})
+\item \code{case_id}: case identifier. (\code{character})
 \item \code{event_name}: event name. (\code{character})
 \item \code{event_category}: event category. (\code{character})
 }
@@ -28,7 +28,7 @@ a \code{data.frame} of edges with \code{from}, \code{to} and \code{amount} colum
 \examples{
 # -----------------------------------------------------
 # Generating edges and count every paths no matter whether
-# it's from the same customer or not.
+# it's from the same case or not.
 # -----------------------------------------------------
 eventlog <- generate_eventlog()
 edges <- generate_edges(eventlog)

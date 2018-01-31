@@ -5,13 +5,13 @@ library(pmap)
 eventlog <- eventdataR::sepsis %>%
   rename(
     timestamp = Complete_Timestamp,
-    customer_id = Case_ID,
+    case_id = Case_ID,
     event_name = Activity
   ) %>%
   mutate(
     event_type = event_name
   ) %>%
-  select(timestamp, customer_id, event_name, event_type) %>%
+  select(timestamp, case_id, event_name, event_type) %>%
   na.omit()
 
 p <- create_pmap(eventlog)
@@ -45,7 +45,7 @@ eventlog <- data.frame(
     as.POSIXct("2017-10-09"),
     as.POSIXct("2017-10-10")
   ),
-  customer_id = c("c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1"),
+  case_id = c("c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1", "c1"),
   event_name =  c("a",  "b",  "d",  "a",  "c",  "a",  "b",  "c",  "a",  "d"),
   event_category =  c("campaign", "campaign", "sale", "campaign", "sale", "campaign", "campaign", "sale", "campaign", "sale"),
   stringsAsFactors = FALSE
@@ -57,7 +57,7 @@ create_pmap(eventlog, target_categories = c("sale")) %>%
 
 eventlog <- generate_eventlog(
   size_of_eventlog = 10000,
-  number_of_customers = 2000,
+  number_of_cases = 2000,
   event_categories = c("campaign", "sale"),
   event_categories_size = c(8, 2))
 

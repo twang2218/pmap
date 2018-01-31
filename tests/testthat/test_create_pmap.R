@@ -5,7 +5,7 @@ context("create_pmap()")
 test_that("create_pmap() should handle simple graph", {
   eventlog <- data.frame(
      timestamp = c(as.POSIXct("2017-10-01"), as.POSIXct("2017-10-20")),
-     customer_id = c("c1", "c1"),
+     case_id = c("c1", "c1"),
      event_name = c("a", "b"),
      event_category = c("campaign", "sale"),
      stringsAsFactors = FALSE
@@ -23,14 +23,14 @@ test_that("create_pmap() should handle simple graph", {
 test_that("create_pmap() should handle complex graph", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
-    number_of_customers = 1000,
+    number_of_cases = 1000,
     event_categories = c("campaign", "sale"),
     event_categories_size = c(10, 4)
   )
 
   expect_named(
     eventlog,
-    c("timestamp", "customer_id", "event_name", "event_category"),
+    c("timestamp", "case_id", "event_name", "event_category"),
     ignore.order = TRUE,
     ignore.case = TRUE)
   expect_equal(nrow(eventlog), 10000)
@@ -49,14 +49,14 @@ test_that("create_pmap() should handle complex graph", {
 test_that("create_pmap() should handle more complex graph with multiple categories without target", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
-    number_of_customers = 1000,
+    number_of_cases = 1000,
     event_categories = c("campaign", "visit", "phone", "sale"),
     event_categories_size = c(5, 3, 2, 4)
   )
 
   expect_named(
     eventlog,
-    c("timestamp", "customer_id", "event_name", "event_category"),
+    c("timestamp", "case_id", "event_name", "event_category"),
     ignore.order = TRUE,
     ignore.case = TRUE)
   expect_equal(nrow(eventlog), 10000)
@@ -84,7 +84,7 @@ test_that("create_pmap() should handle names with SPACE padding", {
         "2017-07-06",
         "2017-07-20"
       ),
-      customer_id = c("c1", "c1 ", "c1 ", "c2 ", "c2", "c3", "c3 "),
+      case_id = c("c1", "c1 ", "c1 ", "c2 ", "c2", "c3", "c3 "),
       event_name = c("  a", "b  ", "a  ", "b", " b", "  a", "b "),
       event_category = c("  campaign", " sale", "campaign  ", " sale  ", " sale", " campaign", "sale"),
       stringsAsFactors = FALSE
@@ -122,7 +122,7 @@ test_that("create_pmap() should distinct repeated events if `distinct_repeated_e
       "2017-07-06",
       "2017-07-20"
     ),
-    customer_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
+    case_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
     event_name = c("a", "b", "a", "b", "b", "a", "b"),
     event_category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
     stringsAsFactors = FALSE
@@ -151,7 +151,7 @@ test_that("create_pmap() should distinct repeated events if `distinct_repeated_e
       "2017-07-06",
       "2017-07-20"
     ),
-    customer_id = c("c1", "c1 ", "c1 ", "c2 ", "c2", "c3", "c3"),
+    case_id = c("c1", "c1 ", "c1 ", "c2 ", "c2", "c3", "c3"),
     event_name = c("a", "b", "a", "b", "b", "a", "b"),
     stringsAsFactors = FALSE
   )

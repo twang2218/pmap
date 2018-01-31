@@ -6,9 +6,9 @@
 #'  * `amount`: how many time this event happened in the `eventlog`
 #'
 #' `generate_nodes()` will generate the node list from the given `eventlog` for the graph purpose.
-#' @usage generate_nodes(eventlog, distinct_customer = FALSE)
+#' @usage generate_nodes(eventlog, distinct_case = FALSE)
 #' @param eventlog Event logs
-#' @param distinct_customer Whether should only count unique customer
+#' @param distinct_case Whether should only count unique case
 #' @return a nodes `data.frame` which represents a event list, it contains `name`, `category` and `amount` columns.
 #' @examples
 #' # -----------------------------------------------------
@@ -32,10 +32,10 @@
 #' # 10 Event 9 (target)  target   1012
 #' #
 #' # -----------------------------------------------------
-#' # Generate nodes and only count by unique customer.
+#' # Generate nodes and only count by unique case.
 #' # -----------------------------------------------------
 #' #
-#' nodes <- generate_nodes(eventlog, distinct_customer = TRUE)
+#' nodes <- generate_nodes(eventlog, distinct_case = TRUE)
 #' nodes
 #' # # A tibble: 10 x 3
 #' #    name              category   amount
@@ -58,9 +58,9 @@
 #' @importFrom data.table   setorder
 #' @importFrom stringr      str_trim
 #' @export
-generate_nodes <- function(eventlog, distinct_customer = FALSE) {
+generate_nodes <- function(eventlog, distinct_case = FALSE) {
   # make 'R CMD check' happy
-  event_name <- event_category <- category <- name <- customer_id <- NULL
+  event_name <- event_category <- category <- name <- case_id <- NULL
 
   if (is.null(eventlog) || is.na(eventlog) || nrow(eventlog) == 0) {
     data.frame(
@@ -79,8 +79,8 @@ generate_nodes <- function(eventlog, distinct_customer = FALSE) {
       nodes <- nodes %>% dplyr::mutate(category = name)
     }
 
-    if (distinct_customer) {
-      nodes <- nodes %>% dplyr::distinct(name, category, customer_id)
+    if (distinct_case) {
+      nodes <- nodes %>% dplyr::distinct(name, category, case_id)
     }
 
     nodes <- nodes %>%

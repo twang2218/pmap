@@ -1,19 +1,19 @@
 #' @title Generate edges from event logs
-#' @usage generate_edges(eventlog, distinct_customer = FALSE, target_categories = NULL)
+#' @usage generate_edges(eventlog, distinct_case = FALSE, target_categories = NULL)
 #' @param eventlog Event logs
-#' @param distinct_customer Whether should only count unique customer
+#' @param distinct_case Whether should only count unique case
 #' @param target_categories A vector contains the target event categories. By default, it's `NULL`, which means every paths count. If it's contains the target event category, then only paths reaches the target event count.
 #' @return a `data.frame` of edges with `from`, `to` and `amount` columns.
 #' @description `eventlog` should be a `data.frame` or `data.table`, which contains, at least, following columns:
 #'
 #'  * `timestamp`: timestamp column which indicates when event happened. The column's data type should be `POSIXct`, otherwise it will be converted to `POSIXct` automatically. (`POSIXct`)
-#'  * `customer_id`: customer identifier. (`character`)
+#'  * `case_id`: case identifier. (`character`)
 #'  * `event_name`: event name. (`character`)
 #'  * `event_category`: event category. (`character`)
 #' @examples
 #' # -----------------------------------------------------
 #' # Generating edges and count every paths no matter whether
-#' # it's from the same customer or not.
+#' # it's from the same case or not.
 #' # -----------------------------------------------------
 #' eventlog <- generate_eventlog()
 #' edges <- generate_edges(eventlog)
@@ -61,7 +61,7 @@
 #' @importFrom stats        median
 #' @importFrom stringr      str_trim
 #' @export
-generate_edges <- function(eventlog, distinct_customer = FALSE, target_categories = NULL) {
+generate_edges <- function(eventlog, distinct_case = FALSE, target_categories = NULL) {
   # return empty edge if eventlog is empty
   if (nrow(eventlog) == 0) {
     return(
@@ -74,7 +74,7 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_categorie
   }
 
   # make 'R CMD check' happy
-  event_name <- event_category <- is_target <- customer_id <- timestamp <- last_target_date <-
+  event_name <- event_category <- is_target <- case_id <- timestamp <- last_target_date <-
   from <- from_cid <- from_time <- from_is_target <-
   to_cid <- to <-
   duration <- mean_duration <- median_duration <- max_duration <- min_duration <- NULL
@@ -112,7 +112,7 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_categorie
   }
 
   # Construct potential edges
-  eventlog <- data.table::as.data.table(eventlog) %>% data.table::setorder(customer_id, timestamp)
+  eventlog <- data.table::as.data.table(eventlog) %>% data.table::setorder(case_id, timestamp)
 
   size <- nrow(eventlog)
   begin <- eventlog[-size, ]
@@ -121,36 +121,36 @@ generate_edges <- function(eventlog, distinct_customer = FALSE, target_categorie
   edges <- data.frame(
       from_time = begin$timestamp,
       from = begin$event_name,
-      customer_id = begin$customer_id,
+      case_id = begin$case_id,
       from_is_target = begin$is_target,
       to_time = end$timestamp,
       to = end$event_name,
-      to_cid = end$customer_id,
+      to_cid = end$case_id,
       to_is_target = end$is_target,
       duration = end$time - begin$time,
       stringsAsFactors = FALSE
     ) %>%
-    dplyr::filter(customer_id == to_cid & !from_is_target)
+    dplyr::filter(case_id == to_cid & !from_is_target)
 
 
   # prune edges by target_categories
   if (length(target_categories) > 0) {
     # find the last target event date
-    customer_last_target_date <- eventlog %>%
+    case_last_target_date <- eventlog %>%
       dplyr::filter(is_target) %>%
-      dplyr::group_by(customer_id) %>%
+      dplyr::group_by(case_id) %>%
       dplyr::summarize(last_target_date = max(timestamp))
 
     # prune all the edges with event after the last target event date
     edges <- edges %>%
-      dplyr::inner_join(customer_last_target_date, by = "customer_id") %>%
+      dplyr::inner_join(case_last_target_date, by = "case_id") %>%
       dplyr::filter(from_time < last_target_date)
   }
 
-  # Only count customer once if `distinct_customer` flag is set
-  if (distinct_customer) {
+  # Only count case once if `distinct_case` flag is set
+  if (distinct_case) {
     edges <- edges %>%
-      dplyr::group_by(from, to, customer_id) %>%
+      dplyr::group_by(from, to, case_id) %>%
       dplyr::summarize(
         mean_duration = mean(duration),
         median_duration = stats::median(duration),

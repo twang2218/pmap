@@ -19,21 +19,21 @@ Create an event log\preformatted{> library(dplyr)
 > library(pmap)
 > eventlog <- generate_eventlog(
   size_of_eventlog = 10000,
-  number_of_customers = 2000,
+  number_of_cases = 2000,
   event_categories = c("campaign", "sale"),
   event_categories_size = c(10, 4))
 > head(eventlog)
-            timestamp   customer_id          event_name event_category
-1 2017-01-01 02:14:50  Customer 345  Event 1 (campaign)   campaign
-2 2017-01-01 02:26:24 Customer 1625  Event 2 (campaign)   campaign
-3 2017-01-01 03:48:12 Customer 1901     Event 12 (sale)       sale
-4 2017-01-01 03:57:54 Customer 1029 Event 10 (campaign)   campaign
-5 2017-01-01 07:46:54  Customer 215 Event 10 (campaign)   campaign
-6 2017-01-01 09:44:51 Customer 1354  Event 1 (campaign)   campaign
+            timestamp   case_id          event_name event_category
+1 2017-01-01 02:14:50  Case 345  Event 1 (campaign)   campaign
+2 2017-01-01 02:26:24 Case 1625  Event 2 (campaign)   campaign
+3 2017-01-01 03:48:12 Case 1901     Event 12 (sale)       sale
+4 2017-01-01 03:57:54 Case 1029 Event 10 (campaign)   campaign
+5 2017-01-01 07:46:54  Case 215 Event 10 (campaign)   campaign
+6 2017-01-01 09:44:51 Case 1354  Event 1 (campaign)   campaign
 > str(eventlog)
 'data.frame':	10000 obs. of  4 variables:
  $ timestamp  : POSIXct, format: "2017-01-01 02:14:50" "2017-01-01 02:26:24" ...
- $ customer_id: chr  "Customer 345" "Customer 1625" "Customer 1901" "Customer 1029" ...
+ $ case_id: chr  "Case 345" "Case 1625" "Case 1901" "Case 1029" ...
  $ event_name : chr  "Event 1 (campaign)" "Event 2 (campaign)" "Event 12 (sale)" "Event 10 (campaign)" ...
  $ event_category : chr  "campaign" "campaign" "sale" "campaign" ...
 }

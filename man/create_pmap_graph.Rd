@@ -28,7 +28,7 @@ create_pmap_graph(
 \itemize{
 \item \code{from}: the beginning event of the edge. (\code{character})
 \item \code{to}: the ending event of the edge (\code{character})
-\item \code{amount}: How many of customer affected by the given event. (\code{numeric})
+\item \code{amount}: How many of case affected by the given event. (\code{numeric})
 }}
 
 \item{target_categories}{A vector contains the target event categories}

@@ -18,7 +18,7 @@
 #' @param edges Event transform list, it should be a `data.frame` containing following columns:
 #'   * `from`: the beginning event of the edge. (`character`)
 #'   * `to`: the ending event of the edge (`character`)
-#'   * `amount`: How many of customer affected by the given event. (`numeric`)
+#'   * `amount`: How many of case affected by the given event. (`numeric`)
 #' @param target_categories A vector contains the target event categories
 #' @param edge_label Specify which attribute is used for the edge label.
 #' @examples

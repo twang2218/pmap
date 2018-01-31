@@ -3,7 +3,7 @@ context("render_pmap_file()")
 test_that("render_pmap_file() should be able to render to a file", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 1000,
-    number_of_customers = 100,
+    number_of_cases = 100,
     event_categories = c("campaign", "sale"),
     event_categories_size = c(10, 4)
   )
@@ -20,7 +20,7 @@ test_that("render_pmap_file() should be able to render to a file", {
 test_that("render_pmap_file() should be able to guess file format", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 1000,
-    number_of_customers = 100,
+    number_of_cases = 100,
     event_categories = c("campaign", "sale"),
     event_categories_size = c(10, 4)
   )
@@ -47,7 +47,7 @@ test_that("render_pmap_file() should be able to use external `dot` command", {
 
   eventlog <- generate_eventlog(
     size_of_eventlog = 1000,
-    number_of_customers = 100,
+    number_of_cases = 100,
     event_categories = c("campaign", "sale"),
     event_categories_size = c(10, 4)
   )
