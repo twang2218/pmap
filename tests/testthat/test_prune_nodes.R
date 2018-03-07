@@ -47,13 +47,13 @@ test_that("prune_nodes() should be able prune half of the nodes", {
       target_categories = c("sale")
     )
 
-    nodes_count_before_prune <- DiagrammeR::node_count(p)
+    nodes_count_before_prune <- DiagrammeR::count_nodes(p)
 
     # 0.5 * 4 = 2, so `prune_nodes()` should prune 2 nodes,
     # which should be "a => b", "b => c" according to the `amount`
     p <- prune_nodes(p, percentage = 0.5, rank = rank)
 
-    nodes_count_after_prune <- DiagrammeR::node_count(p)
+    nodes_count_after_prune <- DiagrammeR::count_nodes(p)
 
     expect_equal(nodes_count_after_prune, nodes_count_before_prune - round(nodes_count_before_prune * 0.5))
   }

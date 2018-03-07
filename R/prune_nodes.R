@@ -10,10 +10,10 @@
 #' @examples
 #' library(dplyr)
 #' p <- generate_eventlog() %>% create_pmap(target_categories = c("target"))
-#' DiagrammeR::node_count(p)
+#' DiagrammeR::count_nodes(p)
 #' # [1] 10
 #' p <- prune_nodes(p, percentage = 0.5)
-#' DiagrammeR::node_count(p)
+#' DiagrammeR::count_nodes(p)
 #' # [1] 5
 #' @seealso [prune_edges]
 #' @importFrom dplyr        %>%
