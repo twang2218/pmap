@@ -1,3 +1,33 @@
+# pmap 0.6.0
+
+Besides the count of the edge on the label, the duration stats are also calculated to be shown. Add `distinct_repeated_events` to be able to expand the repeated events to have better internal understanding. Add ability to use external `dot` program to render the graph, it will be faster in some cases.
+
+* af20391 Fix 'UQ()' issue on dependencies.
+* 0953e15 Fix figures naming issue.
+* e1daa8c Add term schema relation graph
+* 6523f17 Rename `activity_category` to just `category`
+* 1929113 Change the term from `event` to `activity`.
+* 384de85 Rename term `customer` to `case`
+* 0c63555 Update the graph files and add more readme content to reflect latest update
+* 702c526 Add `adjust_edge_label()` function
+* a35ec17 Add huge process map warning for rendering
+* 1fba54b Add `use_external_dot` argument to `render_pmap_file()`
+* 089a958 Add more ignores to `.gitignore` and `.Rbuildignore`
+* 1c17eb4 Add `dot` file support for `render_pmap_file()`
+* 934d5d4 Add `distinct_repeated_events` argument to `create_pmap()`
+* 095444c Remove node's color gradient as there is a compatibility issue in Viz.js
+* de905fc Enhance color palette for event categories to 80 colours, and won't fail if ask more
+* 64a089e Rename event_type to event_category to avoid confusion
+* fa527d7 Add `*_prune_percentage` to `render_pmap_shiny()` for initial prune value settings.
+* 84e656c Add ability to `render_pmap_file()` to guess file format
+* 15ae4fa Handle the SPACE padding case
+* 1530337 Convert `eventlog$timestamp` to `POSIXct` automatically if it's not `POSIXct` yet.
+* c67f6c8 Add `median_duration` for edge label and more test cases.
+* 8702685 Fix the edge label too close to the edge problem by padding some spaces
+* dc79c7c Add duration support in edge label
+* d26c5a5 Add Github version and license badges
+
+
 # pmap 0.5.0
 
 This update is mainly about performance improvements. With many of these tuning/refactoring, `0.5.0` is much faster than `0.4.0`. It can be thousands times faster for large dataset, such as event log contains several millions records.
