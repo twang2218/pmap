@@ -30,13 +30,13 @@ The function depends on V8 engine, so please install \code{v8} engine support on
 \itemize{
 \item For Ubuntu/Debian user, please install \code{libv8-dev} package;
 \item For Fedora/RHEL user, please install \code{v8-devel} package;
-\item For macOS user, please \code{brew install v8@3.15};
+\item For macOS user, please \verb{brew install v8@3.15};
 }
 
-Example:\preformatted{library(dplyr)
+Example:\if{html}{\out{<div class="sourceCode R">}}\preformatted{library(dplyr)
 library(pmap)
 eventlog <- generate_eventlog()
 p <- create_pmap(eventlog)
 render_pmap_file(p, file_name = "test.svg")
-}
+}\if{html}{\out{</div>}}
 }

@@ -33,7 +33,7 @@ create_pmap(
 Create the process map by analyzing the given \code{eventlog} and extract the nodes by \code{generate_nodes()} and edges by \code{generate_edges()}.
 }
 \details{
-\preformatted{> eventlog <- data.frame(
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{> eventlog <- data.frame(
     timestamp = c(
       as.POSIXct("2017-10-01"),
       as.POSIXct("2017-10-02"),
@@ -65,11 +65,11 @@ Create the process map by analyzing the given \code{eventlog} and extract the no
 10 2017-10-10          c1          d       sale
 > p <- create_pmap(eventlog, target_categories = c("sale"))
 > render_pmap(p)
-}
+}\if{html}{\out{</div>}}
 
 \if{html}{\figure{example.create_pmap.simple.svg}{options: alt="Figure: example.create_pmap.simple.svg"}}
 
-Or for more complex event log:\preformatted{> eventlog <- generate_eventlog(
+Or for more complex event log:\if{html}{\out{<div class="sourceCode R">}}\preformatted{> eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
     number_of_cases = 2000,
     categories = c("campaign", "sale"),
@@ -90,7 +90,7 @@ Or for more complex event log:\preformatted{> eventlog <- generate_eventlog(
  $ category : chr  "campaign" "campaign" "campaign" "sale" ...
 > p <- create_pmap(eventlog, target_categories = c("sale"))
 > render_pmap(p)
-}
+}\if{html}{\out{</div>}}
 
 \if{html}{\figure{example.create_pmap.complex.svg}{options: width="100\%" alt="Figure: example.create_pmap.complex.svg"}}
 }

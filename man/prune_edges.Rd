@@ -15,7 +15,7 @@ prune_edges(p, percentage = 0.2)
 Prune edges based on given percentage
 }
 \details{
-Create an event log\preformatted{> library(dplyr)
+Create an event log\if{html}{\out{<div class="sourceCode R">}}\preformatted{> library(dplyr)
 > library(pmap)
 > eventlog <- generate_eventlog(
   size_of_eventlog = 10000,
@@ -36,11 +36,11 @@ Create an event log\preformatted{> library(dplyr)
  $ case_id: chr  "Case 345" "Case 1625" "Case 1901" "Case 1029" ...
  $ activity : chr  "Activity 1 (campaign)" "Activity 2 (campaign)" "Activity 12 (sale)" "Activity 10 (campaign)" ...
  $ category : chr  "campaign" "campaign" "sale" "campaign" ...
-}
+}\if{html}{\out{</div>}}
 
-Create a process map from the event log and render it directly.\preformatted{> p <- create_pmap(eventlog, target_categories = c("sale"))
+Create a process map from the event log and render it directly.\if{html}{\out{<div class="sourceCode R">}}\preformatted{> p <- create_pmap(eventlog, target_categories = c("sale"))
 > render_pmap(p)
-}
+}\if{html}{\out{</div>}}
 
 \if{html}{\figure{example.prune_edges.none.svg}{options: width="100\%" height="400px" alt="Figure: example.prune_edges.none.svg"}}
 
