@@ -3,7 +3,7 @@ projection <- function(x, min = 0, max = 1) {
   x_max <- max(x, na.rm = TRUE)
   
   # handle the case of all `x` are the same
-  if (x_max == x_min || is.null(x) || is.na(x)) {
+  if (x_max == x_min || all(is.na(x))) {
     # return the middle of expectation
     return((max + min) / 2)
   }

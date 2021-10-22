@@ -62,13 +62,7 @@ generate_nodes <- function(eventlog, distinct_case = FALSE) {
   # make 'R CMD check' happy
   activity <- category <- category <- name <- case_id <- NULL
 
-  if (is.null(eventlog) || is.na(eventlog) || nrow(eventlog) == 0) {
-    data.frame(
-      name = character(0),
-      category = character(0),
-      amount = numeric(0)
-    )
-  } else {
+  if (is.data.frame(eventlog) && nrow(eventlog) > 0) {
     nodes <- eventlog %>% dplyr::mutate(name = stringr::str_trim(as.character(activity)))
 
     if ("category" %in% colnames(eventlog)) {
@@ -88,5 +82,11 @@ generate_nodes <- function(eventlog, distinct_case = FALSE) {
       dplyr::summarize(amount = n()) %>%
       dplyr::ungroup() %>%
       data.table::setorder(name)
+  } else {
+    data.frame(
+      name = character(0),
+      category = character(0),
+      amount = numeric(0)
+    )
   }
 }
