@@ -5,7 +5,7 @@ cran: http://cran.rstudio.com
 
 r:
   - 3.2
-  - 3.3
+  - oldrel
   - release
   - devel
 
@@ -13,6 +13,7 @@ addons:
   apt:
     packages:
       - libv8-dev
+      - librsvg2-dev
       - graphviz
 
 after_success:

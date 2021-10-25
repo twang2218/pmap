@@ -24,7 +24,7 @@ coverage:
 ## Docker related tasks
 
 docker-image:
-	docker build --build-arg R_BASE_VERSION=3.6.3 -t pmap .
+	docker build --build-arg R_BASE_VERSION=4.1.1 -t pmap .
 
 docker-launch: docker-image
 	docker ps --format '{{.Names}}' | grep -q pmap || \
