@@ -57,7 +57,9 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
-          extra-packages: rcmdcheck
+          extra-packages: |
+            rcmdcheck
+            covr
 
       - uses: r-lib/actions/check-r-package@v1
 
@@ -72,3 +74,7 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
+
+      - name: Test coverage
+        run: covr::coveralls()
+        shell: Rscript {0}
