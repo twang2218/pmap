@@ -32,16 +32,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - if: matrix.os == 'ubuntu-latest'
-        name: Installl apt dependencies
+      - name: Installl apt dependencies
+        if: runner.os == 'linux'
         run: |
           sudo apt-get install -y --no-install-recommends \
             libv8-dev \
             librsvg2-dev \
             graphviz
 
-      - if: matrix.os == 'macOS-latest'
-        name: Install brew dependencies
+      - name: Install brew dependencies
+        if: runner.os == 'macOS'
         run: |
           brew install \
             librsvg \
