@@ -146,7 +146,6 @@ generate_edges <- function(eventlog, distinct_case = FALSE, target_categories = 
     ) %>%
     dplyr::filter(case_id == to_cid & !from_is_target)
 
-
   # prune edges by target_categories
   if (length(target_categories) > 0) {
     # find the last target activity date
@@ -159,6 +158,17 @@ generate_edges <- function(eventlog, distinct_case = FALSE, target_categories = 
     edges <- edges %>%
       dplyr::inner_join(case_last_target_date, by = "case_id") %>%
       dplyr::filter(from_time < last_target_date)
+  }
+
+  if (nrow(edges) == 0) {
+    edges <- data.frame(from=as.Date(character()),
+                        to=as.Date(character()),
+                        amount=integer(),
+                        mean_duration=double(),
+                        median_duration=double(),
+                        max_duration=double(),
+                        min_duration=double())
+    return(edges)
   }
 
   # Only count case once if `distinct_case` flag is set
