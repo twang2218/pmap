@@ -94,8 +94,8 @@ jobs:
       - name: check env
         env:
           CI_NAME: jenkins
-          CI_REMOTE: ${{ env.GITHUB_REF_NAME }}
-          CI_BRANCH: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/tree/${{ env.GITHUB_REF_NAME }}
+          CI_BRANCH: ${{ github.ref }}
+          CI_REMOTE: ${{ github.server_url }}/${{ github.repository }}/tree/${{ github.ref }}
         run: env
 
       - name: check jenkins_git_info() output
@@ -112,6 +112,6 @@ jobs:
         env:
           COVERALLS_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
           CI_NAME: jenkins
-          CI_REMOTE: ${{ env.GITHUB_REF_NAME }}
-          CI_BRANCH: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/tree/${{ env.GITHUB_REF_NAME }}
+          CI_BRANCH: ${{ github.ref }}
+          CI_REMOTE: ${{ github.server_url }}/${{ github.repository }}/tree/${{ github.ref }}
         shell: Rscript {0}
