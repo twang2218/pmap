@@ -1,9 +1,9 @@
 # Process Map
 
-[![Build Status]][Travis] [![AppVeyor Build Status]][AppVeyor Link] [![Coverage status]][Coverage status link] [![Github Version]][Github Release Page] [![CRAN Version]][CRAN Link] [![Download Stats]][CRAN Link] [![License]][License Page]
+[![Build Status]][Github Action Link] [![Coverage - Codecov status]][Coverage - Codecov link] [![Coverage - Coveralls status]][Coverage - Coveralls link] [![Github Version]][Github Release Page] [![CRAN Version]][CRAN Link] [![Download Stats]][CRAN Link] [![License]][License Page]
 
-[Build Status]: https://travis-ci.org/twang2218/pmap.svg?branch=master
-[Travis]: https://travis-ci.org/twang2218/pmap
+[Build Status]: https://github.com/twang2218/pmap/workflows/main/badge.svg
+[Github Action Link]: https://github.com/twang2218/pmap/actions/workflows/main.yml
 
 [CRAN Version]: http://www.r-pkg.org/badges/version/pmap
 [CRAN Link]: https://cran.r-project.org/web/packages/pmap/index.html
@@ -11,13 +11,13 @@
 [Github Version]: https://img.shields.io/github/release/twang2218/pmap.svg
 [Github Release Page]: https://github.com/twang2218/pmap/releases
 
-[Coverage status]: https://coveralls.io/repos/github/twang2218/pmap/badge.svg?branch=master
-[Coverage status link]: https://coveralls.io/github/twang2218/pmap?branch=master
+[Coverage - Coveralls status]: https://coveralls.io/repos/github/twang2218/pmap/badge.svg?branch=master
+[Coverage - Coveralls link]: https://coveralls.io/github/twang2218/pmap?branch=master
+
+[Coverage - Codecov status]: https://codecov.io/gh/twang2218/pmap/branch/master/graph/badge.svg?token=NZvs1lfOvG
+[Coverage - Codecov link]: https://codecov.io/gh/twang2218/pmap
 
 [Download Stats]: https://cranlogs.r-pkg.org/badges/grand-total/pmap?color=brightgreen
-
-[AppVeyor Build Status]: https://ci.appveyor.com/api/projects/status/github/twang2218/pmap?branch=master&svg=true
-[AppVeyor Link]: https://ci.appveyor.com/project/twang2218/pmap
 
 [License]: https://img.shields.io/cran/l/pmap.svg
 [License Page]: https://github.com/twang2218/pmap/blob/master/LICENSE.md

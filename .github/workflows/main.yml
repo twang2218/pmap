@@ -1,0 +1,107 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+name: main
+
+jobs:
+  test:
+    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - {os: ubuntu-latest,   r: 'release'}
+          - {os: ubuntu-latest,   r: 'oldrel-1'}
+          - {os: ubuntu-latest,   r: '3.3'}
+          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
+          - {os: macOS-10.15,     r: 'release'}
+          - {os: windows-latest,  r: 'release'}
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install system dependencies
+        uses: lyricwulf/abc@v1
+        with:
+          linux: libv8-dev librsvg2-dev graphviz
+          macos: librsvg graphviz
+          windows: graphviz
+
+      - uses: r-lib/actions/setup-pandoc@v1
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: |
+            rcmdcheck
+            covr
+
+      - uses: r-lib/actions/check-r-package@v1
+
+      - name: Show testthat output
+        if: always()
+        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
+        shell: bash
+
+      - name: Upload check results
+        if: failure()
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
+          path: check
+
+
+  coverage:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install system dependencies
+        uses: lyricwulf/abc@v1
+        with:
+          linux: libv8-dev librsvg2-dev graphviz
+          macos: librsvg graphviz
+          windows: graphviz
+
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: release
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: |
+            rcmdcheck
+            covr
+
+      - name: Coverage - CodeCov
+        run: covr::codecov(quiet=FALSE)
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        shell: Rscript {0}
+
+      - name: Coverage - Coveralls
+        run: covr::coveralls(quiet=FALSE)
+        env:
+          COVERALLS_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
+          CI_NAME: jenkins
+          CI_BRANCH: ${{ github.ref }}
+          CI_REMOTE: ${{ github.server_url }}/${{ github.repository }}/tree/${{ github.ref }}
+        shell: Rscript {0}
