@@ -96,6 +96,8 @@ jobs:
           CI_NAME: jenkins
           CI_BRANCH: ${{ github.ref }}
           CI_REMOTE: ${{ github.server_url }}/${{ github.repository }}/tree/${{ github.ref }}
+          ENV_CONTEXT: ${{ toJSON(env) }}
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: env
 
       - name: check jenkins_git_info() output
