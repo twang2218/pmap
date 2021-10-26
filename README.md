@@ -5,9 +5,6 @@
 [Build Status]: https://github.com/twang2218/pmap/workflows/main/badge.svg
 [Github Action Link]: https://github.com/twang2218/pmap/actions/workflows/main.yml
 
-[Build Status]: https://travis-ci.org/twang2218/pmap.svg?branch=master
-[Travis]: https://travis-ci.org/twang2218/pmap
-
 [CRAN Version]: http://www.r-pkg.org/badges/version/pmap
 [CRAN Link]: https://cran.r-project.org/web/packages/pmap/index.html
 
@@ -21,9 +18,6 @@
 [Coverage - Codecov link]: https://codecov.io/gh/twang2218/pmap
 
 [Download Stats]: https://cranlogs.r-pkg.org/badges/grand-total/pmap?color=brightgreen
-
-[AppVeyor Build Status]: https://ci.appveyor.com/api/projects/status/github/twang2218/pmap?branch=master&svg=true
-[AppVeyor Link]: https://ci.appveyor.com/project/twang2218/pmap
 
 [License]: https://img.shields.io/cran/l/pmap.svg
 [License Page]: https://github.com/twang2218/pmap/blob/master/LICENSE.md
