@@ -1,6 +1,7 @@
 #' @title Prune edges based on given percentage
 #' @param p process map object created by `create_pmap_graph()` function
 #' @param percentage how many percentage of the edges should be pruned.
+#' @param max set max number of edges to keep. If `max >= 0`, the `percentage` parameter will be ignored. if `max < 0` then `max` will be ignored and `percentage` will be used to prune.
 #' @description Prune edges based on given percentage
 #' @details
 #' Create an event log
@@ -54,6 +55,7 @@
 #' \if{html}{\figure{example.prune_edges.both.svg}{options: width="100\%" height="500px" alt="Figure: example.prune_edges.both.svg"}}
 #'
 #' One thing should be noticed, the order of pruning nodes and edges matters.
+#' @seealso [prune_nodes]
 #' @importFrom dplyr        %>%
 #' @importFrom data.table   setorder
 #' @importFrom DiagrammeR   get_edge_df
@@ -61,13 +63,19 @@
 #' @importFrom DiagrammeR   delete_edges_ws
 #' @importFrom utils        head
 #' @export
-prune_edges <- function(p, percentage = 0.2) {
+prune_edges <- function(p, percentage = 0.2, max=-1) {
   # make 'R CMD Check' happy
   amount <- NULL
 
   edf <- DiagrammeR::get_edge_df(p)
 
-  removed_edges <- edf %>% data.table::setorder(amount) %>% head(round(percentage * nrow(edf)))
+  removed_edges <- edf %>% data.table::setorder(amount)
+  if (max >= 0) {
+    removed_edges <- head(removed_edges, nrow(edf) - min(max, nrow(edf)))
+  } else {
+    removed_edges <- head(removed_edges, round(percentage * nrow(edf)))
+  }
+
   if (nrow(removed_edges) > 0) {
     p <- p %>%
       DiagrammeR::select_edges_by_edge_id(edges = removed_edges$id) %>%

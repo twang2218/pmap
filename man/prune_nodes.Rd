@@ -4,12 +4,19 @@
 \alias{prune_nodes}
 \title{Prune nodes based on given percentage}
 \usage{
-prune_nodes(p, percentage = 0.2, rank = c("amount", "in_degree", "out_degree"))
+prune_nodes(
+  p,
+  percentage = 0.2,
+  max = -1,
+  rank = c("amount", "in_degree", "out_degree")
+)
 }
 \arguments{
 \item{p}{process map object created by \code{create_pmap_graph()} function}
 
 \item{percentage}{how many percentage of the nodes should be pruned.}
+
+\item{max}{set max number of nodes to keep. If \code{max >= 0}, the \code{percentage} parameter will be ignored. if \code{max < 0} then \code{max} will be ignored and \code{percentage} will be used to prune.}
 
 \item{rank}{how to rank the nodes.
 \code{amount} means ranking the nodes by \code{amount} column (default);

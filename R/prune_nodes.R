@@ -1,11 +1,11 @@
 #' @title Prune nodes based on given percentage
 #' @param p process map object created by `create_pmap_graph()` function
 #' @param percentage how many percentage of the nodes should be pruned.
+#' @param max  set max number of nodes to keep. If `max >= 0`, the `percentage` parameter will be ignored. if `max < 0` then `max` will be ignored and `percentage` will be used to prune.
 #' @param rank how to rank the nodes.
 #'  `amount` means ranking the nodes by `amount` column (default);
 #'  `in_degree` means ranking the nodes by `in_degree`;
 #'  `out_degree` means ranking the nodes by `out_degree`;
-#' @usage prune_nodes(p, percentage = 0.2, rank = c("amount", "in_degree", "out_degree"))
 #' @description Prune nodes based on given percentage
 #' @examples
 #' library(dplyr)
@@ -23,7 +23,7 @@
 #' @importFrom DiagrammeR   delete_nodes_ws
 #' @importFrom utils        head
 #' @export
-prune_nodes <- function(p, percentage = 0.2, rank = c("amount", "in_degree", "out_degree")) {
+prune_nodes <- function(p, percentage = 0.2, max=-1, rank = c("amount", "in_degree", "out_degree")) {
   # make 'R CMD Check' happy
   amount <- inbound <- outbound <- NULL
 
@@ -38,7 +38,11 @@ prune_nodes <- function(p, percentage = 0.2, rank = c("amount", "in_degree", "ou
     out_degree = data.table::setorder(node_df, outbound)
   )
   # Select the top part of the nodes
-  removed_nodes <-  head(ranked_nodes, round(percentage * nrow(ranked_nodes)))
+  if (max >= 0) {
+    removed_nodes <- head(ranked_nodes, nrow(ranked_nodes) - min(max, nrow(ranked_nodes)))
+  } else {
+    removed_nodes <- head(ranked_nodes, round(percentage * nrow(ranked_nodes)))
+  }
 
   # Remove the nodes if it's not empty
   if (nrow(removed_nodes) > 0) {

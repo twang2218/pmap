@@ -4,12 +4,14 @@
 \alias{prune_edges}
 \title{Prune edges based on given percentage}
 \usage{
-prune_edges(p, percentage = 0.2)
+prune_edges(p, percentage = 0.2, max = -1)
 }
 \arguments{
 \item{p}{process map object created by \code{create_pmap_graph()} function}
 
 \item{percentage}{how many percentage of the edges should be pruned.}
+
+\item{max}{set max number of edges to keep. If \code{max >= 0}, the \code{percentage} parameter will be ignored. if \code{max < 0} then \code{max} will be ignored and \code{percentage} will be used to prune.}
 }
 \description{
 Prune edges based on given percentage
@@ -61,4 +63,7 @@ It's cleaner, we can clean it further by remove 50 percent nodes with \code{prun
 \if{html}{\figure{example.prune_edges.both.svg}{options: width="100\%" height="500px" alt="Figure: example.prune_edges.both.svg"}}
 
 One thing should be noticed, the order of pruning nodes and edges matters.
+}
+\seealso{
+\link{prune_nodes}
 }
