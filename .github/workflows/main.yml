@@ -17,11 +17,11 @@ jobs:
       matrix:
         config:
           - {os: ubuntu-latest,   r: 'release'}
-          # - {os: ubuntu-latest,   r: 'oldrel-1'}
-          # - {os: ubuntu-latest,   r: '3.3'}
-          # - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
-          # - {os: macOS-latest,    r: 'release'}
-          # - {os: windows-latest,  r: 'release'}
+          - {os: ubuntu-latest,   r: 'oldrel-1'}
+          - {os: ubuntu-latest,   r: '3.3'}
+          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
+          - {os: macOS-latest,    r: 'release'}
+          - {os: windows-latest,  r: 'release'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -91,14 +91,17 @@ jobs:
             rcmdcheck
             covr
 
-      # - name: Inject slug/short variables
-      #   uses: rlespinasse/github-slug-action@v3.x
-
       - name: check env
         run: env
 
       - name: check jenkins_git_info() output
         run: git log -n 1 --pretty=format:%H%n%an%n%ae%n%cn%n%ce%n%s
+
+      - name: Coverage - CodeCov
+        run: covr::codecov(quiet=FALSE)
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        shell: Rscript {0}
 
       - name: Coverage - Coveralls
         run: covr::coveralls(quiet=FALSE)
@@ -107,10 +110,4 @@ jobs:
           CI_NAME: jenkins
           CI_REMOTE: ${{ env.GITHUB_REF_NAME }}
           CI_BRANCH: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/tree/${{ env.GITHUB_REF_NAME }}
-        shell: Rscript {0}
-
-      - name: Coverage - CodeCov
-        run: covr::codecov(quiet=FALSE)
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         shell: Rscript {0}
