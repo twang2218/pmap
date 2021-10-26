@@ -33,9 +33,9 @@ jobs:
       - name: Install system dependencies
         uses: lyricwulf/abc@v1
         with:
-          linux: libv8-dev librsvg2-dev graphviz git
-          macos: librsvg graphviz git
-          windows: graphviz git
+          linux: libv8-dev librsvg2-dev graphviz
+          macos: librsvg graphviz
+          windows: graphviz
 
       - uses: r-lib/actions/setup-pandoc@v1
 
@@ -75,9 +75,9 @@ jobs:
       - name: Install system dependencies
         uses: lyricwulf/abc@v1
         with:
-          linux: libv8-dev librsvg2-dev graphviz git
-          macos: librsvg graphviz git
-          windows: graphviz git
+          linux: libv8-dev librsvg2-dev graphviz
+          macos: librsvg graphviz
+          windows: graphviz
 
 
       - uses: r-lib/actions/setup-r@v1
@@ -92,6 +92,10 @@ jobs:
             covr
 
       - name: check env
+        env:
+          CI_NAME: jenkins
+          CI_REMOTE: ${{ env.GITHUB_REF_NAME }}
+          CI_BRANCH: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/tree/${{ env.GITHUB_REF_NAME }}
         run: env
 
       - name: check jenkins_git_info() output
