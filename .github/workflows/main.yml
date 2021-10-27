@@ -32,6 +32,8 @@ jobs:
 
       - name: Install system dependencies
         uses: lyricwulf/abc@v1
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: 1
         with:
           linux: libv8-dev librsvg2-dev graphviz
           macos: librsvg graphviz

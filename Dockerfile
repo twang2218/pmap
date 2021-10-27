@@ -10,6 +10,7 @@ RUN apt-get update \
     libv8-dev \
     librsvg2-dev \
     graphviz \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 RUN Rscript -e "install.packages('devtools')" && \
