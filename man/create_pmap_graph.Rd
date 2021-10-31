@@ -5,17 +5,14 @@
 \title{Create the activity graph by given nodes and edges.}
 \usage{
 create_pmap_graph(
-   nodes,
-   edges,
-   target_categories = NULL,
-   edge_label = c(
-     "amount",
-     "mean_duration",
-     "median_duration",
-     "max_duration",
-     "min_duration"
-   )
- )
+  nodes,
+  edges,
+  target_categories = NULL,
+  edge_label = c("amount", "mean_duration", "median_duration", "max_duration",
+    "min_duration"),
+  edge_width = c("amount", "mean_duration", "median_duration", "max_duration",
+    "min_duration")
+)
 }
 \arguments{
 \item{nodes}{Event list, it should be a \code{data.frame} containing following columns:
@@ -34,6 +31,8 @@ create_pmap_graph(
 \item{target_categories}{A vector contains the target activity categories}
 
 \item{edge_label}{Specify which attribute is used for the edge label.}
+
+\item{edge_width}{Specify which attribute is used for the edge width.}
 }
 \description{
 Create the process map graph by specify the nodes and edges

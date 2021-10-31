@@ -5,18 +5,15 @@
 \title{Create the process map from event log directly}
 \usage{
 create_pmap(
-   eventlog,
-   distinct_case = FALSE,
-   distinct_repeated_activities = FALSE,
-   target_categories = NULL,
-   edge_label = c(
-     "amount",
-     "mean_duration",
-     "median_duration",
-     "max_duration",
-     "min_duration"
-   )
- )
+  eventlog,
+  distinct_case = FALSE,
+  distinct_repeated_activities = FALSE,
+  target_categories = NULL,
+  edge_label = c("amount", "mean_duration", "median_duration", "max_duration",
+    "min_duration"),
+  edge_width = c("amount", "mean_duration", "median_duration", "max_duration",
+    "min_duration")
+)
 }
 \arguments{
 \item{eventlog}{Event log}
@@ -28,6 +25,8 @@ create_pmap(
 \item{target_categories}{A vector contains the target activity categories}
 
 \item{edge_label}{Specify which attribute is used for the edge label.}
+
+\item{edge_width}{Specify which attribute is used for the edge width.}
 }
 \description{
 Create the process map by analyzing the given \code{eventlog} and extract the nodes by \code{generate_nodes()} and edges by \code{generate_edges()}.

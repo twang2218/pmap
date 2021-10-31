@@ -1,22 +1,10 @@
 #' @title Create the process map from event log directly
-#' @usage create_pmap(
-#'    eventlog,
-#'    distinct_case = FALSE,
-#'    distinct_repeated_activities = FALSE,
-#'    target_categories = NULL,
-#'    edge_label = c(
-#'      "amount",
-#'      "mean_duration",
-#'      "median_duration",
-#'      "max_duration",
-#'      "min_duration"
-#'    )
-#'  )
 #' @param eventlog Event log
 #' @param distinct_case Whether should count distinct case only. Default is `FALSE`.
 #' @param distinct_repeated_activities Whether should distinct repeat activities. Default is `FALSE`, which means the repeated activity will be treated as same node. If it's `TRUE`, the name of the activity will be attached with the sequence number of occurance of the activity.
 #' @param target_categories A vector contains the target activity categories
 #' @param edge_label Specify which attribute is used for the edge label.
+#' @param edge_width Specify which attribute is used for the edge width.
 #' @description Create the process map by analyzing the given `eventlog` and extract the nodes by `generate_nodes()` and edges by `generate_edges()`.
 #' @details
 #' ```R
@@ -103,6 +91,13 @@ create_pmap <- function(
     "median_duration",
     "max_duration",
     "min_duration"
+  ),
+  edge_width = c(
+    "amount",
+    "mean_duration",
+    "median_duration",
+    "max_duration",
+    "min_duration"
   )
 ) {
   # Make R Cmd Check happy
@@ -139,6 +134,6 @@ create_pmap <- function(
     stop("Generated graph contains no edge.")
   }
 
-  p <- create_pmap_graph(nodes, edges, target_categories, edge_label)
+  p <- create_pmap_graph(nodes, edges, target_categories, edge_label, edge_width)
   return(p)
 }
