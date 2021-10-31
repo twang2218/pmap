@@ -60,3 +60,35 @@ test_that("create_pmap_graph() should assign `0` to `NA` in `inbound` and `outbo
   expect_true(!any(is.na(node_df$amount)))
 })
 
+
+test_that("create_pmap_graph() should handle the edge without duration", {
+  p <- create_pmap_graph(
+    nodes = data.frame(
+      name = c("a", "b", "c", "d", "e"),
+      category = c("campaign", "campaign", "campaign", "sale", "sale"),
+      amount = c(10, 30, 20, 40, NA),
+      stringsAsFactors = FALSE
+    ),
+    edges = data.frame(
+      from = c("a", "b", "b", "a"),
+      to = c("b", "c", "d", "e"),
+      amount = c(10, 30, 20, 40),
+      stringsAsFactors = FALSE
+    ),
+    target_categories = c("sale")
+  )
+
+  # as no timestamp are given, so no `xxx_duration` should exist.
+  edge_df <- DiagrammeR::get_edge_df(p)
+  expect_equal("mean_duration" %in% colnames(edge_df), FALSE)
+  expect_equal("median_duration" %in% colnames(edge_df), FALSE)
+  expect_equal("max_duration" %in% colnames(edge_df), FALSE)
+  expect_equal("min_duration" %in% colnames(edge_df), FALSE)
+
+  expect_equal(edge_df$tooltip, c(
+    "from: a\nto: b\namount: 10",
+    "from: b\nto: c\namount: 30",
+    "from: b\nto: d\namount: 20",
+    "from: a\nto: e\namount: 40"
+  ))
+})

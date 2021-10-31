@@ -105,10 +105,11 @@ test_that("create_pmap() should handle names with SPACE padding", {
   expect_equal(edges$amount, 2)
 
   # test duration
-  expect_equal(edges$mean_duration, "1.07 weeks")
-  expect_equal(edges$median_duration, "1.07 weeks")
-  expect_equal(edges$max_duration, "2 weeks")
-  expect_equal(edges$min_duration, "1 days")
+  expect_equal(edges$mean_duration, as.difftime(7.5, units = "days"))
+  expect_equal(edges$median_duration, as.difftime(7.5, units = "days"))
+  expect_equal(edges$max_duration, as.difftime(14, units = "days"))
+  expect_equal(edges$min_duration, as.difftime(1, units = "days"))
+  expect_equal(edges$tooltip, "from: a\nto: b\namount: 2\nmean_duration: 1.07 weeks\nmedian_duration: 1.07 weeks\nmax_duration: 2 weeks\nmin_duration: 1 days")
 })
 
 test_that("create_pmap() should distinct repeated activities if `distinct_repeated_activities`", {
@@ -166,4 +167,28 @@ test_that("create_pmap() should distinct repeated activities if `distinct_repeat
   expect_equal(nodes$name, c("a (1)", "a (2)", "b (1)", "b (2)"))
   expect_equal(nodes$type, c("a", "a", "b", "b"))
   expect_equal(nodes$amount, c(2, 1, 3, 1))
+})
+
+test_that("create_pmap() should handle the eventlog without timestamp", {
+  p <- create_pmap(
+    data.frame(
+      case_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
+      activity = c("a", "b", "a", "b", "b", "a", "b"),
+      category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
+      stringsAsFactors = FALSE
+    )
+  )
+
+  edges <- DiagrammeR::get_edge_df(p)
+
+  expect_equal(nrow(edges), 3)
+  expect_equal(edges$from, c(1, 2, 2))
+  expect_equal(edges$to, c(2, 1, 2))
+  expect_equal(edges$amount, c(2, 1, 1))
+
+  # test duration
+  expect_equal("mean_duration" %in% colnames(edges), FALSE)
+  expect_equal("median_duration" %in% colnames(edges), FALSE)
+  expect_equal("max_duration" %in% colnames(edges), FALSE)
+  expect_equal("min_duration" %in% colnames(edges), FALSE)
 })
