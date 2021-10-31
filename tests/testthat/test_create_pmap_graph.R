@@ -1,6 +1,6 @@
 context("create_pmap_graph()")
 
-test_that("create_pmap_graph()", {
+test_that("create_pmap_graph() on basic graph", {
   eventlog <- generate_eventlog(
     size_of_eventlog = 10000,
     number_of_cases = 1000,
@@ -24,13 +24,22 @@ test_that("create_pmap_graph()", {
   expect_true(all(c("from", "to", "amount", "mean_duration", "max_duration", "min_duration") %in% colnames(edges)))
   expect_gt(nrow(edges), 100)
 
+  # print("> edges (generate_edges):")
   # print(str(edges))
 
   # print("create_pmap_graph()")
   p <- create_pmap_graph(nodes, edges, target_categories = c("sale"))
 
   edges_from_graph <- DiagrammeR::get_edge_df(p)
+  # print("> edges_from_graph:")
+  # print(str(edges_from_graph))
+
   expect_equal(nrow(edges), nrow(edges_from_graph))
+
+  # check default label
+  # print(str(edges_from_graph$label))
+  # print(paste("sum():", sum(edges_from_graph$label == paste0("   ", edges$amount, "   "))))
+  expect_equal(sum(edges_from_graph$label == paste0("   ", edges$amount, "   ")), nrow(edges))
 
   # print("render_graph()")
   expect_true(!any(is.null(render_pmap(p))))

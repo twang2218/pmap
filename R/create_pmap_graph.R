@@ -1,17 +1,5 @@
 #' @title Create the activity graph by given nodes and edges.
 #' @description Create the process map graph by specify the nodes and edges
-#' @usage create_pmap_graph(
-#'    nodes,
-#'    edges,
-#'    target_categories = NULL,
-#'    edge_label = c(
-#'      "amount",
-#'      "mean_duration",
-#'      "median_duration",
-#'      "max_duration",
-#'      "min_duration"
-#'    )
-#'  )
 #' @param nodes Event list, it should be a `data.frame` containing following columns:
 #'   * `name`: Activity name, will be used as label. (`character`)
 #'   * `category`: The activity category (`character`)
@@ -21,6 +9,7 @@
 #'   * `amount`: How many of case affected by the given activity. (`numeric`)
 #' @param target_categories A vector contains the target activity categories
 #' @param edge_label Specify which attribute is used for the edge label.
+#' @param edge_width Specify which attribute is used for the edge width.
 #' @examples
 #' eventlog <- generate_eventlog()
 #' nodes <- generate_nodes(eventlog)
@@ -65,6 +54,13 @@ create_pmap_graph <- function(
   edges,
   target_categories = NULL,
   edge_label = c(
+    "amount",
+    "mean_duration",
+    "median_duration",
+    "max_duration",
+    "min_duration"
+  ),
+  edge_width = c(
     "amount",
     "mean_duration",
     "median_duration",
@@ -117,18 +113,14 @@ create_pmap_graph <- function(
     max_duration = if("max_duration" %in% edges_cols) format_duration(edges$max_duration) else NULL,
     min_duration = if("min_duration" %in% edges_cols) format_duration(edges$min_duration) else NULL
   )
-
   edges <- edges %>%
     dplyr::mutate(
       tooltip = get_attrs_desc(edges_labels),
-      size = projection(edges$amount, 1, 15)
     ) %>%
     dplyr::left_join(nodes_id, by = c("from" = "name")) %>%
     dplyr::rename(from_id = id) %>%
     dplyr::left_join(nodes_id, by = c("to" = "name")) %>%
     dplyr::rename(to_id = id)
-
-  # print(str(edges))
 
   nodes_df <- DiagrammeR::create_node_df(
     nrow(nodes),
@@ -146,6 +138,7 @@ create_pmap_graph <- function(
     amount = nodes$amount
   )
 
+  # construct edge label by user selected attribute
   edge_label <- match.arg(edge_label)
   edge_label_value <- switch(
     edge_label,
@@ -156,14 +149,26 @@ create_pmap_graph <- function(
     min_duration = format_duration(edges$min_duration)
   )
 
+  # calculate the edge width by user selected attribute
+  edge_width <- match.arg(edge_width)
+  edge_width_value <- switch(
+    edge_width,
+    amount = edges$amount,
+    max_duration = edges$max_duration,
+    mean_duration = edges$mean_duration,
+    median_duration = edges$median_duration,
+    min_duration = edges$min_duration
+  )
+  edge_width_value <- projection(edge_width_value, 1, 15)
+
   edges_df <- DiagrammeR::create_edge_df(
     nrow(edges),
     from = edges$from_id,
     to = edges$to_id,
     amount = edges$amount,
     label = paste0("   ", edge_label_value, "   "),
-    penwidth = edges$size,
-    weight = edges$size,
+    penwidth = edge_width_value,
+    weight = edge_width_value,
     tooltip = edges$tooltip,
     labeltooltip = edges$tooltip
   )
