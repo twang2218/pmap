@@ -18,10 +18,10 @@ test_that("generate_edges() should handle minimal eventlog", {
   expect_equal(edges$amount, 1)
 
   # test duration
-  expect_equal(edges$mean_duration, "2.71 weeks")
-  expect_equal(edges$median_duration, "2.71 weeks")
-  expect_equal(edges$max_duration, "2.71 weeks")
-  expect_equal(edges$min_duration, "2.71 weeks")
+  expect_equal(edges$mean_duration, as.difftime(19, units = "days"))
+  expect_equal(edges$median_duration, as.difftime(19, units = "days"))
+  expect_equal(edges$max_duration, as.difftime(19, units = "days"))
+  expect_equal(edges$min_duration, as.difftime(19, units = "days"))
 })
 
 test_that("generate_edges() should handle eventlog without specifies 'target_categories'", {
@@ -38,10 +38,10 @@ test_that("generate_edges() should handle eventlog without specifies 'target_cat
   expect_equal(nrow(edges), 1)
 
     # test duration
-  expect_equal(edges$mean_duration, "2.71 weeks")
-  expect_equal(edges$median_duration, "2.71 weeks")
-  expect_equal(edges$max_duration, "2.71 weeks")
-  expect_equal(edges$min_duration, "2.71 weeks")
+  expect_equal(edges$mean_duration, as.difftime(19, units = "days"))
+  expect_equal(edges$median_duration, as.difftime(19, units = "days"))
+  expect_equal(edges$max_duration, as.difftime(19, units = "days"))
+  expect_equal(edges$min_duration, as.difftime(19, units = "days"))
 })
 
 test_that("generate_edges() should handle eventlog without edge reaches 'target_categories'", {
@@ -98,10 +98,10 @@ test_that("generate_edges() should count every paths if 'distinct_case' is not s
   expect_equal(edges$amount, 3)
 
     # test duration
-  expect_equal(edges$mean_duration, "5 days")
-  expect_equal(edges$median_duration, "4 days")
-  expect_equal(edges$max_duration, "1.43 weeks")
-  expect_equal(edges$min_duration, "1 days")
+  expect_equal(edges$mean_duration, as.difftime(5, units = "days"))
+  expect_equal(edges$median_duration, as.difftime(4, units = "days"))
+  expect_equal(edges$max_duration, as.difftime(10, units = "days"))
+  expect_equal(edges$min_duration, as.difftime(1, units = "days"))
 })
 
 
@@ -130,10 +130,10 @@ test_that("generate_edges() should count unique 'case_id' if 'distinct_case' is 
   expect_equal(edges$amount, 1)
 
   # test duration
-  expect_equal(edges$mean_duration, "1.21 weeks")
-  expect_equal(edges$median_duration, "1.21 weeks")
-  expect_equal(edges$max_duration, "2.29 weeks")
-  expect_equal(edges$min_duration, "1 days")
+  expect_equal(edges$mean_duration, as.difftime(8.5, units = "days"))
+  expect_equal(edges$median_duration, as.difftime(8.5, units = "days"))
+  expect_equal(edges$max_duration, as.difftime(16, units = "days"))
+  expect_equal(edges$min_duration, as.difftime(1, units = "days"))
 })
 
 test_that("generate_edges() should not count paths from 'target_categories'", {
@@ -161,10 +161,10 @@ test_that("generate_edges() should not count paths from 'target_categories'", {
   expect_equal(edges$amount, 2)
 
   # test duration
-  expect_equal(edges$mean_duration, "1.07 weeks")
-  expect_equal(edges$median_duration, "1.07 weeks")
-  expect_equal(edges$max_duration, "2 weeks")
-  expect_equal(edges$min_duration, "1 days")
+  expect_equal(edges$mean_duration, as.difftime(7.5, units = "days"))
+  expect_equal(edges$median_duration, as.difftime(7.5, units = "days"))
+  expect_equal(edges$max_duration, as.difftime(14, units = "days"))
+  expect_equal(edges$min_duration, as.difftime(1, units = "days"))
 })
 
 test_that("generate_edges() should convert 'timestamp' to 'POSIXct' if it's not 'POSIXct' yet", {
@@ -192,8 +192,29 @@ test_that("generate_edges() should convert 'timestamp' to 'POSIXct' if it's not 
   expect_equal(edges$amount, 2)
 
   # test duration
-  expect_equal(edges$mean_duration, "1.07 weeks")
-  expect_equal(edges$median_duration, "1.07 weeks")
-  expect_equal(edges$max_duration, "2 weeks")
-  expect_equal(edges$min_duration, "1 days")
+  expect_equal(edges$mean_duration, as.difftime(7.5, units = "days"))
+  expect_equal(edges$median_duration, as.difftime(7.5, units = "days"))
+  expect_equal(edges$max_duration, as.difftime(14, units = "days"))
+  expect_equal(edges$min_duration, as.difftime(1, units = "days"))
+})
+
+test_that("generate_edges() should handle the eventlog without timestamp", {
+  edges <- generate_edges(
+    data.frame(
+      case_id = c("c1", "c1", "c1", "c2", "c2", "c3", "c3"),
+      activity = c("a", "b", "a", "b", "b", "a", "b"),
+      category = c("campaign", "sale", "campaign", "sale", "sale", "campaign", "sale"),
+      stringsAsFactors = FALSE
+    )
+  )
+  expect_equal(nrow(edges), 3)
+  expect_equal(edges$from, c("a", "b", "b"))
+  expect_equal(edges$to, c("b", "a", "b"))
+  expect_equal(edges$amount, c(2, 1, 1))
+
+  # test duration
+  expect_equal("mean_duration" %in% colnames(edges), FALSE)
+  expect_equal("median_duration" %in% colnames(edges), FALSE)
+  expect_equal("max_duration" %in% colnames(edges), FALSE)
+  expect_equal("min_duration" %in% colnames(edges), FALSE)
 })

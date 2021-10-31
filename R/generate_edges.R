@@ -76,15 +76,13 @@
 #' @importFrom stringr      str_trim
 #' @export
 generate_edges <- function(eventlog, distinct_case = FALSE, target_categories = NULL) {
+  empty_edges <- data.frame(from=as.Date(character()),
+                            to=as.Date(character()),
+                            amount=integer())
+
   # return empty edge if eventlog is empty
   if (nrow(eventlog) == 0) {
-    return(
-      data.frame(
-        from = character(0),
-        to = character(0),
-        amount = numeric(0)
-      )
-    )
+    return(empty_edges)
   }
 
   # make 'R CMD check' happy
@@ -120,88 +118,107 @@ generate_edges <- function(eventlog, distinct_case = FALSE, target_categories = 
     eventlog <- dplyr::mutate(eventlog, is_target = FALSE)
   }
 
+  has_timestamp <- "timestamp" %in% colnames(eventlog)
+
   # convert timestamp if it's not POSIXct yet.
-  if (!inherits(eventlog$timestamp, "POSIXct")) {
+  if (has_timestamp && !inherits(eventlog$timestamp, "POSIXct")) {
     eventlog <- dplyr::mutate(eventlog, timestamp = as.POSIXct(timestamp))
   }
 
   # Construct potential edges
-  eventlog <- data.table::as.data.table(eventlog) %>% data.table::setorder(case_id, timestamp)
+  eventlog <- data.table::as.data.table(eventlog)
+  if (has_timestamp) {
+    eventlog <- eventlog %>% data.table::setorder(case_id, timestamp)
+  } else {
+    eventlog <- eventlog %>% data.table::setorder(case_id)
+  }
 
   size <- nrow(eventlog)
   begin <- eventlog[-size, ]
   end <- eventlog[-1, ]
 
   edges <- data.frame(
-      from_time = begin$timestamp,
       from = begin$activity,
       case_id = begin$case_id,
       from_is_target = begin$is_target,
-      to_time = end$timestamp,
       to = end$activity,
       to_cid = end$case_id,
       to_is_target = end$is_target,
-      duration = end$time - begin$time,
       stringsAsFactors = FALSE
-    ) %>%
-    dplyr::filter(case_id == to_cid & !from_is_target)
+    )
+  # add time related attribute if it's available
+  if (has_timestamp) {
+    edges <- dplyr::mutate(edges,
+      from_time = begin$timestamp,
+      to_time = end$timestamp,
+      duration = end$time - begin$time,
+    )
+  }
+  # filter the invalid rows
+  edges <- dplyr::filter(edges, case_id == to_cid & !from_is_target)
 
   # prune edges by target_categories
   if (length(target_categories) > 0) {
     # find the last target activity date
-    case_last_target_date <- eventlog %>%
-      dplyr::filter(is_target) %>%
-      dplyr::group_by(case_id) %>%
-      dplyr::summarize(last_target_date = max(timestamp))
+    if (has_timestamp) {
+      case_last_target_date <- eventlog %>%
+        dplyr::filter(is_target) %>%
+        dplyr::group_by(case_id) %>%
+        dplyr::summarize(last_target_date = max(timestamp))
 
-    # prune all the edges with activity after the last target activity date
-    edges <- edges %>%
-      dplyr::inner_join(case_last_target_date, by = "case_id") %>%
-      dplyr::filter(from_time < last_target_date)
+      # prune all the edges with activity after the last target activity date
+      edges <- edges %>%
+        dplyr::inner_join(case_last_target_date, by = "case_id") %>%
+        dplyr::filter(from_time < last_target_date)
+    }
   }
 
   if (nrow(edges) == 0) {
-    edges <- data.frame(from=as.Date(character()),
-                        to=as.Date(character()),
-                        amount=integer(),
-                        mean_duration=double(),
-                        median_duration=double(),
-                        max_duration=double(),
-                        min_duration=double())
-    return(edges)
+    return(empty_edges)
   }
 
   # Only count case once if `distinct_case` flag is set
   if (distinct_case) {
-    edges <- edges %>%
-      dplyr::group_by(from, to, case_id) %>%
-      dplyr::summarize(
+    edges <- dplyr::group_by(edges, from, to, case_id)
+    if (has_timestamp) {
+      edges <- dplyr::summarize(edges,
         mean_duration = mean(duration),
         median_duration = stats::median(duration),
         max_duration = max(duration),
         min_duration = min(duration)
       )
+    } else {
+      edges <- dplyr::summarize(edges,
+        amount = n()
+      )
+    }
   } else {
-    edges <- dplyr::mutate(
-      edges,
-      mean_duration = duration,
-      median_duration = duration,
-      max_duration = duration,
-      min_duration = duration,
-    )
+    if (has_timestamp) {
+      edges <- dplyr::mutate(
+        edges,
+        mean_duration = duration,
+        median_duration = duration,
+        max_duration = duration,
+        min_duration = duration,
+      )
+    }
   }
 
-  edges <- edges %>%
-    dplyr::group_by(from, to) %>%
-    dplyr::summarize(
+  edges <- dplyr::group_by(edges, from, to)
+  if (has_timestamp) {
+    edges <- dplyr::summarize(edges,
       amount = n(),
-      mean_duration = format_duration(mean(mean_duration)),
-      median_duration = format_duration(stats::median(median_duration)),
-      max_duration = format_duration(max(max_duration)),
-      min_duration = format_duration(min(min_duration))
-    ) %>%
-    dplyr::ungroup() %>%
-    data.table::setorder(from, to)
+      mean_duration = mean(mean_duration),
+      median_duration = stats::median(median_duration),
+      max_duration = max(max_duration),
+      min_duration = min(min_duration)
+    )
+  } else {
+    edges <- dplyr::summarize(edges,
+      amount = n()
+    )
+  }
+  edges <- dplyr::ungroup(edges) %>% data.table::setorder(from, to)
 
   return(edges)
 }

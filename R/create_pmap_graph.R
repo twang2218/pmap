@@ -102,23 +102,31 @@ create_pmap_graph <- function(
   # print(str(nodes))
 
   nodes_id <- dplyr::select(nodes, id, name)
+
+  # Fill missing duration columns with empty
+  edges_labels <- data.frame(
+    from = edges$from,
+    to = edges$to,
+    amount = edges$amount
+  )
+
+  edges_cols <- colnames(edges)
+  edges_labels <- dplyr::mutate(edges_labels,
+    mean_duration = if("mean_duration" %in% edges_cols) format_duration(edges$mean_duration) else NULL,
+    median_duration = if("median_duration" %in% edges_cols) format_duration(edges$median_duration) else NULL,
+    max_duration = if("max_duration" %in% edges_cols) format_duration(edges$max_duration) else NULL,
+    min_duration = if("min_duration" %in% edges_cols) format_duration(edges$min_duration) else NULL
+  )
+
   edges <- edges %>%
     dplyr::mutate(
-      tooltip = get_attrs_desc(edges),
+      tooltip = get_attrs_desc(edges_labels),
       size = projection(edges$amount, 1, 15)
     ) %>%
     dplyr::left_join(nodes_id, by = c("from" = "name")) %>%
     dplyr::rename(from_id = id) %>%
     dplyr::left_join(nodes_id, by = c("to" = "name")) %>%
     dplyr::rename(to_id = id)
-
-  edges_cols <- names(edges)
-
-  # Fill missing duration columns with empty string
-  if (!"max_duration" %in% edges_cols) edges <- dplyr::mutate(edges, max_duration = "")
-  if (!"mean_duration" %in% edges_cols) edges <- dplyr::mutate(edges, mean_duration = "")
-  if (!"median_duration" %in% edges_cols) edges <- dplyr::mutate(edges, median_duration = "")
-  if (!"min_duration" %in% edges_cols) edges <- dplyr::mutate(edges, min_duration = "")
 
   # print(str(edges))
 
@@ -142,10 +150,10 @@ create_pmap_graph <- function(
   edge_label_value <- switch(
     edge_label,
     amount = edges$amount,
-    max_duration = edges$max_duration,
-    mean_duration = edges$mean_duration,
-    median_duration = edges$median_duration,
-    min_duration = edges$min_duration
+    max_duration = format_duration(edges$max_duration),
+    mean_duration = format_duration(edges$mean_duration),
+    median_duration = format_duration(edges$median_duration),
+    min_duration = format_duration(edges$min_duration)
   )
 
   edges_df <- DiagrammeR::create_edge_df(
@@ -157,11 +165,14 @@ create_pmap_graph <- function(
     penwidth = edges$size,
     weight = edges$size,
     tooltip = edges$tooltip,
-    labeltooltip = edges$tooltip,
-    max_duration = edges$max_duration,
-    mean_duration = edges$mean_duration,
-    median_duration = edges$median_duration,
-    min_duration = edges$min_duration
+    labeltooltip = edges$tooltip
+  )
+
+  edges_df <- dplyr::mutate(edges_df,
+    mean_duration = if("mean_duration" %in% edges_cols) edges$mean_duration else NULL,
+    median_duration = if("median_duration" %in% edges_cols) edges$median_duration else NULL,
+    max_duration = if("max_duration" %in% edges_cols) edges$max_duration else NULL,
+    min_duration = if("min_duration" %in% edges_cols) edges$min_duration else NULL
   )
 
   # print("create_graph()")

@@ -33,10 +33,10 @@ adjust_edge_label <- function(p, label = c(
   edge_label_value <- switch(
     label,
     amount = edges$amount,
-    max_duration = edges$max_duration,
-    mean_duration = edges$mean_duration,
-    median_duration = edges$median_duration,
-    min_duration = edges$min_duration
+    max_duration = format_duration(edges$max_duration),
+    mean_duration = format_duration(edges$mean_duration),
+    median_duration = format_duration(edges$median_duration),
+    min_duration = format_duration(edges$min_duration)
   )
 
   p <- DiagrammeR::set_edge_attrs(p, edge_attr = "label", values = paste0("   ", edge_label_value, "   "))
